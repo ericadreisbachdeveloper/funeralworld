@@ -1,0 +1,67 @@
+{
+    "key": "group_5e7a6982c134c",
+    "title": "Open Graph",
+    "fields": [
+        {
+            "key": "field_5e7a699e85619",
+            "label": "Social sharing image",
+            "name": "social-img",
+            "type": "image",
+            "instructions": "Recommended size: 1200px wide x 1200px high with focal point in the center. Image may be cropped to 1200px x 430px by social media platforms. This image is the default image that will programmatically appear when the site is shared on social media. Featured Image for a given post or page will override this image.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5e7a6a188561a",
+            "label": "Social sharing text",
+            "name": "social-txt",
+            "type": "textarea",
+            "instructions": "Recommended: no more than 300 characters. This text is the default text that will programmatically appear when the site is shared on social media. Meta description for a given post or page will override this text.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1585080909
+}

@@ -1,0 +1,309 @@
+// Nav - css/priority.css
+
+
+
+// 1. Header
+$headerh: 6rem;
+
+%siteheaderh { height: $headerh; }
+.site-header, .site-header .logo-a { @extend %siteheaderh; }
+
+.logo-a {
+  @include flex;
+  @include align-items(center);
+}
+
+
+
+// 2.  Nav
+//    .nav > #navmenu > .container-on-mobile > .navbar-nav
+$navborder: .05rem solid #dedede;
+
+%navmenu {
+
+  // global reset on nav ul
+  .navbar-nav, .sub-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  // specify relative to position .open-submenu-a caret
+  .navbar-nav > .menu-item { position: relative; }
+
+
+  // 2a. basic positioning + styling
+  width: 100%;
+
+  background: $navy;
+  border-top: $navborder;
+  border-bottom: $navborder;
+
+  position: absolute;
+   top: $headerh;
+   left: 0;
+  z-index: 10;
+
+
+  // 2b. basic show hide
+  &:not(.show) { display: none; }
+  &.show       { display: block; }
+  &.show { -webkit-box-shadow: .05rem .2rem 0.2rem rgba(0,0,0,.1); box-shadow: .05rem .2rem 0.2rem rgba(0,0,0,.1); }
+
+
+  // 2c. link styling
+  .navbar-nav [href]:not([tabindex]) {
+    border-bottom: $navborder;
+    color: $nearblack;
+    display: block;
+    text-decoration: none;
+  }
+
+  // 2d. top level link padding
+  //     1rem top and bottom = 50px
+  .navbar-nav > .menu-item > [href]:not([tabindex]) { padding: 1rem 2rem; }
+}
+
+#navmenu { @extend %navmenu; }
+
+// has admin bar
+.logged-in.admin-bar #navmenu { top: calc( #{$headerh} + 32px); }
+
+
+
+// 3. Subnav
+//    on desktop this caret becomes a purely visual indicator (non-clickable / non-tappable / non-interactive)
+%open-submenu-a {
+  width: 7rem;
+  height: 3.2rem;
+  display: block;
+
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12' overflow='visible'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' fill='%231E1E1E' d='M19.679 0L10.2 11.924 0 0h19.679z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 50% 1.2rem;
+
+  position: absolute;
+   top: -.05rem;
+   right: 0;
+  z-index: 10;
+
+  &.mobile-show-submenu { @include rotate(180deg); }
+}
+
+// specify a top level open-submenu-a
+.navbar-nav > .menu-item-has-children > .open-submenu-a { @extend %open-submenu-a; }
+
+
+%submenu-closed {
+                           &> .menu-item > [href]:not([tabindex]) { padding: 1rem 2rem 1rem 3.5rem; }
+  &> .menu-item > .sub-menu > .menu-item > [href]:not([tabindex]) { padding: 1rem 2rem 1rem 5.5rem; }
+
+  max-height: 0;
+  overflow: hidden;
+}
+
+%submenu-opened {
+  max-height: unset;
+  overflow: visible;
+}
+
+
+// target top level .open-submenu-a
+.navbar-nav > .menu-item > .open-submenu-a                     + .sub-menu { @extend %submenu-closed; }
+.navbar-nav > .menu-item > .open-submenu-a.mobile-show-submenu + .sub-menu { @extend %submenu-opened; }
+
+
+
+
+// 4. Toggle
+.navbar-toggler {
+  width: 3rem;
+  height: 3rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  position: absolute;
+   top: 1.5rem;
+   right: 2rem;
+  z-index: 10;
+
+  &:focus { outline: -webkit-focus-ring-color auto .5rem; }
+
+  &> .opennav { position: absolute; left: 10%; }
+
+  .icon-bar {
+    width: 80%;
+    height: .2rem;
+    background: $gray;
+    display: block;
+    position: absolute;
+     left: 10%;
+  }
+
+
+  // middle bar
+  &.collapsed > .icon-bar.-middle { opacity: 1; }
+  &> .icon-bar.-middle { @extend %toggle_middle; }
+
+
+  // the hamburger
+  &.collapsed {
+    &> .icon-bar.-top,
+    &> .icon-bar.-bottom {
+      @include rotate(0deg);
+    }
+
+    &> .icon-bar.-top {
+      @extend %toggle_top;
+      @include transform(0deg, (1,1), 0, 0, 0);
+    }
+
+    &> .icon-bar.-bottom {
+      @extend %toggle_bottom;
+      @include transform(0deg, (1,1), 0, 0, 0);
+      -webkit-transform-origin: .45rem  -.2rem;
+       -ms-transform-origin: .45rem  -.2rem;
+        transform-origin: .45rem  -.2rem;
+    }
+  }
+
+
+  // the x
+  &[aria-expanded="true"] > .icon-bar {
+
+    &.-top {
+      @extend %toggle_top_bottom_collapsed;
+      //@include animation(toggle_top, ease-in-out, 1, $opennav_timing);
+      @include transform(45deg, (1,1), 0, 0, 0);
+    }
+
+    &.-bottom {
+      @extend %toggle_top_bottom_collapsed;
+      //@include animation(toggle_bottom, ease-in-out, 1, $opennav_timing);
+      @include transform(-45deg, (1,1), 0, 0, 0);
+    }
+
+    &.-middle { opacity: 0; }
+  }
+}
+
+
+
+
+// 5.  Hovers
+
+// 5a. Top Level - no children - % at the li level
+%top-level-no-children-hover {
+  &> [href]:not([tabindex]) {
+    @include hover {
+      background: #dedede;
+    }
+  }
+}
+
+.navbar-nav > .menu-item:not(.menu-item-has-children) { @extend %top-level-no-children-hover; }
+
+
+// 5b. Top Level - % at the li level
+%top-level-has-children-hover {
+  &> [href]:not([tabindex]) {
+    @include hover {
+      background: #dedede;
+    }
+  }
+}
+
+.navbar-nav > .menu-item.menu-item-has-children { @extend %top-level-has-children-hover; }
+
+
+// 5c. Children - % at the li level
+%child-level-hover { @extend %top-level-no-children-hover; }
+.navbar-nav > .menu-item > .sub-menu .menu-item { @extend %child-level-hover; }
+
+
+// 5d. Open submenu caret - % at the [href] level
+%open-submenu-hover {
+  @include hover {
+    background-color: #dedede;
+  }
+}
+
+.navbar-nav > .menu-item-has-children > .open-submenu-a { @extend %open-submenu-hover; }
+
+
+
+
+// 6.  Current - apply to li
+%current-child {
+  position: relative;
+
+  &:before {
+    width: .4rem;
+    height: .4rem;
+    background: $nearblack;
+    border-radius: .22rem;
+    content: '';
+    display: block;
+    position: absolute;
+     top: 1.35rem;
+     left: .8rem;
+  }
+}
+
+// 6a. Children
+.navbar-nav > .menu-item .sub-menu .current-menu-item                   { @extend %current-child; }
+
+// 6a. Top Level without children / without subnav
+%current-top-level-childless                                            { @extend %current-child; }
+.navbar-nav > .menu-item.current-menu-item:not(.menu-item-has-children) { @extend %current-top-level-childless; }
+
+// 6b. Top Level with children / has subnav
+%current-top-level-parent                                               { @extend %current-child; }
+.navbar-nav > .menu-item.current-menu-item.menu-item-has-children       { @extend %current-top-level-parent; }
+
+
+
+// 7. Nav Search Form
+#navmenu [href="#display-search"] { display: none; }
+
+// hide by default - avoid "blink away" on desktop
+#navmenu:not(.show) .search-input,
+#navmenu:not(.show) .search-submit { display: none; }
+
+// form.search
+#navmenu .search {
+  background: white;
+  position: relative;
+}
+
+#navmenu .search-input {
+  width: 100%;
+  border: none;
+  padding: .938rem 5rem .938rem 1.9rem;
+}
+
+
+#navmenu .search-submit {
+  background: none;
+  border: none;
+  position: absolute;
+   top: .75rem;
+   right: 2.5rem;
+  -webkit-appearance: none;
+
+  &:after {
+    width: 1rem;
+    height: 1.5rem;
+    color: white;
+    content: '';
+    display: block;
+    background-size: contain;
+    background-position: 50% 60%;
+    background-repeat: no-repeat;
+
+    // magnifiying glass
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' overflow='visible'%3E%3Cpath fill='%231E1E1E' d='M11.077 6.77c0-1.187-.422-2.2-1.265-3.044-.842-.843-1.857-1.264-3.042-1.264-1.187 0-2.2.421-3.044 1.264-.843.843-1.264 1.857-1.264 3.044 0 1.186.421 2.2 1.264 3.043.844.843 1.857 1.265 3.044 1.265 1.186 0 2.2-.422 3.043-1.265s1.264-1.858 1.264-3.043zm4.923 8c0 .333-.122.621-.365.865a1.185 1.185 0 01-.865.365c-.347 0-.635-.122-.865-.365l-3.299-3.289a6.581 6.581 0 01-3.836 1.192 6.662 6.662 0   01-2.63-.533 6.767 6.767 0 01-2.164-1.442A6.797 6.797 0 01.533 9.399 6.665 6.665 0 010 6.77c0-.917.178-1.794.533-2.63a6.786 6.786 0 011.443-2.164A6.786 6.786 0 014.14.533 6.662 6.662 0 016.77 0 6.67 6.67 0 019.4.533a6.78 6.78 0 012.163 1.442 6.767 6.767 0 011.442 2.164c.355.836.533 1.713.533 2.63 0 1.41-.397 2.688-1.192 3.836l3.299 3.299c.237.237.355.526.355.866z'/%3E%3C/svg%3E");
+  }
+}

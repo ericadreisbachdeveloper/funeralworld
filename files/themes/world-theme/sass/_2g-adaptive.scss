@@ -1,0 +1,175 @@
+// Adaptive - css/style.css
+
+
+
+// Small devices (landscape phones, 37.5rem and up)
+@media (min-width: 37.5rem) {
+
+
+  // Breakpoint - small
+  %breakpoint { background: yellow; content: 'SMALL'; }
+
+
+}
+
+
+
+
+// Medium devices (tablets, 48rem and up)
+@media (min-width: 48rem) {
+
+
+
+
+  // Breakpoint - medium
+  %breakpoint { background: yellowgreen; content: 'MEDIUM'; }
+
+
+
+  // Structure - medium
+  %container-corset { margin-top: 0; margin-bottom: 0; }
+  %container { margin-right: auto; margin-left: auto; }
+
+  // max-width: 720px
+  .wp-block-pullquote,
+  /* .core-heading   > .gutenberg-container, */
+  .core-paragraph > .gutenberg-container {
+    max-width: 45rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+
+  .-mobile { display: none; }
+  .-desktop { display: block; }
+
+
+
+
+  // Classes - medium
+  %link-line { @include transition(background-image .2s ease-in-out, background-size .2s ease-in-out, color .2s ease-in-out); }
+  %button { @include transition(background .2s ease-in-out); }
+
+  .wp-block-buttons {
+    @include flex-direction-row;
+    &.is-content-justification-center { @include align-items(unset);  }
+  }
+
+  .core-button + .core-button { margin-top: 0; margin-left: 1rem; }
+
+
+
+  // Blog - medium
+  .meta-div {
+    min-height: 2em;
+
+    .meta-time { width: 25%; }
+    .meta-author { width: 25%; }
+    .meta-categories { width: 50%; }
+
+    .meta-author, .meta-categories { border-top: 1px solid gray; }
+  }
+
+
+
+
+  // Footer - medium
+   #menu-footer, #menu-social { text-align: center; }
+
+   #menu-footer li { display: inline-block; padding: .8em 1.5em;  }
+
+}
+
+
+
+
+
+
+// Large devices (desktops, 62rem and up)
+@media (min-width: 62rem) {
+
+  // Breakpoint - large
+  %breakpoint { background: dodgerblue; content: 'LARGE'; }
+
+
+  // Structure - large
+  $container: 57rem;
+  %container { width: $container; }
+
+  %container-corset { width: 48rem; margin-right: auto; margin-left: auto; }
+
+  %container-gutter { width: calc( #{$container} - 30px); margin-right: auto; margin-left: auto; }
+
+
+
+  // Sticky Footer - large
+  $footerh: 25rem;
+  .wrapper { min-height: 100vh; margin-bottom: -$footerh; }
+  .wrapper:after { content: ''; display: block; clear: both; }
+  .wrapper:after, .site-footer { height:$footerh; }
+
+
+
+  // Footer - large
+  #menu-social {
+    padding-top: .8em;
+    text-align: right;
+    position: relative;
+     right: -.6em;
+
+    li a {
+      width: 1.8em;
+      height: 1.8em;
+
+      &:before { font-size: 1.1rem; }
+    }
+  }
+
+  #menu-footer {
+    position: relative;
+    left: -1.1em;
+    text-align: left;
+    li { font-size: .85rem; }
+  }
+}
+
+
+
+
+// Extra large devices (large desktops, 75rem and up)
+@media (min-width: 75rem) {
+
+  // Breakpoint - wide
+  %breakpoint { background: beige; content: 'WIDE'; }
+
+
+
+  // Nav - wide
+  $navpad_left: 1.44rem;
+  $navpad_nochildren_right: $navpad_left;
+  $navpad_haschildren_right: 1.9rem;
+  $navpad_buttons_right: 1.2rem;
+
+
+
+  // Structure - wide
+  $container: 73rem;
+  %container { width: $container; }
+
+  %container-wide { width: calc(#{$container} - 30px); margin-right: auto; margin-left: auto; }
+
+  %container-gutter { width: calc( #{$container} - 30px); }
+
+
+  // Footer - wide
+  .site-footer [class*="col"].col-footer {
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .site-footer [class*="col"].col-footer { width: 20%; }
+
+}

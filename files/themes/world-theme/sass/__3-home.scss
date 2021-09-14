@@ -1,0 +1,9 @@
+// Homepage-specific styles
+//
+// injected directly into footer.php
+// also loaded asynchronously as a cached css file
+
+
+// no map file + compressed
+// avoid errors in production when page seeks a missing map file
+// sass --watch sass/__1-priority.scss:css/priority.css sass/__2-style.scss:css/style.css sass/__3-home.scss:css/home.css --style compressed --sourcemap=none

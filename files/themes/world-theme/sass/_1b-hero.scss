@@ -1,0 +1,51 @@
+// Hero + Header - css/priority.css
+%hidden {
+  width: 0;
+  height: 0;
+  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+   left: -99999px;
+}
+
+.sr-only { @extend %hidden; }
+
+%sr-only-focusable,
+.sr-only-focusable {
+  @extend %hidden;
+  @include hover {
+    width: auto;
+    height: auto;
+    display: block;
+    clip-path: unset;
+    overflow: visible;
+     left: unset;
+  }
+}
+
+
+#skip-link {
+  background: white;
+  position: absolute;
+   top: .25rem;
+   left: .25rem;
+  z-index: 9999;
+
+  &:active, &:focus {
+    background: white;
+    padding: .4rem;
+    border-radius: .1rem;
+  }
+}
+
+
+
+// Gutenberg Cover block
+.gutenberg-section.core-cover .wp-block-cover__image-background {
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  @include translatex( calc(50vw - 50%) );
+}

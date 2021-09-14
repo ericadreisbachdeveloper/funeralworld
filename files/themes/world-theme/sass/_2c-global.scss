@@ -1,0 +1,419 @@
+// Global - css/style.css
+
+
+@import '__0-typography.scss';
+
+
+// Break points
+%breakpoint {
+  background: orange;
+  content: 'MOBILE';
+  display: block;
+  position: fixed;
+   top: 0;
+   left: 0;
+  z-index: 999;
+}
+
+head + .logged-in [data-role="main"]:before { @extend %breakpoint; }
+
+
+
+
+// Typography
+html * {
+  -webkit-font-smoothing: subpixel-antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+%link-line {
+  //color: blue;
+  color: white;
+  position: relative;
+  text-decoration: none;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  @include linkgradient(white);
+
+  @include hover {
+    color: red;
+    background-size: 0 100%;
+    @include linkgradient(red);
+  }
+}
+
+
+[data-role="main"] [href]:not([href="#"]) { @extend %link-line; }
+
+
+
+
+
+// Structure
+// Container
+%container,
+%container-corset {
+  width: calc(100% - 3rem);
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+.gutenberg-container .corset { @extend %container-corset; }
+
+
+.site-header > .gutenberg-container,
+// allow .core-group to have full-bleed background color ...
+[data-role="main"] > .gutenberg-section:not(.core-cover):not(.core-group) > .gutenberg-container,
+// ... but put .core-group contents within %container width
+[data-role="main"] > .gutenberg-section.core-group > .gutenberg-container > .wp-block-group > .wp-block-group__inner-container,
+.wp-block-cover-image .wp-block-cover__inner-container,
+.wp-block-cover .wp-block-cover__inner-container,
+.container {
+  @extend %container;
+}
+
+
+[data-role="main"] {
+  width: 100%;
+  clear: left;
+  display: block;
+  float: left;
+}
+
+
+p { margin-bottom: .8rem; }
+* p:last-of-type { margin-bottom: 0; }
+
+
+
+
+
+// Classes
+.section {
+  width: 100%;
+  clear: both;
+  float: left;
+
+  &:last-of-type {
+    @extend %clear;
+  }
+}
+
+
+
+.-desktop { display: none; }
+
+%fadein {
+  opacity: 0;
+  @include transition(opacity .2s ease-in-out);
+}
+
+.-txt-left { text-align: left; }
+.-txt-right { text-align: right; }
+.-txt-center { text-align: center; }
+
+.a { display: block; }
+
+
+
+// link behavior
+a { @include hover { cursor: pointer; } }
+
+%hidden {
+  width: 0;
+  height: 0;
+  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+   left: -99999px;
+}
+
+.sr-only { @extend %hidden; }
+
+%sr-only-focusable,
+.sr-only-focusable {
+  @extend %hidden;
+  @include hover {
+    width: auto;
+    height: auto;
+    display: block;
+    clip-path: unset;
+    overflow: visible;
+     left: unset;
+  }
+}
+
+
+%button {
+  @extend %text;
+  background: red;
+  border: none;
+  border-radius: 2rem;
+  color: white;
+  letter-spacing: .05rem;
+  padding: .95rem 1.8rem .85rem;
+  position: relative;
+  text-transform: uppercase;
+  -webkit-appearance: none;
+
+  &:hover { cursor: pointer; }
+
+  &:hover, &:active, &:focus { background: darkred; }
+}
+
+.wp-block-button__link { @extend %button; }
+
+.wp-block-buttons {
+  @include flex-direction-col;
+  &.is-content-justification-center { @include align-items(center); }
+}
+
+
+.core-button + .core-button { margin-top: 1rem; }
+
+
+
+%clear {
+  &:after {
+    display: block;
+    clear: both;
+    content: '';
+  }
+}
+
+%cover {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+
+.nowrap { white-space: nowrap; }
+
+
+
+
+
+// Breadcrumbs
+#breadcrumbs {
+    list-style-type:none;
+    margin: 1.5em 0 0;
+    padding: 0;
+}
+
+#breadcrumbs li {
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:1em;
+}
+
+#breadcrumbs .separator {
+    font-size:18px;
+    font-weight:100;
+    color:#ccc;
+}
+
+
+
+
+// Wordpress Stuff
+body.admin-bar .navbar-toggler { top: calc(1.5em + 32px); }
+body.admin-bar #skip-link { top: calc(.25em + 32px); }
+
+
+img, .img { display: block; }
+
+img[class*="wp-image"] { max-width: 100%; height: auto; }
+
+img.alignright {float:right; margin:0 0 1em 1em;}
+img.alignleft {float:left; margin:0 1em 1em 0;}
+img.aligncenter {margin-left:auto; margin-right:auto; margin-bottom:1.5em;}
+a img.alignright {float:right; margin:0 0 1em 1em;}
+a img.alignleft {float:left; margin:0 1em 1em 0;}
+a img.aligncenter {display: block; margin-left: auto; margin-right: auto;}
+
+
+figure.aligncenter figcaption { text-align: center; }
+figure.alignright figcaption  { text-align: right; }
+
+
+
+// Footer
+.site-footer {
+  width: 100%;
+  background: $navy;
+  clear: left;
+  color: $nearwhite;
+  float: left;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  [class*="col"] {
+    font-size: .9rem;
+    line-height: 1.44;
+
+    margin-bottom: 2em;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  [id^="media"] {
+    [href] { display: block; float: left; }
+
+    .image {
+      width: auto;
+      height: 6rem !important;
+    }
+  }
+
+  [href] {
+    @extend %link-line;
+    color: white;
+    @include linkgradient(transparent);
+    //@include transition(color);
+
+    @include hover {
+      color: $teal;
+      @include linkgradient(transparent);
+      //text-decoration: none;
+    }
+  }
+
+
+  .footer-h3 {
+    text-transform: uppercase;
+  }
+
+  .menu { // ul
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    [href] {
+      display: block;
+      padding: .3rem 0;
+    }
+  }
+}
+
+
+
+// Social Nav
+.menu[id*="social"] {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  @include flex;
+  @include justify-content(flex-end);
+
+  &> .menu-item {
+    font-size: 1.4rem;
+
+    &> [href] {
+      width: 3rem;
+      height: 3rem;
+      color: transparent;
+      margin-right: .6rem;
+      position: relative;
+      overflow: hidden;
+
+      @include flex;
+
+      &:before {
+        width: 3rem;
+        height: 3rem;
+        background: rgba(255,255,255,.1);
+        color: $nearblack;
+        font-family: "Font Awesome 5 Brands";
+        position: absolute;
+         top: 0;
+         left: 0;
+        text-align: center;
+
+        @include transition(background .2s ease-in-out);
+
+        @include flex;
+        @include align-items(center);
+        @include justify-content(center);
+      }
+
+
+      &[href*="facebook"]:before { content: '\f39e'; }
+      &[href*="twitter"]:before { content: '\f099'; }
+      &[href*="linkedin"]:before { content: '\f08c'; }
+      &[href*="pinterest"]:before { content: '\f0d2'; }
+      &[href*="mailto"]:before { content: '\f199'; font-family: "Font Awesome 5 Free"; }
+      &[href*="contact"]:before { content: '\f199'; font-family: "Font Awesome 5 Free"; }
+
+      @include hover {
+        &:before { background: rgba(255,255,255,.3); left: 0;  }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+// Edit link
+.post-edit-link {
+  clear: left;
+  float: left;
+  font-family: sans-serif;
+}
+
+.post-admin-link {
+  float: left;
+  clear: left;
+}
+
+.post-admin-link[href],
+.post-edit-link[href] {
+  background: red;
+  border: .1rem solid red;
+  color: white;
+  display: block;
+  font-size: .9rem;
+  margin: .5rem .5rem .5rem .05rem;
+  position: relative;
+  padding: .5rem 1rem .5rem 2rem;
+  text-decoration: none;
+  border-radius: .4rem;
+
+  @include hover {
+    background: white;
+    color: red;
+    text-decoration: none;
+
+    &:before {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='33' overflow='visible'%3E%3Cpath fill='%23FF0000' d='M31.591 20.731l-2.87-1.658a13.016 13.016 0 000-4.731l2.87-1.657a.814.814 0 00.371-.944 16.781 16.781 0 00-3.687-6.375.81.81 0 00-.997-.155l-2.871 1.658a12.7 12.7 0 00-4.097-2.366v-3.31a.807.807 0 00-.634-.788 16.93 16.93 0 00-7.359 0 .808.808 0 00-.634.788V4.51a13.111 13.111 0 00-4.097 2.365L4.722 5.217a.8.8 0 00-.998.155 16.715 16.715 0 00-3.687 6.375.808.808 0 00.371.944l2.871 1.657a12.972 12.972 0 000 4.731L.408 20.736a.815.815 0 00-.371.944 16.787 16.787 0 003.687 6.375.812.812 0 00.998.155l2.87-1.658a12.71 12.71 0 004.098 2.365v3.316c0 .377.263.707.634.788a16.93 16.93 0 007.359 0 .807.807 0 00.634-.788v-3.316a13.127 13.127 0 004.098-2.365l2.871 1.658c.33.188.741.128.997-.155a16.695 16.695 0 003.687-6.375.834.834 0 00-.379-.949zM15.996 22.1a5.4 5.4 0 01-5.392-5.392 5.399 5.399 0 015.392-5.392 5.398 5.398 0 015.392 5.392 5.399 5.399 0 01-5.392 5.392z'/%3E%3C/svg%3E");
+    }
+  }
+
+  &:before {
+    width: .9rem;
+    height: 1rem;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='33' overflow='visible'%3E%3Cpath fill='%23FFF' d='M31.591 20.731l-2.87-1.658a13.016 13.016 0 000-4.731l2.87-1.657a.814.814 0 00.371-.944 16.781 16.781 0 00-3.687-6.375.81.81 0 00-.997-.155l-2.871 1.658a12.7 12.7 0 00-4.097-2.366v-3.31a.807.807 0 00-.634-.788 16.93 16.93 0 00-7.359 0 .808.808 0 00-.634.788V4.51a13.111 13.111 0 00-4.097 2.365L4.722 5.217a.8.8 0 00-.998.155 16.715 16.715 0 00-3.687 6.375.808.808 0 00.371.944l2.871 1.657a12.972 12.972 0 000 4.731L.408 20.736a.815.815 0 00-.371.944 16.787 16.787 0 003.687 6.375.812.812 0 00.998.155l2.87-1.658a12.71 12.71 0 004.098 2.365v3.316c0 .377.263.707.634.788a16.93 16.93 0 007.359 0 .807.807 0 00.634-.788v-3.316a13.127 13.127 0 004.098-2.365l2.871 1.658c.33.188.741.128.997-.155a16.695 16.695 0 003.687-6.375.834.834 0 00-.379-.949zM15.996 22.1a5.4 5.4 0 01-5.392-5.392 5.399 5.399 0 015.392-5.392 5.398 5.398 0 015.392 5.392 5.399 5.399 0 01-5.392 5.392z'/%3E%3C/svg%3E");
+
+    content: '';
+    display: block;
+    position: absolute;
+     top: .5rem;
+     left: .65rem;
+  }
+
+  &:after { display: none; }
+}
