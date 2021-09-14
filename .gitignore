@@ -1,8 +1,11 @@
 # as of 4 apr 2021 - erica dreisbach - erica@ericadreisbach.com
 
 
-# ignore everything in the root except ...
+# ignore everything in root ...
 /*
+
+
+# ... except ...
 !files/
 !wp-content/
 !icons/

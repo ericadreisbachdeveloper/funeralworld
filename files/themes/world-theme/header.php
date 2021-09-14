@@ -116,7 +116,9 @@
 
 
 <?php $custom_logo_svg = get_theme_mod( 'logo_svg' );
-      $custom_logo_png = get_theme_mod( 'logo_png_fallback' ); ?>
+			$custom_logo_svg_mobile = get_theme_mod( 'logo_svg_mobile' );
+      $custom_logo_png = get_theme_mod( 'logo_png_fallback' );
+			$custom_logo_png_mobile = get_theme_mod( 'logo_png_fallback_mobile' ); ?>
 
 <?php if($custom_logo_svg) : ?>
 <link rel="preload" as="image" href="<?= esc_url($custom_logo_svg); ?>">
@@ -151,13 +153,21 @@
 
 					<a href="<?php echo esc_url(get_home_url()); ?>" class="pngbg logo-a">
 
-						<?php if($custom_logo_svg) : ?>
-						<img height="80" width="80" class="logo-img" src="<?= esc_url($custom_logo_svg); ?>" title="<?= get_bloginfo('name'); ?>" alt="logo for <?= get_bloginfo('name'); ?>"/>
+						<picture class="glide-picture">
 
-						<?php else : ?>
-						<img height="80" width="80" class="logo-img" src="<?= esc_url(TDIR); ?>/img/logo.svg" title="<?= get_bloginfo('name'); ?>" alt="logo for <?= get_bloginfo('name'); ?>" />
+		          <source type="image/webp" srcset="<?= esc_url($custom_logo_svg); ?>" media="(min-width: 992px)" />
+		          <source type="image/webp" srcset="<?= esc_url($custom_logo_svg_mobile); ?>" />
+		          <source type="image/png"  srcset="<?= esc_url($custom_logo_png); ?>"  media="(min-width: 992px)"  />
+		          <source type="image/png"  srcset="<?= esc_url($custom_logo_png_mobile); ?>" media="(min-width: 992px)" />
 
-						<?php endif; ?>
+							<?php if($custom_logo_svg) : ?>
+							<img class="logo-img" src="<?= esc_url($custom_logo_svg); ?>" srcset="<?= esc_url($custom_logo_svg_mobile); ?> 992px" title="<?= get_bloginfo('name'); ?>" alt="logo for <?= get_bloginfo('name'); ?>"/>
+
+							<?php else : ?>
+							<img height="80" width="80" class="logo-img" src="<?= esc_url(TDIR); ?>/img/logo.svg" title="<?= get_bloginfo('name'); ?>" alt="Logo for <?= get_bloginfo('name'); ?>" />
+							<?php endif; ?>
+
+		        </picture>
 
 					</a>
 				</div>

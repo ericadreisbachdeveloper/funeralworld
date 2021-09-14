@@ -303,6 +303,11 @@ figure.alignright figcaption  { text-align: right; }
   }
 }
 
+.footer-copyright-row { text-align: center; }
+
+.site-footer [class*="col"]:last-of-type { line-height: 2; }
+
+
 
 
 // Social Nav
@@ -416,4 +421,19 @@ figure.alignright figcaption  { text-align: right; }
   }
 
   &:after { display: none; }
+}
+
+
+
+
+// Close enough to hero
+.wp-block-group.teal-bg {
+  background: $teal;
+  color: $navy;
+
+  [href] {
+    @extend %link-line;
+    color: $navy;
+    @include linkgradient($navy);
+  }
 }

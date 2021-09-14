@@ -8,6 +8,8 @@ $headerh: 6rem;
 %siteheaderh { height: $headerh; }
 .site-header, .site-header .logo-a { @extend %siteheaderh; }
 
+.site-header { background: $navy; }
+
 .logo-a {
   @include flex;
   @include align-items(center);
@@ -55,7 +57,7 @@ $navborder: .05rem solid #dedede;
   // 2c. link styling
   .navbar-nav [href]:not([tabindex]) {
     border-bottom: $navborder;
-    color: $nearblack;
+    color: $nearwhite;
     display: block;
     text-decoration: none;
   }
@@ -63,6 +65,10 @@ $navborder: .05rem solid #dedede;
   // 2d. top level link padding
   //     1rem top and bottom = 50px
   .navbar-nav > .menu-item > [href]:not([tabindex]) { padding: 1rem 2rem; }
+
+
+  // 2e. li styling
+  .navbar-nav > [id*="menu-item"] { text-transform: uppercase; }
 }
 
 #navmenu { @extend %navmenu; }

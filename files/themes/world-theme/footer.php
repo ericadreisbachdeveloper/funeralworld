@@ -5,31 +5,25 @@
 
 <footer class="site-footer container-fluid">
 
+<div class="container">
+
 
 	<!-- if is single, show navigation -->
-	<?php if(is_single()) { include(locate_template('template/pagination_single.php')); } ?>
-
+	<?php //if(is_single()) { include(locate_template('template/pagination_single.php')); } ?>
 
 	<!-- if is a child page, show navigation-->
-	<?php include(locate_template('template/pagination_from_menu.php')); ?>
+	<?php //include(locate_template('template/pagination_from_menu.php')); ?>
 
 
-
-	<div class="row footer-menus-row">
-		<div class="container">
-			<div class="row">
-				<?php dynamic_sidebar( 'Footer Content' ); ?>
-			</div>
+		<div class="row footer-menus-row">
+			<?php dynamic_sidebar( 'Footer Content' ); ?>
 		</div>
-	</div>
 
 
-	<div class="row footer-copyright-row">
-		<div class="container">
-			<div class="row">
-				<?php if(is_active_sidebar('Copyright')) { dynamic_sidebar('Copyright'); } ?>
-			</div>
+		<div class="row footer-copyright-row">
+		<?php if(is_active_sidebar('Copyright')) { dynamic_sidebar('Copyright'); } ?>
 		</div>
+
 	</div>
 </footer>
 

@@ -287,12 +287,7 @@ add_action( 'login_enqueue_scripts', 'my_login_logo' );
 function my_login_logo_url() {
   return home_url();
 }
-add_filter( 'login_headerurl', 'my_login_logo_url' );
-
-function my_login_logo_url_title() {
-    return 'SITE TITLE';
-}
-//add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+// add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 
 // 15j. Exclude login page template from native search results
@@ -465,16 +460,17 @@ add_action( 'init', 'wpse_remove_parent_theme_locations', 20 );
 
 
 // 22b. Add more menus to array as necessary
-function dbllc_nav() {
+function dbllc_nav($loc) {
 	wp_nav_menu(
 	array(
-		'theme_location'  => 'main-menu',
+		//'theme_location'  => 'main-menu',
+		'theme_location'  => $loc,
 		'container'       => 'div',
 		'container_class' => 'menu-{menu slug}-container',
 		'menu_class'      => 'menu',
 		'echo'            => true,
 		'fallback_cb'     => 'wp_page_menu',
-    'items_wrap'      => '<ul class="nav navbar-nav">%3$s</ul>',
+    'items_wrap'      => '<ul class="nav navbar-nav nav-' . $loc . '">%3$s</ul>',
 		'depth'           => 0,   /* 0 means all levels of hierarchy */
 		'after'						=> '<a class="open-submenu-a" href="#" tabindex="-1"></a>', /* remove mobile touch-to-open caret from tab order */
 	));
@@ -817,6 +813,36 @@ function dbllc_customize_register( $wp_customize ) {
 			'settings' => 'logo_png_fallback',
 			'description' => __( 'For older browsers &amp; devices' ),
 			'priority' => 8,
+		)));
+
+
+		// 32c. custom svg logo for mobile
+		$wp_customize->add_setting('logo_svg_mobile', array(
+			'type' => 'theme_mod',
+			'capability' => 'edit_theme_options',
+		));
+
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'logo_svg_mobile', array(
+			'label' => __( 'Mobile SVG (retina) Logo for mobile', 'dbllc' ),
+			'section' => 'title_tagline',
+			'settings' => 'logo_svg_mobile',
+			'priority' => 20,
+		)));
+
+
+
+		// 32d. png fallback logo for mobile
+		$wp_customize->add_setting('logo_png_fallback_mobile', array(
+			'type' => 'theme_mod',
+			'capability' => 'edit_theme_options',
+			'default' => TDIR . '/img/logo.png',
+		));
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'logo_png_fallback_mobile', array(
+			'label' => __( 'Mobile Logo PNG Fallback', 'dbllc' ),
+			'section' => 'title_tagline',
+			'settings' => 'logo_png_fallback_mobile',
+			'description' => __( 'For older browsers &amp; devices' ),
+			'priority' => 21,
 		)));
 
 }

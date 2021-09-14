@@ -112,12 +112,12 @@
 
   // Footer - large
   #menu-social {
-    padding-top: .8em;
+    padding-top: .8rem;
     text-align: right;
     position: relative;
      right: -.6em;
 
-    li a {
+    [href] {
       width: 1.8em;
       height: 1.8em;
 
@@ -131,6 +131,17 @@
     text-align: left;
     li { font-size: .85rem; }
   }
+
+
+  .site-footer [class*="col"].col-footer {
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .site-footer [class*="col"].col-footer { width: 20%; }
 }
 
 
@@ -160,16 +171,5 @@
 
   %container-gutter { width: calc( #{$container} - 30px); }
 
-
-  // Footer - wide
-  .site-footer [class*="col"].col-footer {
-    float: left;
-    position: relative;
-    min-height: 1px;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
-  }
-
-  .site-footer [class*="col"].col-footer { width: 20%; }
 
 }
