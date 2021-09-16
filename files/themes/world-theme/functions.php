@@ -356,11 +356,13 @@ if (function_exists('add_theme_support')) {
     add_theme_support('post-thumbnails');
     add_image_size('hero', 1533, 570, true);  // Hero
     add_image_size('large', 700, '', true);   // Large Thumbnail
-    add_image_size('medium', 250, '', true);  // Medium Thumbnail
+    add_image_size('medium-retina', 1120, 600, true);   // Medium Thumbnail - resources default on retina screens
+		add_image_size('medium-standard', 560, 300, true);  // Medium Thumbnail - resources default on standard screens
     add_image_size('small', 120, '', true);   // Small Thumbnail
 		add_image_size('square', 400, 400, true); // Square Thumbnail
 
-    add_theme_support('automatic-feed-links');
+		// RSS enabled by parent theme
+    //add_theme_support('automatic-feed-links');
     load_theme_textdomain('dbllc', get_template_directory() . '/languages');
 }
 
@@ -427,7 +429,7 @@ if( function_exists('acf_add_options_page') ) {
 }
 
 if (function_exists('acf_set_options_page_menu')){
-	acf_set_options_page_menu('Open Graph');
+	acf_set_options_page_menu('Open Graph + Footer');
 }
 
 
@@ -470,9 +472,25 @@ function dbllc_nav($loc) {
 		'menu_class'      => 'menu',
 		'echo'            => true,
 		'fallback_cb'     => 'wp_page_menu',
-    'items_wrap'      => '<ul class="nav navbar-nav nav-' . $loc . '">%3$s</ul>',
+    'items_wrap'      => '<ul class="nav-' . $loc . '">%3$s</ul>',
 		'depth'           => 0,   /* 0 means all levels of hierarchy */
 		'after'						=> '<a class="open-submenu-a" href="#" tabindex="-1"></a>', /* remove mobile touch-to-open caret from tab order */
+	));
+}
+
+// 22c. Bare nav (social)
+function bare_nav($loc) {
+	wp_nav_menu(
+	array(
+		//'theme_location'  => 'main-menu',
+		'theme_location'  => $loc,
+		'container'       => 'div',
+		'container_class' => 'menu-{menu slug}-container',
+		'menu_class'      => 'menu',
+		'echo'            => true,
+		'fallback_cb'     => 'wp_page_menu',
+    'items_wrap'      => '<ul id="social" class="menu ' . $loc . '">%3$s</ul>',
+		'depth'           => 0,   /* 0 means all levels of hierarchy */
 	));
 }
 
@@ -516,8 +534,8 @@ function hide_editor() {
 if (function_exists('register_sidebar')) {
     // Define Footer Menus
     register_sidebar(array(
-        'name' => __('Footer Content', 'dbllc'),
-        'description' => __('Add footer content blocks here', 'dbllc'),
+        'name' => __('Footer Menus', 'dbllc'),
+        'description' => __('Add footer menus here', 'dbllc'),
         'id' => 'footer-menus',
         'before_widget' => '<div id="%1$s" class="col-footer">',
         'after_widget' => '</div>',
@@ -872,3 +890,59 @@ function addback_admin_bar() {
 	else { return false; }
 }
 add_filter('show_admin_bar', 'addback_admin_bar', 99);
+
+
+
+
+// 34. Display Recent or Featured posts
+//     EXAMPLE in Shortcode block
+//    [ resources cat=13 ]
+add_shortcode( 'resources', 'show_resources' );
+
+function show_resources($attr, $content = null) {
+
+	global $post;
+
+	// normalize attribute keys, lowercase
+	$shortcode_args = '';
+	$shortcode_args = shortcode_atts(
+		array(
+			'cat' => '',
+		),
+	$attr);
+
+	$args = array (
+		'cat' => $shortcode_args['cat'],
+		'post_type' => 'post',
+		'posts_per_page' => 2,
+		'order' => 'desc'
+	);
+
+	// hygiene - $args in lower case
+	$args = array_change_key_case( (array) $args, CASE_LOWER );
+
+	$q = new WP_Query( $args );
+
+	if ($q->have_posts()) {
+		$content = '<div class="row">';
+
+	  while ($q->have_posts()) {
+	      $q->the_post();
+
+				$content .= '<div class="col-md-6">';
+				$content .= '<a href="';
+				$content .= get_the_permalink();
+				$content .= '" title="' . get_the_title() . '">' . get_the_title() . '</a>';
+				$content .= '<p class="p">' . get_the_excerpt() . '</p>';
+				$content .= '</div><!-- /.col-md-6 -->';
+
+				//$content = get_the_title();
+	  }
+
+		$content .= '</div><!-- /.row -->';
+	}
+
+	wp_reset_postdata();
+
+  return $content;
+}

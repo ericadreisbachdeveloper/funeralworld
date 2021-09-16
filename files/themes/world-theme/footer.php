@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
+<?php if ( ! defined( 'ABSPATH' ) ) {  exit; } global $site_url; ?>
 </div><!-- /.wrapper -->
 
 
@@ -16,7 +16,53 @@
 
 
 		<div class="row footer-menus-row">
-			<?php dynamic_sidebar( 'Footer Content' ); ?>
+
+			<div class="col-footer">
+				<a href="<?php _e(esc_url($site_url)); ?>">
+					<picture class="picture">
+
+						<?php if(get_field('footer-logomark-svg', 'options')) : ?>
+						<?php $footer_logomark_svg = get_field('footer-logomark-svg', 'options'); $footer_logomark_svg = $footer_logomark_svg['url']; ?>
+						<source type="image/svg" srcset="<?= esc_url($footer_logomark_svg); ?>" />
+
+						<?php else : ?>
+						<source type="image/svg" srcset="<?= esc_url(TDIR . '/img/logo-mark-circle.svg'); ?>" />
+						<?php endif; ?>
+
+
+						<?php if(get_field('footer-logomark-svg', 'options')) : ?>
+						<?php $footer_logomark_png = get_field('footer-logomark-png', 'options'); $footer_logomark_png = $footer_logomark_png['url']; ?>
+						<img src="<?= esc_url($footer_logomark_png); ?>" title="<?= get_bloginfo('name'); ?>" alt="Logo for <?= get_bloginfo('name'); ?>" />
+
+						<?php else : ?>
+						<img src="<?= esc_url(TDIR . '/img/logo-mark-circle.png'); ?>" />
+						<?php endif; ?>
+
+					</picture>
+				</a>
+			</div>
+
+
+			<?php dynamic_sidebar( 'Footer Menus' ); ?>
+
+
+			<?php if(has_nav_menu('social-menu')) : ?>
+			<div class="col-footer social-media-col">
+				<h3 class="sr-only">Follow WORLD on social media </h3>
+				<?php bare_nav('social-menu');  ?>
+			</div>
+			<?php endif; ?>
+
+
+		</div>
+
+		<?php //print_r(get_registered_nav_menus()); ?>
+
+
+		<div class="row footer-socialmedia-row">
+			<div class="container socialmedia-container">
+
+			</div>
 		</div>
 
 

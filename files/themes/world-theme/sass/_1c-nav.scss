@@ -11,8 +11,11 @@ $headerh: 6rem;
 .site-header { background: $navy; }
 
 .logo-a {
+  //width: calc(100% - 5rem);
+  width: 100%;
   @include flex;
   @include align-items(center);
+  @include justify-content(center);
 }
 
 

@@ -34,7 +34,7 @@
 <!-- Social / Open Graph -->
 <meta name="og:url" property="og:url" content="<?php echo _e(get_permalink(), 'dbllc'); ?>">
 <meta name="og:type" property="og:type" content="website">
-<meta name="og:site_name" property="og:site_name" content="<?php echo get_bloginfo('name'); echo _e(' | '); _e(get_bloginfo('description')); ?>">
+<meta name="og:site_name" property="og:site_name" content="<?php _e(get_bloginfo('name')); echo _e(' | '); _e(get_bloginfo('description')); ?>">
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content=" XXXX " />
@@ -153,12 +153,12 @@
 
 					<a href="<?php echo esc_url(get_home_url()); ?>" class="pngbg logo-a">
 
-						<picture class="glide-picture">
+						<picture class="picture">
 
 		          <source type="image/webp" srcset="<?= esc_url($custom_logo_svg); ?>" media="(min-width: 992px)" />
 		          <source type="image/webp" srcset="<?= esc_url($custom_logo_svg_mobile); ?>" />
 		          <source type="image/png"  srcset="<?= esc_url($custom_logo_png); ?>"  media="(min-width: 992px)"  />
-		          <source type="image/png"  srcset="<?= esc_url($custom_logo_png_mobile); ?>" media="(min-width: 992px)" />
+		          <source type="image/png"  srcset="<?= esc_url($custom_logo_png_mobile); ?>" />
 
 							<?php if($custom_logo_svg) : ?>
 							<img class="logo-img" src="<?= esc_url($custom_logo_svg); ?>" srcset="<?= esc_url($custom_logo_svg_mobile); ?> 992px" title="<?= get_bloginfo('name'); ?>" alt="logo for <?= get_bloginfo('name'); ?>"/>

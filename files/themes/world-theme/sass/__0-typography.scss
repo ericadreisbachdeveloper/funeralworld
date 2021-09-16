@@ -10,21 +10,20 @@
 [data-role="main"] h1 { @extend %huge; text-transform: uppercase; }
 
 
-[data-role="main"] h2,
-[data-role="main"] .has-large-font-size { @extend %large; }
-
-
+[data-role="main"] h2 { text-transform: uppercase; }
 
 [data-role="main"] h2,
-[data-role="main"] h3 { font-weight: 400; }
+[data-role="main"] .has-large-font-size { @extend %large; margin-bottom: .2rem; }
 
 
-[data-role="main"] h3,
 [data-role="main"] .has-medium-font-size { @extend %medium; }
 
 
 [data-role="main"],
+[data-role="main"] h3,
 [data-role="main"] .has-default-font-size { @extend %text; }
+
+[data-role="main"] h3 { font-weight: bold; font-weight: 800; }
 
 
 // figcaption
