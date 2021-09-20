@@ -9,6 +9,8 @@
 !files/
 !wp-content/
 !icons/
+!favicon.ico 
+!favicon.png
 
 
 # DO track these root files
