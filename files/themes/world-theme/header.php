@@ -86,7 +86,7 @@
 
 <!-- Favicons -->
 <?php include(locate_template('favicons.php')); ?>
-<link href="<?= esc_url(TDIR); ?>/favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="<?= esc_url(get_home_url()); ?>/favicon.ico" type="image/x-icon" rel="shortcut icon">
 
 
 
