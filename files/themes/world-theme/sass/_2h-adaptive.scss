@@ -96,6 +96,17 @@
 
 
 
+  // Resources - medium
+  $spacing: 1.5rem;
+  .col-md-6.col-article:nth-of-type(2n+1) { padding-right: calc( #{$spacing} / 2 ); }
+  .col-md-6.col-article:nth-of-type(2n) { padding-left: calc( #{$spacing} / 2 ); }
+
+  [data-role="main"] [href].resource-img-a { max-width: unset; }
+
+  .default-resource-icon-div { height: 0; padding-bottom: 46%; }
+  .default-resource-icon-div .img { position: relative; top: calc(50% + 5rem); }
+
+
   // Footer - medium
    #menu-footer, #menu-social { text-align: center; }
 
@@ -127,6 +138,10 @@
 
   %container-gutter { width: calc( #{$container} - 30px); margin-right: auto; margin-left: auto; }
 
+
+  // Resources - large
+  .default-resource-icon-div { height: 14.9rem; padding: 0; }
+  .default-resource-icon-div .img { position: static; }
 
 
   // Sticky Footer - large
@@ -184,9 +199,12 @@
   $navpad_buttons_right: 1.2rem;
 
 
+  // Resources - wide
+  .default-resource-icon-div { height: 18.3rem; }
+
 
   // Structure - wide
-  $container: 73rem;
+  $container: 70rem;
   %container { width: $container; }
 
   %container-wide { width: calc(#{$container} - 30px); margin-right: auto; margin-left: auto; }

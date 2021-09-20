@@ -12,9 +12,12 @@ html {
   //color: white;
   background: white;
   color: $nearblack;
-  font-family: 'Open Sans', sans-serif;
+  //font-family: 'Open Sans', sans-serif;
+  font-family: 'mreaves', sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+
+  em, i { font-family: 'mreaves-ital'; }
 
   [href] { color: white; text-decoration: none; }
 }

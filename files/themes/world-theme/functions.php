@@ -354,12 +354,12 @@ if (function_exists('add_theme_support')) {
     add_theme_support('menus');               // Menu Support
 
     add_theme_support('post-thumbnails');
-    add_image_size('hero', 1533, 570, true);  // Hero
-    add_image_size('large', 700, '', true);   // Large Thumbnail
+    //add_image_size('hero', 1533, 570, true);  // Hero
+    //add_image_size('large', 700, '', true);   // Large Thumbnail
     add_image_size('medium-retina', 1120, 600, true);   // Medium Thumbnail - resources default on retina screens
 		add_image_size('medium-standard', 560, 300, true);  // Medium Thumbnail - resources default on standard screens
-    add_image_size('small', 120, '', true);   // Small Thumbnail
-		add_image_size('square', 400, 400, true); // Square Thumbnail
+    //add_image_size('small', 120, '', true);   // Small Thumbnail
+		//add_image_size('square', 400, 400, true); // Square Thumbnail
 
 		// RSS enabled by parent theme
     //add_theme_support('automatic-feed-links');
@@ -929,7 +929,56 @@ function show_resources($attr, $content = null) {
 	  while ($q->have_posts()) {
 	      $q->the_post();
 
-				$content .= '<div class="col-md-6">';
+				$img_id = '';
+				$retina_arr = '';
+				$standard_arr = '';
+
+				if(has_post_thumbnail()) {
+					$img_id = get_post_thumbnail_id();
+
+					$retina_arr = wp_get_attachment_image_src($img_id, 'medium-retina');
+					$standard_arr = wp_get_attachment_image_src($img_id, 'medium-standard');
+					// [0] = url
+					// [1] = width
+					// [2] = height
+
+				}
+				else {
+					$terms = get_the_terms($q->ID, 'resource-type');
+					$firstterm = $terms[0];
+
+					$default_svg = get_field('resource-icon-svg', $firstterm);
+					$default_svg_url = $default_svg['url'];
+					$default_png = get_field('resource-icon-png', $firstterm);
+					$default_png_url = $default_png['url'];
+				}
+
+				// get feat img id
+				// wp_prepare_attachment_for_js($img_id);
+
+				// if no feat img
+				// get the resource type
+				// get the SVG for that type
+				// get the PNG for that type
+
+				$content .= '<div class="col-md-6 col-article">';
+
+				$content .= '<a class="resource-img-a" href="' . get_the_permalink() . '">';
+				// image
+				if ( has_post_thumbnail()) {
+				$content .= '<picture class="picture resource-img-wrapper">';
+				$content .= '<source type="image/jpg" srcset="' . $retina_arr[0] . ' 2x" media="(min-width: 992px)">';
+				$content .= '<img class="img" src="' . $standard_arr[0] . '" />';
+				$content .= '</picture>';
+				}
+				// icon
+				else {
+				$content .= '<div class="default-resource-icon-div resource-img-wrapper">';
+				$content .= '<img class="img" src="' . $default_svg_url . '" />';
+				$content .= '</div>';
+				}
+				$content .= '</a>';
+
 				$content .= '<a href="';
 				$content .= get_the_permalink();
 				$content .= '" title="' . get_the_title() . '">' . get_the_title() . '</a>';

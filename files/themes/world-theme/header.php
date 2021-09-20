@@ -62,6 +62,11 @@
 
 
 
+<!-- Fonts -->
+<style>@font-face{font-family:mreaves-book;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-book.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-book.woff') format('woff')}@font-face{font-family:mreaves;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-reg.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-reg.woff') format('woff')}@font-face{font-family:mreaves-ital;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-reg-ital.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-reg-ital.otf') format('woff')} </style>
+
+
+
 <!-- Image -->
 <?php $socialimg = ""; ?>
 
