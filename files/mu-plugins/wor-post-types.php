@@ -26,7 +26,57 @@ function wor_post_object() {
 
 
 
-// Event taxonomy
+
+add_action( 'init', 'wor_post_types_init' );
+
+function wor_post_types_init() {
+
+	$event_labels = array(
+		'name'               => _x( 'Events', 'post type general name', 'aur' ),
+		'singular_name'      => _x( 'Event', 'post type singular name', 'aur' ),
+		'menu_name'          => _x( 'Events', 'admin menu', 'aur' ),
+		'name_admin_bar'     => _x( 'Event', 'add new on admin bar', 'aur' ),
+		'add_new'            => _x( 'Add New', 'industry', 'aur' ),
+		'add_new_item'       => __( 'Add New Event', 'aur' ),
+		'new_item'           => __( 'New Event', 'aur' ),
+		'edit_item'          => __( 'Edit Event', 'aur' ),
+		'view_item'          => __( 'View Event', 'aur' ),
+		'all_items'          => __( 'All Events', 'aur' ),
+		'search_items'       => __( 'Search Events', 'aur' ),
+		'parent_item_colon'  => __( 'Parent Events:', 'aur' ),
+		'not_found'          => __( 'No Events found.', 'aur' ),
+		'not_found_in_trash' => __( 'No Events found in Trash.', 'aur' )
+	);
+
+	$event_args = array(
+		'labels'             => $event_labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'event' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => 10,
+		'supports'           => array( 'title', 'editor', 'thumbnail', 'revisions', 'page-attributes' )
+	);
+
+  register_post_type( 'events', $event_args );
+
+
+  flush_rewrite_rules();
+
+}
+
+
+
+
+
+
+
+// Resources taxonomy
 add_action( 'init', 'create_my_taxonomies', 0 );
 
 function create_my_taxonomies() {

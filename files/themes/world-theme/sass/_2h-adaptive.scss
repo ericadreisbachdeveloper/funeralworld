@@ -8,6 +8,8 @@
   // Breakpoint - small
   %breakpoint { background: yellow; content: 'SMALL'; }
 
+  .hide-on-mobile { display: block; }
+
 }
 
 
@@ -149,7 +151,7 @@
 
 
   // Sticky Footer - large
-  $footerh: 30rem;
+  $footerh: 32rem;
   .wrapper { min-height: 100vh; margin-bottom: -$footerh; }
   .wrapper:after { content: ''; display: block; clear: both; }
   .wrapper:after, .site-footer { height:$footerh; }

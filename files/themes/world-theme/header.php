@@ -52,7 +52,7 @@
 <!-- 2nd choice - Wordpress-generated excerpt -->
 <!-- archives don't have descriptions -->
 <?php elseif( $post != '' ) : ?>
-<?php $metadescription = dbllc_excerpt($post->ID);  ?>
+<?php $metadescription = get_the_excerpt($post->ID);  ?>
 
 <?php endif; ?>
 

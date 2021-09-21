@@ -603,11 +603,10 @@ remove_filter('the_excerpt', 'wpautop');
 
 
 // 27b. Custom excerpts
-function dbllc_excerpt() {
-	global $post, $output, $output_arr;
-
+function dbllc_excerpt_more() {
+	global $post; $output = '';
+	/*
 	$output =  get_the_content($post->ID);
-
 
 	// turn closing tags into spaces
 	$output = str_replace("</h1>", "&nbsp;|&nbsp;", $output);
@@ -629,18 +628,33 @@ function dbllc_excerpt() {
 	// turns " and ' into curly versions
 	$output = apply_filters('wptexturize', $output);
 
+
 	// https://developer.wordpress.org/reference/functions/convert_chars/
 	// turns ampersands into &amp;
 	$output = apply_filters('convert_chars', $output);
+	$output = str_replace("&nbsp;", " ", $output);
 
 	// get the first 25 words
-	$output = implode(' ', array_slice(explode(' ', $output), 0, 25));
+	$output = implode(' ', array_slice(explode(' ', $output), 0, 20));
+
+	*/
 
 	// add an ellipsis
 	$output = $output . '&nbsp;&hellip;';
 
 	return $output;
+
 }
+
+add_filter( 'excerpt_more', 'dbllc_excerpt_more', 999);
+
+
+
+function dbllc_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'dbllc_excerpt_length', 999);
+
 
 
 
@@ -941,7 +955,6 @@ function show_resources($attr, $content = null) {
 					// [0] = url
 					// [1] = width
 					// [2] = height
-
 				}
 
 
@@ -1004,4 +1017,96 @@ function show_resources($attr, $content = null) {
 	wp_reset_postdata();
 
   return $content;
+}
+
+
+
+// 35. Events
+
+add_shortcode( 'events', 'show_events' );
+
+function show_events( $events = null ) {
+
+	global $post;
+
+	$args = array (
+		//'cat' => $shortcode_args['cat'],
+		'post_type' => 'events',
+		'posts_per_page' => 2,
+
+		// this will need to change soon
+		'order' => 'desc'
+	);
+
+	$events = '';
+
+	$p = new WP_Query( $args );
+
+	if ($p->have_posts()) {
+		$events  = '<div class="col-xs-12"><div class="row">';
+
+		while($p->have_posts()) {
+			$p->the_post();
+
+			$events .= '<div class="event-col col-sm-6">';
+
+			if(get_field('event-end-date')) {
+				$display_date = '';
+
+				// get start
+				$start = get_field('event-start-date');
+				$start = strtotime($start);
+				$start_d = date('j', $start);
+				$start_m = date('M', $start);
+				$start_y = date('Y', $start);
+
+				$end = get_field('event-end-date');
+				$end = strtotime($end);
+				$end_d = date('j', $end);
+				$end_m = date('M', $end);
+				$end_y = date('Y', $end);
+
+				// different years
+				if ($start_y !== $end_y) {
+					$display_date = $start_m . ' ' . $start_d . ', ' . $start_y . ' &ndash; ' . $end_m . ' ' . $end_d . ', ' . $end_y;
+				}
+				// different months
+				elseif ($start_m !== $end_m) {
+					$display_date = $start_m . ' ' . $start_d . ' &ndash; ' . $end_m . ' ' . $end_d . ', ' . $start_y;
+				}
+
+				// same month + year
+				else {
+					$display_date = $start_m . ' ' . $start_d . ' &ndash; '. $end_d . ', ' . $start_y;
+				}
+
+				$events .= '<span class="date">' . $display_date . '</span> <br />';
+
+			}
+
+			else {
+				$date = get_field('event-start-date');
+
+				// convert to unix timestamp
+				$date = strtotime($date);
+
+				$date = date("M j, Y");
+				$events .= '<span class="date">' . $date . '</span> <br />';
+			}
+
+
+			$events .= get_the_title() . ' <br />';
+			if (get_field('event-location')) {
+				$events .= get_field('event-location') . ' <br />';
+			}
+			$events .= '<a href="' . get_the_permalink() . '">Learn more</a>';
+			$events .= '</div><!-- /.col-sm-6 -->';
+		}
+
+		$events .= '</div><!-- /.row --></div><!-- /.col-md-6 -->';
+	}
+
+	wp_reset_postdata();
+
+	return $events;
 }

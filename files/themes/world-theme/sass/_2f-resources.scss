@@ -1,6 +1,4 @@
-// Resources - css/style.css
-
-
+// Resources + Events - css/style.css
 
 
 [data-role="main"] [href].resource-img-a {
@@ -87,7 +85,6 @@
 
   @include hover { background-size: 0 100%; }
 
-  @include hover { .icon { background-color: $blue2; } }
 
   .icon {
     width: 1.2rem;
@@ -97,4 +94,21 @@
     padding: .2rem;
     @include transition(background-color .2s ease-in-out);
   }
+
+  @include hover { .icon { background-color: $teal; } }
+
+}
+
+
+.navy-bg .resource-img-a.photo-thumb:before { background: $teal; }
+.navy-bg .resource-img-a {
+  .default-resource-icon-div { background: $blue2; }
+  @include hover { .default-resource-icon-div { background: $teal; } }
+}
+
+
+
+// Events
+.event-col .date {
+  text-transform: uppercase;
 }

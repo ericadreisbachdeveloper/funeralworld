@@ -104,6 +104,8 @@ p { margin-bottom: .8rem; }
   }
 }
 
+.hide-on-mobile { display: none; }
+
 
 
 .-desktop { display: none; }
@@ -196,6 +198,10 @@ a { @include hover { cursor: pointer; } }
 
 
 .nowrap { white-space: nowrap; }
+
+
+
+.core-heading + .core-paragraph > .gutenberg-container > p { margin-top: 0; }
 
 
 
@@ -458,10 +464,29 @@ figure.alignright figcaption  { text-align: right; }
 .wp-block-group.teal-bg {
   background: $teal;
   color: $navy;
+}
 
-  [href] {
-    @extend %link-line;
-    color: $navy;
-    @include linkgradient($navy);
-  }
+.wp-block-group.blue-bg {
+  background: $blue;
+  color: $navy; 
+}
+
+.wp-block-group.navy-bg {
+  background: $navy;
+  color: white;
+}
+
+[data-role="main"] .wp-block-group.navy-bg [href]:not([href="#"]) {
+  @include linkgradient(white);
+  color: white;
+  @include hover { color: $teal; @include linkgradient($teal); }
+}
+
+.wp-block-group.navy-bg .wp-block-separator {
+  border-bottom: .1rem solid $nearwhite;
+}
+
+.wp-block-separator {
+  border-top: none;
+  border-bottom: .1rem solid $navy;
 }
