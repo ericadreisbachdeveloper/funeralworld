@@ -472,7 +472,7 @@ function dbllc_nav($loc) {
 		'menu_class'      => 'menu',
 		'echo'            => true,
 		'fallback_cb'     => 'wp_page_menu',
-    'items_wrap'      => '<ul class="nav-' . $loc . '">%3$s</ul>',
+    'items_wrap'      => '<ul class="navbar-nav nav-' . $loc . '">%3$s</ul>',
 		'depth'           => 0,   /* 0 means all levels of hierarchy */
 		'after'						=> '<a class="open-submenu-a" href="#" tabindex="-1"></a>', /* remove mobile touch-to-open caret from tab order */
 	));
@@ -963,7 +963,14 @@ function show_resources($attr, $content = null) {
 
 				$content .= '<div class="col-md-6 col-article">';
 
-				$content .= '<a class="resource-img-a" href="' . get_the_permalink() . '">';
+				$content .= '<a class="resource-img-a';
+				if ( has_post_thumbnail()) {
+					$content .= ' photo-thumb';
+				}
+				else {
+					$content .= ' icon-thumb';
+				}
+				$content .= '" href="' . get_the_permalink() . '">';
 				// image
 				if ( has_post_thumbnail()) {
 				$content .= '<picture class="picture resource-img-wrapper">';

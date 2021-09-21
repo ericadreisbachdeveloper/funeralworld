@@ -193,7 +193,7 @@
 					<div id="navmenu" class="navbar-collapse collapse">
 						<!-- <div class="container-on-mobile"> -->
 							<?php dbllc_nav('main-menu'); dbllc_nav('offsite-menu'); ?>
-							<?php include(locate_template('searchform.php')); ?>
+							<?php //include(locate_template('searchform.php')); ?>
 						<!-- </div> -->
 					</div>
 

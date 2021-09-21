@@ -107,6 +107,10 @@
   .default-resource-icon-div .img { position: relative; top: calc(50% + 5rem); }
 
 
+  .resource-img-a.photo-thumb:before { @include transition(opacity .2s ease-in-out); }
+  .resource-img-a .default-resource-icon-div { @include transition(background-color .2s ease-in-out); }
+
+
   // Footer - medium
    #menu-footer, #menu-social { text-align: center; }
 

@@ -42,8 +42,6 @@ $navborder: .05rem solid #dedede;
   width: 100%;
 
   background: $navy;
-  border-top: $navborder;
-  border-bottom: $navborder;
 
   position: absolute;
    top: $headerh;
@@ -59,20 +57,53 @@ $navborder: .05rem solid #dedede;
 
   // 2c. link styling
   .navbar-nav [href]:not([tabindex]) {
-    border-bottom: $navborder;
+    width: calc(100% - 4rem);
     color: $nearwhite;
     display: block;
+    position: relative;
+     left: 2rem;
     text-decoration: none;
   }
 
   // 2d. top level link padding
   //     1rem top and bottom = 50px
-  .navbar-nav > .menu-item > [href]:not([tabindex]) { padding: 1rem 2rem; }
+  .navbar-nav > .menu-item > [href]:not([tabindex]) { padding: 1rem 2rem 1rem .1rem; }
 
 
   // 2e. li styling
   .navbar-nav > [id*="menu-item"] { text-transform: uppercase; }
 }
+
+
+// main nav
+// @extend %medium;
+// not-full-width borders
+.nav-main-menu > [id*="menu-item"] {
+  //@extend %medium;
+  @extend %main-menu-li;
+
+  &> [href] {
+    position: relative;
+
+    &:after {
+      //width: calc(100% - 4rem);
+      width: 100%;
+      height: .05rem;
+      background: $nearwhite;
+      content: '';
+      display: block;
+      position: absolute;
+       bottom: 0;
+       left: 0;
+    }
+  }
+}
+
+// offsite nav
+// @extend %text
+// no borders
+.nav-offsite-menu > [id*="menu-item"] { @extend %offsite-menu-li; }
+
 
 #navmenu { @extend %navmenu; }
 
@@ -207,7 +238,7 @@ $navborder: .05rem solid #dedede;
 %top-level-no-children-hover {
   &> [href]:not([tabindex]) {
     @include hover {
-      background: #dedede;
+      background: $blue2;
     }
   }
 }
@@ -275,6 +306,7 @@ $navborder: .05rem solid #dedede;
 
 
 // 7. Nav Search Form
+/*
 #navmenu [href="#display-search"] { display: none; }
 
 // hide by default - avoid "blink away" on desktop
@@ -293,7 +325,6 @@ $navborder: .05rem solid #dedede;
   padding: .938rem 5rem .938rem 1.9rem;
 }
 
-
 #navmenu .search-submit {
   background: none;
   border: none;
@@ -301,6 +332,8 @@ $navborder: .05rem solid #dedede;
    top: .75rem;
    right: 2.5rem;
   -webkit-appearance: none;
+
+  @include hover { cursor: pointer; }
 
   &:after {
     width: 1rem;
@@ -316,3 +349,4 @@ $navborder: .05rem solid #dedede;
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' overflow='visible'%3E%3Cpath fill='%231E1E1E' d='M11.077 6.77c0-1.187-.422-2.2-1.265-3.044-.842-.843-1.857-1.264-3.042-1.264-1.187 0-2.2.421-3.044 1.264-.843.843-1.264 1.857-1.264 3.044 0 1.186.421 2.2 1.264 3.043.844.843 1.857 1.265 3.044 1.265 1.186 0 2.2-.422 3.043-1.265s1.264-1.858 1.264-3.043zm4.923 8c0 .333-.122.621-.365.865a1.185 1.185 0 01-.865.365c-.347 0-.635-.122-.865-.365l-3.299-3.289a6.581 6.581 0 01-3.836 1.192 6.662 6.662 0   01-2.63-.533 6.767 6.767 0 01-2.164-1.442A6.797 6.797 0 01.533 9.399 6.665 6.665 0 010 6.77c0-.917.178-1.794.533-2.63a6.786 6.786 0 011.443-2.164A6.786 6.786 0 014.14.533 6.662 6.662 0 016.77 0 6.67 6.67 0 019.4.533a6.78 6.78 0 012.163 1.442 6.767 6.767 0 011.442 2.164c.355.836.533 1.713.533 2.63 0 1.41-.397 2.688-1.192 3.836l3.299 3.299c.237.237.355.526.355.866z'/%3E%3C/svg%3E");
   }
 }
+*/

@@ -40,9 +40,9 @@ html * {
   @include linkgradient(navy);
 
   @include hover {
-    color: red;
+    color: $blue2;
     background-size: 0 100%;
-    @include linkgradient(red);
+    @include linkgradient($blue2);
   }
 }
 
@@ -264,7 +264,7 @@ figure.alignright figcaption  { text-align: right; }
   .col-footer {
     width: 50%;
     float: left;
-    line-height: 1.44;
+    line-height: 1.2;
     margin-bottom: 2rem;
 
     &:nth-of-type(2n+1) { clear: left; }
@@ -306,7 +306,9 @@ figure.alignright figcaption  { text-align: right; }
     padding: 0;
 
     [href] {
+      clear: left;
       display: block;
+      float: left;
       padding: .3rem 0;
     }
   }

@@ -83,6 +83,7 @@ if (document.querySelector('.current-menu-item') ) {
 
 // 4.  Toggle search form on desktop
 //     upon clicking magnifying glass icon in header
+/*
 var displaysearch = document.querySelector('[href="#display-search"]');
 var navsearch = document.getElementById('nav-search');
 
@@ -96,6 +97,7 @@ displaysearch.addEventListener('click', function(e){
   }
 
 });
+*/
 
 
 
