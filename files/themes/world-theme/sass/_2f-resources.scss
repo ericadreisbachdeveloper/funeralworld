@@ -51,7 +51,7 @@
 
     @include hover {
       &:before {
-        opacity: .7; 
+        opacity: .7;
       }
     }
   }
@@ -80,3 +80,21 @@
 .col-article { margin-bottom: 2rem; }
 
 .col-article .p:first-of-type { margin-top: 0; }
+
+
+[data-role="main"] .resource-article-a[href]:not([href="#"]) {
+  background-size: calc(100% - 1.4rem) 100%;
+
+  @include hover { background-size: 0 100%; }
+
+  @include hover { .icon { background-color: $blue2; } }
+
+  .icon {
+    width: 1.2rem;
+    background-color: $navy;
+    border-radius: .6rem;
+    display: inline-block;
+    padding: .2rem;
+    @include transition(background-color .2s ease-in-out);
+  }
+}

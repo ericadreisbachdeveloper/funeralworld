@@ -943,15 +943,16 @@ function show_resources($attr, $content = null) {
 					// [2] = height
 
 				}
-				else {
-					$terms = get_the_terms($q->ID, 'resource-type');
-					$firstterm = $terms[0];
 
-					$default_svg = get_field('resource-icon-svg', $firstterm);
-					$default_svg_url = $default_svg['url'];
-					$default_png = get_field('resource-icon-png', $firstterm);
-					$default_png_url = $default_png['url'];
-				}
+
+				$terms = get_the_terms($q->ID, 'resource-type');
+				$firstterm = $terms[0];
+
+				$default_svg = get_field('resource-icon-svg', $firstterm);
+				$default_svg_url = $default_svg['url'];
+				$default_png = get_field('resource-icon-png', $firstterm);
+				$default_png_url = $default_png['url'];
+
 
 				// get feat img id
 				// wp_prepare_attachment_for_js($img_id);
@@ -986,9 +987,11 @@ function show_resources($attr, $content = null) {
 				}
 				$content .= '</a>';
 
-				$content .= '<a href="';
+				$content .= '<a class="resource-article-a" href="';
 				$content .= get_the_permalink();
-				$content .= '" title="' . get_the_title() . '">' . get_the_title() . '</a>';
+				$content .= '" title="' . get_the_title() . '">' . get_the_title();
+				$content .= ' <img class="icon" type="image/svg" src="' . $default_svg_url . '" />';
+				$content .= '</a>';
 				$content .= '<p class="p">' . get_the_excerpt() . '</p>';
 				$content .= '</div><!-- /.col-md-6 -->';
 
