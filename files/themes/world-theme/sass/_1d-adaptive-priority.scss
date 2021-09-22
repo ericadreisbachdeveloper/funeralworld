@@ -163,7 +163,7 @@
   %navlines-basic {
     width: 0;
     height: .05rem;
-    background: $nearblack;
+    background: $teal;
     content: '';
     display: block;
     position: absolute;
@@ -173,19 +173,80 @@
   }
 
 
-  // 5a. Top Level - no children
-
-  //     extension
-  %top-level-no-children-before-after {
-    &:before { left: $padding-left; }
-    &:before, &:after { width: calc( 50% - #{$padding-left} ); }
+  .navbar-nav>.menu-item:not(.menu-item-has-children)>[href]:not([tabindex]):hover,
+  .navbar-nav>.menu-item>.sub-menu .menu-item>[href]:not([tabindex]):hover {
+    background: none;
   }
 
+
+  // 5a. Top Level - no children
+  #navmenu .nav-main-menu > [id*="menu-item"] {
+
+    [href] { &:before, &:after { @extend %navlines-basic; } }
+
+    &.show, &.hover {
+      background: none;
+      [href] {
+        &:before, &:after { width: calc(50% - #{$padding-left}); }
+        &:before { left: $padding-left;  }
+        &:after { left: 50%; }
+      }
+    }
+
+    /*
+    [href] {
+      background: none;
+
+      @include hover { background: transparent; }
+
+      &:before, &:after { width: 0; bottom: .5rem; @include transition(width 2s ease-in-out, left .2s ease-in-out);  }
+
+      &:before { content: ''; display: block; height: .05rem; position: absolute; left: 50%; }
+
+      &:before { background: yellow; }
+      &:after { background: deeppink; }
+
+      @include hover {
+        &:before, &:after { width: calc(50% - #{$padding-left}); }
+        &:before { left: $padding-left;  }
+        &:after { left: 50%; }
+      }
+    }*/
+  }
+
+
+  %top-level-no-children-before-after { background: yellow;  }
+
+  //     extension
+  /*
+  %top-level-no-children-before-after {
+    &:before { left: 50%; }
+
+    &:after { left: 50%; }
+
+    &:before, &:after {
+      width: calc( 50% - #{$padding-left} );
+      height: .15rem;
+      background: transparent;
+      content: '';
+      display: block;
+      @include transition(background .2s ease-in-out, width 2s ease-in-out);
+    }
+  }
+  */
+
+
+
   //    application
+
   %top-level-no-children-hover {
+    //@extend %top-level-no-children-before-after;
+
     &.show, &.hover {
       &> [href]:not([tabindex]) {
-        @extend %top-level-no-children-before-after;
+        &:before { left: $padding-left; }
+        &:before { background: $teal; }
+        &:after { background: red; }
       }
     }
 
@@ -199,6 +260,7 @@
       }
     }
   }
+
 
 
 
@@ -222,10 +284,9 @@
       }
     }
 
+
     &> [href]:not([tabindex]) {
-
-      &:before, &:after { @extend %navlines-basic; }
-
+      //&:before, &:after { @extend %navlines-basic; }
       @include hover {
         background: inherit; // undo mobile
         @extend %top-level-has-children-before-after;
@@ -368,6 +429,18 @@
       position: absolute;
        right: .9rem;
        bottom: .5rem;
+    }
+
+    .menu-item >[href]:not([tabindex]) {
+      @include transform(0deg, 1, 0, 0, 0);
+      @include transition(color .2s ease-in-out);
+
+      @include hover {
+        color: $blue;
+
+        // @mixin transform($rotate, $scale, $skew, $translatex, $translatey)
+        @include transform(0deg, 1, -10deg, 0, 0);
+      }
     }
   }
 

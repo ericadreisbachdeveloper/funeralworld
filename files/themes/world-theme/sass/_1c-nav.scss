@@ -79,14 +79,12 @@ $navborder: .05rem solid #dedede;
 // @extend %medium;
 // not-full-width borders
 .nav-main-menu > [id*="menu-item"] {
-  //@extend %medium;
-  @extend %main-menu-li;
+  @extend %main-menu-li;  // font size
 
   &> [href] {
     position: relative;
 
     &:after {
-      //width: calc(100% - 4rem);
       width: 100%;
       height: .05rem;
       background: $nearwhite;
@@ -247,13 +245,14 @@ $navborder: .05rem solid #dedede;
 
 
 // 5b. Top Level - % at the li level
-%top-level-has-children-hover {
+/* %top-level-has-children-hover {
   &> [href]:not([tabindex]) {
     @include hover {
       background: #dedede;
     }
   }
 }
+*/
 
 .navbar-nav > .menu-item.menu-item-has-children { @extend %top-level-has-children-hover; }
 
