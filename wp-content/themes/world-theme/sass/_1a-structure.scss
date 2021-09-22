@@ -1,0 +1,189 @@
+// Priority Structure + Mixins - css/priority.css
+
+
+
+@import '__0-typography.scss';
+@import '__0-colors.scss';
+
+
+// Global
+html {
+  //background: $navy;
+  //color: white;
+  background: white;
+  color: $nearblack;
+  //font-family: 'Open Sans', sans-serif;
+  font-family: 'mreaves', sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+
+  em, i { font-family: 'mreaves-ital'; }
+
+  [href] { color: white; text-decoration: none; }
+}
+
+body { margin: 0; }
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+
+
+// Colors
+@import '__0-colors.scss';
+
+
+
+// Mixins
+%clear:after {
+  clear: both;
+  content: '';
+  display: block;
+}
+
+.container { @extend %clear; }
+
+@mixin hover {
+  &:hover{ @content; }
+	 &:active{ @content; }
+	  &:focus{ @content; }
+	   &:target{ @content; }
+}
+
+@mixin rotate($deg) {
+  transform: rotate($deg);
+   -webkit-transform: rotate($deg);
+    -moz-transform: rotate($deg);
+     -o-transform: rotate($deg);
+      -ms-transform: rotate($deg);
+}
+
+@mixin flex {
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: flex;
+}
+
+@mixin flex-wrap($args...) {
+  -webkit-flex-wrap: $args;
+   -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+@mixin align-items($args...) {
+  -webkit-box-align: $args;
+      -ms-flex-align: $args;
+          align-items: $args;
+}
+
+@mixin justify-content($args...) {
+  -webkit-justify-content: $args;
+   -ms-flex-pack: $args;
+    justify-content: $args;
+}
+
+@mixin transition($multi...) {
+  -webkit-transition: $multi;
+   -moz-transition: $multi;
+    -ms-transition: $multi;
+     -o-transition: $multi;
+      transition: $multi;
+}
+
+@mixin transform($rotate, $scale, $skew, $translatex, $translatey) {
+  transform: rotate($rotate) scale($scale) skew($skew) translateX($translatex) translateY($translatey);
+   -webkit-transform: rotate($rotate) scale($scale) skew($skew) translateX($translatex) translateY($translatey);
+    -moz-transform: rotate($rotate) scale($scale) skew($skew) translateX($translatex) translateY($translatey);
+     -o-transform: rotate($rotate) scale($scale) skew($skew) translateX($translatex) translateY($translatey);
+      -ms-transform: rotate($rotate) scale($scale) skew($skew) translateX($translatex) translateY($translatey);
+}
+
+@mixin translatex($x) {
+-webkit-transform: translatex($x);
+    -ms-transform: translatex($x);
+        transform: translatex($x)
+}
+
+// Animation
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} { @content; }
+  @-moz-keyframes #{$animationName} { @content; }
+  @-o-keyframes #{$animationName} { @content; }
+  @keyframes #{$animationName} { @content; }
+}
+
+$toggle_top: .75rem;
+$toggle_top_bottom_collapsed: 1.4rem;
+$toggle_bottom: 2rem;
+
+%toggle_middle { top: 1.38rem; }
+
+%toggle_top { top: $toggle_top; }
+%toggle_top_bottom_collapsed { top: $toggle_top_bottom_collapsed;  }
+%toggle_bottom { top: $toggle_bottom; }
+
+
+
+@include keyframes(toggle_top) {
+  0% { @include transform(0deg, (1,1), 0, 0, 0); top: $toggle_top; }
+  50% { @include transform(0deg, (1,1), 0, 0, 0); top: $toggle_top_bottom_collapsed; }
+  100% { @include transform(45deg, (1,1), 0, 0, 0); top: $toggle_top_bottom_collapsed; }
+}
+
+@include keyframes(toggle_bottom) {
+  0% { @include transform(0deg, (1,1), 0, 0, 0); top: $toggle_bottom; }
+  50% { @include transform(0deg, (1,1), 0, 0, 0); top: $toggle_top_bottom_collapsed; }
+  100% { @include transform(-45deg, (1,1), 0, 0, 0); top: $toggle_top_bottom_collapsed; }
+}
+
+
+@include keyframes(toggle_top_collapsed) {
+  100% { @include transform(0deg, (1,1), 0, 0, 0); top: $toggle_top; }
+  50% { @include transform(0deg, (1,1), 0, 0, 0); top: $toggle_top_bottom_collapsed; }
+  0% { @include transform(45deg, (1,1), 0, 0, 0); top: $toggle_top_bottom_collapsed; }
+}
+
+@include keyframes(toggle_bottom_collapsed) {
+  100% { @include transform(0deg, (1,1), 0, 0, 0); top: $toggle_bottom; }
+  50% { @include transform(0deg, (1,1), 0, 0, 0); top: $toggle_top_bottom_collapsed; }
+  0% { @include transform(-45deg, (1,1), 0, 0, 0); top: $toggle_top_bottom_collapsed; }
+}
+
+@mixin animation($name, $timing, $count, $duration) {
+  -webkit-animation-name: $name;
+  -webkit-animation-timing-function: $timing;
+  -webkit-animation-iteration-count: $count;
+  -webkit-animation-duration: $duration;
+
+  animation-name: $name;
+  animation-timing-function: $timing;
+  animation-iteration-count: $count;
+  animation-duration: $duration;
+}
+
+
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') { @content; }
+  @include optional-at-root(':-moz-placeholder') { @content; }
+  @include optional-at-root('::-moz-placeholder') { @content; }
+  @include optional-at-root(':-ms-input-placeholder') { @content; }
+}

@@ -1,0 +1,54 @@
+// this content minified with https://cssminifier.com/
+// and pasted into <head> - header.php
+
+
+
+/*
+
+@font-face {
+  font-family:'NAME';
+  font-display: swap;
+  unicode-range: U+000-5FF; Download only latin glyphs
+  src: url('../fonts/EOT?') format('eot'), url('../fonts/OTF') format('opentype');
+}
+
+@mixin NAME {
+  font-family: 'NAME',sans-serif;
+  font-weight: 400;
+}
+
+.NAME {
+  @include NAME;
+  em, i     { @include ITALICNAME; }
+  b, strong { @include BOLDNAME; }
+}
+
+
+unicode-range: U+000-5FF; // Download only latin glyphs
+
+*/
+
+
+
+@font-face {
+  font-family:'mreaves-book';
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: url('<?= TDIR; ?>/fonts/mreaves-book.eot?#iefix') format('eot'), url('<?= TDIR; ?>/fonts/mreaves-book.woff') format('woff');
+}
+
+
+@font-face {
+  font-family:'mreaves';
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: url('<?= TDIR; ?>/fonts/mreaves-reg.eot?#iefix') format('eot'), url('<?= TDIR; ?>/fonts/mreaves-reg.woff') format('woff');
+}
+
+
+@font-face {
+  font-family:'mreaves-ital';
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: url('<?= TDIR; ?>/fonts/mreaves-reg-ital.eot?#iefix') format('eot'), url('<?= TDIR; ?>/fonts/mreaves-reg-ital.otf') format('woff');
+}

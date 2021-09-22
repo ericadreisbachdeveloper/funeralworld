@@ -1,0 +1,114 @@
+// Resources + Events - css/style.css
+
+
+[data-role="main"] [href].resource-img-a {
+  max-width: 33.5rem;
+  display: block;
+  @include linkgradient(transparent);
+  @include hover { @include linkgradient(transparent); }
+}
+
+// .resource-img-wrapp = <picture> AND <div>
+.resource-img-wrapper {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.resource-img-wrapper {
+  .img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  &.default-resource-icon-div .img {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+
+// hovers
+.resource-img-a {
+
+  // photo (overlay)
+  &.photo-thumb {
+    position: relative;
+
+    &:before {
+      width: 100%;
+      height: 100%;
+      display: block;
+      content: '';
+      background: $blue2;
+      opacity: 0;
+      position: absolute;
+       top: 0;
+       left: 0;
+    }
+
+    @include hover {
+      &:before {
+        opacity: .7;
+      }
+    }
+  }
+
+
+
+  // icon
+  @include hover {
+    .default-resource-icon-div {
+      background-color: $blue2;
+    }
+  }
+}
+
+.default-resource-icon-div {
+  width: 100%;
+  height: 12rem;
+  background: $navy;
+  padding: 2rem 0;
+  @include flex;
+  @include justify-content(center);
+  @include align-items(center);
+}
+
+
+.col-article { margin-bottom: 2rem; }
+
+.col-article .p:first-of-type { margin-top: 0; }
+
+
+[data-role="main"] .resource-article-a[href]:not([href="#"]) {
+  background-size: calc(100% - 1.4rem) 100%;
+
+  @include hover { background-size: 0 100%; }
+
+
+  .icon {
+    width: 1.2rem;
+    background-color: $navy;
+    border-radius: .6rem;
+    display: inline-block;
+    padding: .2rem;
+    @include transition(background-color .2s ease-in-out);
+  }
+
+  @include hover { .icon { background-color: $teal; } }
+
+}
+
+
+.navy-bg .resource-img-a.photo-thumb:before { background: $teal; }
+.navy-bg .resource-img-a {
+  .default-resource-icon-div { background: $blue2; }
+  @include hover { .default-resource-icon-div { background: $teal; } }
+}
+
+
+
+// Events
+.event-col .date {
+  text-transform: uppercase;
+}

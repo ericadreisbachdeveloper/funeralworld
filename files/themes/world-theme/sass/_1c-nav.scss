@@ -281,12 +281,12 @@ $navborder: .05rem solid #dedede;
   &:before {
     width: .4rem;
     height: .4rem;
-    background: $nearblack;
+    background: $nearwhite;
     border-radius: .22rem;
     content: '';
     display: block;
     position: absolute;
-     top: 1.35rem;
+     top: 1.85rem;
      left: .8rem;
   }
 }

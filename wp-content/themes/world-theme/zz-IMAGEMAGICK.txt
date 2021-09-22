@@ -1,0 +1,5 @@
+convert FILE -sampling-factor 4:2:0 -quality 85 -interlace JPEG -colorspace RGB FILE-compressed.jpg
+
+
+
+convert c-leaf.jpg -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB leaf.jpg

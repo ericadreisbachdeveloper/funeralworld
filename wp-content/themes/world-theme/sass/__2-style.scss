@@ -1,0 +1,25 @@
+// Lower-priority styles
+//
+// injected directly into footer.php
+// also loaded asynchronously as a cached css file
+
+// structured according to many
+// of the principles of RSCSS
+// rscss.io/components.html
+
+
+
+@import '_2a-mixins.scss';                // animations, colors, typography
+@import '_2b-structure.scss';             // lower priority structure
+@import '_2c-global.scss';                // global styling
+@import '_2d-blog.scss';                  // blog styling
+@import '_2e-forms.scss';                 // form styling
+@import '_2f-resources.scss';             // Resources styling
+@import '_2g-legacy.scss';                // legacy styles for old browsers
+@import '_2h-adaptive.scss';              // larger viewports
+
+
+
+// no map file + compressed
+// avoid errors in production when page seeks a missing map file
+// sass --watch sass/__1-priority.scss:css/priority.css sass/__2-style.scss:css/style.css sass/__3-home.scss:css/home.css --style compressed --sourcemap=none

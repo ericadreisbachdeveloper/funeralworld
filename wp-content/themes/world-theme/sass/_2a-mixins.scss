@@ -1,0 +1,120 @@
+// Mixins - css/style.css
+
+
+// Colors
+$nearblack: #1e1e1e;
+$magenta: #bc076d;
+$mauve: #68043c;
+
+
+
+// Mixins
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') { @content; }
+  @include optional-at-root(':-moz-placeholder') { @content; }
+  @include optional-at-root('::-moz-placeholder') { @content; }
+  @include optional-at-root(':-ms-input-placeholder') { @content; }
+}
+
+
+@mixin transition($multi...) {
+  -webkit-transition: $multi;
+   -moz-transition: $multi;
+    -ms-transition: $multi;
+     -o-transition: $multi;
+      transition: $multi;
+}
+
+@mixin hover {
+  &:hover{ @content; }
+	 &:active{ @content; }
+	  &:focus{ @content; }
+	   &:target{ @content; }
+}
+
+
+@mixin flex {
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: flex;
+}
+
+@mixin justify-content($args...) {
+  -webkit-justify-content: $args;
+   -ms-flex-pack: $args;
+    justify-content: $args;
+}
+
+@mixin align-items($args...) {
+  -webkit-box-align: $args;
+      -ms-flex-align: $args;
+          align-items: $args;
+}
+
+@mixin flex-wrap($args...) {
+  -webkit-flex-wrap: $args;
+   -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+@mixin flex-direction-col {
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+  -ms-flex-direction: column;
+      flex-direction: column;
+}
+
+@mixin flex-direction-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+@mixin box-shadow ($vert, $horiz, $blur, $color) {
+  -webkit-box-shadow: $vert $horiz $blur $color;
+   box-shadow: $vert $horiz $blur $color;
+}
+
+@mixin rotate($deg) {
+  transform: rotate($deg);
+   -webkit-transform: rotate($deg);
+    -moz-transform: rotate($deg);
+     -o-transform: rotate($deg);
+      -ms-transform: rotate($deg);
+}
+
+@mixin transform($rotate, $scale, $skew, $translatex, $translatey) {
+  transform: rotate($rotate) scale($scale) skew($skew) translateX($translatex) translateY($translatey);
+   -webkit-transform: rotate($rotate) scale($scale) skew($skew) translateX($translatex) translateY($translatey);
+    -moz-transform: rotate($rotate) scale($scale) skew($skew) translateX($translatex) translateY($translatey);
+     -o-transform: rotate($rotate) scale($scale) skew($skew) translateX($translatex) translateY($translatey);
+      -ms-transform: rotate($rotate) scale($scale) skew($skew) translateX($translatex) translateY($translatey);
+}
+
+// @include transition(transform .2s ease-in-out, -webkit-transform .2s ease-in-out, -moz-transform .2s ease-in-out, -o-transform .2s ease-in-out, -ms-transform .2s ease-in-out); 
+
+@mixin linkgradient($color) {
+  background-image: -webkit-gradient(
+   linear,
+   right top,
+   left top,
+   color-stop(.99, transparent),
+   color-stop(1,$color)
+  );
+
+  background-image: -o-linear-gradient(180deg, transparent calc(100% - .08rem), $color calc(100% - .0799rem));
+  background-image: -moz-linear-gradient(180deg, transparent calc(100% - .08rem), $color calc(100% - .0799rem));
+  background-image: -webkit-linear-gradient(180deg, transparent calc(100% - .08rem), $color calc(100% - .0799rem));
+  background-image: -ms-linear-gradient(180deg, transparent calc(100% - .08rem), $color calc(100% - .0799rem));
+  background-image: linear-gradient(180deg, transparent calc(100% - .08rem), $color calc(100% - .0799rem));
+}

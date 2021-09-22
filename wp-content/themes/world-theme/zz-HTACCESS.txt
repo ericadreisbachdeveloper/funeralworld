@@ -1,0 +1,279 @@
+. . . . . . . .
+
+HARDENING WORDPRESS
+
+last updated 29 jan 2021 to add notes on WHAT and WHY do things -emd
+
+. . . . . . . .
+
+
+
+
+
+. . . . . . . .
+
+Step 1 of 6
+
+Change permissions - ssh into root
+
+. . . . . . . .
+
+# ALL FILES 644
+$ find . -type f -exec chmod 644 {} +
+
+# EXCEPT ONE FILE (user-executable)
+$ chmod 644 dev.git/hooks/post-receive
+
+# ALL DIRECTORIES 755
+$ find . -type d -exec chmod 755 {} +
+
+# READ AND WRITE TO OWNER + GROUP
+$ find wp-config.php -exec chmod 660 {} +
+
+
+# Using ; (semicolon) or + (plus sign) is mandatory
+# in order to terminate the shell commands invoked by -exec or execdir
+#
+# The string {} is replaced by the current file name being processed.
+#
+# src: https://unix.stackexchange.com/posts/196917/revisions
+
+
+# MORE ON PERMISSIONS
+# https://wordpress.org/support/article/hardening-wordpress/#file-permissions
+
+
+
+. . . . . . . .
+
+Step 2 of 6
+
+Add wp-config.php one level up from Wordpress install directory
+Add lines below to .htaccess one level up from Wordpress install directory
+
+. . . . . . . .
+
+# BEGIN Secure wp.config
+<Files wp-config.php>
+Order Allow,Deny
+Deny from all
+</Files>
+
+
+# BEGIN Secure README.md
+<Files README.md>
+Order Allow,Deny
+Deny from all
+</Files>
+
+
+# BEGIN Disable directory browsing
+Options All -Indexes
+
+
+
+
+
+
+. . . . . . . .
+
+Step 3 of 6
+
+Add lines below to .htaccess in  /wp-content/uploads/
+
+. . . . . . . .
+
+# BEGIN Secure uploads from malicious file types
+<Files ~ ".*..*">
+Order Allow,Deny
+Deny from all
+</Files>
+
+<FilesMatch ".(jpg|jpeg|gif|png|tif|tiff|pdf|svg|htaccess|webp)$" >
+Order Deny,Allow
+Allow from all
+</FilesMatch>
+
+
+
+
+. . . . . . . .
+
+Step 4 of 6
+
+. . . . . . . .
+
+
+Add to wp-config.php - disallow WP back end file editor
+
+
+define('DISALLOW_FILE_EDIT', true);
+
+
+
+Add to wp-config.php - disallow new plugins
+
+`define('DISALLOW_FILE_MODS', true);`
+
+
+
+. . . . . . . .
+
+Step 5 of 6
+
+. . . . . . . .
+
+
+After the site is initially created, restrict database privileges to
+
+SELECT, INSERT, UPDATE and DELETE
+
+
+
+
+
+
+. . . . . . . .
+
+Step 6 of 6
+
+Just prior to launch
+add lines below to .htaccess in Wordpress install directory
+
+. . . . . . . .
+
+
+# BEGIN Expire headers
+<ifModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 seconds"
+  ExpiresByType image/x-icon "access plus 2592000 seconds"
+  ExpiresByType image/jpeg "access plus 2592000 seconds"
+  ExpiresByType image/jpg "access plus 2592000 seconds"
+  ExpiresByType image/svg "access plus 2592000 seconds"
+  ExpiresByType image/png "access plus 2592000 seconds"
+  ExpiresByType image/gif "access plus 2592000 seconds"
+  ExpiresByType image/webp "access plus 2592000 seconds"
+  ExpiresByType application/x-shockwave-flash "access plus 2592000 seconds"
+  ExpiresByType text/css "access plus 2592000 seconds"
+  ExpiresByType text/javascript "access plus 2592000 seconds"
+  ExpiresByType application/javascript "access plus 2592000 seconds"
+  ExpiresByType application/x-javascript "access plus 2592000 seconds"
+  ExpiresByType text/html "access plus 600 seconds"
+  ExpiresByType application/xhtml+xml "access plus 600 seconds"
+</ifModule>
+# END Expire headers
+
+
+
+# BEGIN Cache-Control Headers
+<ifModule mod_headers.c>
+  <filesMatch "\.(ico|jpe?g|svg|png|gif|swf|css|js|woff|otf|ttf|eot|webp)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </filesMatch>
+  <filesMatch "\.(x?html?|php)$">
+    Header set Cache-Control "max-age=600, private, must-revalidate"
+  </filesMatch>
+</ifModule>
+# END Cache-Control Headers
+
+
+
+# BEGIN Turn ETags Off
+<ifModule mod_headers.c>
+  Header unset ETag
+</ifModule>
+FileETag None
+# END Turn ETags Off
+
+
+
+# BEGIN gZIP Compression
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE font/opentype font/truetype font/eot
+</IfModule>
+
+
+
+# BEGIN Block WordPress xmlrpc.php requests
+<Files xmlrpc.php>
+order deny,allow
+deny from all
+# allow from 123.123.123.123
+</Files>
+
+
+# BEGIN Secure database against sql injections
+# src: https://secure.wphackedhelp.com/blog/wordpress-vulnerabilities-how-to-fix-guide-tools/
+
+<IfModule mod_rewrite.c>
+# Enable rewrite engine
+RewriteEngine On
+
+# Block suspicious request methods
+RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# Block WP timthumb hack
+RewriteCond %{REQUEST_URI} (timthumb\.php|phpthumb\.php|thumb\.php|thumbs\.php) [NC]
+RewriteRule . - [S=1]
+
+# Block suspicious user agents and requests
+RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (;|<|>|'|"|\)|\(|%0A|%0D|%22|%27|%28|%3C|%3E|%00).*(libwww-perl|wget|python|nikto|curl|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
+RewriteCond %{THE_REQUEST} \?\ HTTP/ [NC,OR]
+RewriteCond %{THE_REQUEST} \/\*\ HTTP/ [NC,OR]
+RewriteCond %{THE_REQUEST} etc/passwd [NC,OR]
+RewriteCond %{THE_REQUEST} cgi-bin [NC,OR]
+RewriteCond %{THE_REQUEST} (%0A|%0D) [NC,OR]
+
+# Block MySQL injections, RFI, base64, etc.
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http%3A%2F%2F [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC,OR]
+RewriteCond %{QUERY_STRING} \=PHP[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12} [NC,OR]
+RewriteCond %{QUERY_STRING} (\.\./|\.\.) [OR]
+RewriteCond %{QUERY_STRING} ftp\: [NC,OR]
+RewriteCond %{QUERY_STRING} http\: [NC,OR]
+RewriteCond %{QUERY_STRING} https\: [NC,OR]
+RewriteCond %{QUERY_STRING} \=\|w\| [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)/self/(.*)$ [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*)$ [NC,OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C)([^s]*s)+cript.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*iframe.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C)([^i]*i)+frame.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [NC,OR]
+RewriteCond %{QUERY_STRING} base64_(en|de)code[^(]*\([^)]*\) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>).* [NC,OR]
+RewriteCond %{QUERY_STRING} (NULL|OUTFILE|LOAD_FILE) [OR]
+RewriteCond %{QUERY_STRING} (\./|\../|\.../)+(motd|etc|bin) [NC,OR]
+RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+RewriteCond %{QUERY_STRING} concat[^\(]*\( [NC,OR]
+RewriteCond %{QUERY_STRING} union([^s]*s)+elect [NC,OR]
+RewriteCond %{QUERY_STRING} union([^a]*a)+ll([^s]*s)+elect [NC,OR]
+RewriteCond %{QUERY_STRING} (;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|drop|delete|update|cast|create|char|convert|alter|declare|order|script|set|md5|benchmark|encode) [NC,OR]
+
+# PHP-CGI Vulnerability
+RewriteCond %{QUERY_STRING} ^(%2d|\-)[^=]+$ [NC,OR]
+
+#proc/self/environ? no way!
+RewriteCond %{QUERY_STRING} proc\/self\/environ [NC,OR]
+
+RewriteCond %{QUERY_STRING} (sp_executesql) [NC]
+RewriteRule ^(.*)$ - [F,L]
+</IfModule>

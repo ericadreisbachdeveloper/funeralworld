@@ -1,0 +1,17 @@
+// Legacy - css/style.css
+
+
+[data-svg="inlinesvg"] { .pngbg { background-image: none !important; } }
+
+
+[data-svg="no-inlinesvg"] {
+
+  img[src*="svg"] { visibility: hidden; }
+
+  .pngbg {
+    display: block;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+
+}

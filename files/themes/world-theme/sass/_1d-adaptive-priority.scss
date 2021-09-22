@@ -182,7 +182,7 @@
   // 5a. Top Level - no children
   #navmenu .nav-main-menu > [id*="menu-item"] {
 
-    [href] { &:before, &:after { @extend %navlines-basic; } }
+  //  [href] { &:before, &:after { @extend %navlines-basic; } }
 
     &.show, &.hover {
       background: none;
@@ -215,7 +215,7 @@
   }
 
 
-  %top-level-no-children-before-after { background: yellow;  }
+  %top-level-no-children-before-after { &:before, &:after {  @extend %navlines-basic; }  }
 
   //     extension
   /*
@@ -246,7 +246,7 @@
       &> [href]:not([tabindex]) {
         &:before { left: $padding-left; }
         &:before { background: $teal; }
-        &:after { background: red; }
+        &:after { background: $teal; }
       }
     }
 
@@ -256,7 +256,7 @@
 
       @include hover {
         background: inherit; // undo mobile
-        @extend %top-level-no-children-before-after;
+        //@extend %top-level-no-children-before-after;
       }
     }
   }
@@ -311,7 +311,14 @@
   %current-top-level-childless:before { display: none; }
   // add underlines
   %current-top-level-childless > [href]:not([tabindex]) {
-    @extend %top-level-no-children-before-after;
+    //@extend %top-level-no-children-before-after;
+
+    &:before, &:after {
+      @extend %navlines-basic;
+      width: calc(50% - #{$padding-left});
+    }
+    &:before { left: $padding-left;  }
+    &:after { left: 50%; }
   }
 
   // get rid of dot
