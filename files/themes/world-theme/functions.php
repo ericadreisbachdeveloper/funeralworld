@@ -1043,12 +1043,12 @@ function show_events( $events = null ) {
 	$p = new WP_Query( $args );
 
 	if ($p->have_posts()) {
-		$events  = '<div class="col-xs-12"><div class="row">';
+		$events  = '<div class="col-md-12"><div class="row">';
 
 		while($p->have_posts()) {
 			$p->the_post();
 
-			$events .= '<div class="event-col col-sm-6">';
+			$events .= '<div class="event-col col-md-6">';
 
 			if(get_field('event-end-date')) {
 				$display_date = '';

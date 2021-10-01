@@ -7,3 +7,15 @@
 // no map file + compressed
 // avoid errors in production when page seeks a missing map file
 // sass --watch sass/__1-priority.scss:css/priority.css sass/__2-style.scss:css/style.css sass/__3-home.scss:css/home.css --style compressed --sourcemap=none
+
+
+
+.event-col {
+  padding-bottom: 2rem;
+}
+
+
+@media (min-width: 48rem) {
+  .event-col:nth-of-type(1) { padding-right: 1.5rem; }
+  .event-col:nth-of-type(2) { padding-left: 1.5rem; }
+}

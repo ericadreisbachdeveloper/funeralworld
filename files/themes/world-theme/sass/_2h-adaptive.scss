@@ -14,7 +14,7 @@
 
 
 
-// Small to large
+// up to Medium
 @media (max-width: 47.9999rem) {
   // Classes
   .half-mobile.wp-block-column:not(:only-child) {
@@ -25,7 +25,7 @@
 
 
 
-
+// Small to medium
 @media (min-width: 37.5rem) and (max-width: 47.9999rem) {
 
   .wp-block-column:not(:only-child).full-width-sm {
@@ -58,8 +58,8 @@
   .wp-block-pullquote,
   .core-paragraph > .gutenberg-container {
     max-width: 47rem;
-    margin-right: auto;
-    margin-left: auto;
+    //margin-right: auto;
+    //margin-left: auto;
   }
 
 
@@ -119,8 +119,11 @@
    #menu-footer li { display: inline-block; padding: .8em 1.5em;  }
 
    .site-footer .col-footer { width: 33%; }
+   .site-footer .col-footer:nth-of-type(2n),
    .site-footer .col-footer:nth-of-type(2n+1) { clear: unset; }
    .site-footer .col-footer:nth-of-type(3n+1) { clear: left; }
+
+   .site-footer .footer-copyright-row .core-paragraph > .gutenberg-container { margin-right: auto; margin-left: auto; }
 
 }
 
@@ -151,7 +154,7 @@
 
 
   // Sticky Footer - large
-  $footerh: 32rem;
+  $footerh: 34rem;
   .wrapper { min-height: 100vh; margin-bottom: -$footerh; }
   .wrapper:after { content: ''; display: block; clear: both; }
   .wrapper:after, .site-footer { height:$footerh; }
@@ -184,7 +187,7 @@
 
   .site-footer [class*="col"].col-footer { width: 20%; }
 
-  .site-footer [class*="col"].col-footer.social-media-col { clear: both; width: auto; float: right; }
+  //.site-footer [class*="col"].col-footer.social-media-col { clear: both; width: auto; float: right; }
 }
 
 

@@ -3,74 +3,80 @@
 
 
 
-<footer class="site-footer container-fluid">
-
-<div class="container">
+<footer class="site-footer">
 
 
-	<!-- if is single, show navigation -->
-	<?php //if(is_single()) { include(locate_template('template/pagination_single.php')); } ?>
+	<div class="row footer-social-row">
+		<?php if(has_nav_menu('social-menu')) : ?>
+		<div class="social-media-col">
+			<h3 class="sr-only">Follow WORLD on social media </h3>
+			<?php bare_nav('social-menu');  ?>
+		</div>
+		<?php endif; ?>
 
-	<!-- if is a child page, show navigation-->
-	<?php //include(locate_template('template/pagination_from_menu.php')); ?>
-
-
-		<div class="row footer-menus-row">
-
-			<div class="col-footer">
-				<a href="<?php _e(esc_url($site_url)); ?>">
-					<picture class="picture">
-
-						<?php if(get_field('footer-logomark-svg', 'options')) : ?>
-						<?php $footer_logomark_svg = get_field('footer-logomark-svg', 'options'); $footer_logomark_svg = $footer_logomark_svg['url']; ?>
-						<source type="image/svg" srcset="<?= esc_url($footer_logomark_svg); ?>" />
-
-						<?php else : ?>
-						<source type="image/svg" srcset="<?= esc_url(TDIR . '/img/logo-mark-circle.svg'); ?>" />
-						<?php endif; ?>
+	</div><!-- END .footer-social-row -->
 
 
-						<?php if(get_field('footer-logomark-svg', 'options')) : ?>
-						<?php $footer_logomark_png = get_field('footer-logomark-png', 'options'); $footer_logomark_png = $footer_logomark_png['url']; ?>
-						<img src="<?= esc_url($footer_logomark_png); ?>" title="<?= get_bloginfo('name'); ?>" alt="Logo for <?= get_bloginfo('name'); ?>" />
+<div class="container-fluid footer-logomark">
+	<div class="container">
 
-						<?php else : ?>
-						<img src="<?= esc_url(TDIR . '/img/logo-mark-circle.png'); ?>" />
-						<?php endif; ?>
+		<!-- if is single, show navigation -->
+		<?php //if(is_single()) { include(locate_template('template/pagination_single.php')); } ?>
 
-					</picture>
-				</a>
+		<!-- if is a child page, show navigation-->
+		<?php //include(locate_template('template/pagination_from_menu.php')); ?>
+
+
+			<div class="row footer-menus-row">
+
+				<div class="col-footer -logo">
+					<a href="<?php _e(esc_url($site_url)); ?>">
+						<picture class="picture">
+
+							<?php if(get_field('footer-logomark-svg', 'options')) : ?>
+							<?php $footer_logomark_svg = get_field('footer-logomark-svg', 'options'); $footer_logomark_svg = $footer_logomark_svg['url']; ?>
+							<source type="image/svg" srcset="<?= esc_url($footer_logomark_svg); ?>" />
+
+							<?php else : ?>
+							<source type="image/svg" srcset="<?= esc_url(TDIR . '/img/logo-mark-circle.svg'); ?>" />
+							<?php endif; ?>
+
+
+							<?php if(get_field('footer-logomark-svg', 'options')) : ?>
+							<?php $footer_logomark_png = get_field('footer-logomark-png', 'options'); $footer_logomark_png = $footer_logomark_png['url']; ?>
+							<img src="<?= esc_url($footer_logomark_png); ?>" title="<?= get_bloginfo('name'); ?>" alt="Logo for <?= get_bloginfo('name'); ?>" />
+
+							<?php else : ?>
+							<img src="<?= esc_url(TDIR . '/img/logo-mark-circle.png'); ?>" />
+							<?php endif; ?>
+
+						</picture>
+					</a>
+				</div>
+
+
+				<?php dynamic_sidebar( 'Footer Menus' ); ?>
+
+
+			</div>
+
+			<?php //print_r(get_registered_nav_menus()); ?>
+
+
+			<div class="row footer-socialmedia-row">
+				<div class="container socialmedia-container">
+
+				</div>
 			</div>
 
 
-			<?php dynamic_sidebar( 'Footer Menus' ); ?>
-
-
-			<?php if(has_nav_menu('social-menu')) : ?>
-			<div class="col-footer social-media-col">
-				<h3 class="sr-only">Follow WORLD on social media </h3>
-				<?php bare_nav('social-menu');  ?>
+			<div class="row footer-copyright-row">
+			<?php if(is_active_sidebar('Copyright')) { dynamic_sidebar('Copyright'); } ?>
 			</div>
-			<?php endif; ?>
 
 
-		</div>
-
-		<?php //print_r(get_registered_nav_menus()); ?>
-
-
-		<div class="row footer-socialmedia-row">
-			<div class="container socialmedia-container">
-
-			</div>
-		</div>
-
-
-		<div class="row footer-copyright-row">
-		<?php if(is_active_sidebar('Copyright')) { dynamic_sidebar('Copyright'); } ?>
-		</div>
-
-	</div>
+		</div><!-- /.container -->
+	</div> <!-- /.container-fluid.footer-logomark -->
 </footer>
 
 
