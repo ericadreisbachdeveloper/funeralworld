@@ -102,8 +102,15 @@
 <!-- pre-load + load assets -->
 
 <!-- theme priority (above-the-fold) styles -->
-<?php global $style_vsn; ?>
-<link rel="preload" href="<?= esc_url(TDIR); ?>/css/priority.css?ver=<?php _e($style_vsn); ?>" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="<?= esc_url(TDIR); ?>/css/style.css?ver=<?php _e($style_vsn); ?>"></noscript>
+<?php global $style_vsn, $isnewvisitor; $isnewvisitor = (isset($_COOKIE['v']))? false: (function() { setcookie('v',1, time()+3600*24*14);return true;})(); ?>
+
+<?php if($isnewvisitor) : ?>
+<style><?= file_get_contents( TDIR . '/css/priority.css'); ?> </style>
+<?php else : ?>
+<link rel="preload" href="<?= esc_url(TDIR); ?>/css/priority.css?ver=<?php _e($style_vsn); ?>" as="style">
+<link rel="stylesheet" href="<?= esc_url(TDIR); ?>/css/priority.css?ver=<?php _e($style_vsn); ?>" />
+<?php endif; ?>
+
 
 <!-- fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">

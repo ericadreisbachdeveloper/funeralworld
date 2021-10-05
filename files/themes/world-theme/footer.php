@@ -106,24 +106,30 @@ document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1
 
 
 
-<?php global $style_vsn, $site_url; ?>
+<?php global $style_vsn, $site_url, $isnewvisitor; ?>
 
 
 <!-- Wordpress blocks -->
-<link rel="preload" href="<?php _e($site_url); ?>/wp-includes/css/dist/block-library/style.min.css" as="style" />
+<?php if($isnewvisitor) : ?>
 <style><?= file_get_contents( $site_url . '/wp-includes/css/dist/block-library/style.min.css' ); ?></style>
-
+<?php else : ?>
+<link rel="preload" href="<?php _e($site_url); ?>/wp-includes/css/dist/block-library/style.min.css" as="style" />
+<link rel="stylesheet" href="<?= _e($site_url . '/wp-includes/css/dist/block-library/style.min.css' ); ?>" />
+<?php endif; ?>
 
 <!-- theme styles -->
-<link rel="preload" href="<?= esc_url(TDIR); ?>/css/style.css?ver=<?php _e($style_vsn); ?>" as="style" />
+<?php if($isnewvisitor) : ?>
 <style><?= file_get_contents( TDIR . '/css/style.css'); ?> </style>
+<?php else : ?>
+<link rel="preload" href="<?= esc_url(TDIR); ?>/css/style.css?ver=<?php _e($style_vsn); ?>" as="style" />
 <link rel="stylesheet" href="<?= esc_url(TDIR); ?>/css/style.css?ver=<?php _e($style_vsn); ?>" />
-
+<?php endif; ?>
 
 <!-- homepage styles -->
-<?php if(is_front_page()) : ?>
-<link rel="preload" href="<?= esc_url(TDIR); ?>/css/home.css?ver=<?php _e($style_vsn); ?>" as="style" />
+<?php if(is_front_page() && $isnewvisitor) : ?>
 <style><?= file_get_contents( TDIR . '/css/home.css'); ?> </style>
+<?php else : ?>
+<link rel="preload" href="<?= esc_url(TDIR); ?>/css/home.css?ver=<?php _e($style_vsn); ?>" as="style" />
 <link rel="stylesheet" href="<?= esc_url(TDIR); ?>/css/home.css?ver=<?php _e($style_vsn); ?>" />
 <?php endif; ?>
 
