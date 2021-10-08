@@ -13,7 +13,7 @@
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 
-					<h1><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h1>
+					<h1 class="resource-single-h1"><?php the_title(); ?> </h1>
 
 
 					<?php echo _e(get_template_part('meta')); ?>

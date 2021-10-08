@@ -2,16 +2,22 @@
 
 
 [data-role="main"] [href].resource-img-a {
-  max-width: 33.5rem;
+  //max-width: 33.5rem;
+  max-width: 35rem;
   display: block;
   @include linkgradient(transparent);
   @include hover { @include linkgradient(transparent); }
 }
 
-// .resource-img-wrapp = <picture> AND <div>
+// .resource-img-wrapper = wrapped around <picture> AND <div>
 .resource-img-wrapper {
   display: block;
   margin-bottom: 1rem;
+}
+
+
+.icon-thumb .resource-img-wrapper {
+  padding: 26.785% 0;
 }
 
 .resource-img-wrapper {
@@ -68,7 +74,7 @@
   width: 100%;
   height: 12rem;
   background: $navy;
-  padding: 2rem 0;
+  //padding: 2rem 0;
   @include flex;
   @include justify-content(center);
   @include align-items(center);
@@ -111,4 +117,17 @@
 // Events
 .event-col .date {
   text-transform: uppercase;
+}
+
+
+
+// . . . . . . . . . . . . . . . . . . . . . . . . //
+
+// Resource  single
+.single-pog [data-role="main"] {
+  background: $mist;
+}
+
+.resource-single-h1 {
+  color: $night;
 }

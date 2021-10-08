@@ -6,25 +6,29 @@
 <footer class="site-footer">
 
 
-	<div class="row footer-social-row">
-		<?php if(has_nav_menu('social-menu')) : ?>
-		<div class="social-media-col">
-			<h3 class="sr-only">Follow WORLD on social media </h3>
-			<?php bare_nav('social-menu');  ?>
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row footer-social-row">
+				<?php if(has_nav_menu('social-menu')) : ?>
+				<div class="social-media-col">
+					<h3 class="sr-only">Follow WORLD on social media </h3>
+					<?php bare_nav('social-menu');  ?>
+				</div>
+				<?php endif; ?>
+
+			</div><!-- END .footer-social-row -->
 		</div>
-		<?php endif; ?>
-
-	</div><!-- END .footer-social-row -->
+	</div>
 
 
-<div class="container-fluid footer-logomark">
-	<div class="container">
+	<div class="container-fluid footer-logomark">
+		<div class="container">
 
-		<!-- if is single, show navigation -->
-		<?php //if(is_single()) { include(locate_template('template/pagination_single.php')); } ?>
+			<!-- if is single, show navigation -->
+			<?php //if(is_single()) { include(locate_template('template/pagination_single.php')); } ?>
 
-		<!-- if is a child page, show navigation-->
-		<?php //include(locate_template('template/pagination_from_menu.php')); ?>
+			<!-- if is a child page, show navigation-->
+			<?php //include(locate_template('template/pagination_from_menu.php')); ?>
 
 
 			<div class="row footer-menus-row">

@@ -80,6 +80,8 @@ function wor_post_types_init() {
 add_action( 'init', 'create_my_taxonomies', 0 );
 
 function create_my_taxonomies() {
+
+    // 1. Resource Type (Video, White Paper, &c.)
     register_taxonomy(
 
 				// register_taxonomy( $taxonomy, $object_type, $args );
@@ -98,7 +100,7 @@ function create_my_taxonomies() {
 						'show_tagcloud' => false,
 
             // hierarchical = true   -  checkboxes (like Wordpress default Categories)
-            // hierarchical = false  -  type-in input (like Wordpress defaul Tags)
+            // hierarchical = false  -  type-in input (like Wordpress default Tags)
 						'hierarchical' => true,
 						'has_archive' => true,
 						'ep_mask' => EP_PERMALINK,
@@ -106,6 +108,37 @@ function create_my_taxonomies() {
 
 						// 'show_in_rest' enables Gutenberg blocks
 						'show_in_rest'       => true,
+        )
+    );
+
+
+    // 2. Topic (Green Funerals, &c.)
+    register_taxonomy(
+
+        // register_taxonomy( $taxonomy, $object_type, $args );
+        'topic',
+        'post',
+
+        array(
+            'labels' => array(
+                'name' => 'Topic',
+                'add_new_item' => 'Add New Topic',
+                'new_item_name' => 'New Topic',
+            ),
+            //'rewrite' => array( 'slug' => 'events/category', 'with_front' => false ),
+
+            'show_ui' => true,
+            'show_tagcloud' => false,
+
+            // hierarchical = true   -  checkboxes (like Wordpress default Categories)
+            // hierarchical = false  -  type-in input (like Wordpress default Tags)
+            'hierarchical' => true,
+            'has_archive' => true,
+            'ep_mask' => EP_PERMALINK,
+            'show_admin_column' => true,
+
+            // 'show_in_rest' enables Gutenberg blocks
+            'show_in_rest'       => true,
         )
     );
 
