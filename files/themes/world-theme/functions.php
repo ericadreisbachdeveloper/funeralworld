@@ -1118,13 +1118,43 @@ function show_events( $events = null ) {
 
 	global $post;
 
+
+	/*
+	$date_to_compare = $tmw_dt = $tmw = '';
+	if   (get_field('event-end-date')) { $date_to_compare = get_field('event-end-date'); }
+	else                               { $date_to_compare = get_field('event-start-date'); }
+	*/
+
+	$tmw_dt = new DateTime('tomorrow', new DateTimeZone('UTC + 5'));
+	$tmw    = $tmw_dt->format('Ymd');
+	$tmw    = intval($tmw);
+
+
 	$args = array (
-		//'cat' => $shortcode_args['cat'],
 		'post_type' => 'events',
 		'posts_per_page' => 2,
 
-		// this will need to change soon
-		'order' => 'desc'
+		'meta_key' => 'event-start-date',
+		'order_by' => 'meta_value',
+		'order' => 'ASC',
+
+		'meta_query' => array(
+
+			'relation' => 'OR',
+
+			array(
+				'key' => 'event-start-date',
+				'value' => $tmw,
+				'compare' => '>'
+			),
+
+			array(
+				'key' => 'event-end-date',
+				'value' => $tmw,
+				'compare' => '>'
+			)
+		)
+
 	);
 
 	$events = '';
@@ -1179,7 +1209,7 @@ function show_events( $events = null ) {
 				// convert to unix timestamp
 				$date = strtotime($date);
 
-				$date = date("M j, Y");
+				$date = date("M j, Y", $date);
 				$events .= '<span class="date">' . $date . '</span> <br />';
 			}
 
