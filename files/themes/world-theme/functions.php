@@ -926,7 +926,7 @@ function show_resources($attr, $content = null) {
 
 
 
-	// 0. Row will be empty if needed
+	// 0. Row is empty if no resources in category
 	$content  = '<div class="row">';
 
 
@@ -1021,8 +1021,7 @@ function show_resources($attr, $content = null) {
 	if ($f_count < 2) {
 
 		$p_args = array (
-			'category' => array($shortcode_args['cat']),
-			'category__not_in' => '21',
+			'cat' => array($shortcode_args['cat'], -21),
 			'post_type' => 'post',
 			'posts_per_page' => (2 - $f_count),
 		);
