@@ -105,14 +105,29 @@
 
   [data-role="main"] [href].resource-img-a { max-width: unset; }
 
-  //.default-resource-icon-div { height: 0; padding-bottom: 46%; }
-  //
   .default-resource-icon-div .img { position: relative; top: 50%; }
 
 
-  .resource-img-a.photo-thumb:before { @include transition(opacity .2s ease-in-out); }
-  .resource-img-a .default-resource-icon-div { @include transition(background-color .2s ease-in-out); }
+  [data-role="main"] .h2-share { font-size: 1rem; }
 
+  .resource-img-a.photo-thumb:before { @include transition(opacity .3s ease-in-out); }
+  .resource-img-a .default-resource-icon-div { @include transition(background-color .5s ease-in-out); }
+
+  .h2-share { margin-right: .4rem; }
+  $socialsize: 1.3rem;
+
+  .minimal-share-button { width: 1.3rem; }
+
+  #copy-link {
+    width: calc( #{$socialsize} - .2rem);
+    height: calc( #{$socialsize} - .2rem);
+    border-radius: .3rem;
+
+    // @mixin transform($rotate, $scale, $skew, $translatex, $translatey)
+    @include transform(0deg, 1, 0deg, 0, -.7rem);
+  }
+
+  #copy-link .icon { background-size: .85rem; }
 
 
 

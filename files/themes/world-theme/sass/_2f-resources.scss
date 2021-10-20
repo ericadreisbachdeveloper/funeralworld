@@ -121,13 +121,108 @@
 
 
 
+
 // . . . . . . . . . . . . . . . . . . . . . . . . //
 
 // Resource  single
-.single-pog [data-role="main"] {
-  background: $mist;
+.single-post [data-role="main"] { background: $mist; }
+
+.breadcrumb + * { margin-top: 0; }
+
+.resource-single-h1 { color: $night; margin-top: 1.5rem; margin-bottom: .5rem; }
+
+.single-post [data-role="main"] > .container:first-of-type { padding-top: 2rem; }
+
+.breadcrumb-ol { list-style-type: none; margin: 0; padding: 0; }
+
+.breadcrumb-li { @extend %small; display: inline-block; padding-right: 2rem; position: relative; text-transform: uppercase; }
+
+.breadcrumb-li:not([data-li-current]):after {
+  width: 1rem;
+  height: 1rem;
+  background-repeat: no-repeat;
+  background-size: .4rem;
+  background-position: 50% 50%;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28' overflow='visible' xml:space='preserve'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' fill='%23181343' d='m18.892 14.175.253.329-1.242.956-.188.244-.065-.05L1.83 27.83 0 25.453l15.19-11.691L.4 2.377 2.229 0l17.314 13.326-.651.849z'/%3E%3C/svg%3E");
+
+  content: '';
+  position: absolute;
+   right: .5rem;
+   top: .35rem;
+
 }
 
-.resource-single-h1 {
-  color: $night;
+
+[data-role="main"] .breadcrumb-li [data-a][href]:not([href="#"]) { color: $sky; }
+
+[data-role="main"] .breadcrumb-li [href]:not([href="#"]) { @extend %remove-link-line; }
+
+
+
+// Single - share
+.msb-container { @include flex; @include align-items(center); margin-bottom: 1rem;  }
+
+.msb-container > * { margin-top: 0; }
+
+[data-role="main"] .h2-share { font-size: 2rem; }
+
+.h2-share { color: $night; margin-top: 0; margin-right: .75rem; }
+
+$socialsize: 2.5rem;
+
+.minimal-share-button {
+  width: $socialsize;
+  height: $socialsize;
+  display: inline-block;
+  margin-top: .2rem;
+  margin-right: .5rem;
+  margin-left: .5rem;
+}
+
+[data-role="main"] .minimal-share-button[href] { @extend %remove-link-line; position: relative; }
+
+[data-role="main"] .minimal-share-button[href] + p {
+  background: black;
+  color: white;
+  margin-top: 0;
+  position: absolute;
+  opacity: 0;
+  padding: .3rem .4rem;
+  z-index: 999;
+
+  @include transition(opacity 2s ease-in-out);
+
+  &.appear {
+    opacity: 1;
+    @include transition(opacity .5s ease-in-out);
+  }
+
+}
+
+.msb-container .icon {
+  width: 100%;
+  height: 100%;
+  fill: black;
+
+  @include transition(fill .2s ease-in-out);
+  @include hover { fill: $blue2; }
+}
+
+
+#copy-link {
+  width: calc( #{$socialsize} - .2rem);
+  height: calc( #{$socialsize} - .2rem);
+  background-color: black;
+  border-radius: .5rem;
+
+  @include transition(background-color .2s ease-in-out);
+  @include hover { background-color: $blue2; }
+}
+
+#copy-link .icon {
+  background-repeat: no-repeat;
+  background-size: 1.66rem;
+  background-position: 50% 50%;
+
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='23' viewBox='-0.001 0.498 23 23' overflow='visible' xml:space='preserve'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' fill='%23E6E7E8' d='m21.261 10.133-3.629 3.628a5.674 5.674 0 0 1-.53.471 5.877 5.877 0 0 1-3.662 1.27 5.904 5.904 0 0 1-4.673-2.271 1.249 1.249 0 0 1 .21-1.756c.521-.411 1.346-.312 1.756.211.085.107.176.21.273.307 1.3 1.299 3.562 1.301 4.861.002l3.626-3.628a3.438 3.438 0 0 0 0-4.86c-1.299-1.298-3.562-1.298-4.861 0l-2.999 3a1.25 1.25 0 0 1-.874.357h-.001c-.325 0-.634-.125-.868-.352a1.246 1.246 0 0 1-.029-1.768l3.007-3.006A5.894 5.894 0 0 1 17.065 0c1.584 0 3.075.617 4.196 1.738s1.74 2.611 1.74 4.197-.619 3.077-1.74 4.198zm-7.028-.363c.207.262.299.589.258.92a1.24 1.24 0 0 1-.468.836c-.521.41-1.346.312-1.757-.211a3.443 3.443 0 0 0-.272-.308c-1.3-1.302-3.562-1.3-4.86-.001l-3.627 3.626a3.441 3.441 0 0 0 0 4.861c1.3 1.298 3.563 1.298 4.861 0l3-3c.59-.555 1.364-.471 1.816.013.47.504.441 1.297-.063 1.767l-2.986 2.988a5.899 5.899 0 0 1-4.197 1.74c-1.586 0-3.077-.619-4.198-1.74S0 18.648 0 17.064c0-1.587.617-3.076 1.738-4.197l3.628-3.629c.168-.168.346-.326.532-.472a5.88 5.88 0 0 1 3.663-1.268c1.836 0 3.54.828 4.672 2.272z'/%3E%3C/svg%3E");
 }

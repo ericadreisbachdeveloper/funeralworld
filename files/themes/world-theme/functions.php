@@ -89,6 +89,9 @@ function deregister_css() {
 
      wp_dequeue_style( 'html5blank' );
   wp_deregister_style( 'html5blank' );
+
+	   wp_dequeue_style( 'msb-style' );
+  wp_deregister_style( 'msb-style' );
 }
 add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
@@ -106,11 +109,16 @@ $style_vsn = '1.1.06';
 //    - unminified in js/dev/scripts.js
 function dbllc_header_scripts() {
   if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-
-			wp_register_script('cloudjquery', 'https://code.jquery.com/jquery-3.3.1.min.js', array(), '3.3.1', false);
-			wp_enqueue_script('cloudjquery');
+		wp_register_script('cloudjquery', 'https://code.jquery.com/jquery-3.3.1.min.js', array(), '3.3.1', false);
+		 wp_enqueue_script('cloudjquery');
 
   }
+
+	if(is_single()) {
+		wp_register_script('resources', TDIR . '/js/dev/resources.js', array(), '1.0.1', false);
+		 wp_enqueue_script('resources');
+	}
+
 }
 add_action('wp_enqueue_scripts', 'dbllc_header_scripts', 10, 0);
 
@@ -161,7 +169,7 @@ function footer_scripts() {
 //  wp_register_script('bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.min.js', 'jquery', '4.1.1');
   // wp_enqueue_script('bootstrap');
 }
-add_action('wp_footer', 'footer_scripts');
+//add_action('wp_footer', 'footer_scripts');
 
 
 
@@ -1117,13 +1125,6 @@ add_shortcode( 'events', 'show_events' );
 function show_events( $events = null ) {
 
 	global $post;
-
-
-	/*
-	$date_to_compare = $tmw_dt = $tmw = '';
-	if   (get_field('event-end-date')) { $date_to_compare = get_field('event-end-date'); }
-	else                               { $date_to_compare = get_field('event-start-date'); }
-	*/
 
 	$tmw_dt = new DateTime('tomorrow', new DateTimeZone('UTC + 5'));
 	$tmw    = $tmw_dt->format('Ymd');

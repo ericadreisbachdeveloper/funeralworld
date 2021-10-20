@@ -1,5 +1,5 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
-<?php get_header(); ?>
+<?php get_header(); global $site_url; ?>
 
 
 
@@ -9,11 +9,57 @@
 			<section class="section">
 
 
+				<!-- src: https://www.w3.org/TR/wai-aria-practices-1.1/examples/breadcrumb/index.html -->
+				<nav aria-label="Breadcrumb" class="breadcrumb">
+					<?php $topics = get_the_terms($post, 'topic');
+
+								if ($topics) {
+									foreach ($topics as $topic) {
+
+									// 1. Home
+									echo '<ol class="breadcrumb-ol"><li class="breadcrumb-li"><a href="' . $site_url . '">Home</a> </li>';
+
+
+									// 2. ancestor topics, if they exist
+								  $ancestors = get_ancestors($topic->term_id, 'topic');
+
+									foreach($ancestors as $ancestor) {
+
+										$grand = get_term_by('id', $ancestor, 'topic');
+
+										echo '<li class="breadcrumb-li"><a href="' . $site_url . '/topic/' . $grand->slug . '">' . $grand->name . '</a></li>';
+									}
+
+
+									// 3. closest topic
+									echo '<li class="breadcrumb-li"><a href="' . $site_url . '/topic/' . $topic->slug . '">' . $topic->name . '</a></li>';
+
+
+									// 4. this page
+									echo '<li class="breadcrumb-li" data-li-current><a data-a="current-article" href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+
+									echo '</ol>';
+								} // END foreach $topics as $topic
+							} // END if $topics
+					?>
+				</nav>
+
+
 				<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 
 					<h1 class="resource-single-h1"><?php the_title(); ?> </h1>
+
+
+					<?php $args = array(
+						            'before_widget' => '<div class="msb-container">',
+												'after_widget' => '</div>',
+												'before_title' => '<h2 class="h2-share">',
+												'after_title' => '</h2>',
+												'title' => __( 'SHARE', 'mytextdomain' ),
+											);
+								msb_display_buttons($args, true); ?>
 
 
 					<?php echo _e(get_template_part('meta')); ?>

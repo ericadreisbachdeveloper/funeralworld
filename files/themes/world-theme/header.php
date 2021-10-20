@@ -63,7 +63,7 @@
 
 
 <!-- Fonts -->
-<style>@font-face{font-family:mreaves-book;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-book.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-book.woff') format('woff')}@font-face{font-family:mreaves;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-reg.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-reg.woff') format('woff')}@font-face{font-family:mreaves-ital;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-reg-ital.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-reg-ital.otf') format('woff')} </style>
+<style>@font-face{font-family:mreaves-book;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-book.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-book.woff') format('woff')}@font-face{font-family:mreaves;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-reg.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-reg.woff') format('woff')}@font-face{font-family:mreaves-ital;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-reg-ital.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-reg-ital.woff') format('woff')}</style>
 
 
 
@@ -173,7 +173,7 @@
 		          <source type="image/png"  srcset="<?= esc_url($custom_logo_png_mobile); ?>" />
 
 							<?php if($custom_logo_svg) : ?>
-							<img class="logo-img" src="<?= esc_url($custom_logo_svg); ?>" srcset="<?= esc_url($custom_logo_svg_mobile); ?> 992px" title="<?= get_bloginfo('name'); ?>" alt="logo for <?= get_bloginfo('name'); ?>"/>
+							<img class="logo-img" src="<?= esc_url($custom_logo_svg); ?>" srcset="<?= esc_url($custom_logo_svg_mobile); ?> 1x, <?= esc_url($custom_logo_svg); ?> 2x" title="<?= get_bloginfo('name'); ?>" alt="logo for <?= get_bloginfo('name'); ?>"/>
 
 							<?php else : ?>
 							<img height="80" width="80" class="logo-img" src="<?= esc_url(TDIR); ?>/img/logo.svg" title="<?= get_bloginfo('name'); ?>" alt="Logo for <?= get_bloginfo('name'); ?>" />

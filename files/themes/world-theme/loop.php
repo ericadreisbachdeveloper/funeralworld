@@ -22,7 +22,7 @@
 	<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail', ['class' => 'alignleft']); ?></a>
 
 
-	<?php _e(dbllc_excerpt()); ?>
+	<?php the_excerpt(); ?>
 
 
 	<div class="tags"><?php the_tags('<i class="fa fa-tag"></i>&nbsp;', ' ', ''); ?></div>
