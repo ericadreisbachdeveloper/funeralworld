@@ -1,0 +1,48 @@
+{
+    "key": "group_61718b3f3c891",
+    "title": "Resource White Paper (pdf)",
+    "fields": [
+        {
+            "key": "field_61718b3f4ae67",
+            "label": "PDF",
+            "name": "resource-pdf",
+            "type": "file",
+            "instructions": "Maximum file upload: 5MB; for larger uploads, post PDF to a file-sharing service like Dropbox or Google Drive, post that link, and change resource type to <strong>Website<\/strong>.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": 5,
+            "mime_types": "pdf"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "resource-type:white-paper"
+            }
+        ]
+    ],
+    "menu_order": 4,
+    "position": "side",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Field for outbound link only appears if Resource type &ldquo;Website&rdquo; is checked.",
+    "modified": 1634832881
+}

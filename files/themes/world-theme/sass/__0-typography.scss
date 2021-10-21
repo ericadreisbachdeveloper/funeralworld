@@ -1,4 +1,4 @@
-
+// Used in __1a-structure.scss
 
 %huge      { font-size: 3rem; line-height: 1.2;  }
 %large     { font-size: 2rem; line-height: 1.1; }
@@ -6,6 +6,9 @@
 %text      { font-size: 1.25rem; line-height: 1.44; }
 %footer    { font-size: 1.25rem; line-height: 1.2; }
 %small     { font-size: 1rem; line-height: 1.666; }
+
+
+%resource-text { @extend %text; }
 
 
 [data-role="main"] h1 { @extend %huge; text-transform: uppercase; }
@@ -63,6 +66,11 @@ input {
 
 
 
+// Bolding
+[data-role="main"] .meta-h2, .resource-meta [class*="meta-"] { font-family: 'mreaves-bold', sans-serif; font-weight: normal; }
+
+
+
 // Large devices (desktops, 62rem and up)
 @media (min-width: 62rem) {
 
@@ -72,6 +80,7 @@ input {
   %main-menu-li    { font-size: 1.3rem; }
   %text            { font-size: 1.4rem; }
   %offsite-menu-li { font-size: 1.1rem; line-height: 1.666; }
+  %resource-text   { font-size: 1rem; line-height: 1.666; }
   %small           { font-size: 1.1rem; line-height: 1.666; }
 
 }

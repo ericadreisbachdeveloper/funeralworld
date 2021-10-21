@@ -31,10 +31,10 @@ unicode-range: U+000-5FF; // Download only latin glyphs
 
 
 @font-face {
-  font-family:'mreaves-book';
+  font-family:'mreaves-bold';
   font-display: swap;
   unicode-range: U+000-5FF;
-  src: url('<?= TDIR; ?>/fonts/mreaves-book.eot?#iefix') format('eot'), url('<?= TDIR; ?>/fonts/mreaves-book.woff') format('woff');
+  src: url('<?= TDIR; ?>/fonts/mreaves-bold.eot?#iefix') format('eot'), url('<?= TDIR; ?>/fonts/mreaves-book.woff') format('woff'), url('<?= TDIR; ?>/fonts/mreaves-book.woff2') format('woff2');
 }
 
 

@@ -62,8 +62,8 @@
 
 
 
-<!-- Fonts -->
-<style>@font-face{font-family:mreaves-book;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-book.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-book.woff') format('woff')}@font-face{font-family:mreaves;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-reg.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-reg.woff') format('woff')}@font-face{font-family:mreaves-ital;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-reg-ital.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-reg-ital.woff') format('woff')}</style>
+<!-- Fonts - minified from /sass/__0-fonts.scss -->
+<style>@font-face{font-family:mreaves-bold;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-bold.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-bold.woff') format('woff'),url('<?= TDIR; ?>/fonts/mreaves-bold.woff2') format('woff2')}@font-face{font-family:mreaves;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-reg.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-reg.woff') format('woff')}@font-face{font-family:mreaves-ital;font-display:swap;unicode-range:U+000-5FF;src:url('<?= TDIR; ?>/fonts/mreaves-reg-ital.eot?#iefix') format('eot'),url('<?= TDIR; ?>/fonts/mreaves-reg-ital.woff') format('woff')}</style>
 
 
 
@@ -115,7 +115,7 @@
 <!-- fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
 
 
 

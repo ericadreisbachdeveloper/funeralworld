@@ -114,21 +114,25 @@
   .resource-img-a .default-resource-icon-div { @include transition(background-color .5s ease-in-out); }
 
   .h2-share { margin-right: .4rem; }
-  $socialsize: 1.3rem;
+  $msb-icon-size: 1.8rem;
 
-  .minimal-share-button { width: 1.3rem; }
 
-  #copy-link {
-    width: calc( #{$socialsize} - .2rem);
-    height: calc( #{$socialsize} - .2rem);
-    border-radius: .3rem;
-
-    // @mixin transform($rotate, $scale, $skew, $translatex, $translatey)
-    @include transform(0deg, 1, 0deg, 0, -.7rem);
+  // this is the [href]
+  .msb-container .minimal-share-button {
+    margin-right: 0;
+    margin-left: 0;
   }
 
-  #copy-link .icon { background-size: .85rem; }
+  .msb-container .icon {
+    width: calc(#{$msb-icon-size} - .6rem);
+    height: $msb-icon-size;
+  }
 
+  #copy-link .icon {
+    width: calc( #{$msb-icon-size} - .8rem);
+    height: calc( #{$msb-icon-size} - .8rem);
+    background-size: calc( #{$msb-icon-size} - 1  rem);
+  }
 
 
 
@@ -170,6 +174,23 @@
   // Resources - large
   .default-resource-icon-div { height: 14.9rem; padding: 0; }
   .default-resource-icon-div .img { position: static; }
+
+  .resource-below-hero {
+    @include flex;
+    @include justify-content(space-between);
+    @include flex-direction-row;
+  }
+
+  .resource-meta {
+    @include flex;
+    @include justify-content(space-between);
+    @include flex-direction-row;
+  }
+
+  .resource-meta [class*="meta"] + [class*="meta"], .resource-pdf { padding-top: 0; padding-left: 2rem; }
+  .resource-pdf { @include flex; }
+
+
 
 
   // Sticky Footer - large

@@ -61,14 +61,31 @@
 											);
 								msb_display_buttons($args, true); ?>
 
+					<?php if(has_post_thumbnail()) : ?>
+
+						<?php $img_id = get_post_thumbnail_id();
+						  $retina_arr = wp_get_attachment_image_src($img_id, 'large');
+						$standard_arr = wp_get_attachment_image_src($img_id, 'medium');
+				  	// [0] = url
+				  	// [1] = width
+				  	// [2] = height
+						?>
+
+							<picture class="picture resource-img-wrapper">
+								<source type="image/webp" srcset="<?php _e(esc_url($retina_arr[0])); ?>.webp 2x" media="(min-width: 561px)"><!-- retina webp -->
+								<source type="image/jpg" srcset="<?php _e(esc_url($retina_arr[0])); ?> 2x" media="(min-width: 561x)"><!-- retina jpg -->
+							  <source type="image/webp" srcset="<?php _e(esc_url($standard_arr[0])); ?>.webp"><!-- standard webp -->
+							  <img class="img" src="<?php _e(esc_url($standard_arr[0])); ?>" /><!-- standard jpg -->
+							</picture>
+
+					<?php endif; ?>
+
+
 
 					<?php echo _e(get_template_part('meta')); ?>
 
 
 					<?php the_content(); ?>
-
-
-					<div class="tags<?php if(get_the_tags() == '') : ?> -empty<?php endif; ?>"><?php the_tags('<i class="fa fa-tag"></i>&nbsp;', ' ', ''); ?></div>
 
 
 				</article>
@@ -80,19 +97,6 @@
 					<h1><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h1>
 				</article>
 				<?php endif; ?>
-
-
-
-				<div class="pagination-single">
-					<div class="pagination-div -prev">
-						<?php previous_post_link('%link', '<span class="pagination-span"><i class="fa fa-angle-double-left"></i>&nbsp;Previous</span> <br /><span class="pagination-title">%title</span>'); ?>
-					</div>
-
-					<div class="pagination-div -next">
-						<?php next_post_link('%link', '<span class="pagination-span">Next&nbsp;<i class="fa fa-angle-double-right"></i></span> <br /><span class="pagination-title">%title</span>'); ?>
-					</div>
-				</div>
-
 
 
 			</section>

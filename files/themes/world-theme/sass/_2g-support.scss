@@ -1,0 +1,16 @@
+// Support
+// css/style.css
+
+
+.-support {
+  background: $sea;
+  color: $night;
+
+  &> .container > .core-heading > .gutenberg-container {
+    &> h1, &> h2, &> h3, &> h4, &> h5, &> h6 { margin-bottom: 0; }
+    &> h1, &> h2, &> h3 { padding-bottom: 1rem; }
+  }
+}
+
+[data-role="main"] > .-support { padding-top: 2rem; }
+[data-role="main"] > .-support + .-support { padding-top: 0; padding-bottom: 1rem;  }

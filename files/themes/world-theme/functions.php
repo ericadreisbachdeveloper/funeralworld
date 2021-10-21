@@ -343,43 +343,57 @@ function doc_menu() {
 
 // 17a. Output theme image sizes
 //   useful when working with parents / children
-
-/*
-function wp_get_additional_image_sizes() {
-    global $_wp_additional_image_sizes;
-
-    if ( ! $_wp_additional_image_sizes ) {
-        $_wp_additional_image_sizes = array();
-    }
-
-    return $_wp_additional_image_sizes;
+//
+//   call in template with
+//   dbllc_get_additional_image_sizes();
+function dbllc_get_additional_image_sizes() {
+	global $_wp_additional_image_sizes;
+	print '<pre>';
+	print_r( $_wp_additional_image_sizes );
+	print '</pre>';
 }
-*/
+
+
+function dbllc_remove_plugin_image_sizes() {
+	remove_image_size('custom-size');
+	remove_image_size('1536x1536');
+	remove_image_size('2048x2048');
+}
+add_action('init', 'dbllc_remove_plugin_image_sizes');
+
 
 
 // 17b. Thumbnails
-if (function_exists('add_theme_support')) {
+function dbllc_setup() {
     add_theme_support('menus');               // Menu Support
 
     add_theme_support('post-thumbnails');
-    //add_image_size('hero', 1533, 570, true);  // Hero
-    //add_image_size('large', 700, '', true);   // Large Thumbnail
-    add_image_size('medium-retina', 1120, 600, true);   // Medium Thumbnail - resources default on retina screens
-		add_image_size('medium-standard', 560, 300, true);  // Medium Thumbnail - resources default on standard screens
-    //add_image_size('small', 120, '', true);   // Small Thumbnail
-		//add_image_size('square', 400, 400, true); // Square Thumbnail
+
+    // add_image_size('medium-retina', 1120, 600, true);    // Medium Thumbnail - resources default on retina screens
+		// UPDATE large - 1120 x 600
+		add_image_size('large', 1120, 600, false); // Large Thumbnail
+
+		add_image_size('medium', 560, 300, false); // Medium Thumbnail
+
+		add_image_size('small', 280, 280, true); // Small Thumbnail
+
+		//add_image_size('medium-standard', 560, 300, false);  // Medium Thumbnail - resources default on standard screens
+		// UPDATE medium - 560 x 300
+
+		add_image_size('half', '50%', '50%', false);         // Half Size Image - useful for retina support
 
 		// RSS enabled by parent theme
-    //add_theme_support('automatic-feed-links');
     load_theme_textdomain('dbllc', get_template_directory() . '/languages');
 }
+add_action( 'after_setup_theme', 'dbllc_setup', 100 );
 
 
-// 17c. Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
-/* function remove_thumbnail_dimensions( $html ) {
-    $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
-    return $html;
-}*/
+// 17c. Remove medium_large image size
+add_filter( 'intermediate_image_sizes', function( $sizes ) {
+	return array_filter( $sizes, function( $val ) {
+		return 'medium_large' !== $val; // Filter out 'medium_large'
+	});
+});
 
 
 
@@ -550,6 +564,7 @@ if (function_exists('register_sidebar')) {
         'before_title' => '<h3 class="footer-h3">',
         'after_title' => '</h3>'
     ));
+
 		register_sidebar(array(
 				'name' => __('Copyright', 'dbllc'),
 				'description' => __('Add copyright and other small-text footer information here. Add current year and copyright symbol with shortcode [copyright-year]', 'dbllc'),
@@ -558,6 +573,16 @@ if (function_exists('register_sidebar')) {
 				'after_widget' => '</div>',
 				'before_title' => '<h3 class="sr-only">',
 				'after_title' => '</h3>'
+		));
+
+		register_sidebar(array(
+			'name' => __('Support the Future of Funerals', 'dbllc'),
+			'description' => __('Content that appears below Resource posts and on the homepage.'),
+			'id' => 'support-the-future',
+			'before_widget' => '<div class="container-fluid -support"><div class="container">',
+			'after_widget' => '</div><!-- /.container --></div><!-- /.-support -->',
+			'before_title' => '<h2>',
+			'after_title' => '</h2>'
 		));
 }
 
@@ -962,8 +987,8 @@ function show_resources($attr, $content = null) {
 			if(has_post_thumbnail()) {
 				$img_id = get_post_thumbnail_id();
 
-				$retina_arr = wp_get_attachment_image_src($img_id, 'medium-retina');
-				$standard_arr = wp_get_attachment_image_src($img_id, 'medium-standard');
+				$retina_arr = wp_get_attachment_image_src($img_id, 'large');
+				$standard_arr = wp_get_attachment_image_src($img_id, 'medium');
 				// [0] = url
 				// [1] = width
 				// [2] = height
@@ -1047,8 +1072,8 @@ function show_resources($attr, $content = null) {
 				if(has_post_thumbnail()) {
 					$img_id = get_post_thumbnail_id();
 
-					$retina_arr = wp_get_attachment_image_src($img_id, 'medium-retina');
-					$standard_arr = wp_get_attachment_image_src($img_id, 'medium-standard');
+					  $retina_arr = wp_get_attachment_image_src($img_id, 'large');
+					$standard_arr = wp_get_attachment_image_src($img_id, 'medium');
 					// [0] = url
 					// [1] = width
 					// [2] = height
@@ -1082,16 +1107,18 @@ function show_resources($attr, $content = null) {
 				$content .= '" href="' . get_the_permalink() . '">';
 				// image
 				if ( has_post_thumbnail()) {
-				$content .= '<picture class="picture resource-img-wrapper">';
-				$content .= '<source type="image/jpg" srcset="' . $retina_arr[0] . ' 2x" media="(min-width: 992px)">';
-				$content .= '<img class="img" src="' . $standard_arr[0] . '" />';
-				$content .= '</picture>';
+					$content .= '<picture class="picture resource-img-wrapper">';
+					$content .= '<source type="image/jpg" srcset="' . $retina_arr[0] . '.webp 2x" media="(min-width: 767px)">'; /* retina webp   */
+				  $content .= '<source type="image/jpg" srcset="' . $retina_arr[0] . ' 2x" media="(min-width: 767px)">';      /* retina jpg    */
+					$content .= '<source type="image/jpg" srcset="' . $standard_arr[0] . '.webp">';                             /* standard webp */
+					$content .= '<img class="img" src="' . $standard_arr[0] . '" />';	                                          /* standard jpg  */
+					$content .= '</picture>';
 				}
 				// icon
 				else {
-				$content .= '<div class="default-resource-icon-div resource-img-wrapper">';
-				$content .= '<img class="img" src="' . $default_svg_url . '" />';
-				$content .= '</div>';
+					$content .= '<div class="default-resource-icon-div resource-img-wrapper">';
+					$content .= '<img class="img" src="' . $default_svg_url . '" />';
+					$content .= '</div>';
 				}
 				$content .= '</a>';
 
@@ -1233,10 +1260,17 @@ function show_events( $events = null ) {
 
 
 
-// 36. Hide Comments Column (not used)
+// 36. Hide Comments Column on admin side (not used)
 add_filter("manage_posts_columns", "hide_columns_in_admin");
 
 function hide_columns_in_admin($columns){
   unset($columns['comments']);
   return $columns;
+}
+
+
+// 37. Shortcode for Support the Future
+add_shortcode( 'supportthefuture', 'supportthefuture');
+function supportthefuture(){
+    dynamic_sidebar('support-the-future');
 }
