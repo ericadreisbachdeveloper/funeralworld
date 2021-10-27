@@ -150,7 +150,6 @@
 <body <?php body_class(); ?> data-svg="inlinesvg" data-clippath="clippath">
 
 
-
 	<a href="#main" id="skip-link" class="sr-only-focusable">Skip to main content</a>
 
 

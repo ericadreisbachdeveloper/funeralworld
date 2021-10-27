@@ -7,7 +7,9 @@ function onSubmit(token) {
 	document.getElementById("loginform").submit();
 }
 
-// with button id
-jQuery(document).ready(function(){
-	jQuery('#wp-submit').addClass('g-recaptcha').attr('data-sitekey', '6LcQuUIcAAAAABs6AgPjMQfHsIk2z-8sho7AFhno').attr('data-callback', 'onSubmit').attr('data-action', 'submit');
+jQuery(function($){
+	// with button id
+	$(document).ready(function(){
+		$('#wp-submit').addClass('g-recaptcha').attr('data-sitekey', '6LcQuUIcAAAAABs6AgPjMQfHsIk2z-8sho7AFhno').attr('data-callback', 'onSubmit').attr('data-action', 'submit');
+	});
 });

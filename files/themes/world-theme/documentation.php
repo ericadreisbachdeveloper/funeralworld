@@ -110,6 +110,8 @@
     <strong class="-small">Change settings in: Settings > XML Sitemap </strong>
   </li>
 
+  <li><a class="-large -strong" href="" target="_blank"></a></li>
+
   <li><a class="-large -strong" href="https://wordpress.org/plugins/hide-my-site/" target="_blank" rel="noopener">Hide My Site</a><br />
     <em>Hides and secures page during <span class="white-space: nowrap;">non-public</span> phase of&nbsp;development. </em><br />
     <a class="-small" href="https://wpscan.com/search?text=%22hide%20my%20site%22" target="_blank" rel="noopener">Check Hide My Site in the Wordpress Vulnerability Database&nbsp;></a> <br />
