@@ -159,6 +159,7 @@
 
 
 
+
 // Single - share
 .msb-container { @include flex; @include align-items(center); margin-bottom: .5rem; }
 
@@ -180,7 +181,6 @@ $socialsize: 2.5rem;
   margin-right: .5rem;
   margin-left: .5rem;
 }
-
 
 .msb-container  > p { position: relative; }
 
@@ -245,6 +245,8 @@ $msb-icon-size: 1rem;
 
 
 // Meta
+.resource-below-hero { padding-bottom: 2rem; }
+
 .resource-meta { font-size: 1rem; text-transform: uppercase; }
 
 .resource-meta, .resource-meta [href] { color: $night; }
@@ -284,11 +286,11 @@ $msb-icon-size: 1rem;
 
 [data-role="main"] [id*="post-"] { color: $night; }
 
+
 [data-role="main"] [id*="post-"] {
-  h2,h3,h4,h5,h6 { padding-bottom: 1rem; }
   p:not(last-of-type) { padding-bottom: 1rem; }
 }
 
-[data-role="main"] [id*="post-"] .core-heading h2 { @extend %text; text-transform: none;  }
+[data-role="main"] [id*="post-"] .core-heading h2 { @extend %medium; text-transform: none;  }
 
 [data-role="main"] [id*="post-"] p { font-family: 'Open Sans', serif; @extend %resource-text;}

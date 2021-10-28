@@ -14,6 +14,9 @@
 
 
 
+
+
+
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -111,6 +114,30 @@
 <link rel="stylesheet" href="<?= esc_url(TDIR); ?>/css/priority.css?ver=<?php _e($style_vsn); ?>" />
 <?php endif; ?>
 
+<!-- Wordpress blocks -->
+<?php if($isnewvisitor) : ?>
+<style><?= file_get_contents( $site_url . '/wp-includes/css/dist/block-library/style.min.css' ); ?></style>
+<?php else : ?>
+<link rel="preload" href="<?php _e($site_url); ?>/wp-includes/css/dist/block-library/style.min.css" as="style" />
+<link rel="stylesheet" href="<?= _e($site_url . '/wp-includes/css/dist/block-library/style.min.css' ); ?>" />
+<?php endif; ?>
+
+<!-- theme styles -->
+<?php if($isnewvisitor) : ?>
+<style><?= file_get_contents( TDIR . '/css/style.css'); ?> </style>
+<?php else : ?>
+<link rel="preload" href="<?= esc_url(TDIR); ?>/css/style.css?ver=<?php _e($style_vsn); ?>" as="style" />
+<link rel="stylesheet" href="<?= esc_url(TDIR); ?>/css/style.css?ver=<?php _e($style_vsn); ?>" />
+<?php endif; ?>
+
+<!-- homepage styles -->
+<?php if(is_front_page() && $isnewvisitor) : ?>
+<style><?= file_get_contents( TDIR . '/css/home.css'); ?> </style>
+<?php else : ?>
+<link rel="preload" href="<?= esc_url(TDIR); ?>/css/home.css?ver=<?php _e($style_vsn); ?>" as="style" />
+<link rel="stylesheet" href="<?= esc_url(TDIR); ?>/css/home.css?ver=<?php _e($style_vsn); ?>" />
+<?php endif; ?>
+
 
 <!-- fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,6 +169,8 @@
 
 
 <?php wp_head(); ?>
+
+
 
 
 </head>

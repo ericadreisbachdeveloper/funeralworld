@@ -3,7 +3,7 @@
 %huge      { font-size: 3rem; line-height: 1.2;  }
 %large     { font-size: 2rem; line-height: 1.1; }
 %medium    { font-size: 1.66rem; line-height: 1.2; }
-%text      { font-size: 1.25rem; line-height: 1.44; }
+%text      { font-size: 1rem; line-height: 1.8; }
 %footer    { font-size: 1.25rem; line-height: 1.2; }
 %small     { font-size: 1rem; line-height: 1.666; }
 
@@ -67,7 +67,8 @@ input {
 
 
 // Bolding
-[data-role="main"] .meta-h2, .resource-meta [class*="meta-"] { font-family: 'mreaves-bold', sans-serif; font-weight: normal; }
+[data-role="main"] .meta-h2,
+.resource-meta [class*="meta-"] { font-family: 'mreaves-bold', sans-serif; font-weight: normal; }
 
 
 
@@ -78,9 +79,8 @@ input {
   %large           { font-size: 4.5rem; }
   %medium          { font-size: 2.3rem;  }
   %main-menu-li    { font-size: 1.3rem; }
-  %text            { font-size: 1.4rem; }
+  %text            { font-size: 1.4rem; line-height: 1.44; }
   %offsite-menu-li { font-size: 1.1rem; line-height: 1.666; }
-  %resource-text   { font-size: 1rem; line-height: 1.666; }
+  %resource-text   { font-size: 1rem; line-height: 1.8; }
   %small           { font-size: 1.1rem; line-height: 1.666; }
-
 }
