@@ -551,3 +551,8 @@ figure.alignright figcaption  { text-align: right; }
   border-top: none;
   border-bottom: .1rem solid $navy;
 }
+
+.-center {
+  @include flex;
+  @include justify-content(center);
+}
