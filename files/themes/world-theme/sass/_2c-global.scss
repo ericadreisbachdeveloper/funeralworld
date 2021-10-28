@@ -76,7 +76,7 @@ html * {
 }
 
 
-[data-role="main"] [href]:not([href="#"]) { @extend %link-line; }
+[data-role="main"] [href]:not([href="#"]):not(.wp-block-button__link) { @extend %link-line; }
 
 
 %remove-link-line {
@@ -209,7 +209,7 @@ a { @include hover { cursor: pointer; } }
   &:hover, &:active, &:focus { background: $sky; color: $night; }
 }
 
-.wp-block-button__link { @extend %button; }
+.wp-block-button__link[href] { @extend %button; }
 
 .wp-block-buttons {
   @include flex-direction-col;
