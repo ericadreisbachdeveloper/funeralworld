@@ -3,12 +3,12 @@
 %huge      { font-size: 3rem; line-height: 1.2;  }
 %large     { font-size: 2rem; line-height: 1.1; }
 %medium    { font-size: 1.66rem; line-height: 1.2; }
-%text      { font-size: 1rem; line-height: 1.8; }
+%text      { font-size: 1.25rem; line-height: 1.8; }
 %footer    { font-size: 1.25rem; line-height: 1.2; }
 %small     { font-size: 1rem; line-height: 1.666; }
 
 
-%resource-text { @extend %text; }
+%resource-text { font-size: 1rem; line-height: 1.8; }
 
 
 [data-role="main"] h1 { @extend %huge; text-transform: uppercase; }
@@ -28,6 +28,7 @@
 
 
 [data-role="main"],
+[data-role="main"] .-small-h2,
 [data-role="main"] h3,
 [data-role="main"] .has-default-font-size { @extend %text; }
 

@@ -42,6 +42,8 @@
 #doc .-large { font-size: 1.2rem; }
 #doc .-small { font-size: .95rem; }
 #doc .-strong { font-weight: 700; }
+
+#doc .-code { font-family: monospace; }
 </style>
 
 <div id="doc">
@@ -76,6 +78,19 @@
 <blockquote><span style="font-family: monospace;">...school&amp;nbsp;today.</span></blockquote>
 
 <p>The nonbreaking space will be invisible from the <strong>Visual</strong> tab and on the front end. </p>
+
+
+
+<h2>Custom Classes </h2>
+<p>Custom CSS classes for use in the <strong>Advanced > Additional CSS Class(es)</strong> panel of a given Post or Page edit screen include: </p>
+
+<p><span class="-code">sky-bg</span> <br />
+  When applied to a <strong>Group</strong> block, adds a sky blue full-width background.
+</p>
+
+<p><span class="-code">night-bg</span> <br />
+  When applied to a <strong>Group</strong> block, adds a dark blue full-width background.
+</p>
 
 
 

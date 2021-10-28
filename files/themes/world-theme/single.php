@@ -105,6 +105,58 @@
 
 
 
+	<!-- START: Related Articles -->
+	<?php if ($topics != '') : ?>
+	<div class="container-fluid related-articles">
+		<div class="container">
+			<div class="corset">
+				<div class="row">
+
+				<?php $this_id = $post->ID;
+				      foreach ($topics as $topic) : ?>
+
+				<?php global $wp_query;
+					$args = array(
+						'post__not_in' => array($this_id),
+				    'post_type' => 'post',
+				    'posts_per_page' => 5,
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'topic',
+								'field' => 'slug',
+								'terms' => $topic->slug,
+							)
+						)
+				  );
+
+					$wp_query = new WP_Query( $args );
+					if ( $wp_query->have_posts() ) : ?>
+					<div class="col-md-6">
+
+						<h2 class="-small-h2">Related Articles about <?= $topic->name; ?> </h2>
+
+						<ul class="ul">
+							<?php while ( $wp_query->have_posts() ) : $wp_query->the_post();  ?>
+							<li class="li">
+								<a href="<?= esc_url(get_the_permalink()); ?>" title="<?= get_the_title(); ?>">
+									<?= get_the_title(); ?>
+								</a>
+							</li>
+							<?php endwhile; ?>
+						</ul>
+
+						</div><!-- /.col-md-6 -->
+						<?php endif; wp_reset_postdata(); endforeach; ?>
+
+				</div><!-- /.row -->
+			</div><!-- /.corset -->
+		</div><!-- /.container -->
+	</div><!-- /.container-fluid -->
+
+	<?php endif; ?>
+
+
+
 	<?php do_shortcode('[supportthefuture]'); ?>
 
 

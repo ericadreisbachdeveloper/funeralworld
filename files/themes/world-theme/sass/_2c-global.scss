@@ -193,20 +193,20 @@ a { @include hover { cursor: pointer; } }
 
 %button {
   @extend %text;
-  background: red;
-  border: none;
+  background: transparent;
+  border: .15rem solid $night;
   border-radius: 2rem;
-  color: white;
+  color: $night;
   font-family: 'mreaves', sans-serif;
   letter-spacing: .05rem;
-  padding: .95rem 1.8rem .85rem;
+  padding: .95rem 3.5rem .85rem;
   position: relative;
   text-transform: uppercase;
   -webkit-appearance: none;
 
   &:hover { cursor: pointer; }
 
-  &:hover, &:active, &:focus { background: darkred; }
+  &:hover, &:active, &:focus { background: $sky; color: $night; }
 }
 
 .wp-block-button__link { @extend %button; }
@@ -513,27 +513,36 @@ figure.alignright figcaption  { text-align: right; }
 
 
 // Close enough to hero
-.wp-block-group.teal-bg {
-  background: $teal;
+.wp-block-group.mist-bg {
+  background: $mist;
+}
+
+.wp-block-group.sea-bg,
+.wp-block-group.teal-bg, {
+  background: $sea;
   color: $navy;
 }
 
+.wp-block-group.sky-bg,
 .wp-block-group.blue-bg {
-  background: $blue;
+  background: $sky;
   color: $navy;
 }
 
+.wp-block-group.night-bg,
 .wp-block-group.navy-bg {
-  background: $navy;
+  background: $night;
   color: white;
 }
 
+[data-role="main"] .wp-block-group.night-bg [href]:not([href="#"]),
 [data-role="main"] .wp-block-group.navy-bg [href]:not([href="#"]) {
   @include linkgradient(white);
   color: white;
   @include hover { color: $teal; @include linkgradient($teal); }
 }
 
+.wp-block-group.night-bg .wp-block-separator,
 .wp-block-group.navy-bg .wp-block-separator {
   border-bottom: .1rem solid $nearwhite;
 }
