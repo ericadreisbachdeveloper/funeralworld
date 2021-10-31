@@ -3,4 +3,6 @@
 
 [data-role="main"] .event-h2 { margin: 0; text-transform: none; }
 
-.single .events-img-wrapper { @extend %single-img-wrapper; }
+.single-events .events-img-wrapper { @extend %single-img-wrapper; }
+
+.single-events .msb-container { padding-top: 1rem; }

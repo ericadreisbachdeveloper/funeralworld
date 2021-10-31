@@ -264,7 +264,7 @@
   }
 
   .resource-meta {
-    width: calc(100% - 22rem);
+    width: calc(100% - 15rem);
     @include flex;
     @include justify-content(space-between);
     @include flex-direction-row;
@@ -274,10 +274,10 @@
 
 
   .meta-time { max-width: 30%; }
-  .meta-author { max-width: 33%; }
-  .meta-tags { max-width: 37%; }
+  .meta-author { max-width: 30%; }
+  .meta-tags { max-width: 40%; }
 
-  .resource-meta [class*="meta"] + [class*="meta"], .resource-pdf { padding-top: 0; padding-left: 2rem; }
+  .resource-meta [class*="meta"] + [class*="meta"], .resource-pdf { padding-top: 0; padding-left: 1.44rem; }
 
 
 
