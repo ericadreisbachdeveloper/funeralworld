@@ -95,7 +95,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.06';
+$style_vsn = '1.1.07';
 
 
 

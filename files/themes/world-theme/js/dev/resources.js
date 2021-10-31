@@ -8,7 +8,7 @@ jQuery(function($){
   $(document).ready(function(){
 
       // run copy() onclick of #copy-link
-      $('.h2-share + p').append('<a id="copy-link" href="#" data-href="' + permalink + '"" class="minimal-share-button"><div class="icon"></div></a><p></p>');
+      $('.h2-share + p').append('<a id="copy-link" href="#" data-href="' + permalink + '" class="minimal-share-button"><div class="icon"></div></a><p></p>');
 
 
       // disable default onlick of hash link

@@ -60,6 +60,7 @@ function wor_post_types_init() {
 		'has_archive'        => true,
 		'hierarchical'       => false,
 		'menu_position'      => 10,
+    'show_in_rest'       => true,
 		'supports'           => array( 'title', 'editor', 'thumbnail', 'revisions', 'page-attributes' )
 	);
 

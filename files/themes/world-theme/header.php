@@ -106,7 +106,6 @@
 
 <!-- theme priority (above-the-fold) styles -->
 <?php global $style_vsn, $isnewvisitor; $isnewvisitor = (isset($_COOKIE['v']))? false: (function() { setcookie('v',1, time()+3600*24*14);return true;})(); ?>
-
 <?php if($isnewvisitor) : ?>
 <style><?= file_get_contents( TDIR . '/css/priority.css'); ?> </style>
 <?php else : ?>
@@ -146,7 +145,7 @@
 
 
 
-<!-- ... one of the plugins might also add this tho? ... -->
+<!-- if no plugins preload jquery ... -->
 <link rel="dns-prefetch" href="//code.jquery.com" />
 
 

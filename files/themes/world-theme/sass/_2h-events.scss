@@ -1,0 +1,6 @@
+// Support
+// css/style.css
+
+[data-role="main"] .event-h2 { margin: 0; text-transform: none; }
+
+.single .events-img-wrapper { @extend %single-img-wrapper; }

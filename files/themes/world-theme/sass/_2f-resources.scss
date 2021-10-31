@@ -4,21 +4,20 @@
 [data-role="main"] [href].resource-img-a {
   max-width: 35rem;
   display: block;
+  margin-bottom: .5rem; 
   @include linkgradient(transparent);
   @include hover { @include linkgradient(transparent); }
 }
 
 
 // .resource-img-wrapper = wrapped around <picture> AND <div>
-.resource-img-wrapper {
-  display: block;
-  margin-bottom: 1rem;
-}
+%single-img-wrapper { display: block; padding-bottom: .75rem; }
+
+.single .resource-img-wrapper { @extend %single-img-wrapper; }
 
 
-.icon-thumb .resource-img-wrapper {
-  padding: 26.785% 0;
-}
+
+.icon-thumb .resource-img-wrapper { padding: 26.785% 0; }
 
 .resource-img-wrapper {
   .img {
@@ -285,11 +284,6 @@ $msb-icon-size: 1rem;
 
 
 [data-role="main"] [id*="post-"] { color: $night; }
-
-
-[data-role="main"] [id*="post-"] {
-  p:not(last-of-type) { padding-bottom: 1rem; }
-}
 
 [data-role="main"] [id*="post-"] .core-heading h2 { @extend %medium; text-transform: none;  }
 

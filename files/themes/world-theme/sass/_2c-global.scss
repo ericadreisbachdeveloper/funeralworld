@@ -4,6 +4,8 @@
 @import '__0-typography.scss';
 
 
+
+
 // Break points
 %breakpoint {
   background: orange;
@@ -59,8 +61,6 @@ html * {
 
 
 %link-line {
-  //color: blue;
-  //color: white;
   color: $navy;
   position: relative;
   text-decoration: none;
@@ -76,12 +76,19 @@ html * {
 }
 
 
-[data-role="main"] [href]:not([href="#"]):not(.wp-block-button__link) { @extend %link-line; }
+[data-role="main"] [href]:not([href="#"]) { @extend %link-line; }
 
 
 %remove-link-line {
   @include linkgradient(transparent);
   @include hover { @include linkgradient(transparent); }
+}
+
+[data-role="main"] {
+  .wp-block-button[href],
+  .breadcrumb-li > [href] {
+    @extend %remove-link-line;
+  }
 }
 
 
@@ -199,7 +206,7 @@ a { @include hover { cursor: pointer; } }
   color: $night;
   font-family: 'mreaves', sans-serif;
   letter-spacing: .05rem;
-  padding: .95rem 3.5rem .85rem;
+  padding: .7rem 3.5rem .8rem;
   position: relative;
   text-transform: uppercase;
   -webkit-appearance: none;
@@ -209,7 +216,10 @@ a { @include hover { cursor: pointer; } }
   &:hover, &:active, &:focus { background: $sky; color: $night; }
 }
 
-.wp-block-button__link[href] { @extend %button; }
+
+[data-role="main"] .wp-block-button__link[href] { @extend %button; }
+
+
 
 .wp-block-buttons {
   @include flex-direction-col;
@@ -323,27 +333,14 @@ figure.alignright figcaption  { text-align: right; }
   }
 
 
-  /*
-  [id^="media"] {
-    [href] { display: block; float: left; }
-
-    .image {
-      width: auto;
-      height: 6rem !important;
-    }
-  }
-  */
-
   [href] {
     @extend %link-line;
     color: white;
     @include linkgradient(transparent);
-    //@include transition(color);
 
     @include hover {
       color: $teal;
       @include linkgradient(transparent);
-      //text-decoration: none;
     }
   }
 
@@ -368,8 +365,6 @@ figure.alignright figcaption  { text-align: right; }
 }
 
 .footer-copyright-row { text-align: center; }
-
-//.site-footer [class*="col"]:last-of-type { line-height: 2; }
 
 
 
