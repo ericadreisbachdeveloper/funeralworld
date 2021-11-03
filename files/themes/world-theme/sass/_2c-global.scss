@@ -29,6 +29,17 @@ html * {
 }
 
 
+// prevent top margin on headings from introducing white space among full-width Group blocks
+.wp-block-group__inner-container > .gutenberg-section:first-of-type {
+  &.core-heading {
+    h1,h2,h3,h4,h5,h6 { margin-top: 0; }
+  }
+}
+
+[data-role="main"] .article-h2 { display: inline-block; margin: 0; text-transform: none; }
+
+
+
 
 // Animation
 @mixin keyframes($animationName) {
@@ -121,7 +132,8 @@ html * {
 [data-role="main"] > .gutenberg-section.core-group > .gutenberg-container > .wp-block-group > .wp-block-group__inner-container,
 
 // article rows (homepage)
-.core-shortcode > .gutenberg-container,
+// ... but NOT event rows (homepage)
+[data-role="main"] > .wp-block-group__inner-container > .core-shortcode > .gutenberg-container,
 
 .wp-block-cover-image .wp-block-cover__inner-container,
 .wp-block-cover .wp-block-cover__inner-container,

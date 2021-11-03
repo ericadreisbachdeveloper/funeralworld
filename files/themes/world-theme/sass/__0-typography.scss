@@ -32,6 +32,7 @@
 
 [data-role="main"],
 [data-role="main"] .-small-h2,
+[data-role="main"] .article-h2,
 [data-role="main"] h3,
 [data-role="main"] .has-default-font-size { @extend %text; }
 

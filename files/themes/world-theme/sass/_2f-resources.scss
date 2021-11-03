@@ -90,18 +90,22 @@
 
   @include hover { background-size: 0 100%; }
 
-
   .icon {
-    width: 1.2rem;
-    background-color: $navy;
+    width: 1.25rem;
+    background-color: $nearblack;
     border-radius: .6rem;
     display: inline-block;
     padding: .2rem;
     @include transition(background-color .2s ease-in-out);
   }
 
-  @include hover { .icon { background-color: $teal; } }
+  @include hover { .icon { background-color: $blue2; } }
+}
 
+// icon hover background is when icons are against a block group with background color
+// ... i.e. NOT against white
+[data-role="main"] .wp-block-group[class*="-bg"] .resource-article-a[href]:not([href="#"]) {
+  @include hover { .icon { background-color: $teal; } }
 }
 
 

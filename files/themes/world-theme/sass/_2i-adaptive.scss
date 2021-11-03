@@ -183,6 +183,9 @@
 
   %container-gutter { width: calc( #{$container} - 30px); margin-right: auto; margin-left: auto; }
 
+  // Archive - large
+  [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; background-position: 50% 0; }
+
 
   // Header - large
   .-scroll {
@@ -201,7 +204,7 @@
 
 
   // Resources - large
-  .default-resource-icon-div { height: 14.9rem; padding: 0; }
+  .default-resource-icon-div { height: 13.9rem; padding: 0; }
   .default-resource-icon-div .img { position: static; }
 
 
@@ -271,7 +274,7 @@
 
 
   // Resources - wide
-  .default-resource-icon-div { height: 18.3rem; }
+  .default-resource-icon-div { height: 17rem; }
 
   .resource-below-hero {
     @include flex;
@@ -303,6 +306,10 @@
   %container-wide { width: calc(#{$container} - 30px); margin-right: auto; margin-left: auto; }
 
   %container-gutter { width: calc( #{$container} - 30px); }
+
+
+  // Archive - wide
+  [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; }
 
 
 }

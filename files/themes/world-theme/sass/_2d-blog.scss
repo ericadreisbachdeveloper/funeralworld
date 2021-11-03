@@ -2,11 +2,9 @@
 
 
 
-/* article*/ [id*="post-"] {
-  padding: 0;
-}
+/* article*/ [id*="post-"] { padding: 0; }
 
-article:after {
+[id*="post-"]:after {
   clear: both;
   content: '';
   display: block;
@@ -215,6 +213,8 @@ $pagination-indent: .7em;
 }
 
 
+.single [data-role="main"] .hentry { padding-bottom: 2rem; }
+
 
 $hentry-border: 1px;
 $hentry-top: -1px;
@@ -224,35 +224,41 @@ $hentry-top: -1px;
   &> [href] {
     background: transparent;
     display: block;
+    padding-bottom: 1rem;
     @include transition(background .2s ease-in-out);
 
     @include hover {
       background: $mist;
-
       &:before { background-size: calc(100% + 3rem) 100%; background-position: 0 0; }
     }
 
     &:before {
       @include top-btm-border($gray);
       width: 100%;
-      height: calc(100% + 1px);
+      height: calc(100% + #{$hentry-border});
       background-repeat: no-repeat;
       background-size: calc(100% - 3rem) 100%;
       background-position: 1.5rem 0;
       content: '';
       display: block;
       position: absolute;
-       top: -1px;
+       top: $hentry-top;
        left: 0;
-      z-index: 100;
+      z-index: 1;
       @include transition(background-size .2s ease-in-out, background-position .2s ease-in-out);
     }
   }
 
-  .article-h2 {
+  .archive-h2 {
+    display: inline;
     margin-top: 0;
-    padding-top: 2rem;
+
+    &:before {
+      display: block;
+      content: '';
+      height: 1.3rem;
+    }
   }
 
-  .resource-meta { padding-bottom: 2rem; }
+  .resource-meta { padding-top: .66rem; padding-bottom: .88rem; }
 }

@@ -132,7 +132,7 @@
 <!-- homepage styles -->
 <?php if(is_front_page() && $isnewvisitor) : ?>
 <style><?= file_get_contents( TDIR . '/css/home.css'); ?> </style>
-<?php else : ?>
+<?php elseif (is_front_page()) : ?>
 <link rel="preload" href="<?= esc_url(TDIR); ?>/css/home.css?ver=<?php _e($style_vsn); ?>" as="style" />
 <link rel="stylesheet" href="<?= esc_url(TDIR); ?>/css/home.css?ver=<?php _e($style_vsn); ?>" />
 <?php endif; ?>

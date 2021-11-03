@@ -674,8 +674,8 @@ function dbllc_excerpt() {
 	$output = apply_filters('convert_chars', $output);
 	$output = str_replace("&nbsp;", " ", $output);
 
-	// get the first 25 words
-	$output = implode(' ', array_slice(explode(' ', $output), 0, 20));
+	// get the first 15 words
+	$output = implode(' ', array_slice(explode(' ', $output), 0, 15));
 
 
 
@@ -1005,6 +1005,7 @@ function show_resources($attr, $content = null) {
 
 			$terms = get_the_terms($f->ID, 'resource-type');
 			$firstterm = $terms[0];
+			$icon_alt = $firstterm->name;
 
 			$default_svg = get_field('resource-icon-svg', $firstterm);
 			$default_svg_url = $default_svg['url'];
@@ -1039,22 +1040,29 @@ function show_resources($attr, $content = null) {
 			// icon
 			else {
 			$content .= '<div class="default-resource-icon-div resource-img-wrapper">';
-			$content .= '<img class="img" src="' . $default_svg_url . '" />';
+			$content .= '<picture>';
+			$content .= '<source type="image/svg+xml" srcset="' . $default_svg_url . '">';
+			$content .= '<img src="' . $default_png_url . '" alt="' . $icon_alt . ' width="100" height="100" />';
+			$content .= '</picture>';
 			$content .= '</div>';
 			}
 			$content .= '</a>';
 
 			$content .= '<a class="resource-article-a" href="';
 			$content .= get_the_permalink();
-			$content .= '" title="' . get_the_title() . '">' . get_the_title();
-			$content .= ' <img class="icon" type="image/svg" src="' . $default_svg_url . '" />';
+			$content .= '" title="' . get_the_title() . '"><h2 class="article-h2">' . get_the_title() . '</h2> &nbsp;';
+			$content .= '<picture class="icon">';
+			$content .= '<source type="image/svg+xml" srcset="' . $default_svg_url . '">';
+			$content .= '<img class="icon-img" src="' . $default_png_url . '"  alt="' . $icon_alt . '" width="14" height="14" />';
+			$content .= '</picture>';
 			$content .= '</a>';
-			$content .= '<p class="p">' . get_the_excerpt() . '</p>';
+			$content .= '<p class="p">' . dbllc_excerpt() . '</p>';
 			$content .= '</div><!-- /.col-md-6 -->';
 		}
 	}
 
 	wp_reset_query(); wp_reset_postdata();
+
 
 
 	// II. Other posts
@@ -1089,6 +1097,7 @@ function show_resources($attr, $content = null) {
 
 				$terms = get_the_terms($p->ID, 'resource-type');
 				$firstterm = $terms[0];
+				$icon_alt = $firstterm->name;
 
 				$default_svg = get_field('resource-icon-svg', $firstterm);
 				$default_svg_url = $default_svg['url'];
@@ -1113,6 +1122,7 @@ function show_resources($attr, $content = null) {
 					$content .= ' icon-thumb';
 				}
 				$content .= '" href="' . get_the_permalink() . '">';
+
 				// image
 				if ( has_post_thumbnail()) {
 					$content .= '<picture class="picture resource-img-wrapper">';
@@ -1125,17 +1135,24 @@ function show_resources($attr, $content = null) {
 				// icon
 				else {
 					$content .= '<div class="default-resource-icon-div resource-img-wrapper">';
-					$content .= '<img class="img" src="' . $default_svg_url . '" />';
+					$content .= '<picture>';
+					$content .= '<source type="image/svg+xml" srcset="' . $default_svg_url . '">';
+					$content .= '<img src="' . $default_png_url . '" alt="' . $icon_alt . ' width="100" height="100" />';
+					$content .= '</picture>';
 					$content .= '</div>';
 				}
+
 				$content .= '</a>';
 
 				$content .= '<a class="resource-article-a" href="';
 				$content .= get_the_permalink();
-				$content .= '" title="' . get_the_title() . '">' . get_the_title();
-				$content .= ' <img class="icon" type="image/svg" src="' . $default_svg_url . '" />';
+				$content .= '" title="' . get_the_title() . '"><h2 class="article-h2">' . get_the_title() . '</h2> &nbsp;';
+				$content .= '<picture class="icon">';
+				$content .= '<source type="image/svg+xml" srcset="' . $default_svg_url . '">';
+				$content .= '<img class="icon-img" src="' . $default_png_url . '"  alt="' . $icon_alt . '" width="14" height="14" />';
+				$content .= '</picture>';
 				$content .= '</a>';
-				$content .= '<p class="p">' . get_the_excerpt() . '</p>';
+				$content .= '<p class="p">' . dbllc_excerpt() . '</p>';
 				$content .= '</div><!-- /.col-md-6 -->';
 			}
 		}
@@ -1198,7 +1215,7 @@ function show_events( $events = null ) {
 	$p = new WP_Query( $args );
 
 	if ($p->have_posts()) {
-		$events  = '<div class="col-md-12"><div class="row">';
+		$events  = '<div class="row">';
 
 		while($p->have_posts()) {
 			$p->the_post();
@@ -1258,7 +1275,7 @@ function show_events( $events = null ) {
 			$events .= '</div><!-- /.col-sm-6 -->';
 		}
 
-		$events .= '</div><!-- /.row --></div><!-- /.col-md-6 -->';
+		$events .= '</div><!-- /.row -->';
 	}
 
 	wp_reset_postdata();
