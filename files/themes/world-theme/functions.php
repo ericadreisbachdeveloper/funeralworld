@@ -1263,7 +1263,7 @@ function show_events( $events = null ) {
 				$date = strtotime($date);
 
 				$date = date("M j, Y", $date);
-				$events .= '<span class="date">' . $date . '</span> <br />';
+				$events .= '<span class="calendar"></span> <span class="date">' . $date . '</span> <br />';
 			}
 
 

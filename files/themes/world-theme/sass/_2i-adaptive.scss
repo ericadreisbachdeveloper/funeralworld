@@ -18,9 +18,7 @@
     @include flex-direction-row;
   }
 
-  .resource-meta {
-    width: calc(100% - 22rem);
-  }
+  .single .resource-meta { width: calc(100% - 22rem); }
 
   .resource-pdf { @include flex; }
 }
@@ -68,6 +66,7 @@
   %container { margin-right: auto; margin-left: auto; }
 
   // max-width: 720px
+  .deck,
   .wp-block-pullquote,
   .core-paragraph > .gutenberg-container {
     max-width: 47rem;
@@ -220,7 +219,7 @@
 
 
   // Sticky Footer - large
-  $footerh: 34rem;
+  $footerh: 33.5rem;
   .wrapper { min-height: 100vh; margin-bottom: -$footerh; }
   .wrapper:after { content: ''; display: block; clear: both; }
   .wrapper:after, .site-footer { height:$footerh; }
@@ -257,9 +256,9 @@
 
 
 
-
+// Wide devices
 // Extra large devices (large desktops, 75rem and up)
-@media (min-width: 75rem) {
+@media (min-width: 79rem) {
 
   // Breakpoint - wide
   %breakpoint { background: beige; content: 'WIDE'; }
@@ -282,25 +281,30 @@
     @include flex-direction-row;
   }
 
-  .resource-meta {
+  .single .resource-meta {
     width: calc(100% - 15rem);
+  }
+
+  .resource-meta {
     @include flex;
     @include justify-content(flex-start);
     @include flex-direction-row;
   }
 
-  .resource-pdf { @include flex; }
+  .resource-pdf { @include flex; @include flex-direction-col; }
 
   .meta-time { max-width: 30%; }
   .meta-author { max-width: 30%; }
   .meta-tags { max-width: 40%; }
 
-  .resource-meta [class*="meta"] + [class*="meta"], .resource-pdf { padding-top: 0; padding-left: 2.44rem; }
+  .resource-meta [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 2.44rem; }
+  .single .resource-pdf { padding-top: .66rem; }
 
 
 
   // Structure - wide
-  $container: 70rem;
+  //$container: 70rem;
+  $container: 76rem;
   %container { width: $container; }
 
   %container-wide { width: calc(#{$container} - 30px); margin-right: auto; margin-left: auto; }

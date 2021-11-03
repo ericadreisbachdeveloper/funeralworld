@@ -9,6 +9,9 @@
   @include hover { @include linkgradient(transparent); }
 }
 
+.resource-img-a .img { max-width: 100%; height: auto; }
+
+
 
 // .resource-img-wrapper = wrapped around <picture> AND <div>
 %single-img-wrapper { display: block; padding-bottom: .75rem; }
@@ -105,6 +108,7 @@
 // icon hover background is when icons are against a block group with background color
 // ... i.e. NOT against white
 [data-role="main"] .wp-block-group[class*="-bg"] .resource-article-a[href]:not([href="#"]) {
+                   .icon { background: $night; }
   @include hover { .icon { background-color: $teal; } }
 }
 
@@ -254,12 +258,22 @@ $msb-icon-size: 1rem;
 
 .resource-meta, .resource-meta [href] { color: $night; }
 
-.resource-meta [class*="meta"] + [class*="meta"], .resource-pdf { padding-top: .5rem; }
+.resource-meta [class*="meta"] + [class*="meta"],
+.resource-pdf { padding-top: .5rem; }
 
 [data-role="main"] .meta-h2 {
   display: inline-block;
   font-size: 1rem;
   margin-top: 0;
+}
+
+
+.single [data-role="main"] .hentry .resource-meta { padding-bottom: .5rem; }
+.single .resource-pdf { padding-top: 0; }
+
+.resource-pdf {
+  padding-top: 0.66rem;
+  padding-bottom: 0.88rem;
 }
 
 .resource-pdf [href] {
@@ -317,7 +331,23 @@ $msb-icon-size: 1rem;
   .li:first-of-type > [href] { margin-top: .5rem; }
   .li:not(:last-of-type) > [href] { margin-bottom: 1rem; }
 
-  //.ul + .-small-h2 { padding-top: 2rem; }
-
   .col-md-6 + .col-md-6 { padding-top: 2rem; }
+}
+
+
+// Download PDF
+[data-role="main"] .wp-block-button__link[href*="pdf"] {
+
+  padding: .7rem 3rem .7rem 3.5rem;
+
+  &:after {
+    display: inline-block;
+    width: 1.8rem;
+    height: .8em;
+    content: '';
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='32' overflow='visible' xml:space='preserve'%3E%3Cdefs%3E%3Cpath id='a' d='M0 0h26v31.571H0z'/%3E%3C/defs%3E%3Cpath fill='%23181244' d='M26 25.071v5.571a.93.93 0 0 1-.929.929H.929A.929.929 0 0 1 0 30.643v-5.571a.93.93 0 0 1 .929-.929h24.143c.512 0 .928.416.928.928m-13.617-4.877a.93.93 0 0 0 1.234 0l8.357-7.429a.93.93 0 0 0-.617-1.624h-5.571V.929A.928.928 0 0 0 14.857 0h-3.715a.928.928 0 0 0-.928.929v10.214H4.643a.928.928 0 0 0-.617 1.623l8.357 7.428z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 100% 50%;
+  }
 }

@@ -85,6 +85,7 @@
 					<?php echo _e(get_template_part('meta')); ?>
 
 
+
 					<?php the_content(); ?>
 
 
@@ -133,7 +134,7 @@
 					if ( $wp_query->have_posts() ) : ?>
 					<div class="col-md-6">
 
-						<h2 class="-small-h2">Related Articles about <?= $topic->name; ?> </h2>
+						<h2 class="small-h2">Related Articles about <?= $topic->name; ?> </h2>
 
 						<ul class="ul">
 							<?php while ( $wp_query->have_posts() ) : $wp_query->the_post();  ?>

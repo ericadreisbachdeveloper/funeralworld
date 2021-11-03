@@ -575,3 +575,6 @@ figure.alignright figcaption  { text-align: right; }
   @include flex;
   @include justify-content(center);
 }
+
+
+[data-role="main"] .deck { padding-bottom: 1.44rem; }

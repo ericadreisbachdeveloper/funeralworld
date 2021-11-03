@@ -4,19 +4,19 @@
 
 
 <main data-role="main">
+
+
 	<div class="container">
-		<div class="corset">
-			<section class="section">
-
-				<h1>Tagged: <?php single_tag_title(); ?></h1>
-
-				<?php get_template_part('loop'); ?>
-
-				<?php get_template_part('pagination'); ?>
-
-			</section>
-		</div>
+		<h1>Tagged: <?php single_tag_title(); ?></h1>
 	</div>
+
+
+	<?php get_template_part('loop'); ?>
+	
+
+	<?php get_template_part('pagination'); ?>
+
+
 </main>
 
 

@@ -19,6 +19,7 @@
 
 [data-role="main"] .has-large-font-size { @extend %large; margin-bottom: .2rem; }
 
+[data-role="main"] .deck,
 [data-role="main"] h2,
 [data-role="main"] .has-medium-font-size { @extend %medium; margin-bottom: .3rem; }
 
@@ -31,10 +32,12 @@
 
 
 [data-role="main"],
-[data-role="main"] .-small-h2,
+[data-role="main"] .small-h2,
 [data-role="main"] .article-h2,
 [data-role="main"] h3,
 [data-role="main"] .has-default-font-size { @extend %text; }
+
+[data-role="main"] .small-h2 { text-transform: none; }
 
 
 input {
@@ -75,6 +78,8 @@ input {
 [data-role="main"] .meta-h2,
 .resource-meta [class*="meta-"] { font-family: 'mreaves-bold', sans-serif; font-weight: normal; }
 
+.resource-pdf { font-family: 'mreaves-bold', sans-serif; font-weight: normal; text-transform: uppercase; @extend %resource-text; line-height: 1.2; }
+
 
 
 // Large devices (desktops, 62rem and up)
@@ -90,4 +95,6 @@ input {
   %large           { font-size: 4.5rem; }
   %huge            { font-size: 3.5rem; }
 
+
+  .resource-pdf { line-height: 1.2; }
 }
