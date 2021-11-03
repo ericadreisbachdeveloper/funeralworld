@@ -8,7 +8,7 @@
 		<div class="corset">
 			<section class="section">
 
-				<h1 class="sr-only"><?php single_tag_title(); ?></h1>
+				<h1>Tagged: <?php single_tag_title(); ?></h1>
 
 				<?php get_template_part('loop'); ?>
 

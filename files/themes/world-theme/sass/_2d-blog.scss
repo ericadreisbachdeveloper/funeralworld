@@ -2,10 +2,8 @@
 
 
 
-article {
-  margin-top: 2em;
-  margin-bottom: 2em;
-
+/* article*/ [id*="post-"] {
+  padding: 0;
 }
 
 article:after {
@@ -119,6 +117,7 @@ article:after {
 
 
 // Pagination - Single
+/*
 $pagination-indent: .7em;
 
 .pagination, .pagination-single { @extend %clear; }
@@ -137,7 +136,7 @@ $pagination-indent: .7em;
   }
 
 
-  a {
+  [href] {
     background: rgba(0,0,0,0);
     display: block;
     float: left;
@@ -164,19 +163,28 @@ $pagination-indent: .7em;
   }
 }
 
+*/
+
+
+
 
 
 // Pagination - Archive
 .pagination.-archive {
+  padding: 2rem 0;
   font-size: 1.2rem;
   text-align: center;
 
-  a, span {
-    min-width: 1.5em;
+  [href], [aria-current] {
+    min-width: 1.5rem;
     display: inline-block;
   }
 
-  .current { color: white; position: relative; }
+  .current {
+    border-radius: 50%;
+    color: white;
+    position: relative;
+  }
 
   .current:after {
     display: block;
@@ -192,6 +200,9 @@ $pagination-indent: .7em;
 }
 
 
+// Pagination
+.pagination.-archive .current { background: $night; }
+
 
 
 // Blog nav shows current when viewing archive / single / etc. pages
@@ -201,4 +212,47 @@ $pagination-indent: .7em;
   li#menu-item-96 {
     //@extend %current-top-nav;
   }
+}
+
+
+
+$hentry-border: 1px;
+$hentry-top: -1px;
+
+[data-role="main"] .hentry {
+
+  &> [href] {
+    background: transparent;
+    display: block;
+    @include transition(background .2s ease-in-out);
+
+    @include hover {
+      background: $mist;
+
+      &:before { background-size: calc(100% + 3rem) 100%; background-position: 0 0; }
+    }
+
+    &:before {
+      @include top-btm-border($gray);
+      width: 100%;
+      height: calc(100% + 1px);
+      background-repeat: no-repeat;
+      background-size: calc(100% - 3rem) 100%;
+      background-position: 1.5rem 0;
+      content: '';
+      display: block;
+      position: absolute;
+       top: -1px;
+       left: 0;
+      z-index: 100;
+      @include transition(background-size .2s ease-in-out, background-position .2s ease-in-out);
+    }
+  }
+
+  .article-h2 {
+    margin-top: 0;
+    padding-top: 2rem;
+  }
+
+  .resource-meta { padding-bottom: 2rem; }
 }

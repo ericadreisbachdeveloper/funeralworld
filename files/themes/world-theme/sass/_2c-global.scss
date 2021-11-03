@@ -76,7 +76,7 @@ html * {
 }
 
 
-[data-role="main"] [href]:not([href="#"]) { @extend %link-line; }
+[data-role="main"] [href] { @extend %link-line; }
 
 
 %remove-link-line {
@@ -85,6 +85,7 @@ html * {
 }
 
 [data-role="main"] {
+  [href="#"],
   .wp-block-button[href],
   .breadcrumb-li > [href] {
     @extend %remove-link-line;

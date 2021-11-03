@@ -102,7 +102,6 @@ displaysearch.addEventListener('click', function(e){
 
 
 // 5. Links in menu with id including the word "social" open in new window
-// 5. Links in menu with id including the word "social" open in new window
 document.querySelectorAll('[class*="menu"][id*="social-"] li a').forEach(sociallink => {
   sociallink.setAttribute('target', '_blank');
   sociallink.setAttribute('rel', 'noopener');
@@ -131,3 +130,50 @@ if ( loginform )  {
     document.getElementById(labelfor).setAttribute('placeholder', placeholder);
   });
 }
+
+
+
+// 8. Change on scroll
+const scrollElements = document.querySelectorAll(".-scroll");
+
+
+const elementInView = (el, dividend = 1)   => {
+  const elementTop = el.getBoundingClientRect().top;
+
+  return (
+    elementTop <=
+    (window.innerHeight || document.documentElement.clientHeight) / dividend
+  );
+};
+
+const elementOutofView = (el) => {
+  const elementTop = el.getBoundingClientRect().top;
+
+  return (
+    elementTop > (window.innerHeight || document.documentElement.clientHeight)
+  );
+};
+
+
+const displayScrollElement = (element) => {
+  element.classList.add("scrolled");
+};
+
+const hideScrollElement = (element) => {
+  element.classList.remove("scrolled");
+};
+
+
+const handleScrollAnimation = () => {
+  scrollElements.forEach((el) => {
+    if (elementInView(el, 1.25)) {
+      displayScrollElement(el);
+    } else if (elementOutofView(el, 1.25)) {
+      hideScrollElement(el)
+    }
+  })
+}
+
+window.addEventListener("scroll", () => {
+  handleScrollAnimation();
+});

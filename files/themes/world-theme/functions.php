@@ -114,6 +114,7 @@ function dbllc_header_scripts() {
 		 wp_enqueue_script('resources');
 	}
 
+
 }
 add_action('wp_enqueue_scripts', 'dbllc_header_scripts', 10, 0);
 
@@ -294,30 +295,41 @@ function my_login_logo_url() {
 
 
 // 15j. Exclude login page template from native search results
-//      and exclude Kitchen Sink template from native search results
-//      src: https://stackoverflow.com/a/7880760
+//      also exclude Kitchen Sink
+//      src: https://stackoverflow.com/a/28983318
 function exclude_page_templates_from_search($query) {
 
     global $wp_the_query;
 
-		if ( ($wp_the_query === $query) && (is_search()) && ( ! is_admin()) ) {
+		$excluded = array(
+				'key' => '_wp_page_template',
+				'value' => array('page-kitchensink.php', 'page-login.php'),
+				'compare' => 'NOT IN',
+		);
 
-			$args = array_merge($wp_the_query->query, array(
-				'meta_query' => array(
-					array(
-						'key' => '_wp_page_template',
-						'value' => 'page-login.php',
-						'compare' => '!='
-					),
-					array(
-						'key' => 'post_title',
-						'value' => 'Kitchen Sink',
-						'compare' => '!='
-					)
-				)
-			));
-			query_posts( $args );
-		}
+		$no_template = array(
+			'key' => '_wp_page_template',
+			'compare' => 'NOT EXISTS',
+		);
+
+
+    if ( ($wp_the_query === $query) && (is_search()) && ( ! is_admin()) ) {
+
+        $meta_query =
+            array(
+
+                // set OR
+                'relation' => 'OR',
+
+                // remove pages with excluded templates from results
+                $excluded,
+
+                // show entries without a '_wp_page_template' key (posts)
+                $no_template,
+            );
+
+        $query->set('meta_query', $meta_query);
+    }
 }
 add_filter('pre_get_posts','exclude_page_templates_from_search');
 
@@ -491,7 +503,7 @@ function dbllc_nav($loc) {
 		'fallback_cb'     => 'wp_page_menu',
     'items_wrap'      => '<ul class="navbar-nav nav-' . $loc . '">%3$s</ul>',
 		'depth'           => 0,   /* 0 means all levels of hierarchy */
-		'after'						=> '<a class="open-submenu-a" href="#" tabindex="-1"></a>', /* remove mobile touch-to-open caret from tab order */
+		'after'						=> '<a class="open-submenu-a" href="#" tabindex="-1"></a>'/*,  remove mobile touch-to-open caret from tab order */
 	));
 }
 
@@ -631,9 +643,9 @@ remove_filter('the_excerpt', 'wpautop');
 
 
 // 27b. Custom excerpts
-function dbllc_excerpt_more() {
+function dbllc_excerpt() {
 	global $post; $output = '';
-	/*
+
 	$output =  get_the_content($post->ID);
 
 	// turn closing tags into spaces
@@ -665,16 +677,17 @@ function dbllc_excerpt_more() {
 	// get the first 25 words
 	$output = implode(' ', array_slice(explode(' ', $output), 0, 20));
 
-	*/
+
 
 	// add an ellipsis
 	$output = $output . '&nbsp;&hellip;';
 
 	return $output;
+	//echo $output;
 
 }
 
-add_filter( 'excerpt_more', 'dbllc_excerpt_more', 999);
+add_filter( 'excerpt_more', 'dbllc_excerpt', 999);
 
 
 
@@ -1268,4 +1281,12 @@ function hide_columns_in_admin($columns){
 add_shortcode( 'supportthefuture', 'supportthefuture');
 function supportthefuture(){
     dynamic_sidebar('support-the-future');
+}
+
+
+// 38. Shortcode for Search Form
+add_shortcode( 'searchform', 'searchform');
+function searchform($search) {
+	$search = include(locate_template('searchform.php'));
+
 }

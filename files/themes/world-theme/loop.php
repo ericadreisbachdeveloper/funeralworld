@@ -4,30 +4,18 @@
 
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<a title="<?= get_the_title(); ?>">
 
 
-	<?php if ( has_post_thumbnail()) : ?>
-
-		<?php $img_id = get_post_thumbnail_id(); $img_array = wp_get_attachment_image_src($img_id, "medium"); $img = $img_array[0]; ?>
-
-	<?php endif; ?>
+	<h2><?php the_title(); ?> </h2>
 
 
-	<h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
-
-
-	<?php echo _e(get_template_part('meta')); ?>
-
-
-	<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail', ['class' => 'alignleft']); ?></a>
-
-
-	<?php the_excerpt(); ?>
+	<?= _e(get_template_part('meta')); ?>
 
 
 	<div class="tags"><?php the_tags('<i class="fa fa-tag"></i>&nbsp;', ' ', ''); ?></div>
 
-
+	</a>
 </article>
 <?php endwhile; ?>
 

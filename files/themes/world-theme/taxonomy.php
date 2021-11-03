@@ -7,7 +7,9 @@
 	<section class="gutenberg-section">
 		<div class="gutenberg-container">
 
-			<h1 class="sr-only"><?php _e( 'Archives', 'dbllc' ); ?></h1>
+      <?php $term = get_queried_object(); ?>
+
+			<h1>Topic: <?= $term->name; ?> </h1>
 
 			<?php get_template_part('loop'); ?>
 

@@ -1,7 +1,6 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
 
 
-<div class="resource-below-hero">
 
   <div class="resource-meta">
     <div class="meta-time">
@@ -10,15 +9,16 @@
 
     <div class="meta-author">
       <h2 class="meta-h2">AUTHOR: </h2>
-      <?php the_author_posts_link(); ?>
+      <?php $author = ''; $author = get_the_author(); print_r($author); ?>
     </div>
+
 
     <?php $tags = get_the_tags(); if ($tags) : ?>
     <div class="meta-tags">
-      <h2 class="meta-h2">TAGGED:</h2> <?php $c = count($tags); if($c > 1)  { the_tags(', '); } else { the_tags(''); } ?>
+      <h2 class="meta-h2">TAGGED:</h2> <?php $c = count($tags); if($c >= 1) { echo 'tag'; } else { 'no tag'; } ?>
     </div>
     <?php endif; ?>
+
+
+
   </div><!-- /.resource-meta -->
-
-
-</div><!-- /.resource-below-hero -->

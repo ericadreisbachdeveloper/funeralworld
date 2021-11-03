@@ -144,10 +144,6 @@
 					<?php endif; ?>
 
 
-
-					<?php // echo _e(get_template_part('meta')); ?>
-
-
 					<?php the_content(); ?>
 
 
