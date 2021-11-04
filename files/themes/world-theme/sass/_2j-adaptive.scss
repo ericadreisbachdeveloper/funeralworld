@@ -156,6 +156,8 @@
   .date-register-div { @include flex-direction-row; @include justify-content(flex-start); }
   .date-time-div { min-width: 30%; }
 
+  .default-resource-icon-div { @include transition(background-color .2s ease-in-out); }
+
 
 
   // Footer - medium

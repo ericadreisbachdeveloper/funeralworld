@@ -44,17 +44,20 @@
 .events-h3 { margin-top: .2rem; }
 
 
-.events-a { display: block; }
 
+[data-role="main"] [href].events-a {
+  @extend %remove-link-line;
+  display: block;
+  margin-bottom: .5rem;
 
-[data-role="main"] [href].events-a { margin-bottom: .5rem; }
+  @include hover { .default-resource-icon-div  { background-color: $blue2; } }
+}
 
 
 
 .date-register-div {
   @include flex;
   @include flex-direction-col;
-  //@include justify-content(space-between);
 }
 
 

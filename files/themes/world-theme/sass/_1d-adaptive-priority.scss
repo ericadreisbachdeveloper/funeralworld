@@ -3,6 +3,9 @@
 // Small devices (landscape phones, 37.5rem and up)
 @media (min-width: 37.5rem) {
 
+  .mobile-hide { display: block; }
+
+
 }
 
 
@@ -20,6 +23,7 @@
 
 // Large devices (desktops, 62rem and up)
 @media (min-width: 62rem) {
+
 
 
   // 1. Header - large
