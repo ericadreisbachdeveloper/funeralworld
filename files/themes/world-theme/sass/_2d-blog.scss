@@ -219,46 +219,49 @@ $pagination-indent: .7em;
 $hentry-border: 1px;
 $hentry-top: -1px;
 
-[data-role="main"] .hentry {
+[data-role="main"] {
+  .search, .archive {
+    .hentry {
+      &> [href] {
+        background: transparent;
+        display: block;
+        padding-bottom: 1rem;
+        @include transition(background .2s ease-in-out);
 
-  &> [href] {
-    background: transparent;
-    display: block;
-    padding-bottom: 1rem;
-    @include transition(background .2s ease-in-out);
+        @include hover {
+          background: $mist;
+          &:before { background-size: calc(100% + 3rem) 100%; background-position: 0 0; }
+        }
 
-    @include hover {
-      background: $mist;
-      &:before { background-size: calc(100% + 3rem) 100%; background-position: 0 0; }
-    }
+        &:before {
+          @include top-btm-border($gray);
+          width: 100%;
+          height: calc(100% + #{$hentry-border});
+          background-repeat: no-repeat;
+          background-size: calc(100% - 3rem) 100%;
+          background-position: 1.5rem 0;
+          content: '';
+          display: block;
+          position: absolute;
+           top: $hentry-top;
+           left: 0;
+          z-index: 1;
+          @include transition(background-size .2s ease-in-out, background-position .2s ease-in-out);
+        }
+      }
 
-    &:before {
-      @include top-btm-border($gray);
-      width: 100%;
-      height: calc(100% + #{$hentry-border});
-      background-repeat: no-repeat;
-      background-size: calc(100% - 3rem) 100%;
-      background-position: 1.5rem 0;
-      content: '';
-      display: block;
-      position: absolute;
-       top: $hentry-top;
-       left: 0;
-      z-index: 1;
-      @include transition(background-size .2s ease-in-out, background-position .2s ease-in-out);
+      .archive-h2 {
+        display: inline;
+        margin-top: 0;
+
+        &:before {
+          display: block;
+          content: '';
+          height: 1.3rem;
+        }
+      }
+
+      .resource-meta { padding-top: .66rem; padding-bottom: .88rem; }
     }
   }
-
-  .archive-h2 {
-    display: inline;
-    margin-top: 0;
-
-    &:before {
-      display: block;
-      content: '';
-      height: 1.3rem;
-    }
-  }
-
-  .resource-meta { padding-top: .66rem; padding-bottom: .88rem; }
 }

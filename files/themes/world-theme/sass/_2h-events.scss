@@ -48,3 +48,16 @@
 
 
 [data-role="main"] [href].events-a { margin-bottom: .5rem; }
+
+
+
+.date-register-div {
+  @include flex;
+  @include flex-direction-col;
+  //@include justify-content(space-between);
+}
+
+
+.register-div {
+  padding-top: 1rem;
+}

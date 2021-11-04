@@ -187,3 +187,40 @@ $toggle_bottom: 2rem;
   @include optional-at-root('::-moz-placeholder') { @content; }
   @include optional-at-root(':-ms-input-placeholder') { @content; }
 }
+
+
+
+
+// Structure
+// Container
+%container,
+%container-corset {
+  /*
+  width: calc(100% - 3rem)
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+  */
+  width: 100%;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.gutenberg-container .corset { @extend %container-corset; }
+
+
+//.site-header > .gutenberg-container,
+
+// allow .core-group to have full-bleed background color ...
+[data-role="main"] > .gutenberg-section:not(.core-cover):not(.core-group) > .gutenberg-container,
+
+// ... but put .core-group contents within %container width
+[data-role="main"] > .gutenberg-section.core-group > .gutenberg-container > .wp-block-group > .wp-block-group__inner-container,
+
+// article rows (homepage)
+// ... but NOT event rows (homepage)
+[data-role="main"] > .wp-block-group__inner-container > .core-shortcode > .gutenberg-container,
+
+[data-role="main"] .wp-block-cover .wp-block-cover__inner-container,
+.container {
+  @extend %container;
+}

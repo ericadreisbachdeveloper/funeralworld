@@ -52,66 +52,76 @@
 					<h1 class="resource-single-h1"><?php the_title(); ?> </h1>
 
 
-					<?php
-					if(get_field('event-end-date')) {
-						$display_date = '';
+					<div class="date-register-div">
 
-						// get start
-						$start = get_field('event-start-date');
-						$start = strtotime($start);
-						$start_d = date('j', $start);
-						$start_m = date('F', $start);
-						$start_y = date('Y', $start);
+						<div class="date-time-div">
 
-						$end = get_field('event-end-date');
-						$end = strtotime($end);
-						$end_d = date('j', $end);
-						$end_m = date('F', $end);
-						$end_y = date('Y', $end);
+						<?php if(get_field('event-end-date')) {
+							$display_date = '';
 
-						// different years
-						if ($start_y !== $end_y) {
-							$display_date = $start_m . ' ' . $start_d . ', ' . $start_y . ' &ndash; ' . $end_m . ' ' . $end_d . ', ' . $end_y;
+							// get start
+							$start = get_field('event-start-date');
+							$start = strtotime($start);
+							$start_d = date('j', $start);
+							$start_m = date('F', $start);
+							$start_y = date('Y', $start);
+
+							$end = get_field('event-end-date');
+							$end = strtotime($end);
+							$end_d = date('j', $end);
+							$end_m = date('F', $end);
+							$end_y = date('Y', $end);
+
+							// different years
+							if ($start_y !== $end_y) {
+								$display_date = $start_m . ' ' . $start_d . ', ' . $start_y . ' &ndash; ' . $end_m . ' ' . $end_d . ', ' . $end_y;
+							}
+							// different months
+							elseif ($start_m !== $end_m) {
+								$display_date = $start_m . ' ' . $start_d . ' &ndash; ' . $end_m . ' ' . $end_d . ', ' . $start_y;
+							}
+							// same month + year
+							else {
+								$display_date = $start_m . ' ' . $start_d . ' &ndash; '. $end_d . ', ' . $start_y;
+							}
+
+							$display_date = '<span class="date">' . $display_date . '</span> <br />';
+
 						}
-						// different months
-						elseif ($start_m !== $end_m) {
-							$display_date = $start_m . ' ' . $start_d . ' &ndash; ' . $end_m . ' ' . $end_d . ', ' . $start_y;
-						}
-						// same month + year
+
 						else {
-							$display_date = $start_m . ' ' . $start_d . ' &ndash; '. $end_d . ', ' . $start_y;
+							$date = get_field('event-start-date');
+
+							// convert to unix timestamp
+							$date = strtotime($date);
+
+							$date = date("F j, Y", $date);
+
+							$display_date = '<span class="date">' . $date . '</span> <br />';
 						}
 
-						$display_date = '<span class="date">' . $display_date . '</span> <br />';
-
-					}
-
-					else {
-						$date = get_field('event-start-date');
-
-						// convert to unix timestamp
-						$date = strtotime($date);
-
-						$date = date("F j, Y", $date);
-
-						$display_date = '<span class="date">' . $date . '</span> <br />';
-					}
-
-					echo '<h2 class="event-h2">' . $display_date . '</h2>'; ?>
+						echo '<h2 class="event-h2">' . $display_date . '</h2>'; ?>
 
 
 
+						<?php $display_time = ''; if(get_field('event-end-time') && get_field('event-start-time')) : ?>
 
-					<?php $display_time = ''; if(get_field('event-end-time') && get_field('event-start-time')) : ?>
+							<?php $display_time = '<h2 class="event-h2">' . get_field('event-start-time') . ' &ndash; ' . get_field('event-end-time') . '</h2>'; ?>
 
-						<?php $display_time = '<h2 class="event-h2">' . get_field('event-start-time') . ' &ndash; ' . get_field('event-end-time') . '</h2>'; ?>
+						<?php elseif (get_field('event-start-time')) : ?>
 
-					<?php elseif (get_field('event-start-time')) : ?>
+							<?php $display_time = '<h2 class="event-h2">' . get_field('event-start-time') . '</h2>'; ?>
 
-						<?php $display_time = '<h2 class="event-h2">' . get_field('event-start-time') . '</h2>'; ?>
+						<?php endif; echo $display_time; ?>
+						</div><!-- /.date-time-div -->
 
-					<?php endif; echo $display_time; ?>
+						<?php if(get_field('registration-link')) : ?>
+						<div class="register-div">
+							<a class="registration wp-block-button__link" href="<?= esc_url(get_field('registration-link')); ?>" target="_blank" rel="noopener">Register</a>
+						</div><!-- /.register-div -->
+						<?php endif; ?>
 
+					</div><!-- /.date-register-div -->
 
 
 

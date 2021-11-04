@@ -351,3 +351,8 @@ $msb-icon-size: 1rem;
     background-position: 100% 50%;
   }
 }
+
+
+[data-role="main"] .registration[href] {
+  @extend %remove-link-line;
+}

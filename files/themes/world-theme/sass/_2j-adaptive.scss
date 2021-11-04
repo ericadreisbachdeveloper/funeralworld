@@ -21,6 +21,11 @@
   .resource-pdf { @include flex; @include align-items(flex-start); }
 
   .single .resource-pdf { padding-top: .66rem; }
+
+
+  // Events - small
+  .date-register-div { @include flex-direction-row; @include justify-content(space-between); }
+  .register-div { padding-top: 0; }
 }
 
 
@@ -60,10 +65,6 @@
   %breakpoint { background: yellowgreen; content: 'MEDIUM'; }
 
 
-
-  // Structure - medium
-  %container-corset { margin-top: 0; margin-bottom: 0; }
-  %container { margin-right: auto; margin-left: auto; }
 
   // max-width: 720px
   .deck,
@@ -151,6 +152,11 @@
   }
 
 
+  // Events - medium
+  .date-register-div { @include flex-direction-row; @include justify-content(flex-start); }
+  .date-time-div { min-width: 30%; }
+
+
 
   // Footer - medium
    #menu-footer, #menu-social { text-align: center; }
@@ -176,18 +182,6 @@
 
   // Breakpoint - large
   %breakpoint { background: dodgerblue; content: 'LARGE'; }
-
-
-  // Structure - large
-  $container: 57rem;
-  %container { width: $container; }
-
-  %container-corset { width: 48rem; margin-right: auto; margin-left: auto; }
-
-  %container-gutter { width: calc( #{$container} - 30px); margin-right: auto; margin-left: auto; }
-
-  // Archive - large
-  [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; background-position: 50% 0; }
 
 
   // Header - large
@@ -302,22 +296,5 @@
   .meta-tags { max-width: 40%; }
 
   .resource-meta [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 2.44rem; }
-
-
-
-
-  // Structure - wide
-  //$container: 70rem;
-  $container: 76rem;
-  %container { width: $container; }
-
-  %container-wide { width: calc(#{$container} - 3rem); margin-right: auto; margin-left: auto; }
-
-  %container-gutter { width: calc( #{$container} - 3rem); }
-
-
-  // Archive - wide
-  [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; }
-
 
 }

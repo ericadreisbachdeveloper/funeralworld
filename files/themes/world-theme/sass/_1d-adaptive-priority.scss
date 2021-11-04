@@ -10,6 +10,10 @@
 // Medium devices (tablets, 48rem and up)
 @media (min-width: 48rem) {
 
+  // Structure - medium
+  %container-corset { margin-top: 0; margin-bottom: 0; }
+  %container { margin-right: auto; margin-left: auto; }
+
 }
 
 
@@ -463,8 +467,24 @@
   .logo-img { max-width: 27rem; height: auto; }
 
 
+
   // Hero - large
   .gutenberg-container > .wp-block-cover { min-height: 40rem; }
+
+
+
+  // Structure - large
+  $container: 57rem;
+  %container { width: $container; }
+
+  %container-corset { width: 48rem; margin-right: auto; margin-left: auto; }
+
+  %container-gutter { width: calc( #{$container} - 30px); margin-right: auto; margin-left: auto; }
+
+  // Archive - large
+  [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; background-position: 50% 0; }
+
+
 
 }
 
@@ -474,9 +494,24 @@
 //@media (min-width: 75rem) {
 @media (min-width: 79rem) {
 
-  $headerh: 10rem;
+
+  // Structure - wide
+  //$container: 70rem;
+  $container: 76rem;
+  %container { width: $container; }
+
+  %container-wide { width: calc(#{$container} - 3rem); margin-right: auto; margin-left: auto; }
+
+  %container-gutter { width: calc( #{$container} - 3rem); }
+
+
+  // Archive - wide
+  [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; }
+
 
   // Header - wide
+  $headerh: 10rem;
+
   .site-header {
     width: 100%;
     background: $navy;
@@ -486,7 +521,7 @@
   }
 
   $container: 76rem;
-  .site-header > .gutenberg-container { width: calc( #{$container} - 3rem); margin-right: auto; margin-left: auto; }
+  .site-header > .gutenberg-container { width: $container; margin-right: auto; margin-left: auto; }
 
 
   .logo-img { max-width: unset; }

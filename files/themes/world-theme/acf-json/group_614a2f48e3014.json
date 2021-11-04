@@ -86,6 +86,25 @@
             },
             "display_format": "g:i a",
             "return_format": "g:i a"
+        },
+        {
+            "key": "field_6184241ca30a0",
+            "label": "Registration link (optional)",
+            "name": "registration-link",
+            "type": "text",
+            "instructions": "If this event has an off-site registration link, add here; link will appear as a button in the event header.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -105,5 +124,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1632255347
+    "modified": 1636050008
 }
