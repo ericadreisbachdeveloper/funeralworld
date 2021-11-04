@@ -98,6 +98,7 @@ html * {
 [data-role="main"] {
   [href="#"],
   .wp-block-button[href],
+  .events-a[href],
   .breadcrumb-li > [href] {
     @extend %remove-link-line;
   }
@@ -242,6 +243,16 @@ a { @include hover { cursor: pointer; } }
 
 
 [data-role="main"] .wp-block-button__link[href] { @extend %button; }
+
+
+%button_against_dark_bg {
+  @extend %button;
+  background: red;
+  border: .15rem solid red;
+  color: white;
+
+  &:hover, &:active, &:focus { background: $land; border: .15rem solid $land; }
+}
 
 
 
@@ -578,3 +589,10 @@ figure.alignright figcaption  { text-align: right; }
 
 
 [data-role="main"] .deck { padding-bottom: 1.44rem; }
+
+
+
+
+
+// Login
+.page-template-page-login [data-role="main"] { padding-bottom: 2rem; }

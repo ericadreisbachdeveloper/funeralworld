@@ -24,7 +24,7 @@
 files/themes/**/zz-*
 
 
-# DON'T track most of wp-content/
+# DON'T track most of files/
 # the intent is to track just files/themes/ and files/mu-plugins/
 files/index.php
 files/infinitewp/

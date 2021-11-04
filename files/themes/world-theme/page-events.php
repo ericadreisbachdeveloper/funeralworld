@@ -106,26 +106,11 @@
 			          else {
 			            $display_date = $start_m . ' ' . $start_d . ', ' . $start_y;
 			          }
-			    ?>
+						?>
 
 
+					  <?php include(locate_template('events-thumb.php')); ?>
 
-
-						<?php if(has_post_thumbnail()) : ?>
-
-						<?php $img_id = get_post_thumbnail_id();
-						  $retina_arr = wp_get_attachment_image_src($img_id, 'large');
-						$standard_arr = wp_get_attachment_image_src($img_id, 'medium'); ?>
-
-						<a class="events-a" href="<?= esc_url(get_the_permalink()); ?>" title="<?= get_the_title(); ?>">
-
-							<picture class="picture resource-img-a">
-								<source type="image/jpg" srcset="<?= esc_url($retina_arr[0]); ?> 2x" media="(min-width: 992px)">
-								<img width="560" height="300" class="img" src="<?= esc_url($standard_arr[0]); ?>" />
-							</picture>
-
-						</a>
-						<?php endif; ?>
 
 				    <a href="<?= esc_url(get_the_permalink()); ?>" title="<?= get_the_title(); ?>"><h2 class="small-h2 events-h2"><?php the_title(); ?> </h2></a>
 						<h3 class="events-h3"><?= $display_date; ?></h3>

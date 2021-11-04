@@ -1,0 +1,24 @@
+// Legacy - css/style.css
+
+
+// no map file + compressed
+// avoid errors in production when page seeks a missing map file
+// sass --watch sass/__1-priority.scss:css/priority.css sass/__2-style.scss:css/style.css sass/__3-home.scss:css/home.css sass/__4-legacy.scss:css/legacy.css --style compressed --sourcemap=none
+
+
+
+[data-svg="inlinesvg"] { .pngbg { background-image: none !important; } }
+
+
+[data-svg="no-inlinesvg"] {
+
+  img[src*="svg"] { visibility: hidden; }
+
+  .pngbg {
+    display: block;
+    background-position: 50% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+}

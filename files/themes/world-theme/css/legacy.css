@@ -1,0 +1,1 @@
+[data-svg="inlinesvg"] .pngbg{background-image:none !important}[data-svg="no-inlinesvg"] img[src*="svg"]{visibility:hidden}[data-svg="no-inlinesvg"] .pngbg{display:block;background-position:50% 50%;background-size:contain;background-repeat:no-repeat}

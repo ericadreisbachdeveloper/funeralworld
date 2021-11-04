@@ -88,6 +88,7 @@ function deregister_css() {
 
 	   wp_dequeue_style( 'msb-style' );
   wp_deregister_style( 'msb-style' );
+
 }
 add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 

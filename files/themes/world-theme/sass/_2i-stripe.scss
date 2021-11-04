@@ -1,0 +1,69 @@
+// Stripe Donation boxes
+// css/style.css
+// over-riding  /plugins/stripe-payments/public/assets/css/public.css              (styles modal)
+//        and   /plugins/stripe-payments/public/views/templates/default/style.css  (injected inline, styles button)
+
+
+
+[data-role="main"] {
+
+  .asp_product_item {
+    border: unset;
+    box-shadow: none;
+    margin-top: none;
+    margin-bottom: unset;
+    padding: unset;
+  }
+
+  .asp_product_name,
+  .asp_product_description,
+  .asp_price_container {
+    display: none;
+  }
+
+  .asp_all_buttons_container {
+    @include flex;
+    @include justify-content(center);
+  }
+
+  .asp_product_buy_btn.blue,
+  .asp_product_buy_btn {
+    border-color: unset;
+    color: unset !important;
+
+    text-decoration: none;
+    font: unset;
+
+    padding: unset;
+    text-transform: unset;
+    height: auto;
+    border-radius: unset;
+    vertical-align: unset;
+
+    vertical-align: middle;
+    border: 0;
+
+    text-shadow: unset;
+
+    -webkit-box-shadow: unset;
+    -moz-box-shadow: unset;
+    box-shadow: unset;
+  }
+
+  .gutenberg-container .asp_product_buy_btn,
+  .gutenberg-container .asp_product_buy_btn.blue {
+    @extend %button_against_dark_bg;
+
+    @include hover {
+      //color: white !important;
+
+      text-shadow: unset;
+
+      -webkit-box-shadow: unset;
+      -moz-box-shadow: unset;
+      box-shadow: unset;
+    }
+  }
+
+
+}

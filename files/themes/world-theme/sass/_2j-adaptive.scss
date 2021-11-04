@@ -18,9 +18,9 @@
     @include flex-direction-row;
   }
 
-  .single .resource-meta { width: calc(100% - 22rem); }
+  .resource-pdf { @include flex; @include align-items(flex-start); }
 
-  .resource-pdf { @include flex; }
+  .single .resource-pdf { padding-top: .66rem; }
 }
 
 
@@ -84,6 +84,7 @@
   // Classes - medium
   %link-line { @include transition(background-image .2s ease-in-out, background-size .2s ease-in-out, color .2s ease-in-out); }
   %button { @include transition(background .2s ease-in-out); }
+  %button_against_dark_bg { @include transition(background .2s ease-in-out, border .2s ease-in-out); }
 
   .wp-block-buttons {
     @include flex-direction-row;
@@ -118,6 +119,9 @@
   [data-role="main"] [href].resource-img-a { max-width: unset; }
 
   .default-resource-icon-div .img { position: relative; top: 50%; }
+
+
+  .single .resource-meta { width: calc(100% - 22rem); }
 
 
   [data-role="main"] .h2-share { font-size: 1rem; }
@@ -298,7 +302,7 @@
   .meta-tags { max-width: 40%; }
 
   .resource-meta [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 2.44rem; }
-  .single .resource-pdf { padding-top: .66rem; }
+
 
 
 

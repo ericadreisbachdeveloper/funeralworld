@@ -97,20 +97,27 @@
 </script>
 
 
-
 <!-- 2. detect SVG support and update <body> attribute if needed - unminified version in THEME/js/dev/svg-support.js -->
 <script>
-document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||document.body.setAttribute("data-svg","no-inlinesvg");
+if (!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1")) {
+  document.body.setAttribute('data-svg', 'no-inlinesvg');
+
+  var head  = document.getElementsByTagName('head')[0];
+  var link  = document.createElement('link');
+  link.id   = cssId;
+  link.rel  = 'stylesheet';
+  link.type = 'text/css';
+  link.href = '<?= TDIR; ?>/css/legacy.css';
+  link.media = 'all';
+  head.appendChild(link);
+}
+
 </script>
+
 
 <!-- 3. detect clip-path support and update <body> attribute if needed - unminified in THEME/js/dev/clip-path-support.js -->
 <!-- unminified version in THEME/js/dev -->
 <script>var areClipPathShapesSupported=function(){for(var t="clipPath",e=["webkit","moz","ms","o"],a=[t],r=document.createElement("testelement"),p=0,l=e.length;p<l;p++){var o=e[p]+t.charAt(0).toUpperCase()+t.slice(1);a.push(o)}for(p=0,l=a.length;p<l;p++){var n=a[p];if(""===r.style[n]&&(r.style[n]="polygon(50% 0%, 0% 100%, 100% 100%)",""!==r.style[n]))return!0}return!1};areClipPathShapesSupported()||document.body.setAttribute("data-clippath","no-clippath");</script>
-
-
-
-
-<?php global $style_vsn, $site_url, $isnewvisitor; ?>
 
 
 

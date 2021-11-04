@@ -17,10 +17,11 @@
 @import '_2f-resources.scss';             // Resources styling
 @import '_2g-support.scss';               // Support the Future, Stripe customizations
 @import '_2h-events.scss';                // Events
-@import '_2i-adaptive.scss';              // larger viewports
-@import '_2j-legacy.scss';                // legacy styles for old browsers
+@import '_2i-stripe.scss';                // legacy styles for old browsers
+@import '_2j-adaptive.scss';              // larger viewports
+
 
 
 // no map file + compressed
 // avoid errors in production when page seeks a missing map file
-// sass --watch sass/__1-priority.scss:css/priority.css sass/__2-style.scss:css/style.css sass/__3-home.scss:css/home.css --style compressed --sourcemap=none
+// sass --watch sass/__1-priority.scss:css/priority.css sass/__2-style.scss:css/style.css sass/__3-home.scss:css/home.css sass/__4-legacy.scss:css/legacy.css --style compressed --sourcemap=none
