@@ -1318,6 +1318,7 @@ function stripe_custom_css() {
 	echo $path;
 
 	if ($path == '/Library/WebServer/Documents') { $path = '/Library/WebServer/Documents/world'; }
+	else                                         { $path = $path . '/snmrzntpnq'; }
 
 	$stripe_css_mods = file_get_contents( $path . '/files/themes/world-theme/css/pp-combined.min.css');
 
