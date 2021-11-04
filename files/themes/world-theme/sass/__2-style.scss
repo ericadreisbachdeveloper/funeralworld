@@ -24,4 +24,4 @@
 
 // no map file + compressed
 // avoid errors in production when page seeks a missing map file
-// sass --watch sass/__1-priority.scss:css/priority.css sass/__2-style.scss:css/style.css sass/__3-home.scss:css/home.css sass/__4-legacy.scss:css/legacy.css --style compressed --sourcemap=none
+// sass --watch sass/__1-priority.scss:css/priority.css sass/__2-style.scss:css/style.css sass/__3-home.scss:css/home.css sass/__4-legacy.scss:css/legacy.css sass/__5-pp-combined.scss:css/pp-combined.min.css --style compressed --sourcemap=none

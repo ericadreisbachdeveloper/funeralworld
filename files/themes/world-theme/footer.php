@@ -111,8 +111,8 @@ if (!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Imag
   link.media = 'all';
   head.appendChild(link);
 }
-
 </script>
+
 
 
 <!-- 3. detect clip-path support and update <body> attribute if needed - unminified in THEME/js/dev/clip-path-support.js -->

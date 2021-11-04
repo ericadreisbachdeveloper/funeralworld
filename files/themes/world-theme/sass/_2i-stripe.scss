@@ -50,13 +50,11 @@
     box-shadow: unset;
   }
 
-  .gutenberg-container .asp_product_buy_btn,
-  .gutenberg-container .asp_product_buy_btn.blue {
-    @extend %button_against_dark_bg;
+  .gutenberg-section .asp_product_buy_btn,
+  .gutenberg-section .asp_product_buy_btn.blue {
+    @extend %button;
 
     @include hover {
-      //color: white !important;
-
       text-shadow: unset;
 
       -webkit-box-shadow: unset;
@@ -65,5 +63,12 @@
     }
   }
 
-
+  .gutenberg-section.core-cover .asp_product_buy_btn,
+  .gutenberg-section.core-cover .asp_product_buy_btn.blue {
+    @extend %button_against_dark_bg;
+  }
 }
+
+
+
+// Modal form

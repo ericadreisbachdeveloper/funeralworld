@@ -261,7 +261,7 @@
 
 
 // Wide devices
-// Extra large devices (large desktops, 75rem and up)
+// Extra large devices (large desktops, 79rem and up)
 @media (min-width: 79rem) {
 
   // Breakpoint - wide
@@ -311,9 +311,9 @@
   $container: 76rem;
   %container { width: $container; }
 
-  %container-wide { width: calc(#{$container} - 30px); margin-right: auto; margin-left: auto; }
+  %container-wide { width: calc(#{$container} - 3rem); margin-right: auto; margin-left: auto; }
 
-  %container-gutter { width: calc( #{$container} - 30px); }
+  %container-gutter { width: calc( #{$container} - 3rem); }
 
 
   // Archive - wide

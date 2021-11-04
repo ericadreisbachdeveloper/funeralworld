@@ -229,8 +229,7 @@
 
 					<div id="navmenu" class="navbar-collapse collapse">
 						<!-- <div class="container-on-mobile"> -->
-							<?php dbllc_nav('main-menu'); dbllc_nav('offsite-menu'); ?>
-							w
+						<?php dbllc_nav('main-menu'); dbllc_nav('offsite-menu'); ?>
 						<!-- </div> -->
 					</div>
 

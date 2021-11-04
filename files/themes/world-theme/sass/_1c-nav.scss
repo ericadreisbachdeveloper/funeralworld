@@ -10,6 +10,14 @@ $headerh: 6rem;
 
 .site-header { background: $navy; }
 
+.site-header > .gutenberg-container {
+  width: 100%;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+
+
 .logo-a {
   //width: calc(100% - 5rem);
   width: 100%;

@@ -1308,3 +1308,24 @@ function searchform($search) {
 	$search = include(locate_template('searchform.php'));
 
 }
+
+
+
+// 39. Write custom CSS to Stripe iframe
+function stripe_custom_css() {
+
+	$path = $_SERVER['DOCUMENT_ROOT'];
+
+	if ($path == '/Library/WebServer/Documents') { $path = '/Library/WebServer/Documents/world'; }
+
+	$stripe_css_mods = file_get_contents( $path . '/files/themes/world-theme/css/pp-combined.min.css');
+
+	$stripe_css_loc = $path . '/files/plugins/stripe-payments/public/views/templates/default/pp-combined.min.css';
+
+	$stripe_css = fopen($stripe_css_loc, 'w') or die('Unable to open file!');
+
+	fwrite($stripe_css, $stripe_css_mods);
+	fclose($stripe_css);
+}
+
+add_action('wp_footer', 'stripe_custom_css', 99);

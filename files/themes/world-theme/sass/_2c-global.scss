@@ -124,7 +124,7 @@ html * {
 .gutenberg-container .corset { @extend %container-corset; }
 
 
-.site-header > .gutenberg-container,
+//.site-header > .gutenberg-container,
 
 // allow .core-group to have full-bleed background color ...
 [data-role="main"] > .gutenberg-section:not(.core-cover):not(.core-group) > .gutenberg-container,
