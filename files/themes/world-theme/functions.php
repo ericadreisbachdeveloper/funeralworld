@@ -1315,7 +1315,6 @@ function searchform($search) {
 function stripe_custom_css() {
 
 	$path = $_SERVER['DOCUMENT_ROOT'];
-	echo $path;
 
 	if ($path == '/Library/WebServer/Documents') { $path = '/Library/WebServer/Documents/world'; }
 	else                                         { $path = $path . '/snmrzntpnq'; }
