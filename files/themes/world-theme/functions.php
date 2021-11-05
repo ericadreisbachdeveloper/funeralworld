@@ -20,7 +20,7 @@ function inspect_scripts() {
 	}
 }
 */
-//add_action( 'wp_print_scripts', 'inspect_scripts', 99 );
+// add_action( 'wp_print_scripts', 'inspect_scripts', 99 );
 
 
 
@@ -36,6 +36,11 @@ function deregister_javascript() {
 
        wp_dequeue_script( 'html5blankscripts' );
     wp_deregister_script( 'html5blankscripts' );
+
+		if (!is_single()) {
+				wp_dequeue_script( 'msb-script' );
+		 wp_deregister_script( 'msb-script' );
+		}
 	}
 }
 add_action('wp_enqueue_scripts', 'deregister_javascript', 100 );

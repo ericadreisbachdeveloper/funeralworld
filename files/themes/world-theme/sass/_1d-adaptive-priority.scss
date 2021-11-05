@@ -33,11 +33,13 @@
   #navmenu { float: right; }
 
   // position two major elements within #navmenu
-  #navmenu .navbar-nav,
-  #navmenu .search {
+  #navmenu .navbar-nav{
     float: left;
     display: inline-block;
   }
+
+  #navmenu .search { position: absolute; }
+
 
   $headerh: 10rem;
   %siteheaderh { height: $headerh; }

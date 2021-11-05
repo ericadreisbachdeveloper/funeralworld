@@ -23,7 +23,6 @@
 
 
   // Archive - small
-
   .archive .resource-meta  {
     @include flex;
   }
@@ -40,7 +39,8 @@
 
 
   // Events - small
-  .date-register-div { @include flex-direction-row; @include justify-content(space-between); }
+  .date-register-div { @include flex; @include flex-direction-row; @include justify-content(space-between); }
+  .register-div { padding-top: 0; }
 }
 
 
@@ -248,6 +248,8 @@
   }
 
 
+  // Events - large
+  .register-div { padding-top: 1rem; }
 
 
 
@@ -334,9 +336,9 @@
 
   // Events - wide
   .events-picture, .events-content-div { float: left; }
-  .events-picture      { width: 35rem; }
+  .events-picture     { width: 35rem; }
   .events-content-div { width: calc(100% - 35rem); }
-  .events-content-div > [class*="gutenberg-section"] { padding-left: 5rem; }
+  .events-content-div > [class*="gutenberg-section"] { padding-left: 4rem; }
 
   // vertically align the element, whatever it is, flush to top
   .events-content-div > [class*="gutenberg-section"] > .gutenberg-container > * { margin-top: 0; }

@@ -150,7 +150,7 @@
 						<source type="image/webp" srcset="<?php _e(esc_url($retina_arr[0])); ?>.webp 2x" media="(min-width: 561px)"><!-- retina webp -->
 						<source type="image/jpg" srcset="<?php _e(esc_url($retina_arr[0])); ?> 2x" media="(min-width: 561x)"><!-- retina jpg -->
 					  <source type="image/webp" srcset="<?php _e(esc_url($standard_arr[0])); ?>.webp"><!-- standard webp -->
-					  <img alt="<?= $alt; ?>" class="img" src="<?php _e(esc_url($standard_arr[0])); ?>" /><!-- standard jpg -->
+					  <img width="<?= $standard_arr[1]; ?>" height="<?= $standard_arr[2]; ?>" alt="<?= $alt; ?>" class="img" src="<?php _e(esc_url($standard_arr[0])); ?>" /><!-- standard jpg -->
 					</picture>
 
 				<?php endif; ?>
