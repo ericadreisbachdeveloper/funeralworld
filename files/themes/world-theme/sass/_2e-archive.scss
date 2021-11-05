@@ -49,8 +49,20 @@
   }
 }
 
+
 // Apply to title [href] in grid display
-%grid-title { background-position: 100% 100%; background-size: calc(100% - 1.5rem); }
+%grid-title {
+  background-position: 1.5rem 100%;
+  background-size: calc(100% - 1.5rem);
+
+  @include hover {
+    background-size: 0;
+
+    .title-icon { background: $sea; }
+  }
+
+  &+ .p { padding-left: 1.5rem; }
+}
 
 [data-role="main"] {
   .wp-block-group.navy-bg, .wp-block-group.night-bg {
@@ -124,6 +136,8 @@
   border-radius: .6rem;
   display: inline-block;
   padding: .2rem;
+  position: relative;
+   top: .1rem; 
 }
 
 
