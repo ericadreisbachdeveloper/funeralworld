@@ -1,0 +1,10 @@
+// Single - style.css
+
+
+.single [data-role="main"] > .container { padding-bottom: 2rem; }
+
+.single, .page-template-page-events  {
+  [data-role="main"] {
+    background: $mist; 
+  }
+}

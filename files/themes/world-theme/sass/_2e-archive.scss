@@ -1,0 +1,396 @@
+// Archive - style.css
+
+
+
+// Grid display (Home, Events)
+// apply to the [href] of the grid's image
+%grid-display {
+  @extend %remove-link-line;
+
+  max-width: 35rem;
+  display: block;
+  margin-bottom: .5rem;
+
+  @include linkgradient(transparent);
+  @include hover { @include linkgradient(transparent); }
+
+  .icon-wrapper-div {
+    width: 100%;
+    padding: 16.995% 0;
+    @include flex;
+    @include justify-content(center);
+    @include align-items(center);
+  }
+
+
+  // NO featured image
+  &.-icon { @include hover { background: $blue2; } }
+
+
+  // events WITH a featured image
+  &.-photo {
+    position: relative;
+
+    &:before {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      content: '';
+      display: block;
+      opacity: .7;
+      position: absolute;
+       left: 0;
+       top: 0;
+    }
+
+    .img { max-width: 100%; }
+
+    @include hover { &:before { background: $blue2; } }
+  }
+}
+
+// Apply to title [href] in grid display
+%grid-title { background-position: 100% 100%; background-size: calc(100% - 1.5rem); }
+
+[data-role="main"] {
+  .wp-block-group.navy-bg, .wp-block-group.night-bg {
+    .resource-article-a[href]:not([href="#"]) {
+      @extend %grid-title;
+    }
+  }
+}
+
+
+
+// Homepage
+[data-role="main"] {
+  .wp-block-group.navy-bg, .wp-block-group.night-bg {
+    .resource-img-a[href]:not([href="#"]) {
+      @extend %grid-display;
+
+      &.-icon { background: $blue2; }
+
+      &.-icon { @include hover { background: $sea; } }
+    }
+  }
+}
+
+
+
+
+// Blog nav shows current when viewing archive / single / etc. pages
+
+// change menu id as needed
+.single, .archive {
+  li#menu-item-96 {
+    //@extend %current-top-nav;
+  }
+}
+
+
+
+
+// Search and Archive display
+
+[id*="post-"] { padding: 0; }
+
+[id*="post-"]:after {
+  clear: both;
+  content: '';
+  display: block;
+}
+
+
+
+
+
+/*
+[data-role="main"] .resource-article-a[href] {
+
+
+  @include hover {
+    .title-icon {
+      background-color: $sea;
+    }
+  }
+}
+*/
+
+
+
+.title-icon {
+  width: 1.25rem;
+  background-color: transparent;
+  border-radius: .6rem;
+  display: inline-block;
+  padding: .2rem;
+}
+
+
+
+$hentry-border: 1px;
+$hentry-top: -1px;
+
+
+.search, .archive {
+  [data-role="main"] {
+    .hentry {
+      &> [href] {
+        @extend %remove-link-line;
+
+        background: transparent;
+        display: block;
+        padding-bottom: 1.1rem;
+        @include transition(background .2s ease-in-out);
+
+        @include hover {
+          background: $mist;
+          &:before { background-size: calc(100% + 3rem) 100%; background-position: 0 0; }
+          .archive-icon { background: $blue2; }
+        }
+
+        &:before {
+          @include top-btm-border($gray);
+          height: calc(100% + #{$hentry-border});
+          background-repeat: no-repeat;
+          content: '';
+          display: block;
+          position: absolute;
+           top: $hentry-top;
+           left: 0;
+          z-index: 1;
+          @include transition(background-size .2s ease-in-out, background-position .2s ease-in-out);
+        }
+      }
+
+      .archive-h2 {
+        display: inline;
+        margin-top: 0;
+
+        &:before {
+          display: block;
+          content: '';
+          height: 1.3rem;
+        }
+      }
+
+      .resource-meta { padding-top: .66rem; padding-bottom: .22rem; }
+    }
+  }
+}
+
+
+.archive-icon {
+  width: 1.25rem;
+  background: $night;
+  display: inline-block;
+  padding: .2rem;
+  border-radius: .6rem;
+  @include transition(background .2s ease-in-out);
+}
+
+
+
+
+
+
+
+
+// Pagination - Archive
+.pagination.-archive {
+  padding: 2rem 0;
+  font-size: 1.2rem;
+  text-align: center;
+
+  [href], [aria-current] {
+    min-width: 1.5rem;
+    display: inline-block;
+  }
+
+  .current {
+    border-radius: 50%;
+    color: white;
+    position: relative;
+  }
+
+  .current:after {
+    display: block;
+    content: '';
+    position: absolute;
+     top: -.04rem;
+     left: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    z-index: -1;
+    border-radius: .75rem;
+  }
+}
+
+.pagination.-archive .current { background: $night; }
+
+
+
+
+
+
+
+/*
+.meta-div {
+   width: 100%;
+   min-height: 4em;
+   margin-bottom: 1.4em;
+
+   display: -ms-flexbox;
+    -webkit-display: flex;
+     display: flex;
+
+  align-items: -ms-stretch;
+   -webkit-align-items: stretch;
+    align-items: stretch;
+
+  flex-wrap: -ms-wrap;
+   -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+   &:after {
+     content: '';
+     clear: both;
+     display: block;
+   }
+
+  .meta-time, .meta-author, .meta-categories {
+    display: -ms-flexbox;
+     -webkit-display: flex;
+      display: flex;
+
+    align-items: -ms-center;
+     -webkit-align-items: center;
+      align-items: center;
+
+   &> .span {
+     display: inline-block;
+     padding-right: 1em;
+     padding-left: 1em;
+   }
+  }
+
+  .meta-time { width: 100%; }
+  .meta-author { width: 50%; }
+  .meta-categories { width: 50%; }
+
+  .meta-time {
+    background: gray;
+    color: white;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+  }
+
+  .meta-author, .meta-categories {
+    border-bottom: 1px solid gray;
+    text-align: left;
+  }
+
+  .meta-author > .span, .meta-categories > .span {
+    white-space: nowrap;
+  }
+}
+*/
+
+
+
+
+/*
+.meta-div .meta-author > .span, .meta-div .meta-categories > .span, .tags {
+  &> .fa {
+    color: navy;
+  }
+}
+*/
+
+
+
+// Tags
+/*
+.tags {
+  font-size: .9rem;
+  margin-top: 2em;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+
+  a {
+    display: inline-block;
+    margin-left: .2em;
+    margin-right: .2em;
+  }
+}
+
+.single-post .tags {
+  border-top: .05em solid gray;
+  border-bottom: .05em solid gray;
+
+  &.-empty {
+    border-top: none;
+  }
+}
+
+.pagination-title {
+  text-indent: 1em;
+}
+*/
+
+
+
+// Pagination - Single
+/*
+$pagination-indent: .7em;
+
+.pagination, .pagination-single { @extend %clear; }
+
+.pagination-div {
+
+  &.-prev .pagination-title { text-indent: $pagination-indent - .2em; }
+
+  &.-next {
+    float: right;
+    text-align: right;
+
+    .pagination-title {
+      margin-right: $pagination-indent;
+    }
+  }
+
+
+  [href] {
+    background: rgba(0,0,0,0);
+    display: block;
+    float: left;
+    padding: 1em;
+    @include transition(background .2s ease-in-out);
+
+    @include hover {
+      background: rgba(0,0,0,.08);
+      text-decoration: none;
+    }
+  }
+
+  .pagination-span {
+    color: gray;
+    font-size: .9rem;
+    text-transform: uppercase;
+    @include hover { color: gray; }
+  }
+
+  .pagination-title {
+    display: inline-block;
+    font-size: 1.2rem;
+    line-height: 1.1;
+  }
+}
+*/
+
+
+/*
+.read-more {
+  white-space: nowrap;
+}
+*/

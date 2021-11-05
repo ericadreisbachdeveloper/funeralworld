@@ -34,14 +34,13 @@
   }
 
   .archive .meta-tags {
-    max-width: 45%; 
+    max-width: 45%;
   }
 
 
 
   // Events - small
   .date-register-div { @include flex-direction-row; @include justify-content(space-between); }
-  .register-div { padding-top: 0; }
 }
 
 
@@ -114,12 +113,19 @@
 
   // Grid display - medium
   // Home - Homepage - Events - Past Events
-  [data-role="main"] .events-grid-a[href] {
+  %grid-display {
     &.-icon { @include transition(background .2s ease-in-out); }
     &.-photo:before { @include transition(background .2s ease-in-out); }
+
+    .icon-wrapper-div { padding: 17.858% 0; }
   }
 
 
+
+  // Archive - medium
+  // Grid - medium
+  %grid-title { @include transition(background-size .2s ease-in-out, color .2s ease-in-out); }
+  .title-icon { @include transition(background-color .2s ease-in-out); }
 
 
   // Blog - medium
@@ -151,8 +157,8 @@
 
   [data-role="main"] .h2-share { font-size: 1rem; }
 
-  .resource-img-a.photo-thumb:before { @include transition(opacity .3s ease-in-out); }
-  .resource-img-a .default-resource-icon-div { @include transition(background-color .5s ease-in-out); }
+  //.resource-img-a.-photo:before { @include transition(opacity .3s ease-in-out); }
+  //.resource-img-a.-icon { @include transition(background-color .5s ease-in-out); }
 
   .h2-share { margin-right: .4rem; }
   $msb-icon-size: 1.8rem;

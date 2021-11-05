@@ -1025,22 +1025,22 @@ function show_resources($attr, $content = null) {
 
 			$content .= '<a class="resource-img-a';
 			if ( has_post_thumbnail()) {
-				$content .= ' photo-thumb';
+				$content .= ' -photo';
 			}
 			else {
-				$content .= ' icon-thumb';
+				$content .= ' -icon';
 			}
 			$content .= '" href="' . get_the_permalink() . '">';
 			// image
 			if ( has_post_thumbnail()) {
-			$content .= '<picture class="picture resource-img-wrapper">';
+			$content .= '<picture class="picture">';
 			$content .= '<source type="image/jpg" srcset="' . $retina_arr[0] . ' 2x" media="(min-width: 992px)">';
 			$content .= '<img class="img" src="' . $standard_arr[0] . '" />';
 			$content .= '</picture>';
 			}
 			// icon
 			else {
-			$content .= '<div class="default-resource-icon-div resource-img-wrapper">';
+			$content .= '<div class="icon-wrapper-div">';
 			$content .= '<picture>';
 			$content .= '<source type="image/svg+xml" srcset="' . $default_svg_url . '">';
 			$content .= '<img src="' . $default_png_url . '" alt="' . $icon_alt . ' width="100" height="100" />';
@@ -1051,11 +1051,12 @@ function show_resources($attr, $content = null) {
 
 			$content .= '<a class="resource-article-a" href="';
 			$content .= get_the_permalink();
-			$content .= '" title="' . get_the_title() . '"><h2 class="article-h2">' . get_the_title() . '</h2> &nbsp;';
-			$content .= '<picture class="icon">';
+			$content .= '" title="' . get_the_title() . '">';
+			$content .= '<picture class="title-icon">';
 			$content .= '<source type="image/svg+xml" srcset="' . $default_svg_url . '">';
 			$content .= '<img class="icon-img" src="' . $default_png_url . '"  alt="' . $icon_alt . '" width="14" height="14" />';
 			$content .= '</picture>';
+			$content .= '&nbsp;<h2 class="article-h2">' . get_the_title() . '</h2> ';
 			$content .= '</a>';
 			$content .= '<p class="p">' . dbllc_excerpt() . '</p>';
 			$content .= '</div><!-- /.col-md-6 -->';
@@ -1117,16 +1118,16 @@ function show_resources($attr, $content = null) {
 
 				$content .= '<a class="resource-img-a';
 				if ( has_post_thumbnail()) {
-					$content .= ' photo-thumb';
+					$content .= ' -photo';
 				}
 				else {
-					$content .= ' icon-thumb';
+					$content .= ' -icon';
 				}
 				$content .= '" href="' . get_the_permalink() . '">';
 
 				// image
 				if ( has_post_thumbnail()) {
-					$content .= '<picture class="picture resource-img-wrapper">';
+					$content .= '<picture class="picture">';
 					$content .= '<source type="image/jpg" srcset="' . $retina_arr[0] . '.webp 2x" media="(min-width: 767px)">'; /* retina webp   */
 				  $content .= '<source type="image/jpg" srcset="' . $retina_arr[0] . ' 2x" media="(min-width: 767px)">';      /* retina jpg    */
 					$content .= '<source type="image/jpg" srcset="' . $standard_arr[0] . '.webp">';                             /* standard webp */
@@ -1135,7 +1136,7 @@ function show_resources($attr, $content = null) {
 				}
 				// icon
 				else {
-					$content .= '<div class="default-resource-icon-div resource-img-wrapper">';
+					$content .= '<div class="icon-wrapper-div">';
 					$content .= '<picture>';
 					$content .= '<source type="image/svg+xml" srcset="' . $default_svg_url . '">';
 					$content .= '<img src="' . $default_png_url . '" alt="' . $icon_alt . ' width="100" height="100" />';
@@ -1147,11 +1148,12 @@ function show_resources($attr, $content = null) {
 
 				$content .= '<a class="resource-article-a" href="';
 				$content .= get_the_permalink();
-				$content .= '" title="' . get_the_title() . '"><h2 class="article-h2">' . get_the_title() . '</h2> &nbsp;';
-				$content .= '<picture class="icon">';
+				$content .= '" title="' . get_the_title() . '">';
+				$content .= '<picture class="title-icon">';
 				$content .= '<source type="image/svg+xml" srcset="' . $default_svg_url . '">';
 				$content .= '<img class="icon-img" src="' . $default_png_url . '"  alt="' . $icon_alt . '" width="14" height="14" />';
 				$content .= '</picture>';
+				$content .= '&nbsp;<h2 class="article-h2">' . get_the_title() . '</h2> ';
 				$content .= '</a>';
 				$content .= '<p class="p">' . dbllc_excerpt() . '</p>';
 				$content .= '</div><!-- /.col-md-6 -->';

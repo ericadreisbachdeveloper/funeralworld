@@ -11,7 +11,11 @@
 
       <?php $term = get_queried_object(); ?>
 
-			<h1>Topic: <?= $term->name; ?> </h1>
+
+			<?php $tax = get_taxonomy( $term->taxonomy ); ?>
+
+
+			<h1><?= $tax->labels->singular_name; ?>: <?= $term->name; ?> </h1>
 
 		</div>
 

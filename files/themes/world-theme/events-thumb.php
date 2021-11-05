@@ -18,7 +18,7 @@
   </picture>
 
   <?php else : ?>
-  <div class="default-events-icon-div">
+  <div class="icon-wrapper-div">
     <div class="calendar-icon"> </div>
   </div>
   <?php endif; ?>

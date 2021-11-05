@@ -9,11 +9,22 @@
 // sass --watch sass/__1-priority.scss:css/priority.css sass/__2-style.scss:css/style.css sass/__3-home.scss:css/home.css sass/__4-legacy.scss:css/legacy.css sass/__5-pp-combined.scss:css/pp-combined.min.css --style compressed --sourcemap=none
 
 
+@mixin hover {
+  &:hover{ @content; }
+	 &:active{ @content; }
+	  &:focus{ @content; }
+	   &:target{ @content; }
+}
+
+//$sea: #35bdb6;  // Home deck bg
+
 
 .event-col {
   padding-bottom: 2rem;
 }
 
+
+// Homepage grid
 
 @media (min-width: 48rem) {
   .event-col:nth-of-type(1) { padding-right: 1.5rem; }

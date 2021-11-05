@@ -32,20 +32,20 @@ add_action( 'init', 'wor_post_types_init' );
 function wor_post_types_init() {
 
 	$event_labels = array(
-		'name'               => _x( 'Events', 'post type general name', 'aur' ),
-		'singular_name'      => _x( 'Event', 'post type singular name', 'aur' ),
-		'menu_name'          => _x( 'Events', 'admin menu', 'aur' ),
-		'name_admin_bar'     => _x( 'Event', 'add new on admin bar', 'aur' ),
-		'add_new'            => _x( 'Add New', 'industry', 'aur' ),
-		'add_new_item'       => __( 'Add New Event', 'aur' ),
-		'new_item'           => __( 'New Event', 'aur' ),
-		'edit_item'          => __( 'Edit Event', 'aur' ),
-		'view_item'          => __( 'View Event', 'aur' ),
-		'all_items'          => __( 'All Events', 'aur' ),
-		'search_items'       => __( 'Search Events', 'aur' ),
-		'parent_item_colon'  => __( 'Parent Events:', 'aur' ),
-		'not_found'          => __( 'No Events found.', 'aur' ),
-		'not_found_in_trash' => __( 'No Events found in Trash.', 'aur' )
+		'name'               => _x( 'Events', 'post type general name', 'wor' ),
+		'singular_name'      => _x( 'Event', 'post type singular name', 'wor' ),
+		'menu_name'          => _x( 'Events', 'admin menu', 'wor' ),
+		'name_admin_bar'     => _x( 'Event', 'add new on admin bar', 'wor' ),
+		'add_new'            => _x( 'Add New', 'industry', 'wor' ),
+		'add_new_item'       => __( 'Add New Event', 'wor' ),
+		'new_item'           => __( 'New Event', 'wor' ),
+		'edit_item'          => __( 'Edit Event', 'wor' ),
+		'view_item'          => __( 'View Event', 'wor' ),
+		'all_items'          => __( 'All Events', 'wor' ),
+		'search_items'       => __( 'Search Events', 'wor' ),
+		'parent_item_colon'  => __( 'Parent Events:', 'wor' ),
+		'not_found'          => __( 'No Events found.', 'wor' ),
+		'not_found_in_trash' => __( 'No Events found in Trash.', 'wor' )
 	);
 
 	$event_args = array(
@@ -94,6 +94,7 @@ function create_my_taxonomies() {
                 'name' => 'Resource Types',
                 'add_new_item' => 'Add New Resource Type',
                 'new_item_name' => 'New Resource Type',
+                'singular_name' => 'Resource Type'
             ),
             //'rewrite' => array( 'slug' => 'events/category', 'with_front' => false ),
 
