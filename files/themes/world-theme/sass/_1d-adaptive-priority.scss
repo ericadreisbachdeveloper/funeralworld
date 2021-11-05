@@ -505,12 +505,16 @@
 
   // Structure - wide
   //$container: 70rem;
-  $container: 76rem;
+  //$container: 76rem;
+  $container: 73rem;
   %container { width: $container; }
 
   %container-wide { width: calc(#{$container} - 3rem); margin-right: auto; margin-left: auto; }
 
   %container-gutter { width: calc( #{$container} - 3rem); }
+
+  .site-header > .gutenberg-container { width: $container; margin-right: auto; margin-left: auto; }
+
 
 
   // Archive - wide
@@ -530,8 +534,7 @@
     z-index: 100;
   }
 
-  $container: 76rem;
-  .site-header > .gutenberg-container { width: $container; margin-right: auto; margin-left: auto; }
+
 
 
   .logo-img { max-width: unset; }

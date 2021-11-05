@@ -1001,6 +1001,9 @@ function show_resources($attr, $content = null) {
 				// [0] = url
 				// [1] = width
 				// [2] = height
+
+				$img = wp_prepare_attachment_for_js($img_id);
+				$img_alt = $img['alt'];
 			}
 
 
@@ -1035,7 +1038,7 @@ function show_resources($attr, $content = null) {
 			if ( has_post_thumbnail()) {
 			$content .= '<picture class="picture">';
 			$content .= '<source type="image/jpg" srcset="' . $retina_arr[0] . ' 2x" media="(min-width: 992px)">';
-			$content .= '<img class="img" src="' . $standard_arr[0] . '" />';
+			$content .= '<img class="img" src="' . $standard_arr[0] . '" alt="' . $img_alt . '" />';
 			$content .= '</picture>';
 			}
 			// icon
@@ -1095,6 +1098,9 @@ function show_resources($attr, $content = null) {
 					// [0] = url
 					// [1] = width
 					// [2] = height
+
+					$img = wp_prepare_attachment_for_js($img_id);
+					$img_alt = $img['alt'];
 				}
 
 				$terms = get_the_terms($p->ID, 'resource-type');
@@ -1131,7 +1137,7 @@ function show_resources($attr, $content = null) {
 					$content .= '<source type="image/jpg" srcset="' . $retina_arr[0] . '.webp 2x" media="(min-width: 767px)">'; /* retina webp   */
 				  $content .= '<source type="image/jpg" srcset="' . $retina_arr[0] . ' 2x" media="(min-width: 767px)">';      /* retina jpg    */
 					$content .= '<source type="image/jpg" srcset="' . $standard_arr[0] . '.webp">';                             /* standard webp */
-					$content .= '<img class="img" src="' . $standard_arr[0] . '" />';	                                          /* standard jpg  */
+					$content .= '<img width="560" height="300" class="img" src="' . $standard_arr[0] . '" alt="' . $img_alt . '" />';
 					$content .= '</picture>';
 				}
 				// icon
