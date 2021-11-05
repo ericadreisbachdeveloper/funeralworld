@@ -43,7 +43,7 @@
 
   $headerh: 10rem;
   %siteheaderh { height: $headerh; }
-  .site-header { background: $navy; overflow: hidden; }
+  .site-header { background: $navy; /*overflow: hidden;*/ }
   .site-header .navbar-nav { height: $headerh; }
 
   .site-header > .gutenberg-container { width: calc(100% - 3rem); @include justify-content(space-between); }
@@ -360,16 +360,22 @@
 
   // 7. Nav Search Form
   #navmenu .search {
+    width: 0;
     background: none;
     height: $headerh;
     line-height: calc( #{$headerh} * 1.45 );
-    position: relative;
+    //position: relative;
   }
 
   #navmenu [href="#display-search"] {
     width: 2rem;
     height: 2rem;
     display: inline-block;
+
+    position: absolute;
+     top: 1.666rem;
+     // right: .5rem;
+     right: -29rem;
 
     // magnifying glass
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' overflow='visible'%3E%3Cpath fill='%23f3f3f4' d='M11.077 6.77c0-1.187-.422-2.2-1.265-3.044-.842-.843-1.857-1.264-3.042-1.264-1.187 0-2.2.421-3.044 1.264-.843.843-1.264 1.857-1.264 3.044 0 1.186.421 2.2 1.264 3.043.844.843 1.857 1.265 3.044 1.265 1.186 0 2.2-.422 3.043-1.265s1.264-1.858 1.264-3.043zm4.923 8c0 .333-.122.621-.365.865a1.185 1.185 0 01-.865.365c-.347 0-.635-.122-.865-.365l-3.299-3.289a6.581 6.581 0 01-3.836 1.192 6.662 6.662 0   01-2.63-.533 6.767 6.767 0 01-2.164-1.442A6.797 6.797 0 01.533 9.399 6.665 6.665 0 010 6.77c0-.917.178-1.794.533-2.63a6.786 6.786 0 011.443-2.164A6.786 6.786 0 014.14.533 6.662 6.662 0 016.77 0 6.67 6.67 0 019.4.533a6.78 6.78 0 012.163 1.442 6.767 6.767 0 011.442 2.164c.355.836.533 1.713.533 2.63 0 1.41-.397 2.688-1.192 3.836l3.299 3.299c.237.237.355.526.355.866z'/%3E%3C/svg%3E");
@@ -381,7 +387,7 @@
 
     // magnifying glass red on hover
     @include hover {
-      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' overflow='visible'%3E%3Cpath fill='%2343ba81' d='M11.077 6.77c0-1.187-.422-2.2-1.265-3.044-.842-.843-1.857-1.264-3.042-1.264-1.187 0-2.2.421-3.044 1.264-.843.843-1.264 1.857-1.264 3.044 0 1.186.421 2.2 1.264 3.043.844.843 1.857 1.265 3.044 1.265 1.186 0 2.2-.422 3.043-1.265s1.264-1.858 1.264-3.043zm4.923 8c0 .333-.122.621-.365.865a1.185 1.185 0 01-.865.365c-.347 0-.635-.122-.865-.365l-3.299-3.289a6.581 6.581 0 01-3.836 1.192 6.662 6.662 0   01-2.63-.533 6.767 6.767 0 01-2.164-1.442A6.797 6.797 0 01.533 9.399 6.665 6.665 0 010 6.77c0-.917.178-1.794.533-2.63a6.786 6.786 0 011.443-2.164A6.786 6.786 0 014.14.533 6.662 6.662 0 016.77 0 6.67 6.67 0 019.4.533a6.78 6.78 0 012.163 1.442 6.767 6.767 0 011.442 2.164c.355.836.533 1.713.533 2.63 0 1.41-.397 2.688-1.192 3.836l3.299 3.299c.237.237.355.526.355.866z'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' overflow='visible'%3E%3Cpath fill='%2335bdb6' d='M11.077 6.77c0-1.187-.422-2.2-1.265-3.044-.842-.843-1.857-1.264-3.042-1.264-1.187 0-2.2.421-3.044 1.264-.843.843-1.264 1.857-1.264 3.044 0 1.186.421 2.2 1.264 3.043.844.843 1.857 1.265 3.044 1.265 1.186 0 2.2-.422 3.043-1.265s1.264-1.858 1.264-3.043zm4.923 8c0 .333-.122.621-.365.865a1.185 1.185 0 01-.865.365c-.347 0-.635-.122-.865-.365l-3.299-3.289a6.581 6.581 0 01-3.836 1.192 6.662 6.662 0   01-2.63-.533 6.767 6.767 0 01-2.164-1.442A6.797 6.797 0 01.533 9.399 6.665 6.665 0 010 6.77c0-.917.178-1.794.533-2.63a6.786 6.786 0 011.443-2.164A6.786 6.786 0 014.14.533 6.662 6.662 0 016.77 0 6.67 6.67 0 019.4.533a6.78 6.78 0 012.163 1.442 6.767 6.767 0 011.442 2.164c.355.836.533 1.713.533 2.63 0 1.41-.397 2.688-1.192 3.836l3.299 3.299c.237.237.355.526.355.866z'/%3E%3C/svg%3E");
     }
 
 
@@ -399,6 +405,11 @@
   @include keyframes(show_search) {
     0% { opacity: 0; }
     100% { opacity: 1; }
+  }
+
+
+  #navmenu.search-input {
+    padding: .938rem 5rem .938rem 1.9rem
   }
 
   #navmenu.show, #navmenu:not(.show)  {
@@ -419,17 +430,15 @@
 
       &+ .search-input {
         width: 20rem;
-         //top: 6.1rem;
          top: calc(#{$headerh} + .05rem);
-         right: -1rem;
+         right: -29rem;
         box-shadow: 0 0 0.4rem rgba(0,0,0,.3);
         @include animation(show_search, ease-in-out, 1, .3s);
       }
 
       &+ .search-input + .search-submit {
-         //top: 6.7rem;
-         top: calc( #{$headerh} + .7rem);
-         right: 0;
+         top: calc( #{$headerh} + .95rem);
+         right: -28rem;
         @include animation(show_search, ease-in-out, 1, .3s);
       }
     }
@@ -444,10 +453,10 @@
     line-height: unset;
     position: absolute;
      top: 1rem;
-     right: 0;
+     right: 3rem;
 
     &:after {
-      width: calc(100% + 5rem);
+      width: 100%;
       height: .05rem;
       background: $green;
       content: '';
@@ -461,7 +470,7 @@
       @include transition(color .2s ease-in-out);
 
       @include hover {
-        color: $blue;
+        color: $sea;
 
         // @mixin transform($rotate, $scale, $skew, $translatex, $translatey)
         @include transform(0deg, 1, -10deg, 0, 0);

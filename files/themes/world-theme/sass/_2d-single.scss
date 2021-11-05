@@ -1,7 +1,8 @@
 // Single - style.css
 
 
-.single [data-role="main"] > .container { padding-bottom: 2rem; }
+.error404 [data-role="main"]              { padding-bottom: 2rem; }
+.single   [data-role="main"] > .container { padding-bottom: 2rem; }
 
 .single, .page-template-page-events  {
   [data-role="main"] {
