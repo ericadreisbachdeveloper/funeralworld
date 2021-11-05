@@ -20,7 +20,23 @@
 
   .resource-pdf { @include flex; @include align-items(flex-start); }
 
-  .single .resource-pdf { padding-top: .66rem; }
+
+
+  // Archive - small
+
+  .archive .resource-meta  {
+    @include flex;
+  }
+
+  .archive .resource-meta [class*="meta"]+[class*="meta"] {
+    padding-top: 0;
+    padding-left: 3rem;
+  }
+
+  .archive .meta-tags {
+    max-width: 45%; 
+  }
+
 
 
   // Events - small
@@ -96,6 +112,14 @@
 
 
 
+  // Grid display - medium
+  // Home - Homepage - Events - Past Events
+  [data-role="main"] .events-grid-a[href] {
+    &.-icon { @include transition(background .2s ease-in-out); }
+    &.-photo:before { @include transition(background .2s ease-in-out); }
+  }
+
+
 
 
   // Blog - medium
@@ -121,9 +145,9 @@
 
   .default-resource-icon-div .img { position: relative; top: 50%; }
 
-
   .single .resource-meta { width: calc(100% - 22rem); }
 
+  //.single .resource-pdf { padding-top: 0; }
 
   [data-role="main"] .h2-share { font-size: 1rem; }
 
@@ -154,9 +178,11 @@
 
   // Events - medium
   .date-register-div { @include flex-direction-row; @include justify-content(flex-start); }
-  .date-time-div { min-width: 30%; }
+  .date-time-div { min-width: 70%; }
 
   .default-resource-icon-div { @include transition(background-color .2s ease-in-out); }
+
+  [data-role="main"] .events-grid-a[href] { max-width: unset; }
 
 
 
@@ -214,6 +240,7 @@
     .li:not(:last-of-type) > [href] { margin-bottom: 0; }
     .col-md-6 + .col-md-6 { padding-top: 0; }
   }
+
 
 
 

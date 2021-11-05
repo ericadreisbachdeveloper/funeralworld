@@ -24,7 +24,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<a class="resource-article-a" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+	<a class="archive-a" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 
 		<div class="container">
 
@@ -36,7 +36,8 @@
 				</picture>
 			<?php endif; ?>
 
-			<?php $post_type = get_post_type($post->ID); if ($post_type !== 'page') : ?>
+			<?php $post_types_with_no_meta = array('page', 'asp-products'); ?>
+			<?php $post_type = get_post_type($post->ID); if (!in_array($post_type, $post_types_with_no_meta)) : ?>
 			<?php echo _e(get_template_part('meta-archive')); ?>
 			<?php endif; ?>
 

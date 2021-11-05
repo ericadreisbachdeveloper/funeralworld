@@ -213,19 +213,24 @@ $pagination-indent: .7em;
 }
 
 
-.single [data-role="main"] .hentry { padding-bottom: 2rem; }
+
+
+//.single [data-role="main"] .hentry { padding-bottom: 2rem; }
 
 
 $hentry-border: 1px;
 $hentry-top: -1px;
 
-[data-role="main"] {
-  .search, .archive {
+
+.search, .archive {
+  [data-role="main"] {
     .hentry {
       &> [href] {
+        @extend %remove-link-line;
+
         background: transparent;
         display: block;
-        padding-bottom: 1rem;
+        padding-bottom: 1.1rem;
         @include transition(background .2s ease-in-out);
 
         @include hover {
@@ -235,11 +240,8 @@ $hentry-top: -1px;
 
         &:before {
           @include top-btm-border($gray);
-          width: 100%;
           height: calc(100% + #{$hentry-border});
           background-repeat: no-repeat;
-          background-size: calc(100% - 3rem) 100%;
-          background-position: 1.5rem 0;
           content: '';
           display: block;
           position: absolute;
@@ -261,7 +263,7 @@ $hentry-top: -1px;
         }
       }
 
-      .resource-meta { padding-top: .66rem; padding-bottom: .88rem; }
+      .resource-meta { padding-top: .66rem; padding-bottom: .22rem; }
     }
   }
 }

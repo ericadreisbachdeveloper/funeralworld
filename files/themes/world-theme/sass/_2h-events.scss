@@ -1,24 +1,16 @@
 // Support
 // css/style.css
 
-[data-role="main"] .event-h2 { color: $night; margin: 0; text-transform: none; }
-
-.single-events .events-img-wrapper { @extend %single-img-wrapper; }
-
-.single-events .msb-container { padding-top: 1rem; }
 
 
+// Grid display
+
+// Archive (search results) AND Homepage
 .calendar, .calendar-icon {
   content: '';
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='14' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 2h-1v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H6v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H2c-.55 0-1 .45-1 1v11c0 .55.45 1 1 1h11c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1Zm0 12H2V5h11v9ZM5 3H4V1h1v2Zm6 0h-1V1h1v2ZM6 7H5V6h1v1Zm2 0H7V6h1v1Zm2 0H9V6h1v1Zm2 0h-1V6h1v1ZM4 9H3V8h1v1Zm2 0H5V8h1v1Zm2 0H7V8h1v1Zm2 0H9V8h1v1Zm2 0h-1V8h1v1Zm-8 2H3v-1h1v1Zm2 0H5v-1h1v1Zm2 0H7v-1h1v1Zm2 0H9v-1h1v1Zm2 0h-1v-1h1v1Zm-8 2H3v-1h1v1Zm2 0H5v-1h1v1Zm2 0H7v-1h1v1Zm2 0H9v-1h1v1Z' fill='%23fff' fill-rule='evenodd'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
-}
-
-.wp-block-group[class*="-bg"] {
-  .calendar, .calendar-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='14' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 2h-1v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H6v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H2c-.55 0-1 .45-1 1v11c0 .55.45 1 1 1h11c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1Zm0 12H2V5h11v9ZM5 3H4V1h1v2Zm6 0h-1V1h1v2ZM6 7H5V6h1v1Zm2 0H7V6h1v1Zm2 0H9V6h1v1Zm2 0h-1V6h1v1ZM4 9H3V8h1v1Zm2 0H5V8h1v1Zm2 0H7V8h1v1Zm2 0H9V8h1v1Zm2 0h-1V8h1v1Zm-8 2H3v-1h1v1Zm2 0H5v-1h1v1Zm2 0H7v-1h1v1Zm2 0H9v-1h1v1Zm2 0h-1v-1h1v1Zm-8 2H3v-1h1v1Zm2 0H5v-1h1v1Zm2 0H7v-1h1v1Zm2 0H9v-1h1v1Z' fill='%23181244' fill-rule='evenodd'/%3E%3C/svg%3E");
-  }
 }
 
 .calendar {
@@ -28,39 +20,86 @@
   background-position: 0 50%;
 }
 
+// Homepage (different color)
+.wp-block-group[class*="-bg"] {
+  .calendar, .calendar-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='14' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 2h-1v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H6v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H2c-.55 0-1 .45-1 1v11c0 .55.45 1 1 1h11c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1Zm0 12H2V5h11v9ZM5 3H4V1h1v2Zm6 0h-1V1h1v2ZM6 7H5V6h1v1Zm2 0H7V6h1v1Zm2 0H9V6h1v1Zm2 0h-1V6h1v1ZM4 9H3V8h1v1Zm2 0H5V8h1v1Zm2 0H7V8h1v1Zm2 0H9V8h1v1Zm2 0h-1V8h1v1Zm-8 2H3v-1h1v1Zm2 0H5v-1h1v1Zm2 0H7v-1h1v1Zm2 0H9v-1h1v1Zm2 0h-1v-1h1v1Zm-8 2H3v-1h1v1Zm2 0H5v-1h1v1Zm2 0H7v-1h1v1Zm2 0H9v-1h1v1Z' fill='%23181244' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+}
 
-.calendar-icon {
-  width: 13rem;
-  height: 13rem;
-  background-position: contain;
+// Grid display - Events, Past Events
+[data-role="main"] .events-grid-a[href] {
+  @extend %remove-link-line;
+
+  background: $night;
   display: block;
+  margin-bottom: .5rem;
+  max-width: 35rem;
+
+
+  // events without a featured image
+  &.-icon { @include hover { background: $blue2; } }
+
+  .default-events-icon-div {
+    height: 12rem;
+    padding: 26.785% 0;
+
+    @include flex;
+    @include justify-content(center);
+    @include align-items(center);
+  }
+
+  .calendar-icon {
+    width: 6.25rem;
+    height: 6.25rem;
+    background-position: 50% 50%; ;
+    display: block;
+  }
+
+
+  // events WITH a featured image
+  &.-photo {
+    position: relative;
+
+    &:before {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      content: '';
+      display: block;
+      opacity: .7;
+      position: absolute;
+       left: 0;
+       top: 0;
+    }
+
+    @include hover { &:before { background: $blue2; } }
+  }
 }
 
 
-
-
+// Events - Past Events
 [data-role="main"] .events-h2 { display: inline; margin-top: 0; margin-bottom: 0; }
 
 .events-h3 { margin-top: .2rem; }
 
 
 
-[data-role="main"] [href].events-a {
-  @extend %remove-link-line;
-  display: block;
-  margin-bottom: .5rem;
 
-  @include hover { .default-resource-icon-div  { background-color: $blue2; } }
+
+// Events single
+.single-events {
+
+  [data-role="main"] .event-h2 { color: $night; margin: 0; text-transform: none; }
+
+  .msb-container { padding-top: 1rem; }
+
+  [data-role="main"] .picture { display: block; padding-bottom: 1rem; }
 }
-
-
 
 .date-register-div {
   @include flex;
   @include flex-direction-col;
 }
 
-
-.register-div {
-  padding-top: 1rem;
-}
+.register-div { padding-top: 1rem; }

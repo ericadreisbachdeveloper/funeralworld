@@ -486,8 +486,12 @@
   %container-gutter { width: calc( #{$container} - 30px); margin-right: auto; margin-left: auto; }
 
   // Archive - large
-  [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; background-position: 50% 0; }
-
+  // Search - large
+  .search, .archive {
+    [data-role="main"] .hentry > [href]:before {
+      background-size: calc( #{$container} - 3rem) 100%; background-position: 50% 0;
+    }
+  }
 
 
 }
@@ -510,7 +514,9 @@
 
 
   // Archive - wide
-  [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; }
+  .search, .archive {
+    [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; }
+  }
 
 
   // Header - wide

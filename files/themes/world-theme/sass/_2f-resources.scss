@@ -1,6 +1,8 @@
 // Resources + Events - css/style.css
 
 
+.single [data-role="main"] > .container { padding-bottom: 2rem; }
+
 [data-role="main"] [href].resource-img-a {
   max-width: 35rem;
   display: block;
@@ -88,8 +90,8 @@
 .col-article .p:first-of-type { margin-top: 0; }
 
 
-[data-role="main"] .resource-article-a[href]:not([href="#"]) {
-  background-size: calc(100% - 1.4rem) 100%;
+[data-role="main"] .resource-article-a[href] {
+  //background-size: calc(100% - 1.4rem) 100%;
 
   @include hover { background-size: 0 100%; }
 
@@ -104,6 +106,9 @@
 
   @include hover { .icon { background-color: $blue2; } }
 }
+
+
+
 
 // icon hover background is when icons are against a block group with background color
 // ... i.e. NOT against white
@@ -156,11 +161,10 @@
   position: absolute;
    right: .5rem;
    top: .35rem;
-
 }
 
 
-[data-role="main"] .breadcrumb-li [data-a][href]:not([href="#"]) { color: $sky; }
+[data-role="main"] .breadcrumb-li [data-a][href]:not([href="#"]) { color: $blue2; }
 
 [data-role="main"] .breadcrumb-li [href]:not([href="#"]) { @extend %remove-link-line; }
 
@@ -252,19 +256,29 @@ $msb-icon-size: 1rem;
 
 
 // Meta
-.resource-below-hero { padding-bottom: 2rem; }
+.resource-below-hero {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
 
-.resource-meta { font-size: 1rem; text-transform: uppercase; }
+.resource-meta {
+  text-transform: uppercase;
+}
 
-.resource-meta, .resource-meta [href] { color: $night; }
+.resource-meta,
+.resource-meta [href] {
+  color: $night;
+}
 
 .resource-meta [class*="meta"] + [class*="meta"],
-.resource-pdf { padding-top: .5rem; }
+.resource-pdf {
+  padding-top: .5rem;
+}
 
 [data-role="main"] .meta-h2 {
   display: inline-block;
-  font-size: 1rem;
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 

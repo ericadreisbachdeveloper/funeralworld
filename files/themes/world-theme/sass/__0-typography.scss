@@ -73,11 +73,23 @@ input {
 
 
 
-// Bolding
+// Bold
 [data-role="main"] .meta-h2,
-.resource-meta [class*="meta-"] { font-family: 'mreaves-bold', sans-serif; font-weight: normal; }
+.resource-meta [class*="meta-"] {
+  @extend %resource-text;
+  font-family: 'mreaves-bold', sans-serif;
+  font-weight: normal;
+  line-height: 1.2;
+}
 
-.resource-pdf { font-family: 'mreaves-bold', sans-serif; font-weight: normal; text-transform: uppercase; @extend %resource-text; line-height: 1.2; }
+.resource-pdf {
+  @extend %resource-text;
+  font-family: 'mreaves-bold', sans-serif;
+  font-weight: normal;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
 
 
 

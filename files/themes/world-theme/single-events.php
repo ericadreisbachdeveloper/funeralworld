@@ -124,7 +124,6 @@
 					</div><!-- /.date-register-div -->
 
 
-
 					<?php $args = array(
 							          'before_widget' => '<div class="msb-container">',
 												'after_widget' => '</div>',
@@ -137,6 +136,10 @@
 					<?php if(has_post_thumbnail()) : ?>
 
 						<?php $img_id = get_post_thumbnail_id();
+
+						   $img = wp_prepare_attachment_for_js($img_id);
+
+							 $alt = $img['alt'];
 						  $retina_arr = wp_get_attachment_image_src($img_id, 'large');
 						$standard_arr = wp_get_attachment_image_src($img_id, 'medium');
 				  	// [0] = url
@@ -144,12 +147,12 @@
 				  	// [2] = height
 						?>
 
-							<picture class="picture events-img-wrapper">
-								<source type="image/webp" srcset="<?php _e(esc_url($retina_arr[0])); ?>.webp 2x" media="(min-width: 561px)"><!-- retina webp -->
-								<source type="image/jpg" srcset="<?php _e(esc_url($retina_arr[0])); ?> 2x" media="(min-width: 561x)"><!-- retina jpg -->
-							  <source type="image/webp" srcset="<?php _e(esc_url($standard_arr[0])); ?>.webp"><!-- standard webp -->
-							  <img class="img" src="<?php _e(esc_url($standard_arr[0])); ?>" /><!-- standard jpg -->
-							</picture>
+						<picture class="picture">
+							<source type="image/webp" srcset="<?php _e(esc_url($retina_arr[0])); ?>.webp 2x" media="(min-width: 561px)"><!-- retina webp -->
+							<source type="image/jpg" srcset="<?php _e(esc_url($retina_arr[0])); ?> 2x" media="(min-width: 561x)"><!-- retina jpg -->
+						  <source type="image/webp" srcset="<?php _e(esc_url($standard_arr[0])); ?>.webp"><!-- standard webp -->
+						  <img alt="<?= $alt; ?>" class="img" src="<?php _e(esc_url($standard_arr[0])); ?>" /><!-- standard jpg -->
+						</picture>
 
 					<?php endif; ?>
 

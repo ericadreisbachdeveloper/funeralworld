@@ -3,19 +3,25 @@
 
 
 
-<main data-role="main">
-	<section class="gutenberg-section">
-		<div class="gutenberg-container">
+<main data-role="main" id="main">
+	<section class="section">
+
+
+		<div class="container">
 
       <?php $term = get_queried_object(); ?>
 
 			<h1>Topic: <?= $term->name; ?> </h1>
 
-			<?php get_template_part('loop'); ?>
-
-			<?php get_template_part('pagination'); ?>
-
 		</div>
+
+
+		<?php get_template_part('loop'); ?>
+
+
+		<?php get_template_part('pagination'); ?>
+
+
 	</section>
 </main>
 

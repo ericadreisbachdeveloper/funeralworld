@@ -65,11 +65,14 @@
     <?php endif; ?>
 
 
-
-
     <?php if($firstterm != '' && $firstterm->slug == 'white-paper') : ?>
     <div class="meta-author">
       <h2 class="meta-h2">AUTHOR: </h2>
+      <?php $author = ''; $author = get_the_author(); print_r($author); ?>
+    </div>
+    <?php elseif($firstterm != '' && $firstterm->slug == 'video') : ?>
+    <div class="meta-author">
+      <h2 class="meta-h2">POSTED BY: </h2>
       <?php $author = ''; $author = get_the_author(); print_r($author); ?>
     </div>
     <?php endif; ?>
@@ -77,7 +80,7 @@
 
     <?php $tags = get_the_tags(); if ($tags) : ?>
     <div class="meta-tags">
-      <h2 class="meta-h2">TAGGED:</h2> <?php $c = count($tags); if($c >= 1) { echo 'tag'; } else { 'no tag'; } ?>
+      <h2 class="meta-h2">TAGGED:</h2> <?php $i = 0; $c = count($tags); if($c >= 1) { foreach ($tags as $tag) { _e($tag->name); $i++; if ($i < $c) { _e(', '); } } } ?>
     </div>
     <?php endif; ?>
 
