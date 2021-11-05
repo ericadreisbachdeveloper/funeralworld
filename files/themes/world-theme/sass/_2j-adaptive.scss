@@ -184,7 +184,7 @@
 
   // Events - medium
   .date-register-div { @include flex-direction-row; @include justify-content(flex-start); }
-  .date-time-div { min-width: 70%; }
+  .date-time-div { min-width: 55%; }
 
   .default-resource-icon-div { @include transition(background-color .2s ease-in-out); }
 
@@ -331,5 +331,15 @@
   .meta-tags { max-width: 40%; }
 
   .resource-meta [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 2.44rem; }
+
+
+  // Events - wide
+  .events-picture, .events-content-div { float: left; }
+  .events-picture      { width: 35rem; }
+  .events-content-div { width: calc(100% - 35rem); }
+  .events-content-div > [class*="gutenberg-section"] { padding-left: 5rem; }
+
+  // vertically align the element, whatever it is, flush to top
+  .events-content-div > [class*="gutenberg-section"] > .gutenberg-container > * { margin-top: 0; }
 
 }

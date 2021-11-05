@@ -5,6 +5,33 @@
 
 .single, .page-template-page-events  {
   [data-role="main"] {
-    background: $mist; 
+    background: $mist;
   }
+}
+
+
+// Resources (More on this/these topics)
+// Events (More Events)
+%single-footer {
+  background: $night;
+  color: white;
+  padding: 1.5rem 0 2.5rem;
+
+  [href] {
+    @extend %link-line;
+    color: white;
+    @include linkgradient(transparent);
+
+    @include hover {
+      color: $sky;
+      @include linkgradient(transparent);
+    }
+  }
+
+  .ul { margin: 0; }
+  .li > [href] { padding: .2rem 0; display: inline-block; }
+  .li:first-of-type > [href] { margin-top: .5rem; }
+  .li:not(:last-of-type) > [href] { margin-bottom: 1rem; }
+
+  .col-md-6 + .col-md-6 { padding-top: 2rem; }
 }
