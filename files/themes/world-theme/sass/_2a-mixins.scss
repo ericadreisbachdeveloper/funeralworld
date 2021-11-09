@@ -142,7 +142,7 @@ $mauve: #68043c;
 
 // Part Two: name and define the animation
 @include keyframes(fade-in-out) {
-    10%, 60% { opacity: 1; }
+    1%, 60% { opacity: 1; }
     0%, 100% { opacity: 0; }
 }
 
