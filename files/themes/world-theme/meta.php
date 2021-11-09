@@ -40,7 +40,7 @@
   <?php if(get_field('resource-pdf')) : ?>
   <?php $pdf = get_field('resource-pdf'); ?>
   <div class="resource-pdf">
-    <a href="<?= esc_url($pdf['url']); ?>" title="<?php $pdf['title']; ?>">Download PDF (<?= round($pdf['filesize'] / 1000000, 2); ?>MB) </a>
+    <a href="<?= esc_url($pdf['url']); ?>" title="<?php $pdf['title']; ?>" target="_blank" rel="noopener">Download PDF (<?= round($pdf['filesize'] / 1000000, 2); ?>MB) </a>
   </div>
   <?php endif; ?>
 

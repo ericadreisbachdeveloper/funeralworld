@@ -107,7 +107,7 @@
 
 
 	<!-- START: Related Articles -->
-	<?php if ($topics != '') : ?>
+	<?php if (count($topics) > 1) : ?>
 	<div class="container-fluid related-articles">
 		<div class="container">
 			<div class="row">

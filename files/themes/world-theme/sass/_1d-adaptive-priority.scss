@@ -21,6 +21,9 @@
 
 
 
+
+
+
 // Large devices (desktops, 62rem and up)
 @media (min-width: 62rem) {
 
@@ -358,7 +361,7 @@
 
 
 
-  // 7. Nav Search Form
+  // 7. Nav Search Form - large
   #navmenu .search {
     width: 0;
     background: none;
@@ -453,7 +456,7 @@
     line-height: unset;
     position: absolute;
      top: 1rem;
-     right: 3rem;
+     right: 0;
 
     &:after {
       width: 100%;
@@ -545,19 +548,19 @@
     z-index: 100;
   }
 
-
-
-
   .logo-img { max-width: unset; }
 
   #navmenu .navbar-nav > .menu-item { padding-right: 1.44rem; }
   #navmenu .nav-main-menu, #navmenu .nav-offsite-menu { margin-right: -1.44rem; }
   #navmenu .navbar-nav.nav-offsite-menu:after { right: 1.8rem; }
 
+  #navmenu [href="#display-search"] { right: -32rem; }
+
   // has admin bar
   .logged-in.admin-bar .site-header { top: 32px; }
 
   [data-role="main"] { padding-top: $headerh; }
+  
 }
 
 
