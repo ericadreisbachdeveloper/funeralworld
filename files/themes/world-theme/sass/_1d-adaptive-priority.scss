@@ -496,11 +496,8 @@
   %container { width: $container; }
 
 
-//  %container-corset { width: 54rem; margin-right: auto; margin-left: auto; }
-
   // Structure - large
   %container-corset {
-    //width: 54rem;
     margin-right: auto;
     margin-left: auto;
     padding-left: 0;
@@ -517,6 +514,8 @@
       background-size: calc( #{$container} - 3rem) 100%; background-position: 50% 0;
     }
   }
+
+  #search-results .hentry > [href] > .container { width: $container; }
 
 
 }

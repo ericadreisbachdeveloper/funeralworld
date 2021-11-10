@@ -3,7 +3,7 @@ jQuery(function($){
 
   var protocol = window.location.protocol;
   var host = window.location.hostname;
-  if (host = 'localhost') { host = 'localhost/world'; }
+  if (host == 'localhost') { host = 'localhost/world'; }
   var homeurl = protocol + '//' + host + '/';
 
   var searchbtn = $('#search-submit');

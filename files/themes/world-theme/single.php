@@ -2,7 +2,7 @@
 <?php get_header(); global $site_url; ?>
 
 
-<?php global $post; print_r($post); ?>
+<?php global $post; ?>
 
 <main data-role="main" id="main">
 	<div class="container">
