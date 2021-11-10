@@ -121,6 +121,12 @@ function dbllc_header_scripts() {
 	}
 
 
+	if(is_page('Our Work')) {
+		wp_register_script('searchresults', TDIR . '/js/dev/load-search-results.js', 'jquery-core', '1.0.1', false);
+		 wp_enqueue_script('searchresults');
+	}
+
+
 }
 add_action('wp_enqueue_scripts', 'dbllc_header_scripts', 10, 0);
 
@@ -1342,3 +1348,16 @@ function stripe_custom_css() {
 }
 
 add_action('wp_footer', 'stripe_custom_css', 99);
+
+
+
+// 40. Search Results shortcode
+add_shortcode( 'searchresults', 'searchresultsdiv');
+function searchresultsdiv() {
+	$results  = '<div id="search-results">';
+
+	// by default, show ALL resources with paging 
+
+	$results .= '</div>';
+	return $results;
+}

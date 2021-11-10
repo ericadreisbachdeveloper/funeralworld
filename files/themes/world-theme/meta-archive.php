@@ -1,6 +1,9 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
 
-  <?php global $terms; global $firstterm; global $post_type; ?>
+  <?php global $terms; global $firstterm; global $post_type;
+        $tags = get_the_tags();
+  ?>
+
 
   <div class="resource-meta">
 
@@ -60,7 +63,7 @@
           }
     ?>
     <div class="meta-time">
-      <h2 class="meta-h2">EVENT: <?= $display_date; ?> </h2>
+      <h2 class="meta-h2">EVENT: <?= $display_date; ?></h2>
     </div>
     <?php endif; ?>
 
@@ -68,7 +71,7 @@
     <?php if($firstterm != '' && $firstterm->slug == 'white-paper') : ?>
     <div class="meta-author">
       <h2 class="meta-h2">AUTHOR: </h2>
-      <?php $author = ''; $author = get_the_author(); print_r($author); ?>
+      <?php $author = ''; $author = get_the_author(); _e($author);  ?>
     </div>
     <?php elseif($firstterm != '' && $firstterm->slug == 'video') : ?>
     <div class="meta-author">
@@ -78,18 +81,21 @@
     <?php endif; ?>
 
 
-    <?php $tags = get_the_tags(); if ($tags) : ?>
-    <div class="meta-tags">
-      <h2 class="meta-h2">TAGGED:</h2> <?php $i = 0; $c = count($tags); if($c >= 1) { foreach ($tags as $tag) { _e($tag->name); $i++; if ($i < $c) { _e(', '); } } } ?>
-    </div>
-    <?php endif; ?>
-
-
     <?php if( $firstterm != '') : ?>
     <div class="meta-type">
       <h2 class="meta-h2">RESOURCE TYPE: </h2> <?= $firstterm->name; ?>
     </div>
     <?php endif; ?>
+
+
+    <!--
+    <?php // if ($tags) : ?>
+    <div class="meta-tags">
+      <h2 class="meta-h2">TAGGED: </h2> <?php // if($tags) { _e('<br />'); }?><?php // $i = 0; $c = count($tags); if($c >= 1) { foreach ($tags as $tag) { _e($tag->name); $i++; if ($i < $c) { _e(', '); } } } ?>
+    </div>
+    <?php // endif; ?>
+    -->
+
 
 
   </div><!-- /.resource-meta -->

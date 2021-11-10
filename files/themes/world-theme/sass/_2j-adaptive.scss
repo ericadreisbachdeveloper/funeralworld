@@ -97,6 +97,7 @@
 
 
 
+
   // Classes - medium
   %link-line { @include transition(background-image .2s ease-in-out, background-size .2s ease-in-out, color .2s ease-in-out); }
   %button { @include transition(background .2s ease-in-out); }
@@ -153,12 +154,7 @@
 
   .single .resource-meta { width: calc(100% - 22rem); }
 
-  //.single .resource-pdf { padding-top: 0; }
-
   [data-role="main"] .h2-share { font-size: 1rem; }
-
-  //.resource-img-a.-photo:before { @include transition(opacity .3s ease-in-out); }
-  //.resource-img-a.-icon { @include transition(background-color .5s ease-in-out); }
 
   .h2-share { margin-right: .4rem; }
   $msb-icon-size: 1.8rem;
@@ -252,6 +248,17 @@
   .register-div { padding-top: 1rem; }
 
 
+  // Archive - large
+  // Search - large
+  .archive-a .resource-meta {
+    @include flex;
+    @include justify-content(flex-start);
+    @include flex-direction-row;
+
+    [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.4rem; }
+  }
+
+
 
   // Sticky Footer - large
   $footerh: 33.5rem;
@@ -307,6 +314,7 @@
 
 
   // Resources - wide
+  // Resources Single - wide
   .default-resource-icon-div { height: 17rem; }
 
   .resource-below-hero {
@@ -317,21 +325,23 @@
 
   .single .resource-meta {
     width: calc(100% - 15rem);
-  }
 
-  .resource-meta {
     @include flex;
     @include justify-content(flex-start);
     @include flex-direction-row;
+
+    [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.44rem; }
   }
 
-  .resource-pdf { @include flex; @include flex-direction-col; }
+  .single .resource-pdf { @include flex; @include flex-direction-col; }
 
-  .meta-time { max-width: 30%; }
-  .meta-author { max-width: 30%; }
-  .meta-tags { max-width: 40%; }
+  .single {
+    .meta-time { max-width: 30%; }
+    .meta-author { max-width: 40%; }
+    .meta-tags { max-width: 40%; }
+  }
 
-  .resource-meta [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 2.44rem; }
+  //.resource-meta [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.44rem; }
 
 
   // Events - wide

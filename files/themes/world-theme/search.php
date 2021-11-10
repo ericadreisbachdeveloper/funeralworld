@@ -4,14 +4,14 @@
 
 
 <main data-role="main" id="main">
-	<section class="section">
+	<section class="section" id="search-results">
 
 
 		<div class="container">
 			<?php $s = sprintf( __('%s', 'dbllc'), $wp_query->found_posts);
 			if($s == '1') { $sp = ''; } else { $sp = 's'; } ?>
 
-			<h1><?php echo sprintf( __( '%s Search Result' . $sp . ' for &ldquo;', 'html5blank' ), $wp_query->found_posts ); echo get_search_query(); echo '&rdquo;'; ?></h1>
+			<h1 class="search-results-h1"><?php echo sprintf( __( '%s Search Result' . $sp . ' for &ldquo;', 'html5blank' ), $wp_query->found_posts ); echo get_search_query(); echo '&rdquo;'; ?></h1>
 		</div>
 
 
@@ -24,7 +24,7 @@
 
 
 
-	</section>
+	</section><!-- /#search-results -->
 </main>
 
 

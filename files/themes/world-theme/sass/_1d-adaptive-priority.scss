@@ -45,9 +45,9 @@
 
 
   $headerh: 10rem;
-  %siteheaderh { height: $headerh; }
+  .site-header, .site-header .logo-a, .navbar-nav { height: $headerh; }
+
   .site-header { background: $navy; /*overflow: hidden;*/ }
-  .site-header .navbar-nav { height: $headerh; }
 
   .site-header > .gutenberg-container { width: calc(100% - 3rem); @include justify-content(space-between); }
 
@@ -495,7 +495,18 @@
   $container: 57rem;
   %container { width: $container; }
 
-  %container-corset { width: 54rem; margin-right: auto; margin-left: auto; }
+
+//  %container-corset { width: 54rem; margin-right: auto; margin-left: auto; }
+
+  // Structure - large
+  %container-corset {
+    //width: 54rem;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
 
   %container-gutter { width: calc( #{$container} - 30px); margin-right: auto; margin-left: auto; }
 
@@ -525,6 +536,8 @@
 
   %container-wide { width: calc(#{$container} - 3rem); margin-right: auto; margin-left: auto; }
 
+  %container-corset { width: 60rem; }
+
   %container-gutter { width: calc( #{$container} - 3rem); }
 
   .site-header > .gutenberg-container { width: $container; margin-right: auto; margin-left: auto; }
@@ -543,6 +556,8 @@
   .site-header {
     width: 100%;
     background: $navy;
+    padding-right: .5rem;
+    padding-left: .5rem;
     position: fixed;
      top: 0;
     z-index: 100;

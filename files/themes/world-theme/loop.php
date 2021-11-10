@@ -1,7 +1,10 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
 
 
-<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+<?php if (have_posts()): ?>
+
+
+<?php while (have_posts()) : the_post(); ?>
 
 
 <?php
@@ -38,7 +41,7 @@
 
 			<?php $post_types_with_no_meta = array('page', 'asp-products'); ?>
 			<?php $post_type = get_post_type($post->ID); if (!in_array($post_type, $post_types_with_no_meta)) : ?>
-			<?php echo _e(get_template_part('meta-archive')); ?>
+			<?php _e(get_template_part('meta-archive')); ?>
 			<?php endif; ?>
 
 		</div><!-- /.container -->
@@ -48,11 +51,12 @@
 <?php endwhile; ?>
 
 
-
 <?php else: ?>
 <article>
 	<div class="container">
 		<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
 	</div>
 </article>
+
+
 <?php endif; ?>

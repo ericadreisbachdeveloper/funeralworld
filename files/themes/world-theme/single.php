@@ -2,8 +2,9 @@
 <?php get_header(); global $site_url; ?>
 
 
+<?php global $post; print_r($post); ?>
 
-<main data-role="main">
+<main data-role="main" id="main">
 	<div class="container">
 		<div class="corset">
 			<section class="section">
