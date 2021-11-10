@@ -31,11 +31,15 @@ input {
     border-right: none;
     border-bottom: .05rem solid lightgray;
     border-left: none;
+    border-radius: 1rem;
+
     font-family: 'mreaves', sans-serif;
     margin: 0;
     padding: .5rem .1rem;
 
     -webkit-appearance: none;
+
+    @include placeholder { color: $gray; }
   }
 
 
@@ -69,4 +73,68 @@ label { line-height: 1.8; }
   }
 
   input[type="submit"] { margin-top: 2rem; }
+}
+
+
+
+// Advanced Search form
+.search {
+
+  .select, .input {
+    width: 100%;
+    background: $mist;
+  }
+
+  #search-input {
+    padding-left: 1rem;
+    padding-right: 2rem;
+    @include placeholder { color: $nearblack; }
+  }
+
+  .search-submit {
+    @extend %button;
+    background: $land3;
+    color: white;
+    border-color: white;
+
+    @include hover {
+      color: white;
+      background: $land;
+    }
+  }
+
+
+  .select {
+    height: 2.4rem;
+    border: none;
+    font-family: 'mreaves', sans-serif;
+    padding-top: .6rem;
+    padding-bottom: .5rem;
+    padding-left: 1rem;
+
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='17' height='10' overflow='visible' xml:space='preserve'%3E%3Cdefs%3E%3Cpath id='a' d='M0 0h16.849v10.425H0z'/%3E%3C/defs%3E%3CclipPath id='b'%3E%3Cuse xlink:href='%23a' overflow='visible'/%3E%3C/clipPath%3E%3Cpath clip-path='url(%23b)' fill='%2335BDB6' d='M8.425 10.425a.996.996 0 0 1-.75-.339L.25 1.662A1.001 1.001 0 0 1 1.751.339l6.674 7.573L15.1.339a1 1 0 0 1 1.5 1.322l-7.425 8.425a.998.998 0 0 1-.75.339z'/%3E%3C/svg%3E");
+    background-position: calc(100% - 1rem) 50%;
+    background-repeat: no-repeat;
+    background-size: 1.4rem;
+
+    -webkit-appearance: none;
+  }
+
+
+  .select [value] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .select::-ms-expand {
+    display: none; /* Hide the default arrow in Internet Explorer 10 and Internet Explorer 11 */
+  }
+
+  .search-submit {
+    display: block;
+    margin-top: 3rem;
+    margin-right: auto;
+    margin-left: auto; 
+  }
 }

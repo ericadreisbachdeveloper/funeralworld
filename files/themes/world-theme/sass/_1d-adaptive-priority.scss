@@ -495,7 +495,7 @@
   $container: 57rem;
   %container { width: $container; }
 
-  %container-corset { width: 48rem; margin-right: auto; margin-left: auto; }
+  %container-corset { width: 54rem; margin-right: auto; margin-left: auto; }
 
   %container-gutter { width: calc( #{$container} - 30px); margin-right: auto; margin-left: auto; }
 
@@ -560,7 +560,7 @@
   .logged-in.admin-bar .site-header { top: 32px; }
 
   [data-role="main"] { padding-top: $headerh; }
-  
+
 }
 
 

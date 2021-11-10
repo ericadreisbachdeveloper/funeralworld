@@ -1309,17 +1309,16 @@ function hide_columns_in_admin($columns){
 
 
 // 37. Shortcode for Support the Future
-add_shortcode( 'supportthefuture', 'supportthefuture');
+add_shortcode( 'supportthefuture', 'supportthefuture', 99);
 function supportthefuture(){
     dynamic_sidebar('support-the-future');
 }
 
 
 // 38. Shortcode for Search Form
-add_shortcode( 'searchform', 'searchform');
-function searchform($search) {
-	$search = include(locate_template('searchform.php'));
-
+add_shortcode( 'advancedsearch', 'searchform');
+function searchform() {
+	return get_search_form(false);
 }
 
 

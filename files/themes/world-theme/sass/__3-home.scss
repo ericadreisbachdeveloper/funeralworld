@@ -27,8 +27,10 @@
 // Homepage grid
 
 @media (min-width: 48rem) {
-  .event-col:nth-of-type(1) { padding-right: 1.5rem; }
-  .event-col:nth-of-type(2) { padding-left: 1.5rem; }
+  //.event-col:nth-of-type(1) { padding-right: 1.5rem; }
+  //.event-col:nth-of-type(2) { padding-left: 1.5rem; }
+  .event-col:nth-of-type(1) { padding-right: .5rem; }
+  .event-col:nth-of-type(2) { padding-left: .5rem; }
 }
 
 .resource-article-a .icon { position: relative; top: .2rem; }

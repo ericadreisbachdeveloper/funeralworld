@@ -145,6 +145,37 @@ function create_my_taxonomies() {
     );
 
 
+    // 2. Audience (Funeral Directors, Public)
+    register_taxonomy(
+
+        // register_taxonomy( $taxonomy, $object_type, $args );
+        'audience',
+        'post',
+
+        array(
+            'labels' => array(
+                'name' => 'Audience',
+                'add_new_item' => 'Add New Audience',
+                'new_item_name' => 'New Audience',
+            ),
+            //'rewrite' => array( 'slug' => 'events/category', 'with_front' => false ),
+
+            'show_ui' => true,
+            'show_tagcloud' => false,
+
+            // hierarchical = true   -  checkboxes (like Wordpress default Categories)
+            // hierarchical = false  -  type-in input (like Wordpress default Tags)
+            'hierarchical' => true,
+            'has_archive' => true,
+            'ep_mask' => EP_PERMALINK,
+            'show_admin_column' => true,
+
+            // 'show_in_rest' enables Gutenberg blocks
+            'show_in_rest'       => true,
+        )
+    );
+
+
     flush_rewrite_rules();
 
 }

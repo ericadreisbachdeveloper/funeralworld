@@ -533,11 +533,19 @@ figure.alignright figcaption  { text-align: right; }
   color: white;
 }
 
-[data-role="main"] .wp-block-group.night-bg [href]:not([href="#"]),
-[data-role="main"] .wp-block-group.navy-bg [href]:not([href="#"]) {
-  @include linkgradient(white);
+.wp-block-group.green-bg {
+  background: $land3;
   color: white;
-  @include hover { color: $teal; @include linkgradient($teal); }
+}
+
+.wp-block-group {
+  &.navy-bg, &.night-bg, &.green-bg {
+    [href]:not([href="#"]) {
+      @include linkgradient(white);
+      color: white;
+      @include hover { color: $teal; @include linkgradient($teal); }
+    }
+  }
 }
 
 .wp-block-group.night-bg .wp-block-separator,

@@ -204,9 +204,11 @@ $toggle_bottom: 2rem;
   width: 100%;
   padding-right: 1.5rem;
   padding-left: 1.5rem;
+  //padding-right: .5rem;
+  //padding-left: .5rem;
 }
 
-.gutenberg-container .corset { @extend %container-corset; }
+.gutenberg-container > .corset { @extend %container-corset; }
 
 
 //.site-header > .gutenberg-container,
@@ -224,6 +226,12 @@ $toggle_bottom: 2rem;
 [data-role="main"] .wp-block-cover .wp-block-cover__inner-container,
 .container {
   @extend %container;
+}
+
+
+[data-role="main"] > .gutenberg-section.core-group > .gutenberg-container > .wp-block-group > .wp-block-group__inner-container {
+  padding-right: .5rem;
+  padding-left:  .5rem;
 }
 
 
