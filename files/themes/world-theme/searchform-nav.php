@@ -1,7 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
 
 
-<form class="search" method="get" action="<?php _e(home_url()); ?>" role="search">
+<form class="search nav-search" method="get" action="<?php _e(home_url()); ?>" role="search">
 
 	<a href="#display-search" role="button" aria-pressed="false" aria-label="Show/Hide Search Form"></a>
 

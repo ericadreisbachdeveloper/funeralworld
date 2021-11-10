@@ -4,9 +4,9 @@
 <div class="container gutenberg-container">
 	<div class="corset">
 
-		<form class="search" method="get" action="<?php _e(home_url()); ?>" role="search">
+		<form class="search" method="get" role="search">
 
-			<input id="search-input" class="search-input input" type="search" name="s" placeholder="<?php _e( 'What are you looking for?', 'dbllc' ); ?>">
+			<input id="search-input" class="search-input input" type="search" name="s" action="<?php _e(home_url()); ?>" placeholder="<?php _e( 'What are you looking for?', 'dbllc' ); ?>">
 
 			<h2 class="form-h2">Filter your search </h2>
 
@@ -84,3 +84,21 @@
 
 	</div><!-- /.corset -->
 </div><!-- /.container -->
+
+
+<div class="container">
+	<?php if( isset( $_REQUEST['query'] ) ) {
+        query_posts( array(
+        's' => $_REQUEST['query']
+        ));
+
+        if( have_posts() ) : while ( have_posts() ) :
+            the_title();
+            the_content();
+        endwhile; endif;
+
+        wp_reset_query();
+        }
+    ?>
+
+</div>
