@@ -9,11 +9,11 @@
 
 		<h2 class="form-h2">Filter your search </h2>
 
-		<div class="row">
+		<div class="row advanced-search-row">
 
 
 			<!-- START Audience -->
-			<div class="col-md-3">
+			<div class="col-md-6 col-lg-3">
 
 				<select name="audience" class="select">
 					<option value="">For Everyone </option>
@@ -27,7 +27,7 @@
 
 
 			<!-- START Authors -->
-			<div class="col-md-3">
+			<div class="col-md-6 col-lg-3">
 
 				<?php $authors = get_users(); ?>
 
@@ -44,7 +44,7 @@
 
 
 			<!-- START Topics -->
-			<div class="col-md-3">
+			<div class="col-md-6 col-lg-3">
 
 				<select name="topic" class="select">
 					<option value="">Any Topic </option>
@@ -58,7 +58,7 @@
 
 
 			<!-- START Resource Types -->
-			<div class="col-md-3">
+			<div class="col-md-6 col-lg-3">
 
 				<select name="type" class="select">
 				  <option value="">Any Resource Type </option>

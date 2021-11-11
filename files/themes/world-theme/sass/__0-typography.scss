@@ -23,11 +23,11 @@
 [data-role="main"] h2,
 [data-role="main"] .has-medium-font-size { @extend %medium; margin-bottom: .3rem; }
 
-%main-menu-li                { font-size: 1.666rem; line-height: 1.2; }
+%main-menu-li, [data-role="main"] .archive-h2                 { font-size: 1.666rem; line-height: 1.2; }
 
 [data-role="main"] .event-h2 { @extend %deck; font-weight: normal; }
 
-%offsite-menu-li             { font-size: 1.25rem; line-height: 1.2; }
+%offsite-menu-li            { font-size: 1.25rem; line-height: 1.2; }
 
 
 

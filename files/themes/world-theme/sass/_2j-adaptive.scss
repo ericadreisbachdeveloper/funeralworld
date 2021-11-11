@@ -2,6 +2,24 @@
 
 
 
+
+
+// Wordpress overrides
+@media (min-width: 782px) {
+  .wp-block-column:not(:first-child).full-width-md-and-smaller { margin-left: 0; }
+}
+
+
+@media (max-width: 61.99999rem) {
+  .full-width-md-and-smaller {
+    -ms-flex-preferred-size: 100% !important;
+    flex-basis: 100% !important;
+  }
+}
+
+
+
+
 // Small devices (landscape phones, 37.5rem and up)
 @media (min-width: 37.5rem) {
 
@@ -187,6 +205,10 @@
   [data-role="main"] .events-grid-a[href] { max-width: unset; }
 
 
+  // Search - medium
+  .advanced-search-row > [class*="col"]:nth-of-type(2n+1) { padding-right: .5rem; }
+  .advanced-search-row > [class*="col"]:nth-of-type(2n)   { padding-left: .5rem; }
+
 
   // Footer - medium
    #menu-footer, #menu-social { text-align: center; }
@@ -212,6 +234,11 @@
 
   // Breakpoint - large
   %breakpoint { background: dodgerblue; content: 'LARGE'; }
+
+
+  // Classes - large
+  .hide-md-and-smaller { display: block; }
+
 
 
   // Header - large
@@ -261,7 +288,11 @@
   .gutenberg-section.core-shortcode #search-results .hentry > [href] > .container { width: 100%; }
 
 
-
+  // Search - large
+  // Search form - large
+  // Advanced Search - large
+  //.advanced-search-row > [class*="col"]:nth-of-type(2n+1) { padding-right: .5rem; }
+  //.advanced-search-row > [class*="col"]:nth-of-type(2n)   { padding-left: .5rem; }
 
 
   // Sticky Footer - large

@@ -78,6 +78,10 @@ label { line-height: 1.8; }
 
 
 // Advanced Search form
+.advanced-search-row > [class*="col"] {
+  margin-bottom: 1rem;
+}
+
 .search {
 
   .select, .input {
