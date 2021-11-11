@@ -59,12 +59,13 @@
 <?php endwhile; ?>
 
 
-<?php else: ?>
+<?php // else: ?>
+	<!--
 <article>
 	<div class="container">
-		<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
+		<h2><?php // _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
 	</div>
 </article>
-
+-->
 
 <?php endif; ?>

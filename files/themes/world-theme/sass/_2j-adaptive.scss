@@ -54,6 +54,17 @@
     max-width: 45%;
   }
 
+  .search-results, .page {
+    .archive-a > .container { @include flex; }
+    .archive-img { padding-right: 1.5rem; }
+  }
+
+  .archive-txt {
+    @include flex;
+    @include flex-direction-col;
+    @include justify-content(space-between);
+  }
+
 
 
   // Events - small

@@ -509,13 +509,11 @@
     }
   }
 
-  #search-results > .container { width: 100%; }
+  .page #search-results > .container { width: 100%; }
 
   .search-results, .archive {
     #search-results .hentry > [href] > .container { width: $container; }
   }
-
-
 }
 
 

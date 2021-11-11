@@ -1,5 +1,6 @@
 // Archive - style.css
-
+// Search results (from nav icon)
+// Advanced Search results
 
 
 // Grid display (Home, Events)
@@ -248,7 +249,6 @@ $hentry-top: -1px;
 
 // Advanced Search Results
 // Our Work
-
 .page #search-results {
 
   .hentry > [href]:before { width: 100%; background-position: 1.5rem 0; background-size: calc(100% - 3rem) 100%; }
@@ -267,4 +267,19 @@ $hentry-top: -1px;
 
   .nowrap { display: inline; }
   .nowrap > .archive-h2:before { display: none; }
+
+}
+
+
+.search-results, .page {
+
+  .archive-a .archive-img {
+    padding-top: .9rem;
+
+    .picture {
+      width: 17.5rem;
+      display: block;
+    }
+  }
+
 }
