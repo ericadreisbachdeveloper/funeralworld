@@ -31,13 +31,21 @@
 
 		<div class="container">
 
-			<h2 class="archive-h2"><?php the_title(); ?>&nbsp;</h2>
 			<?php if($terms != '') : ?>
+			<h2 class="archive-h2" id="archive-h2"><?php the_title(); ?></h2>
+
+			<div class="picture-div">
 				<picture class="icon archive-icon">
 					<source type="image/svg+xml" srcset="<?= esc_url($default_svg_url); ?>">
 					<img class="icon-img" src="<?= esc_url($default_png_url); ?>"  alt="<?= $icon_alt; ?>" width="14" height="14" />
 				</picture>
+			</div>
+
+			<?php else : ?>
+			<h2 class="archive-h2" id="archive-h2"><?php the_title(); ?></h2>
+
 			<?php endif; ?>
+
 
 			<?php $post_types_with_no_meta = array('page', 'asp-products'); ?>
 			<?php $post_type = get_post_type($post->ID); if (!in_array($post_type, $post_types_with_no_meta)) : ?>

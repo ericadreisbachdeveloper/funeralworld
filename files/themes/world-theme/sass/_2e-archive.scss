@@ -150,50 +150,52 @@ $hentry-top: -1px;
 
 
 //.search, .archive {
-  [data-role="main"] {
-    .hentry {
-      &> [href] {
-        @extend %remove-link-line;
+.picture-div { display: inline-block; }
 
-        background: transparent;
+[data-role="main"] {
+  .hentry {
+    &> [href] {
+      @extend %remove-link-line;
+
+      background: transparent;
+      display: block;
+      padding-bottom: 1.1rem;
+      @include transition(background .2s ease-in-out);
+
+      @include hover {
+        background: $mist;
+        &:before { background-size: calc(100% + 3rem) 100%; background-position: 0 0; }
+        .archive-icon { background: $blue2; }
+      }
+
+      &:before {
+        @include top-btm-border($gray);
+        height: calc(100% + #{$hentry-border});
+        background-repeat: no-repeat;
+        content: '';
         display: block;
-        padding-bottom: 1.1rem;
-        @include transition(background .2s ease-in-out);
-
-        @include hover {
-          background: $mist;
-          &:before { background-size: calc(100% + 3rem) 100%; background-position: 0 0; }
-          .archive-icon { background: $blue2; }
-        }
-
-        &:before {
-          @include top-btm-border($gray);
-          height: calc(100% + #{$hentry-border});
-          background-repeat: no-repeat;
-          content: '';
-          display: block;
-          position: absolute;
-           top: $hentry-top;
-           left: 0;
-          z-index: 1;
-          @include transition(background-size .2s ease-in-out, background-position .2s ease-in-out);
-        }
+        position: absolute;
+         top: $hentry-top;
+         left: 0;
+        z-index: 1;
+        @include transition(background-size .2s ease-in-out, background-position .2s ease-in-out);
       }
-
-      .archive-h2 {
-        display: inline;
-        margin-top: 0;
-
-        &:before {
-          display: block;
-          content: '';
-          height: 1.3rem;
-        }
-      }
-
-      .resource-meta { padding-top: .66rem; padding-bottom: .22rem; }
     }
+
+    .archive-h2 {
+      display: inline;
+      margin-top: 0;
+
+      &:before {
+        display: block;
+        content: '';
+        height: 1.3rem;
+      }
+    }
+
+    .resource-meta { padding-top: .66rem; padding-bottom: .22rem; }
   }
+}
 //}
 
 
@@ -205,9 +207,6 @@ $hentry-top: -1px;
   border-radius: .6rem;
   @include transition(background .2s ease-in-out);
 }
-
-
-
 
 
 
@@ -247,21 +246,26 @@ $hentry-top: -1px;
 
 
 
-// Search Results
-.page #search-results {
-  //.hentry > [href] > .container { width: 100%; }
+// Advanced Search Results
+// Our Work
+.page [data-role="main"] .hentry>[href] { background: rgba(255,255,0,.2); }
 
-  .hentry > [href]:before { background-position: 1.5rem 0; width: calc(100% - 3rem); }
+.page #search-results {
+
+  .hentry > [href]:before { width: 100%; background-position: 1.5rem 0; background-size: calc(100% - 3rem) 100%; }
 
   .hentry > [href] {
     @include hover {
 
       &:before {
-        width: 100%;
         background-position: 0 0;
+        background-size: 100% 100%;
       }
     }
   }
 
   .meta-type { display: none; }
+
+  .nowrap { display: inline; }
+  .nowrap > .archive-h2:before { display: none; }
 }

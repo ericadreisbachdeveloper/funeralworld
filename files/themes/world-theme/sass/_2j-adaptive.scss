@@ -258,7 +258,7 @@
     [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.4rem; }
   }
 
-  //#search-results .hentry > [href]:before { background-position: 50% 0; }
+  .gutenberg-section.core-shortcode #search-results .hentry > [href] > .container { width: 100%; }
 
 
 

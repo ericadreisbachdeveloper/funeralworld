@@ -1356,7 +1356,50 @@ add_shortcode( 'searchresults', 'searchresultsdiv');
 function searchresultsdiv() {
 	$results  = '<div id="search-results">';
 
-	// by default, show ALL resources with paging 
+	// by default, show ALL resources with paging
+	$results .= '<article id="post-163" class="post-163 post type-post status-publish format-standard hentry category-learning resource-type-video topic-end-of-life audience-licensed-professionals audience-public">
+	<a class="archive-a" href="http://localhost/world/so-you-want-to-be-an-embalmer-video/" title="So You Want to Be an Embalmer [VIDEO]">
+
+		<div class="container">
+
+			<h2 class="archive-h2">So You Want to Be an Embalmer</h2>
+
+			<div class="nowrap">
+				<h2 class="archive-h2">[VIDEO]</h2>
+				<picture class="icon archive-icon">
+					<source type="image/svg+xml" srcset="http://localhost/world/files/uploads/2021/09/film.svg">
+					<img class="icon-img" src="http://localhost/world/files/uploads/2021/09/film.png" alt="Video" width="14" height="14">
+				</picture>
+			</div>
+
+
+  <div class="resource-meta">
+
+
+        <div class="meta-time">
+      <h2 class="meta-h2">PUBLISHED: </h2> September 21, 2021    </div>
+
+
+
+
+
+        <div class="meta-author">
+      <h2 class="meta-h2">POSTED BY: </h2>
+      Worsham Author    </div>
+
+
+        <div class="meta-type">
+      <h2 class="meta-h2">RESOURCE TYPE: </h2> Video    </div>
+
+
+
+
+  </div><!-- /.resource-meta -->
+
+		</div><!-- /.container -->
+
+	</a>
+</article>';
 
 	$results .= '</div>';
 	return $results;

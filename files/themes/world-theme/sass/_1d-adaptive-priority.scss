@@ -52,13 +52,6 @@
   .site-header > .gutenberg-container { width: calc(100% - 3rem); @include justify-content(space-between); }
 
 
-  // ... if need full-width header container on large ...
-  /*
-  .site-header > .gutenberg-container { width: calc(100% - 3rem);  }
-  */
-
-
-
 
   // 2. Nav - large
   $padding-top: 1rem;
@@ -492,7 +485,8 @@
 
 
   // Structure - large
-  $container: 57rem;
+  //$container: 57rem;
+  $container: calc(100% - 3rem);
   %container { width: $container; }
 
 
@@ -505,17 +499,19 @@
   }
 
 
-  %container-gutter { width: calc( #{$container} - 30px); margin-right: auto; margin-left: auto; }
+  %container-gutter { margin-right: auto; margin-left: auto; }
 
   // Archive - large
   // Search - large
-  .search, .archive {
+  .search-results, .archive {
     [data-role="main"] .hentry > [href]:before {
       background-size: calc( #{$container} - 3rem) 100%; background-position: 50% 0;
     }
   }
 
-  #search-results .hentry > [href] > .container { width: $container; }
+  .search-results, .archive {
+    #search-results .hentry > [href] > .container { width: $container; }
+  }
 
 
 }
@@ -533,6 +529,7 @@
   $container: 73rem;
   %container { width: $container; }
 
+
   %container-wide { width: calc(#{$container} - 3rem); margin-right: auto; margin-left: auto; }
 
   %container-corset { width: 60rem; }
@@ -541,12 +538,21 @@
 
   .site-header > .gutenberg-container { width: $container; margin-right: auto; margin-left: auto; }
 
+  .page #search-results > .container { width: unset; }
 
 
-  // Archive - wide
-  .search, .archive {
-    [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; }
+  // Advanced Search - wide
+  // Our Work - wide
+  .page [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; }
+
+  .search-results, .archive {
+    #search-results .hentry > [href] > .container { width: $container; }
+
+    [data-role="main"] .hentry > [href]:before {
+      background-size: calc( #{$container} - 3rem) 100%;
+    }
   }
+
 
 
   // Header - wide
