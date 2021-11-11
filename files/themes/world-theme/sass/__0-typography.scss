@@ -24,6 +24,8 @@
 [data-role="main"] .has-medium-font-size,
 .page [data-role="main"] .search-results-h1 { @extend %medium; }
 
+.page [data-role="main"] .search-results-h1 { margin-bottom: 1.5rem; }
+
 [data-role="main"] .deck,
 [data-role="main"] h2,
 [data-role="main"] .has-medium-font-size { margin-bottom: .3rem;  }

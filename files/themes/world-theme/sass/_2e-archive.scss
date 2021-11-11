@@ -271,15 +271,40 @@ $hentry-top: -1px;
 }
 
 
+
 .search-results, .page {
 
   .archive-a .archive-img {
     padding-top: .9rem;
-
-    .picture {
-      width: 17.5rem;
-      display: block;
-    }
   }
 
+  .picture.-photo { width: 17.5rem; display: block; position: relative; }
+  .picture.-photo:before {
+    width: 100%;
+    height: 100%;
+    background: $blue2;
+    content: '';
+    display: block;
+    opacity: 0;
+    position: absolute;
+     top: 0;
+     left: 0;
+  }
+
+  .picture.-icon {
+    width: 17.5rem;
+    height: 9.375rem;
+    background: $night;
+
+    @include flex;
+    @include justify-content(center);
+    @include align-items(center);
+  }
+}
+
+[data-role="main"] .hentry > [href] {
+  @include hover {
+    .picture.-photo:before { opacity: .7; mix-blend-mode: multiple; }
+    .picture.-icon { background: $blue2; }
+  }
 }

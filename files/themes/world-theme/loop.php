@@ -22,7 +22,7 @@
 			$default_svg = get_field('resource-icon-svg', $firstterm);
 			$default_svg_url = $default_svg['url'];
 			$default_png = get_field('resource-icon-png', $firstterm);
-			$default_png_url = $default_png['url'];
+			$default_png_url = $default_png['url'
 		}
 ?>
 

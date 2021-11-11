@@ -158,6 +158,7 @@
   .title-icon { @include transition(background-color .2s ease-in-out); }
 
 
+
   // Blog - medium
   .meta-div {
     min-height: 2em;
@@ -219,6 +220,12 @@
   // Search - medium
   .advanced-search-row > [class*="col"]:nth-of-type(2n+1) { padding-right: .5rem; }
   .advanced-search-row > [class*="col"]:nth-of-type(2n)   { padding-left: .5rem; }
+
+  .search-results, .page {
+    .picture.-icon { @include transition(background .2s ease-in-out); }
+    .picture.-photo:before { @include transition(opacity .2s ease-in-out); }
+  }
+
 
 
   // Footer - medium

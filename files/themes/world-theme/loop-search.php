@@ -42,11 +42,18 @@
 					     $img_alt = $img['alt'];
 					?>
 
-					<picture class="picture">
-						<source type="image/jpg" srcset="<?= esc_url($standard_arr[0]); ?>.webp" />
+					<picture class="-photo picture">
+						<source type="image/webp" srcset="<?= esc_url($standard_arr[0]); ?>.webp" />
 						<img width="280" height="150" class="img" src="<?= esc_url($standard_arr[0]); ?>" alt="<?= $img_alt; ?>" />
 					</picture>
 
+				<?php elseif ($terms != '') : ?>
+					<div class="default-archive-img">
+						<picture class="-icon picture">
+							<source type="image/svg+xml" srcset="<?= esc_url($default_svg_url); ?>">
+							<img width="100" height="100" src="<?= esc_url($default_png_url); ?>" alt="<?= $icon_alt; ?>" />
+						</picture>
+					</div>
 				<?php endif; ?>
 
 			</div>

@@ -689,13 +689,8 @@ function dbllc_excerpt() {
 	// get the first 15 words
 	$output = implode(' ', array_slice(explode(' ', $output), 0, 15));
 
-
-
-	// add an ellipsis
-	$output = $output . '&nbsp;&hellip;';
-
+	if ($output != '') { $output = $output . '&nbsp;&hellip;'; }
 	return $output;
-	//echo $output;
 
 }
 
@@ -1354,52 +1349,110 @@ add_action('wp_footer', 'stripe_custom_css', 99);
 // 40. Search Results shortcode
 add_shortcode( 'searchresults', 'searchresultsdiv');
 function searchresultsdiv() {
+
+	// set new wp_query for all post_type = "post"
+	global $wp_query;
+
+	$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+
+	$args = array(
+		'post_type' => 'post',
+		'posts_per_page' => 2,
+		'paged' => $paged
+	);
+
+	// use global variable $wp_query
+	// not, like, $loop or $news or whatever
+	$wp_query = new WP_Query( $args );
+
+	   $count = $wp_query->found_posts;
+
 	$results  = '<div id="search-results">';
 
 	// by default, show ALL resources with paging
-	$results .= '<article id="post-163" class="post-163 post type-post status-publish format-standard hentry category-learning resource-type-video topic-end-of-life audience-licensed-professionals audience-public">
-	<a class="archive-a" href="http://localhost/world/so-you-want-to-be-an-embalmer-video/" title="So You Want to Be an Embalmer [VIDEO]">
+	if ( $wp_query->have_posts() ) {
 
-		<div class="container">
-
-			<h2 class="archive-h2">So You Want to Be an Embalmer</h2>
-
-			<div class="nowrap">
-				<h2 class="archive-h2">[VIDEO]</h2>
-				<picture class="icon archive-icon">
-					<source type="image/svg+xml" srcset="http://localhost/world/files/uploads/2021/09/film.svg">
-					<img class="icon-img" src="http://localhost/world/files/uploads/2021/09/film.png" alt="Video" width="14" height="14">
-				</picture>
-			</div>
+		$results .= '<div class="container"><h2 class="search-results-h1">Browse All ' . $count . ' Resources</a></div>';
 
 
-  <div class="resource-meta">
+		while ( $wp_query->have_posts() ) : $wp_query->the_post();
 
 
-        <div class="meta-time">
-      <h2 class="meta-h2">PUBLISHED: </h2> September 21, 2021    </div>
+			$terms = $firstterm = '';
+			$terms = get_the_terms(get_the_ID(), 'resource-type');
+
+			if ($terms != '') {
+
+				$firstterm = $terms[0];
+
+				$icon_alt = $firstterm->name;
+
+				$default_svg = get_field('resource-icon-svg', $firstterm);
+				$default_svg_url = $default_svg['url'];
+				$default_png = get_field('resource-icon-png', $firstterm);
+				$default_png_url = $default_png['url'];
+			}
 
 
+			$classes = ''; $classes_arr = get_post_class();
+
+			$i = 0; $count = count($classes_arr);
+
+			foreach ($classes_arr as $classes_ar) {
+				$classes .= $classes_ar;
+				if ($i < $count ) { $classes .= ' '; }
+				$i++;
+			}
 
 
+			$results .= '<article id="post-' . get_the_id() . '"  class="' . $classes . '">';
 
-        <div class="meta-author">
-      <h2 class="meta-h2">POSTED BY: </h2>
-      Worsham Author    </div>
-
-
-        <div class="meta-type">
-      <h2 class="meta-h2">RESOURCE TYPE: </h2> Video    </div>
+			$results .= '<a class="archive-a" href="' . get_the_permalink() . '" title="' . get_the_title() . '">';
+			$results .= '<div class="container">';
 
 
+			$results .= '<div class="archive-img">';
 
+			if(has_post_thumbnail()) {
+				$img_id = get_post_thumbnail_id();
+				$standard_arr = wp_get_attachment_image_src($img_id, 'medium');
+								 $img = wp_prepare_attachment_for_js($img_id);
+						 $img_alt = $img['alt'];
 
-  </div><!-- /.resource-meta -->
+				$results .= '<picture class="picture"><source type="image/webp" srcset="' . $standard_arr[0] . '.webp" /><img width="280" height="150" class="img" src="' . $standard_arr[0] . '" alt="' . $img_alt . '" /></picture>';
+			}
 
-		</div><!-- /.container -->
+			$results .= '</div>';
 
-	</a>
-</article>';
+			$results .= '<div class="archive-txt">';
+			$results .= '<div class="archive-title-excerpt">';
+			if ($terms != '') {
+				$results .= '<h2 class="archive-h2" id="archive-h2">' . get_the_title() . '</h2>';
+
+				$results .= '<div class="picture-div"><picture class="icon archive-icon"><source type="image/svg+xml" srcset="' . $default_svg_url . '" /><img class="icon-img" src="' . $default_png_url . '"  alt="' . $icon_alt . '" width="14" height="14" /></picture></div>';
+			}
+			else {
+				$results .= '<h2>' . get_the_title() . '</h1>';
+			}
+
+			$results .= '<p class="archive-p">' . dbllc_excerpt() . '</p>';
+			$results .= '</div><!-- /.archive-title-excerpt -->';
+			$results .= '</div><!-- /.archive-txt -->';
+
+			$results .= '<div class="archive-meta">';
+
+			$results .= '</div><!-- /.archive-meta -->';
+
+			$results .= '</div><!-- /.container -->';
+			$results .= '</a>';
+			$results .= '</article>';
+
+		endwhile;
+
+	}
+
+	wp_reset_query();
+
 
 	$results .= '</div>';
 	return $results;
