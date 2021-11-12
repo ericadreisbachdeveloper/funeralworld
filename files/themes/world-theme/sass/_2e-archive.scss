@@ -153,6 +153,12 @@ $hentry-top: -1px;
 //.search, .archive {
 .picture-div { display: inline-block; }
 
+
+.search, .archive, .page {
+  [data-role="main"] .hentry > [href].no-excerpt { padding-bottom: 0; }
+}
+
+
 .search, .archive, .page {
   [data-role="main"] {
     .hentry {
@@ -322,5 +328,5 @@ $hentry-top: -1px;
   }
 }
 
-.archive-title-excerpt         { padding-bottom: 1.44rem; }
+.archive-title-excerpt          { padding-bottom: 1.44rem; }
 .archive-title-excerpt.-no-meta { padding-bottom: 0; }

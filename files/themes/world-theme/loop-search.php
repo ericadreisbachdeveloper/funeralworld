@@ -32,7 +32,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<a class="archive-a" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+	<a class="archive-a<?php if(dbllc_excerpt() == '') { _e(' no-excerpt'); } ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 
 		<div class="container">
 
