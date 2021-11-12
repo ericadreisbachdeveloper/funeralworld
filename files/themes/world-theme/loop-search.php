@@ -51,7 +51,7 @@
 					<div class="default-archive-img">
 						<picture class="-icon picture">
 							<source type="image/svg+xml" srcset="<?= esc_url($default_svg_url); ?>">
-							<img width="100" height="100" src="<?= esc_url($default_png_url); ?>" alt="<?= $icon_alt; ?>" />
+							<img width="100" height="100" src="<?= esc_url($default_png_url); ?> " alt="<?= $icon_alt; ?>" />
 						</picture>
 					</div>
 				<?php endif; ?>

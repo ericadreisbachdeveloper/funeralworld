@@ -10,7 +10,6 @@ define('TDIR', get_bloginfo('stylesheet_directory'));
 
 
 // 1. For debugging - output all scripts
-/*
 function inspect_scripts() {
 	if (!is_admin()) {
     global $wp_scripts;
@@ -19,9 +18,8 @@ function inspect_scripts() {
     endforeach;
 	}
 }
-*/
-// add_action( 'wp_print_scripts', 'inspect_scripts', 99 );
 
+// add_action( 'wp_print_scripts', 'inspect_scripts', 99 );
 
 
 
@@ -1323,7 +1321,6 @@ function searchform() {
 }
 
 
-
 // 39. Write custom CSS to Stripe iframe
 function stripe_custom_css() {
 
@@ -1419,7 +1416,16 @@ function searchresultsdiv() {
 								 $img = wp_prepare_attachment_for_js($img_id);
 						 $img_alt = $img['alt'];
 
-				$results .= '<picture class="picture"><source type="image/webp" srcset="' . $standard_arr[0] . '.webp" /><img width="280" height="150" class="img" src="' . $standard_arr[0] . '" alt="' . $img_alt . '" /></picture>';
+				$results .= '<picture class="-photo picture"><source type="image/webp" srcset="' . $standard_arr[0] . '.webp" /><img width="280" height="150" class="img" src="' . $standard_arr[0] . '" alt="' . $img_alt . '" /></picture>';
+			}
+
+			elseif ($terms != '') {
+				$results .= '<div class="default-archive-img">';
+				$results .= '<picture class="-icon picture">';
+				$results .= '<source type="image/svg+xml" srcset="' . $default_svg_url . '">';
+				$results .= '<img width="100" height="100" src="' . $default_png_url . '" alt="' . $icon_alt . '" />';
+				$results .= '</picture>';
+				$results .= '</div>';
 			}
 
 			$results .= '</div>';
@@ -1427,8 +1433,7 @@ function searchresultsdiv() {
 			$results .= '<div class="archive-txt">';
 			$results .= '<div class="archive-title-excerpt">';
 			if ($terms != '') {
-				$results .= '<h2 class="archive-h2" id="archive-h2">' . get_the_title() . '</h2>';
-
+				$results .= '<h2 class="archive-h2" id="archive-h2">' . get_the_title() . '</h2> ';
 				$results .= '<div class="picture-div"><picture class="icon archive-icon"><source type="image/svg+xml" srcset="' . $default_svg_url . '" /><img class="icon-img" src="' . $default_png_url . '"  alt="' . $icon_alt . '" width="14" height="14" /></picture></div>';
 			}
 			else {

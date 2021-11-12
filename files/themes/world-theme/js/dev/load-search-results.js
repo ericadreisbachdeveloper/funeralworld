@@ -1,6 +1,26 @@
 // Load search results on Our Work
 jQuery(function($){
 
+
+  // Run "No Widows" on titles
+  $('.archive-h2').each(function(){
+
+    var title = $(this).text();
+    var lastword = title.split(" ").slice(-1);
+    var allbutlastword = title.replace(lastword, '');
+
+    var icon     = $(this).next('.picture-div');
+    var iconhtml = icon.html();
+    icon.remove();
+
+
+    $(this).html(allbutlastword);
+    $(this).after('<div class="nowrap"><h2 class="archive-h2">' + lastword + '</h2>&nbsp;' + iconhtml + '</div>');
+
+  });
+
+
+  // Load Search Results
   var protocol = window.location.protocol;
   var host = window.location.hostname;
   if (host == 'localhost') { host = 'localhost/world'; }
