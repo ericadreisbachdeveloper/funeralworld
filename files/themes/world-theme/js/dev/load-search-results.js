@@ -11,12 +11,10 @@ jQuery(function($){
   var homeurl = protocol + '//' + host + '/';
 
 
-
-
+  // ... on SEARCH button click ...
   var searchbtn = $('#search-submit');
 
   searchbtn.on('click', function(){
-
 
     // 1. Query
     var query = $('#search-input').val();
@@ -96,10 +94,46 @@ jQuery(function($){
 
   });
 
-  var searchresults_url = homeurl + '?s=&post_type=post';
 
-  // Ajax load pagination
-  $('#pagination').load(searchresults_url + ' #pagination-div');
+
+  // III. PAGINATION HACK
+  $(document).on('click', '.page-numbers[href]', function(){
+    //console.log('pagination click')
+
+
+    // 1. Get URL
+    var url = $(this).attr('href');
+
+    // 1. Default pagination click
+    //    i.e. if url contains string 'our-work'
+    if (url.indexOf('our-work/') >= 0) {
+      // construct URL for Ajax load
+      // http://localhost/world/our-work/page/2/
+      // turns into
+      // http://localhost/page/2/?s
+      page_url = url.replace('our-work/', '');
+      page_url = page_url.concat('?s&post_type=post');
+
+      $('#search-results').load(page_url + ' #search-results');
+    }
+
+    // 2. Advanced Search results pagination click
+    else {
+      // construct URL for Ajax load
+      // http://localhost/world/page/3/?s&amp;post_type=post#038;post_type=post
+      // turns into
+      // http://localhost/world/page/3/?s&post_type=post=post_type=post
+      page_url = url.replace('&amp;', '&');
+      page_url = page_url.replace('#038;', '&');
+      console.log(page_url)
+
+      $('#search-results').load(page_url + ' #search-results');
+    }
+
+
+    return false;
+
+  });
 
 
 });

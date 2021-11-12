@@ -614,12 +614,22 @@ if (function_exists('register_sidebar')) {
 function dbllc_pagination() {
     global $wp_query;
     $big = 999999999;
-    echo paginate_links(array(
+    /*
+		echo paginate_links(array(
         'base' => str_replace($big, '%#%', get_pagenum_link($big)),
         'format' => '?paged=%#%',
         'current' => max(1, get_query_var('paged')),
         'total' => $wp_query->max_num_pages
     ));
+		*/
+
+		$pagination = paginate_links(array(
+				'base' => str_replace($big, '%#%', get_pagenum_link($big)),
+				'format' => '?paged=%#%',
+				'current' => max(1, get_query_var('paged')),
+				'total' => $wp_query->max_num_pages
+		));
+		return $pagination;
 }
 
 
@@ -1385,6 +1395,7 @@ function searchresultsdiv() {
 	// by default, show ALL resources with paging
 	if ( $wp_query->have_posts() ) {
 
+
 		$results .= '<div class="container"><h2 class="search-results-h1">Browse All ' . $count . ' Resources</a></div>';
 
 
@@ -1489,8 +1500,9 @@ function searchresultsdiv() {
 
 	}
 
-	$results .= '<div id="pagination" class="pagination -archive">';
 
+	$results .= '<div id="pagination" class="pagination -archive">';
+	$results .= dbllc_pagination();
 	$results .= '</div><!-- /#pagination.pagination.-archive -->';
 
 
