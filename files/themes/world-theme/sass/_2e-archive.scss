@@ -269,17 +269,18 @@ $hentry-top: -1px;
 
 // Our Work Advanced Search
 // Archive pages
-.page #search-results,
+.page,
 .search-results,
 .archive {
-  .nowrap { display: inline; }
-  .nowrap > .archive-h2:before { display: none; }
-
+  [data-role="main"] .hentry {
+    .nowrap { display: inline; }
+    .nowrap > .archive-h2:before { display: none; }
+  }
 }
 
 
 
-.search-results, .page {
+.archive, .search-results, .page {
 
   .archive-a .archive-img {
     padding-top: .9rem;
@@ -298,9 +299,12 @@ $hentry-top: -1px;
      left: 0;
   }
 
-  .picture.-icon {
+  .no-img, .picture.-icon {
     width: 17.5rem;
     height: 9.375rem;
+  }
+
+  .picture.-icon {
     background: $night;
 
     @include flex;
@@ -309,6 +313,8 @@ $hentry-top: -1px;
   }
 }
 
+
+
 [data-role="main"] .hentry > [href] {
   @include hover {
     .picture.-photo:before { opacity: .7; mix-blend-mode: multiple; }
@@ -316,4 +322,5 @@ $hentry-top: -1px;
   }
 }
 
-.archive-title-excerpt { padding-bottom: 1.44rem; }
+.archive-title-excerpt         { padding-bottom: 1.44rem; }
+.archive-title-excerpt.-no-meta { padding-bottom: 0; }

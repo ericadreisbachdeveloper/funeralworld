@@ -8,8 +8,11 @@ jQuery(function($){
     var allbutlastword = title.replace(lastword, '');
 
     var icon     = $(this).next('.picture-div');
-    var iconhtml = icon.html();
-    icon.remove();
+    if (icon != '[object Object]') {
+      var iconhtml = icon.html();
+      icon.remove();
+    }
+    else { var iconhtml = ''; }
 
 
     $(this).html(allbutlastword);

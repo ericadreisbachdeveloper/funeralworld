@@ -2,32 +2,16 @@
 jQuery(function($){
 
 
-  // Run "No Widows" on titles
-  $('.archive-h2').each(function(){
-
-    var title = $(this).text();
-    var lastword = title.split(" ").slice(-1);
-    var allbutlastword = title.replace(lastword, '');
-
-    var icon     = $(this).next('.picture-div');
-    var iconhtml = icon.html();
-    icon.remove();
-
-
-    $(this).html(allbutlastword);
-    $(this).after('<div class="nowrap"><h2 class="archive-h2">' + lastword + '</h2>&nbsp;' + iconhtml + '</div>');
-
-  });
-
-
-
-
+  // I. SEARCH RESULTS
 
   // Load Search Results
   var protocol = window.location.protocol;
   var host = window.location.hostname;
   if (host == 'localhost') { host = 'localhost/world'; }
   var homeurl = protocol + '//' + host + '/';
+
+
+
 
   var searchbtn = $('#search-submit');
 
@@ -88,9 +72,34 @@ jQuery(function($){
 
     });
 
+  });
 
 
+
+
+  // II. DEFAULT
+
+  // Run "No Widows" on default Advanced Search titles
+  $('.archive-h2').each(function(){
+
+    var title = $(this).text();
+    var lastword = title.split(" ").slice(-1);
+    var allbutlastword = title.replace(lastword, '');
+
+    var icon     = $(this).next('.picture-div');
+    var iconhtml = icon.html();
+    icon.remove();
+
+
+    $(this).html(allbutlastword);
+    $(this).after('<div class="nowrap"><h2 class="archive-h2">' + lastword + '</h2>&nbsp;' + iconhtml + '</div>');
 
   });
+
+  var searchresults_url = homeurl + '?s=&post_type=post';
+
+  // Ajax load pagination
+  $('#pagination').load(searchresults_url + ' #pagination-div');
+
 
 });

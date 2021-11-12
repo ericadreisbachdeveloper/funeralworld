@@ -658,6 +658,7 @@ remove_filter('the_excerpt', 'wpautop');
 
 
 // 27b. Custom excerpts
+//      call with  _e(dbllc_excerpt());
 function dbllc_excerpt() {
 	global $post; $output = '';
 

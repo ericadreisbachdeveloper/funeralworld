@@ -307,16 +307,6 @@
 
   // Archive - large
   // Search - large
-  .search-results, .archive {
-    .archive-a .resource-meta {
-      @include flex;
-      @include justify-content(flex-start);
-      @include flex-direction-row;
-
-      [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.4rem; }
-    }
-  }
-
   .gutenberg-section.core-shortcode #search-results .hentry > [href] > .container { width: 100%; }
 
 
@@ -414,7 +404,7 @@
     .meta-tags { max-width: 40%; }
   }
 
-  //.resource-meta [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.44rem; }
+
 
 
   // Events - wide
@@ -427,14 +417,30 @@
   .events-content-div > [class*="gutenberg-section"] > .gutenberg-container > * { margin-top: 0; }
 
 
+  // Search Results - wide
+  // Search - wide
+  // Archive - wide
+  .search-results, .archive {
+    .archive-a .resource-meta {
+      @include flex;
+      @include justify-content(flex-start);
+      @include flex-direction-row;
+
+      [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.4rem; }
+    }
+  }
+
+
   // Advanced Search - wide
   // Our Work - wide
-  .page .archive-a .resource-meta {
-    @include flex;
-    @include justify-content(flex-start);
-    @include flex-direction-row;
+  .search-results, .archive, .page {
+    .archive-a .resource-meta {
+      @include flex;
+      @include justify-content(flex-start);
+      @include flex-direction-row;
 
-    [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.4rem; }
+      [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.4rem; }
+    }
   }
 
 }
