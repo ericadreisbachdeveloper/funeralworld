@@ -4,6 +4,7 @@
 
 <?php global $post; ?>
 
+
 <main data-role="main" id="main">
 	<div class="container">
 		<div class="corset">

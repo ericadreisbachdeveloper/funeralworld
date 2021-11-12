@@ -20,6 +20,9 @@ jQuery(function($){
   });
 
 
+
+
+
   // Load Search Results
   var protocol = window.location.protocol;
   var host = window.location.hostname;

@@ -126,7 +126,7 @@ function dbllc_header_scripts() {
 
 
 	if(is_archive() || is_search()) {
-		wp_register_script('no-widows', TDIR . '/js/dev/no-widows.js', 'jquery-core', '1.0.1', false);
+		wp_register_script('no-widows', TDIR . '/js/dev/no-widows.js', 'jquery-core', '1.0.2', false);
 		 wp_enqueue_script('no-widows');
 	}
 
@@ -661,38 +661,46 @@ remove_filter('the_excerpt', 'wpautop');
 function dbllc_excerpt() {
 	global $post; $output = '';
 
-	$output =  get_the_content($post->ID);
+	if($post->post_excerpt != '') {
+		$output  = $post->post_excerpt;
+		$output .= '&nbsp;&hellip;';
+	}
 
-	// turn closing tags into spaces
-	$output = str_replace("</h1>", "&nbsp;|&nbsp;", $output);
-	$output = str_replace("</h2>", "&nbsp;", $output);
-	$output = str_replace("</h3>", "&nbsp;", $output);
-	$output = str_replace("</p>", "&nbsp;", $output);
+	else {
+		$output =  get_the_content($post->ID);
 
-
-	// strip out HTML tags and yield text
-	// less robust
-	$output = wp_strip_all_tags( $output );
-
-	// slower
-	// $output = wp_filter_nohtml_kses($output);
-	// src: https://wordpress.stackexchange.com/a/163597
+		// turn closing tags into spaces
+		$output = str_replace("</h1>", "&nbsp;|&nbsp;", $output);
+		$output = str_replace("</h2>", "&nbsp;", $output);
+		$output = str_replace("</h3>", "&nbsp;", $output);
+		$output = str_replace("</p>", "&nbsp;", $output);
 
 
-	// https://developer.wordpress.org/reference/functions/wptexturize/
-	// turns " and ' into curly versions
-	$output = apply_filters('wptexturize', $output);
+		// strip out HTML tags and yield text
+		// less robust
+		$output = wp_strip_all_tags( $output );
+
+		// slower
+		// $output = wp_filter_nohtml_kses($output);
+		// src: https://wordpress.stackexchange.com/a/163597
 
 
-	// https://developer.wordpress.org/reference/functions/convert_chars/
-	// turns ampersands into &amp;
-	$output = apply_filters('convert_chars', $output);
-	$output = str_replace("&nbsp;", " ", $output);
+		// https://developer.wordpress.org/reference/functions/wptexturize/
+		// turns " and ' into curly versions
+		$output = apply_filters('wptexturize', $output);
 
-	// get the first 15 words
-	$output = implode(' ', array_slice(explode(' ', $output), 0, 15));
 
-	if ($output != '') { $output = $output . '&nbsp;&hellip;'; }
+		// https://developer.wordpress.org/reference/functions/convert_chars/
+		// turns ampersands into &amp;
+		$output = apply_filters('convert_chars', $output);
+		$output = str_replace("&nbsp;", " ", $output);
+
+		// get the first 15 words
+		$output = implode(' ', array_slice(explode(' ', $output), 0, 15));
+
+		if ($output != '') { $output = $output . '&nbsp;&hellip;'; }
+	}
+
 	return $output;
 
 }
@@ -1357,9 +1365,11 @@ function searchresultsdiv() {
 
 	$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
+	$posts_per_page = get_option( 'posts_per_page' );
+
 	$args = array(
 		'post_type' => 'post',
-		'posts_per_page' => 2,
+		'posts_per_page' => $posts_per_page,
 		'paged' => $paged
 	);
 
@@ -1478,9 +1488,14 @@ function searchresultsdiv() {
 
 	}
 
+	$results .= '<div id="pagination" class="pagination -archive">';
+
+	$results .= '</div><!-- /#pagination.pagination.-archive -->';
+
+
 	wp_reset_query();
 
 
-	$results .= '</div>';
+	$results .= '</div><!-- /#search-results -->';
 	return $results;
 }

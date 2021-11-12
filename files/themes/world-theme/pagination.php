@@ -2,6 +2,6 @@
 
 
 
-<div class="pagination -archive">
+<div id="pagination" class="pagination -archive">
 	<?php dbllc_pagination(); ?>
 </div>
