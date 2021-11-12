@@ -10,6 +10,18 @@
 }
 
 
+@media (min-width: 600px) and (max-width: 781px) {
+  .wp-block-column:not(:only-child) {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+        flex-grow: 1;
+  }
+  .wp-block-column.hide-md-and-smaller + .wp-block-column:nth-child(2n) {
+    margin-left: 0;
+  }
+}
+
+
 @media (max-width: 61.99999rem) {
   .full-width-md-and-smaller {
     -ms-flex-preferred-size: 100% !important;
@@ -295,16 +307,24 @@
 
   // Archive - large
   // Search - large
-  .archive-a .resource-meta {
-    @include flex;
-    @include justify-content(flex-start);
-    @include flex-direction-row;
+  .search-results, .archive {
+    .archive-a .resource-meta {
+      @include flex;
+      @include justify-content(flex-start);
+      @include flex-direction-row;
 
-    [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.4rem; }
+      [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.4rem; }
+    }
   }
 
   .gutenberg-section.core-shortcode #search-results .hentry > [href] > .container { width: 100%; }
 
+
+  // Our Work - large
+  // Advanced Search - large
+  .page .resource-meta [class*="meta"]+[class*="meta"] {
+    padding-top: 0;
+  }
 
   // Search - large
   // Search form - large
@@ -405,5 +425,16 @@
 
   // vertically align the element, whatever it is, flush to top
   .events-content-div > [class*="gutenberg-section"] > .gutenberg-container > * { margin-top: 0; }
+
+
+  // Advanced Search - wide
+  // Our Work - wide
+  .page .archive-a .resource-meta {
+    @include flex;
+    @include justify-content(flex-start);
+    @include flex-direction-row;
+
+    [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.4rem; }
+  }
 
 }

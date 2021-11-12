@@ -125,6 +125,11 @@ function dbllc_header_scripts() {
 	}
 
 
+	if(is_archive() || is_search()) {
+		wp_register_script('no-widows', TDIR . '/js/dev/no-widows.js', 'jquery-core', '1.0.1', false);
+		 wp_enqueue_script('no-widows');
+	}
+
 }
 add_action('wp_enqueue_scripts', 'dbllc_header_scripts', 10, 0);
 
@@ -1428,7 +1433,7 @@ function searchresultsdiv() {
 				$results .= '</div>';
 			}
 
-			$results .= '</div>';
+			$results .= '</div><!-- /.archive-img -->';
 
 			$results .= '<div class="archive-txt">';
 			$results .= '<div class="archive-title-excerpt">';
@@ -1442,11 +1447,28 @@ function searchresultsdiv() {
 
 			$results .= '<p class="archive-p">' . dbllc_excerpt() . '</p>';
 			$results .= '</div><!-- /.archive-title-excerpt -->';
+
+			$results .= '<div class="archive-meta"><div class="resource-meta">';
+			$results .= '<div class="meta-time">';
+			$results .= '<h2 class="meta-h2">PUBLISHED: </h2> ' .  get_the_time("F j, Y");
+			$results .= '</div><!-- /.meta-time -->';
+
+			if($firstterm != '' && $firstterm->slug == 'white-paper') {
+				$results .= '<div class="meta-author">';
+				$results .= '<h2 class="meta-h2">AUTHOR:</h2> ';
+				$results .=  get_the_author();
+				$results .= '</div><!-- /.meta-author -->';
+			}
+			elseif($firstterm != '' && $firstterm->slug == 'video') {
+				$results .= '<div class="meta-author">';
+				$results .= '<h2 class="meta-h2">POSTED BY:</h2> ';
+				$results .=  get_the_author();
+				$results .= '</div><!-- /.meta-author -->';
+			}
+
+			$results .= '</div><!-- /.resource-meta --></div><!-- /.archive-meta -->';
+
 			$results .= '</div><!-- /.archive-txt -->';
-
-			$results .= '<div class="archive-meta">';
-
-			$results .= '</div><!-- /.archive-meta -->';
 
 			$results .= '</div><!-- /.container -->';
 			$results .= '</a>';

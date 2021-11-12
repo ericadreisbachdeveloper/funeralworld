@@ -153,51 +153,52 @@ $hentry-top: -1px;
 //.search, .archive {
 .picture-div { display: inline-block; }
 
-[data-role="main"] {
-  .hentry {
-    &> [href] {
-      @extend %remove-link-line;
+.search, .archive, .page {
+  [data-role="main"] {
+    .hentry {
+      &> [href] {
+        @extend %remove-link-line;
 
-      background: transparent;
-      display: block;
-      padding-bottom: 1.1rem;
-      @include transition(background .2s ease-in-out);
-
-      @include hover {
-        background: $mist;
-        &:before { background-size: calc(100% + 3rem) 100%; background-position: 0 0; }
-        .archive-icon { background: $blue2; }
-      }
-
-      &:before {
-        @include top-btm-border($gray);
-        height: calc(100% + #{$hentry-border});
-        background-repeat: no-repeat;
-        content: '';
+        background: transparent;
         display: block;
-        position: absolute;
-         top: $hentry-top;
-         left: 0;
-        z-index: 1;
-        @include transition(background-size .2s ease-in-out, background-position .2s ease-in-out);
+        padding-bottom: 1.1rem;
+        @include transition(background .2s ease-in-out);
+
+        @include hover {
+          background: $mist;
+          &:before { background-size: calc(100% + 3rem) 100%; background-position: 0 0; }
+          .archive-icon { background: $blue2; }
+        }
+
+        &:before {
+          @include top-btm-border($gray);
+          height: calc(100% + #{$hentry-border});
+          background-repeat: no-repeat;
+          content: '';
+          display: block;
+          position: absolute;
+           top: $hentry-top;
+           left: 0;
+          z-index: 1;
+          @include transition(background-size .2s ease-in-out, background-position .2s ease-in-out);
+        }
       }
-    }
 
-    .archive-h2 {
-      display: inline;
-      margin-top: 0;
+      .archive-h2 {
+        display: inline;
+        margin-top: 0;
 
-      &:before {
-        display: block;
-        content: '';
-        height: 1.3rem;
+        &:before {
+          display: block;
+          content: '';
+          height: 1.3rem;
+        }
       }
-    }
 
-    .resource-meta { padding-top: .66rem; padding-bottom: .22rem; }
+
+    }
   }
 }
-//}
 
 
 .archive-icon {
@@ -264,7 +265,13 @@ $hentry-top: -1px;
   }
 
   .meta-type { display: none; }
+}
 
+// Our Work Advanced Search
+// Archive pages
+.page #search-results,
+.search-results,
+.archive {
   .nowrap { display: inline; }
   .nowrap > .archive-h2:before { display: none; }
 
@@ -308,3 +315,5 @@ $hentry-top: -1px;
     .picture.-icon { background: $blue2; }
   }
 }
+
+.archive-title-excerpt { padding-bottom: 1.44rem; }

@@ -62,7 +62,7 @@
             $display_date = $start_m . ' ' . $start_d . ', ' . $start_y;
           }
     ?>
-    <div class="meta-time">
+    <div class="meta-event">
       <h2 class="meta-h2">EVENT: <?= $display_date; ?></h2>
     </div>
     <?php endif; ?>
@@ -76,7 +76,7 @@
     <?php elseif($firstterm != '' && $firstterm->slug == 'video') : ?>
     <div class="meta-author">
       <h2 class="meta-h2">POSTED BY: </h2>
-      <?php $author = ''; $author = get_the_author(); print_r($author); ?>
+      <?php $author = ''; $author = get_the_author(); _e($author); ?>
     </div>
     <?php endif; ?>
 
