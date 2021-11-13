@@ -1396,7 +1396,7 @@ function searchresultsdiv() {
 	if ( $wp_query->have_posts() ) {
 
 
-		$results .= '<div class="container"><h2 class="search-results-h1">Browse All ' . $count . ' Resources</a></div>';
+		$results .= '<div class="container"><h1 class="search-results-h1 -initial">Browse All ' . $count . ' Resources</h1></div>';
 
 
 		while ( $wp_query->have_posts() ) : $wp_query->the_post();

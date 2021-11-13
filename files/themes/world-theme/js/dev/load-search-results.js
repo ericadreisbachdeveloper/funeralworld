@@ -49,7 +49,9 @@ jQuery(function($){
 
     // Load results in #search-results
     $('#search-results').load(searchresults_url + ' #search-results', function(){
-      //console.log('loaded')
+
+      // Remove #-inital
+      $('#-initial').remove(); 
 
       // Run "No Widows" on titles
       $('.archive-h2').each(function(){
@@ -96,17 +98,24 @@ jQuery(function($){
 
 
 
+  // ... store default title
+  const initialh1 = $('.search-results-h1.-initial').html();
+  // create a hidden field with initialh1 text
+  // that will append to body and persist YES
+  $('body').append('<div id="-initial">' + initialh1 + '</div>');
+
+
+
   // III. PAGINATION HACK
   $(document).on('click', '.page-numbers[href]', function(){
-    //console.log('pagination click')
-
 
     // 1. Get URL
     var url = $(this).attr('href');
 
     // 1. Default pagination click
     //    i.e. if url contains string 'our-work'
-    if (url.indexOf('our-work/') >= 0) {
+    // OR      if $('#-initial') is intact
+    if (url.indexOf('our-work/') >= 0 || $('#-initial').html() != '') {
       // construct URL for Ajax load
       // http://localhost/world/our-work/page/2/
       // turns into
@@ -114,7 +123,11 @@ jQuery(function($){
       page_url = url.replace('our-work/', '');
       page_url = page_url.concat('?s&post_type=post');
 
-      $('#search-results').load(page_url + ' #search-results');
+
+      $('#search-results').load(page_url + ' #search-results', function(){
+        var initialh1_ajax = $('#-initial').html();
+        $('.search-results-h1').html(initialh1_ajax);
+      });
     }
 
     // 2. Advanced Search results pagination click
@@ -129,6 +142,9 @@ jQuery(function($){
 
       $('#search-results').load(page_url + ' #search-results');
     }
+
+
+
 
 
     return false;
