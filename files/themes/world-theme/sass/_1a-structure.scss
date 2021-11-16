@@ -241,7 +241,8 @@ $toggle_bottom: 2rem;
 }
 
 
-.gutenberg-container > .wp-block-columns { margin-bottom: 1rem; }
+// overriding Wordpress
+.gutenberg-container > .wp-block-columns { margin-bottom: 0; }
 
 
 .mobile-hide { display: none; }

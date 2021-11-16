@@ -95,8 +95,13 @@ input {
   @extend %resource-text;
   font-family: 'mreaves-bold', sans-serif;
   font-weight: normal;
+}
+
+[data-role="main"] .meta-h2 {
   line-height: 1.2;
 }
+
+.resource-meta [class*="meta-"] { line-height: 1.44; }
 
 .resource-pdf {
   @extend %resource-text;
@@ -127,5 +132,9 @@ input {
   %select       { font-size: 1.2rem; line-height: 1; }
 
   .resource-pdf,
-  [data-role="main"] .sidebar-h3 { line-height: 1.2; }
+  [data-role="main"] .sidebar-h3,
+  [data-role="main"] .meta-h2 { line-height: 1.2; }
+
+  .resource-meta [class*="meta-"] { line-height: 1.44; }
+
 }

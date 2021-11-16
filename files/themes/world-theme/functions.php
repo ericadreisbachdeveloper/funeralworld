@@ -611,24 +611,32 @@ if (function_exists('register_sidebar')) {
 
 
 // 25. Pagination for paged posts
+//     src: https://developer.wordpress.org/reference/functions/paginate_links/#source
 function dbllc_pagination() {
-    global $wp_query;
-    $big = 999999999;
-    /*
-		echo paginate_links(array(
-        'base' => str_replace($big, '%#%', get_pagenum_link($big)),
-        'format' => '?paged=%#%',
-        'current' => max(1, get_query_var('paged')),
-        'total' => $wp_query->max_num_pages
-    ));
-		*/
+    global $wp_query, $wp_rewrite;;
+
+		// Setting up default values based on the current URL.
+    $pagenum_link = html_entity_decode( get_pagenum_link() );
+    $url_parts    = explode( '?', $pagenum_link );
+
+    // Get max pages and current page out of the current query, if available.
+    $total   = isset( $wp_query->max_num_pages ) ? $wp_query->max_num_pages : 1;
+    $current = get_query_var( 'paged' ) ? (int) get_query_var( 'paged' ) : 1;
+
+    // Append the format placeholder to the base URL.
+    $pagenum_link = trailingslashit( $url_parts[0] ) . '%_%';
+
+    // URL base depends on permalink settings.
+    $format  = $wp_rewrite->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
+    $format .= $wp_rewrite->using_permalinks() ? user_trailingslashit( $wp_rewrite->pagination_base . '/%#%', 'paged' ) : '?paged=%#%';
 
 		$pagination = paginate_links(array(
-				'base' => str_replace($big, '%#%', get_pagenum_link($big)),
-				'format' => '?paged=%#%',
+				'base' => $pagenum_link,
+				'format' => $format,
 				'current' => max(1, get_query_var('paged')),
-				'total' => $wp_query->max_num_pages
+				'total'              => $total
 		));
+
 		return $pagination;
 }
 
