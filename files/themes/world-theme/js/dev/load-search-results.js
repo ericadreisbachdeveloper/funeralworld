@@ -172,18 +172,34 @@ jQuery(function($){
 
 
 
-  // V. Toggle accordion
+  // V. ACCORDION
+  // V.1. Toggle
   $('.sidebar-h3 [href]').on('click', function(){
-    //alert('clicked');
 
     var parent = $(this).parent('.sidebar-h3');
 
+    // V.2. Set max height
+    /*
+    var div = parent.next('.sidebar-ul-div');
+    var ul  = div.children('.sidebar-ul');
+    var ulh = ul.height();
+    */
+
+    // if accordion is closed, open
     if( parent.attr('aria-expanded') == 'false' ) {
       parent.attr('aria-expanded', 'true');
+      //div.css('max-height', ulh);
     }
+
+    // if accordion is open, close
     else {
       parent.attr('aria-expanded', 'false');
+      //div.css('max-height', '0');
     }
+
+
+
+
   });
 
 

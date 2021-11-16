@@ -318,8 +318,7 @@
   // Advanced Search - large
   .page .resource-meta [class*="meta"]+[class*="meta"] { padding-top: 0; }
 
-  .sidebar-h3                        + .sidebar-ul { @include transition(max-height .35s linear); }
-  .sidebar-h3[aria-expanded="true"]  + .sidebar-ul { overflow: hidden; max-height: 10rem; }
+  //.sidebar-h3 + .sidebar-ul-div { @include transition(max-height .1s libear); }
 
 
 

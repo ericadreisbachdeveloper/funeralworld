@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.11';
+$style_vsn = '1.1.12';
 
 
 
@@ -1535,9 +1535,11 @@ function searchsidebar_shortcode() {
 
 	foreach($audiences as $audience) {
 
-		$searchsidebar .= '<h3 class="sidebar-h3" aria-expanded="false"><a href="#">For ' . $audience->name . '</a> </h3>';
+		//   <input id="cmn-toggle-7" class="hidden" type="checkbox" >
 
-		$searchsidebar .= '<ul class="sidebar-ul">';
+		$searchsidebar .= '<input id="' . $audience->slug . '-toggle" type="checkbox" aria-expanded="false" />';
+		$searchsidebar .= '<label for="' . $audience->slug . '-toggle" class="sidebar-h3" tabindex="1">For ' . $audience->name . '</label>';
+		$searchsidebar .= '<div class="sidebar-ul-div"><ul class="sidebar-ul">';
 
 
 		// run a foreach on every topic term
@@ -1570,7 +1572,7 @@ function searchsidebar_shortcode() {
 
 
 
-		$searchsidebar .= '</ul>';
+		$searchsidebar .= '</ul></div>';
 
 	} // end foreach $audiences as $audience
 
