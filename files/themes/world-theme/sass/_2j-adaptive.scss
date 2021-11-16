@@ -316,15 +316,11 @@
 
   // Our Work - large
   // Advanced Search - large
-  .page .resource-meta [class*="meta"]+[class*="meta"] {
-    padding-top: 0;
-  }
+  .page .resource-meta [class*="meta"]+[class*="meta"] { padding-top: 0; }
 
-  // Search - large
-  // Search form - large
-  // Advanced Search - large
-  //.advanced-search-row > [class*="col"]:nth-of-type(2n+1) { padding-right: .5rem; }
-  //.advanced-search-row > [class*="col"]:nth-of-type(2n)   { padding-left: .5rem; }
+  .sidebar-h3                        + .sidebar-ul { @include transition(max-height .35s linear); }
+  .sidebar-h3[aria-expanded="true"]  + .sidebar-ul { overflow: hidden; max-height: 10rem; }
+
 
 
   // Sticky Footer - large

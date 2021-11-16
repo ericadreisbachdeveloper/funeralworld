@@ -171,4 +171,21 @@ jQuery(function($){
   }); // END on click .page-numbers[href]
 
 
+
+  // V. Toggle accordion
+  $('.sidebar-h3 [href]').on('click', function(){
+    //alert('clicked');
+
+    var parent = $(this).parent('.sidebar-h3');
+
+    if( parent.attr('aria-expanded') == 'false' ) {
+      parent.attr('aria-expanded', 'true');
+    }
+    else {
+      parent.attr('aria-expanded', 'false');
+    }
+  });
+
+
+
 });

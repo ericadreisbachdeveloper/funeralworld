@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.10';
+$style_vsn = '1.1.11';
 
 
 
@@ -1535,7 +1535,7 @@ function searchsidebar_shortcode() {
 
 	foreach($audiences as $audience) {
 
-		$searchsidebar .= '<h3 class="sidebar-h3"><a href="#">For ' . $audience->name . '</a></h3>';
+		$searchsidebar .= '<h3 class="sidebar-h3" aria-expanded="false"><a href="#">For ' . $audience->name . '</a> </h3>';
 
 		$searchsidebar .= '<ul class="sidebar-ul">';
 
@@ -1564,7 +1564,7 @@ function searchsidebar_shortcode() {
 			); // end $args
 
 			$wp_query = new WP_Query( $args );
-			if ( $wp_query->have_posts() )  { $searchsidebar .= '<li><a href="' .  WP_SITEURL . 'topic/' . $topic->slug . '/?post_type=post">' . $topic->name . '</a></li>'; }
+			if ( $wp_query->have_posts() )  { $searchsidebar .= '<li class="sidebar-li"><a href="' .  WP_SITEURL . 'topic/' . $topic->slug . '/?post_type=post">' . $topic->name . '</a></li>'; }
 
 		}
 

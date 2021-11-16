@@ -35,7 +35,8 @@
 
 [data-role="main"] .event-h2   { @extend %deck; font-weight: normal; }
 
-[data-role="main"] { .sidebar-h2, .sidebar-h3 { @extend %text; } }
+[data-role="main"] .sidebar-h2 { @extend %deck; }
+[data-role="main"] { .sidebar-h3 { @extend %text; } }
 
 %offsite-menu-li               { font-size: 1.25rem; line-height: 1.2; }
 
