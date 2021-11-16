@@ -29,21 +29,19 @@
 
 
 
+
 // Grid display - Events, Past Events
 [data-role="main"] .events-grid-a[href] {
 
   // %grid-display defined in _2e-archive.scss
   @extend %grid-display;
-
   background: $night;
-
-  .calendar-icon {
-    width: 6.25rem;
-    height: 6.25rem;
-    background-position: 50% 50%; ;
-    display: block;
-  }
+  .calendar-icon { @extend %calendar-icon; }
 }
+
+
+
+
 
 
 // Events - Past Events

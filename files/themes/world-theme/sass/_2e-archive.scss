@@ -330,3 +330,40 @@ $hentry-top: -1px;
 
 .archive-title-excerpt          { padding-bottom: 1.44rem; }
 .archive-title-excerpt.-no-meta { padding-bottom: 0; }
+
+
+
+
+
+
+%calendar-icon {
+  width: 6.25rem;
+  height: 6.25rem;
+  background-position: 50% 50%;
+  display: block;
+}
+
+
+.search, .archive {
+
+  [data-role="main"] .hentry.type-events > [href] .icon-wrapper-div {
+    width: 17.5rem;
+    height: 9.375rem;
+    background: $night;
+    @include flex;
+    @include justify-content(center);
+    @include align-items(center);
+  }
+
+  [data-role="main"] .hentry.type-events > [href] {
+    @include hover {
+      .icon-wrapper-div {
+        background: $blue2;
+      }
+    }
+  }
+
+  [data-role="main"] .hentry.type-events > [href] .calendar-icon { @extend %calendar-icon; }
+
+  .resource-meta { padding-top: 1rem; }
+}

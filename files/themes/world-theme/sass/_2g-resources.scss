@@ -223,8 +223,7 @@ $msb-icon-size: 1rem;
   color: $night;
 }
 
-.resource-meta [class*="meta"] + [class*="meta"],
-.resource-pdf {
+.resource-meta [class*="meta"] + [class*="meta"] {
   padding-top: .5rem;
 }
 

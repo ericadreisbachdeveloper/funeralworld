@@ -2,14 +2,35 @@
 jQuery(function($){
 
 
-  // I. SEARCH RESULTS
-
-  // Load Search Results
+  // VARIABLES
   var protocol = window.location.protocol;
   var host = window.location.hostname;
-  if (host == 'localhost') { host = 'localhost/world'; }
+      if (host == 'localhost') { host = 'localhost/world'; }
   var homeurl = protocol + '//' + host + '/';
+  var thisurl = window.location.href;
 
+
+  // I. INITIAL LOAD
+
+  // I.1. If this url is equal to the default url
+  if (thisurl !== homeurl + 'our-work/') {
+    console.log(thisurl)
+  }
+
+  // I.2. Construct pagination URLs for Ajax load
+  // http://localhost/world/page/3/?s&amp;post_type=post#038;post_type=post
+  // turns into
+  // http://localhost/world/page/3/?s&post_type=post=post_type=post
+  $('.page-numbers[href]').each(function(){
+    var href = '';
+    //href = $(this).replace('&amp;', '&');
+    //href = $(this).replace('#038;', '&');
+  });
+
+
+
+
+  // II. SEARCH RESULTS
 
   // ... on SEARCH button click ...
   var searchbtn = $('#search-submit');
@@ -47,11 +68,11 @@ jQuery(function($){
     var searchresults_url = homeurl + query + audience + author + topic + resourcetype + '&post_type=post';
 
 
-    // Load results in #search-results
+    // 2. Load results in #search-results
     $('#search-results').load(searchresults_url + ' #search-results', function(){
 
       // Remove #-inital
-      $('#-initial').remove(); 
+      $('#-initial').remove();
 
       // Run "No Widows" on titles
       $('.archive-h2').each(function(){
@@ -70,6 +91,17 @@ jQuery(function($){
 
       });
 
+      // Construct pagination URLs for Ajax load
+      // http://localhost/world/page/3/?s&amp;post_type=post#038;post_type=post
+      // turns into
+      // http://localhost/world/page/3/?s&post_type=post=post_type=post
+
+      // PROBLEM
+      $('.page-numbers[href]').each(function(){
+        $(this).replace('&amp;', '&');
+        $(this).replace('#038;', '&');
+      });
+
     });
 
   });
@@ -77,9 +109,9 @@ jQuery(function($){
 
 
 
-  // II. DEFAULT
+  // III. TITLES
 
-  // Run "No Widows" on default Advanced Search titles
+  // III.1. Run "No Widows" on default Advanced Search entry titles
   $('.archive-h2').each(function(){
 
     var title = $(this).text();
@@ -97,16 +129,16 @@ jQuery(function($){
   });
 
 
-
-  // ... store default title
+  // III.2. Store default title
   const initialh1 = $('.search-results-h1.-initial').html();
   // create a hidden field with initialh1 text
   // that will append to body and persist YES
-  $('body').append('<div id="-initial">' + initialh1 + '</div>');
+  $('body').append('<div id="-initial" style="display: none;">' + initialh1 + '</div>');
 
 
 
-  // III. PAGINATION HACK
+
+  // IV. PAGINATION LINKS LOAD RESULTS WITH AJAX
   $(document).on('click', '.page-numbers[href]', function(){
 
     // 1. Get URL
@@ -123,7 +155,6 @@ jQuery(function($){
       page_url = url.replace('our-work/', '');
       page_url = page_url.concat('?s&post_type=post');
 
-
       $('#search-results').load(page_url + ' #search-results', function(){
         var initialh1_ajax = $('#-initial').html();
         $('.search-results-h1').html(initialh1_ajax);
@@ -132,24 +163,12 @@ jQuery(function($){
 
     // 2. Advanced Search results pagination click
     else {
-      // construct URL for Ajax load
-      // http://localhost/world/page/3/?s&amp;post_type=post#038;post_type=post
-      // turns into
-      // http://localhost/world/page/3/?s&post_type=post=post_type=post
-      page_url = url.replace('&amp;', '&');
-      page_url = page_url.replace('#038;', '&');
-      console.log(page_url)
-
       $('#search-results').load(page_url + ' #search-results');
     }
 
-
-
-
-
     return false;
 
-  });
+  }); // END on click .page-numbers[href]
 
 
 });

@@ -1,0 +1,44 @@
+{
+    "key": "group_6193a88dd66d1",
+    "title": "Resource Publish Date",
+    "fields": [
+        {
+            "key": "field_6193a89db0a20",
+            "label": "Resource Publish Date (actual)",
+            "name": "resource-publish-date",
+            "type": "text",
+            "instructions": "Enter the actual date that the resource was published (on YouTube, as a white paper, &amp;c.) as opposed to the date the resource is published&nbsp;here.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 5,
+    "position": "side",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1637067053
+}

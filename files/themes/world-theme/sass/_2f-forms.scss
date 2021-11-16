@@ -139,7 +139,7 @@ label { line-height: 1.8; }
 
   .search-submit {
     display: block;
-    margin-top: 3rem;
+    margin-top: 2rem;
     margin-right: auto;
     margin-left: auto;
   }
@@ -148,4 +148,7 @@ label { line-height: 1.8; }
 
 
 // Search Results
-.page .search-results-h1 { margin-top: 0; }
+.page .search-results-h1 { font-weight: 400; margin-top: 0; }
+
+.sidebar-h2 { margin-top: 0; }
+.sidebar-h3 { text-transform: uppercase; }

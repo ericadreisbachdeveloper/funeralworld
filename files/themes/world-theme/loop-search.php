@@ -32,7 +32,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<a class="archive-a<?php if(dbllc_excerpt() == '') { _e(' no-excerpt'); } ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+	<a class="archive-a<?php if(dbllc_excerpt() == '' && $post_type !== 'events') { _e(' no-excerpt'); } ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 
 		<div class="container">
 
@@ -59,6 +59,11 @@
 							<source type="image/svg+xml" srcset="<?= esc_url($default_svg_url); ?>">
 							<img width="100" height="100" src="<?= esc_url($default_png_url); ?> " alt="<?= $icon_alt; ?>" />
 						</picture>
+					</div>
+
+				<?php elseif($post_type == 'events') : ?>
+					<div class="default-archive-img icon-wrapper-div">
+						<div class="calendar-icon"> </div>
 					</div>
 
 				<?php else : ?>

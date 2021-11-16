@@ -127,8 +127,6 @@
   .wp-block-pullquote,
   .core-paragraph > .gutenberg-container {
     max-width: 47rem;
-    //margin-right: auto;
-    //margin-left: auto;
   }
 
 
@@ -222,7 +220,7 @@
 
   // Events - medium
   .date-register-div { @include flex-direction-row; @include justify-content(flex-start); }
-  .date-time-div { min-width: 55%; }
+  .date-time-div { min-width: 56%; }
 
   .default-resource-icon-div { @include transition(background-color .2s ease-in-out); }
 
@@ -236,6 +234,12 @@
   .search-results, .page {
     .picture.-icon { @include transition(background .2s ease-in-out); }
     .picture.-photo:before { @include transition(opacity .2s ease-in-out); }
+  }
+
+  .search, .archive {
+    [data-role="main"] .hentry.type-events > [href] .icon-wrapper-div {
+      @include transition(background .2s ease-in-out);
+    }
   }
 
 
@@ -324,7 +328,7 @@
 
 
   // Sticky Footer - large
-  $footerh: 33.5rem;
+  $footerh: 33.75rem;
   .wrapper { min-height: 100vh; margin-bottom: -$footerh; }
   .wrapper:after { content: ''; display: block; clear: both; }
   .wrapper:after, .site-footer { height:$footerh; }

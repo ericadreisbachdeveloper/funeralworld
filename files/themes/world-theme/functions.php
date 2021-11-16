@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.09';
+$style_vsn = '1.1.10';
 
 
 
@@ -120,7 +120,7 @@ function dbllc_header_scripts() {
 
 
 	if(is_page('Our Work')) {
-		wp_register_script('searchresults', TDIR . '/js/dev/load-search-results.js', 'jquery-core', '1.0.1', false);
+		wp_register_script('searchresults', TDIR . '/js/dev/load-search-results.js', 'jquery-core', '1.0.2', false);
 		 wp_enqueue_script('searchresults');
 	}
 
@@ -746,6 +746,11 @@ add_shortcode('copyright-year', function($atts, $content) {
 				return "<span class='nowrap'>{$print_sign}&nbsp;{$current_year}</span>";
 });
 
+add_shortcode('copyright', 'copyright_sign');
+function copyright_sign(){
+  return '&copy;';
+}
+
 
 
 // 29. Duplicate pages
@@ -1368,8 +1373,8 @@ add_action('wp_footer', 'stripe_custom_css', 99);
 
 
 // 40. Search Results shortcode
-add_shortcode( 'searchresults', 'searchresultsdiv');
-function searchresultsdiv() {
+add_shortcode( 'searchresults', 'searchresults_shortcode');
+function searchresults_shortcode() {
 
 	// set new wp_query for all post_type = "post"
 	global $wp_query;
@@ -1511,4 +1516,66 @@ function searchresultsdiv() {
 
 	$results .= '</div><!-- /#search-results -->';
 	return $results;
+}
+
+
+
+// 41. Advanced Search Sidebar
+add_shortcode( 'searchsidebar', 'searchsidebar_shortcode');
+function searchsidebar_shortcode() {
+
+	$searchsidebar = '';
+
+	$searchsidebar = '<h2 class="sidebar-h2">Explore Resources by&nbsp;Topic </h2>';
+
+
+	$audiences = get_terms('audience');
+
+	$topics = get_terms('topic');
+
+	foreach($audiences as $audience) {
+
+		$searchsidebar .= '<h3 class="sidebar-h3"><a href="#">For ' . $audience->name . '</a></h3>';
+
+		$searchsidebar .= '<ul class="sidebar-ul">';
+
+
+		// run a foreach on every topic term
+		// within foreach run a wp_query
+		// if there's at least one post in the query
+		// output topic name and topic link cross-referenced with audience
+		foreach($topics as $topic) {
+
+			$args = array(
+		    'post_type' => 'post',
+				'tax_query' => array(
+					'relation' => 'AND',
+					array(
+						'taxonomy' => 'topic',
+						'field' => 'slug',
+						'terms' => $topic->slug,
+					),
+					array(
+						'taxonomy' => 'audience',
+						'field' => 'slug',
+						'terms' => $audience->slug
+					)
+				)
+			); // end $args
+
+			$wp_query = new WP_Query( $args );
+			if ( $wp_query->have_posts() )  { $searchsidebar .= '<li><a href="' .  WP_SITEURL . 'topic/' . $topic->slug . '/?post_type=post">' . $topic->name . '</a></li>'; }
+
+		}
+
+
+
+		$searchsidebar .= '</ul>';
+
+	} // end foreach $audiences as $audience
+
+
+
+
+	return $searchsidebar;
 }

@@ -8,6 +8,7 @@
   <div class="resource-meta">
 
 
+
     <?php if ($firstterm != '') : ?>
     <div class="meta-time">
       <h2 class="meta-h2">PUBLISHED: </h2> <?php the_time('F j, Y'); ?>
