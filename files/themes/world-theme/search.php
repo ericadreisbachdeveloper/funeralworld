@@ -2,9 +2,22 @@
 <?php get_header(); ?>
 
 
+<!-- Advanced Search results AND full site search results        -->
+
+<!-- if query includes 	audience   author  topic   resource-type -->
+<!-- include clickable filter remove                             -->
+
+<!-- if query includes post_type=post                            -->
+<!-- then include searchform at the top of the page              -->
+<!-- ... or ADVANCED SEARCH for everything ???                   -->
+
 
 <main data-role="main" id="main">
 	<section class="section" id="search-results">
+
+
+		<?php get_template_part('searchform-compact'); ?>
+
 
 
 		<div class="container">

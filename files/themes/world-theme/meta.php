@@ -1,5 +1,5 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
-
+<!-- used on Resource single -->
 
 <?php
   $terms = $firstterm = '';
@@ -11,9 +11,22 @@
 <div class="resource-below-hero">
 
   <div class="resource-meta">
+
+    <!-- if a custom publish date exists -->
+    <?php if (get_field('resource-publish-date')) : ?>
+    <?php $publishdate = get_field('resource-publish-date'); $displaydate = DateTime::createFromFormat('m/d/Y', $publishdate); ?>
     <div class="meta-time">
-      <h2 class="meta-h2">PUBLISHED: </h2> <?php the_time('F j, Y'); ?></span>
+      <h2 class="meta-h2">PUBLISHED:</h2> <?= $displaydate->format('F j, Y'); ?>
     </div>
+
+    <!-- otherwise, use default Wordpress publish date -->
+    <?php else : ?>
+
+    <?php $displaydate = get_the_time("F j, Y"); ?>
+    <div class="meta-time">
+      <h2 class="meta-h2">DATE ADDED:</h2> <?= $displaydate; ?>
+    </div>
+    <?php endif; ?>
 
 
     <?php if($firstterm != '' && $firstterm->slug == 'video') : ?>

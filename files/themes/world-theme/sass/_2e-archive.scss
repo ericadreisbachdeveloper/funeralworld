@@ -159,6 +159,8 @@ $hentry-top: -1px;
 }
 
 
+
+
 .search, .archive, .page {
   [data-role="main"] {
     .hentry {
@@ -168,7 +170,7 @@ $hentry-top: -1px;
         background: transparent;
         display: block;
         padding-bottom: 1.1rem;
-        @include transition(background .2s ease-in-out);
+
 
         @include hover {
           background: $mist;
@@ -186,7 +188,6 @@ $hentry-top: -1px;
            top: $hentry-top;
            left: 0;
           z-index: 1;
-          @include transition(background-size .2s ease-in-out, background-position .2s ease-in-out);
         }
       }
 
@@ -213,7 +214,6 @@ $hentry-top: -1px;
   display: inline-block;
   padding: .2rem;
   border-radius: .6rem;
-  @include transition(background .2s ease-in-out);
 }
 
 
@@ -328,8 +328,9 @@ $hentry-top: -1px;
   }
 }
 
-.archive-title-excerpt          { padding-bottom: 1.44rem; }
-.archive-title-excerpt.-no-meta { padding-bottom: 0; }
+// add some padding on Our Work / Advanced Search in-page results
+.page .archive-title-excerpt          { padding-bottom: 1.44rem; }
+//.archive-title-excerpt.-no-meta { padding-bottom: 0; }
 
 
 

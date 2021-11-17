@@ -32,6 +32,7 @@
 
 
 
+
 // Small devices (landscape phones, 37.5rem and up)
 @media (min-width: 37.5rem) {
 
@@ -79,6 +80,7 @@
 
 
 
+
   // Events - small
   .date-register-div { @include flex; @include flex-direction-row; @include justify-content(space-between); }
   .register-div { padding-top: 0; }
@@ -86,8 +88,10 @@
 
 
 
+// mobile last
 // up to Medium
 @media (max-width: 47.9999rem) {
+
   // Classes
   .half-mobile.wp-block-column:not(:only-child) {
     flex-basis: calc(50% - 1em) !important;
@@ -135,8 +139,6 @@
 
 
 
-
-
   // Classes - medium
   %link-line { @include transition(background-image .2s ease-in-out, background-size .2s ease-in-out, color .2s ease-in-out); }
   %button { @include transition(background .2s ease-in-out); }
@@ -167,6 +169,17 @@
   %grid-title { @include transition(background-size .2s ease-in-out, color .2s ease-in-out); }
   .title-icon { @include transition(background-color .2s ease-in-out); }
 
+
+  // Advanced Search - medium
+  .search, .archive, .page {
+    [data-role="main"] .hentry > [href] {
+      @include transition(background .2s ease-in-out);
+
+      &:before {
+        @include transition(background-size .2s ease-in-out, background-position .2s ease-in-out);
+      }
+    }
+  }
 
 
   // Blog - medium
@@ -228,8 +241,8 @@
 
 
   // Search - medium
-  .advanced-search-row > [class*="col"]:nth-of-type(2n+1) { padding-right: .5rem; }
-  .advanced-search-row > [class*="col"]:nth-of-type(2n)   { padding-left: .5rem; }
+  .page .advanced-search-row > [class*="col"]:nth-of-type(2n+1) { padding-right: .5rem; }
+  .page .advanced-search-row > [class*="col"]:nth-of-type(2n)   { padding-left: .5rem; }
 
   .search-results, .page {
     .picture.-icon { @include transition(background .2s ease-in-out); }
@@ -240,6 +253,10 @@
     [data-role="main"] .hentry.type-events > [href] .icon-wrapper-div {
       @include transition(background .2s ease-in-out);
     }
+  }
+
+  .archive-icon {
+    @include transition(background .2s ease-in-out);
   }
 
 
@@ -259,6 +276,16 @@
 }
 
 
+// up to large
+@media (min-width: 37.5rem) and (max-width: 61.9999rem) {
+
+  // Advanced Search Compact
+  .search-compact .advanced-search-row {
+    .col-sm-6 { width: calc(50% - .5rem); }
+    .col-sm-6:nth-of-type(2n+1) { margin-left: .5rem; }
+    .col-sm-6:nth-of-type(2n)   { margin-right:  .5rem; }
+  }
+}
 
 
 
@@ -313,12 +340,36 @@
   // Search - large
   .gutenberg-section.core-shortcode #search-results .hentry > [href] > .container { width: 100%; }
 
+  .search-form.search-compact {
+    input[type="search"] {
+      border-bottom: unset;
+      padding-top: .3rem;
+      padding-bottom: .3rem;
+    }
+    [type="submit"] {
+      max-width: unset;
+      padding: .16rem .2rem .12rem;
+    }
+  }
+
+
 
   // Our Work - large
   // Advanced Search - large
-  .page .resource-meta [class*="meta"]+[class*="meta"] { padding-top: 0; }
+  #advanced-search-trigger { display: none; }
 
-  //.sidebar-h3 + .sidebar-ul-div { @include transition(max-height .1s libear); }
+  #advanced-search-trigger + #advanced-search-container {
+    max-height: unset;
+    overflow: unset;
+  }
+
+  // Advanced Search Compact - small
+  #advanced-search-trigger:not(.-show) + #advanced-search-container {
+    max-height: unset;
+  }
+
+
+
 
 
 
@@ -366,6 +417,10 @@
 
   // Breakpoint - wide
   %breakpoint { background: beige; content: 'WIDE'; }
+
+
+  // Classes - wide
+  .wide-br { display: block; }
 
 
   // Nav - wide

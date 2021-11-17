@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.12';
+$style_vsn = '1.1.14';
 
 
 
@@ -1354,6 +1354,7 @@ function supportthefuture(){
 // 38. Shortcode for Search Form
 add_shortcode( 'advancedsearch', 'searchform');
 function searchform() {
+	// "false" here means to return form (not echo)
 	return get_search_form(false);
 }
 
@@ -1485,18 +1486,36 @@ function searchresults_shortcode() {
 
 			$results .= '<div class="archive-meta"><div class="resource-meta">';
 			$results .= '<div class="meta-time">';
-			$results .= '<h2 class="meta-h2">PUBLISHED: </h2> ' .  get_the_time("F j, Y");
+
+			// if a custom publish date exists, use that
+			if(get_field('resource-publish-date') && $firstterm != '' && $firstterm->slug !== 'website') {
+				$publishdate = get_field('resource-publish-date');
+				$date = DateTime::createFromFormat('m/d/Y', $publishdate);
+				$displaydate = $date->format('F j, Y');
+
+				$results .= '<h2 class="meta-h2">PUBLISHED:</h2> <span class="wide-br"></span>' . $displaydate;
+			}
+			// otherwise, use Wordpress-standard publish date
+			else {
+				$displaydate = get_the_time("F j, Y");
+				$results .= '<h2 class="meta-h2">DATE ADDED:</h2> ';
+				if($firstterm != '' && $firstterm->slug !== 'website') {
+					$results .= '<span class="wide-br"></span>';
+				}
+				$results .= $displaydate;
+			}
+
 			$results .= '</div><!-- /.meta-time -->';
 
 			if($firstterm != '' && $firstterm->slug == 'white-paper') {
 				$results .= '<div class="meta-author">';
-				$results .= '<h2 class="meta-h2">AUTHOR:</h2> ';
+				$results .= '<h2 class="meta-h2">AUTHOR:</h2> <span class="wide-br"></span>';
 				$results .=  get_the_author();
 				$results .= '</div><!-- /.meta-author -->';
 			}
 			elseif($firstterm != '' && $firstterm->slug == 'video') {
 				$results .= '<div class="meta-author">';
-				$results .= '<h2 class="meta-h2">POSTED BY:</h2> ';
+				$results .= '<h2 class="meta-h2">POSTED BY:</h2> <span class="wide-br"></span>';
 				$results .=  get_the_author();
 				$results .= '</div><!-- /.meta-author -->';
 			}
@@ -1574,7 +1593,7 @@ function searchsidebar_shortcode() {
 			); // end $args
 
 			$wp_query = new WP_Query( $args );
-			if ( $wp_query->have_posts() )  { $searchsidebar .= '<li class="sidebar-li"><a href="' .  WP_SITEURL . 'topic/' . $topic->slug . '/?post_type=post">' . $topic->name . '</a></li>'; }
+			if ( $wp_query->have_posts() )  { $searchsidebar .= '<li class="sidebar-li"><a href="' .  WP_SITEURL . '?s=&topic=' . $topic->slug . '&post_type=post">' . $topic->name . '</a></li>'; }
 
 		}
 

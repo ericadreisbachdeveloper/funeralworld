@@ -1,17 +1,27 @@
 // Load search results on Our Work
 jQuery(function($){
 
+  //alert('hi');
 
-  // DEFAULT PAGINATION LOADS SEARCH URL
-  $('.page-numbers[href]').each(function(){
+  // I. NO WIDOWS
+  $('.archive-h2').each(function(){
 
-    // http://localhost/world/page/2/?s&post_type=post
-    var href = $(this).attr('href');
-    href = href.replace('our-work/', '');
-    href = href.concat('?s&post_type=post');
-    $(this).attr('href', href);
+    var title = $(this).text();
+    var lastword = title.split(" ").slice(-1);
+    var allbutlastword = title.replace(lastword, '');
 
+    var icon     = $(this).next('.picture-div');
+    if (icon !== '[object Object]') {
+      var iconhtml = icon.html();
+      icon.remove();
+    }
+
+
+    $(this).html(allbutlastword);
+    $(this).after('<div class="nowrap"><h2 class="archive-h2">' + lastword + '</h2>&nbsp;' + iconhtml + '</div>');
 
   });
+
+
 
 });

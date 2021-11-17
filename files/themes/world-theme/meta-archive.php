@@ -1,17 +1,38 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
+<!-- Used on:
+              /author/xx/    navigate to this archive via single
+              /tag/xx/       navigate to this archive via single
+              /category/learning/     ... not available ...
+              /topic/xx/     navigate to this archive via single breadcrumbs
+              /resource-type/xx/      ... not available ...
+              /audience/xx/           ... not available ...
+              /?s/
+
+-->
 
   <?php global $terms; global $firstterm; global $post_type;
         $tags = get_the_tags();
   ?>
 
-
+  <!-- used on Wordpress-generated Category, Tag, Author pages -->
+  <!-- funeralworld.org/topic/covid/ -->
+  <!-- funeralworld.org/topic/covid/ -->
   <div class="resource-meta">
 
 
-
-    <?php if ($firstterm != '') : ?>
+    <!-- if a custom publish date exists -->
+    <?php if (get_field('resource-publish-date')) : ?>
+    <?php $publishdate = get_field('resource-publish-date'); $displaydate = DateTime::createFromFormat('m/d/Y', $publishdate); ?>
     <div class="meta-time">
-      <h2 class="meta-h2">PUBLISHED: </h2> <?php the_time('F j, Y'); ?>
+      <h2 class="meta-h2">PUBLISHED:</h2> <?= $displaydate->format('F j, Y'); ?>
+    </div>
+
+    <!-- otherwise, use default Wordpress publish date -->
+    <?php else : ?>
+
+    <?php $displaydate = get_the_time("F j, Y"); ?>
+    <div class="meta-time">
+      <h2 class="meta-h2">DATE ADDED:</h2> <?= $displaydate; ?>
     </div>
     <?php endif; ?>
 

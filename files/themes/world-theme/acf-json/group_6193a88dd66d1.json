@@ -6,7 +6,7 @@
             "key": "field_6193a89db0a20",
             "label": "Resource Publish Date (actual)",
             "name": "resource-publish-date",
-            "type": "text",
+            "type": "date_picker",
             "instructions": "Enter the actual date that the resource was published (on YouTube, as a white paper, &amp;c.) as opposed to the date the resource is published&nbsp;here.",
             "required": 1,
             "conditional_logic": 0,
@@ -15,11 +15,9 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "display_format": "m\/d\/Y",
+            "return_format": "m\/d\/Y",
+            "first_day": 0
         }
     ],
     "location": [
@@ -28,6 +26,11 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "post"
+            },
+            {
+                "param": "post_taxonomy",
+                "operator": "!=",
+                "value": "resource-type:website"
             }
         ]
     ],
@@ -40,5 +43,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1637067053
+    "modified": 1637098500
 }

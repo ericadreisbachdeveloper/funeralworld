@@ -1,6 +1,8 @@
-// No widows in title
+
+
 jQuery(function($){
 
+  // No widows in title
   $('.archive-h2').each(function(){
 
     var title = $(this).text();
@@ -19,5 +21,20 @@ jQuery(function($){
     $(this).after('<div class="nowrap"><h2 class="archive-h2">' + lastword + '</h2>&nbsp;' + iconhtml + '</div>');
 
   });
+
+
+
+  // Advanced Search form
+  $('#advanced-search-trigger [href]').on('click', function(){
+    var trigger = $('#advanced-search-trigger');
+
+    if( trigger.hasClass('-show')) {
+      trigger.removeClass('-show');
+    }
+    else {
+      trigger.addClass('-show');
+    }
+  });
+
 
 });

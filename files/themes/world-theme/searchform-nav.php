@@ -1,5 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
 
+<!-- full site search in nav          -->
+<!-- results include Pages and Events -->
 
 <form class="search nav-search" method="get" action="<?php _e(home_url()); ?>" role="search">
 

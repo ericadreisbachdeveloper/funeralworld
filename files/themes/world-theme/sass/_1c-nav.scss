@@ -314,6 +314,7 @@ $navborder: .05rem solid #dedede;
     position: absolute;
      top: 1.85rem;
      left: .8rem;
+    z-index: 1;
   }
 }
 
@@ -353,7 +354,7 @@ $navborder: .05rem solid #dedede;
   background: none;
   border: none;
   margin-top: 0;
-  padding: 0; 
+  padding: 0;
   position: absolute;
    top: .8rem;
    right: 2.5rem;

@@ -53,7 +53,7 @@ input {
 }
 
 
-//label { line-height: 1.8; }
+
 
 
 
@@ -84,7 +84,8 @@ input {
   margin-bottom: 1rem;
 }
 
-.search {
+
+.search-form {
 
   .select, .input {
     width: 100%;
@@ -127,6 +128,12 @@ input {
   }
 
 
+  .search-submit {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
   .select [value] {
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -136,13 +143,20 @@ input {
   .select::-ms-expand {
     display: none; /* Hide the default arrow in Internet Explorer 10 and Internet Explorer 11 */
   }
+}
 
+
+.search-form:not(.search-compact) {
   .search-submit {
-    display: block;
     margin-top: 2rem;
-    margin-right: auto;
-    margin-left: auto;
   }
+}
+
+
+
+// Search Form Compact
+.search-compact {
+  padding-top: 1.44rem;
 }
 
 
@@ -187,7 +201,8 @@ input {
   padding: 0;
 }
 
-[id*="-toggle"] { display: none; -webkit-appearance: none; }
+// Sidebar toggles
+.core-shortcode [id*="-toggle"] { display: none; -webkit-appearance: none; }
 
 
 
@@ -232,4 +247,66 @@ input {
 
 .wp-block-column.border-right {
   border-right: .05rem rgba(140,137,161, .5) solid;
+}
+
+
+
+// Compact Search
+.search-form.search-compact {
+  padding-bottom: .35rem;
+
+  input[type="search"] {
+    border-bottom: unset;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+  }
+
+  .select {
+    background-size: .6rem;
+    background-position: calc(100% - .5rem) 50%;
+  }
+
+  [type="submit"] {
+    width: 100%;
+    max-width: 10rem;
+    padding: .7rem .2rem;
+  }
+}
+
+#advanced-search-trigger {
+  width: 100%;
+  background: $land3;
+  text-align: center;
+
+  [href] {
+    color: white;
+    display: inline-block;
+
+    &:after {
+      display: inline-block;
+      width: 100vw;
+      height: 1em;
+      content: 'ADVANCED SEARCH \00a0 \00a0';
+
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12' overflow='visible'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' fill='%23FFF' d='M19.679 0L10.2 11.924 0 0h19.679z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: .5em;
+      background-position: calc(50% + 4.3em) .55em;
+    }
+  }
+
+  @include hover {
+    background: $land;
+  }
+}
+
+
+#advanced-search-trigger:not(.-show) + #advanced-search-container {
+  max-height: 0;
+  overflow: hidden;
+}
+
+#advanced-search-trigger.-show + #advanced-search-container {
+  max-height: unset;
+  overflow: visible;
 }

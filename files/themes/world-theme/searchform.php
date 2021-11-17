@@ -1,9 +1,10 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
 
+<!-- Advanced Search -->
 
 <div class="corset">
 
-	<form class="search" method="get" role="search" action="<?php _e(home_url()); ?>">
+	<form class="search-form" method="get" role="search" action="<?php _e(home_url()); ?>">
 
 		<input id="search-input" class="search-input input" type="search" name="s" placeholder="<?php _e( 'What are you looking for?', 'dbllc' ); ?>">
 
@@ -11,6 +12,9 @@
 
 		<div class="row advanced-search-row">
 
+			<!-- HIDDEN - post_type = post -->
+			<label class="hidden" for="post_type" tabindex="-1" style="display: none; max-height: 0; position: absolute; left: -99999px;">post_type</label>
+			<input name="post_type" id="post_type" type="text" tabindex="-1" style="display: none; max-height: 0; position: absolute; left: -99999px;" value="post" />
 
 			<!-- START Audience -->
 			<div class="col-md-6 col-lg-3">
@@ -60,7 +64,7 @@
 			<!-- START Resource Types -->
 			<div class="col-md-6 col-lg-3">
 
-				<select name="type" class="select">
+				<select name="resource-type" class="select">
 				  <option value="">Any Resource Type </option>
 				  <?php $types = get_terms('resource-type'); foreach($types as $type) : ?>
 				  <option value="<?= $type->slug; ?>"><?= $type->name; ?> </option>
@@ -87,34 +91,6 @@
 
 
 
-
-<div class="container">
-	<?php if( isset( $_REQUEST['query'] ) ) {
-        query_posts( array(
-        's' => $_REQUEST['query']
-        ));
-
-        if( have_posts() ) : while ( have_posts() ) :
-            the_title();
-            the_content();
-        endwhile; endif;
-
-        wp_reset_query();
-        }
-    ?>
-
-</div>
-
-
 <script>
-const searchbtn = document.querySelector('#search-submit');
-
-searchbtn.addEventListener("click", (e) => {
-	e.preventDefault();
-});
-
-// upon search button click
-// x use Javascript to "GET" the query
-//   use Ajax to load it
-
+// always add post_type=post to search query ... invisible field ???
 </script>
