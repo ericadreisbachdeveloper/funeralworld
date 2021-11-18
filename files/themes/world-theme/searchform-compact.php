@@ -20,7 +20,7 @@
 			<div class="row advanced-search-row">
 
 
-				<?php $audience_select = $author_select = $topic_select = $type_select = ''; ?>
+				<?php global $s; global $audience_select; global $author_select; global $topic_select; global $type_select; ?>
 
 
 				<!-- HIDDEN - post_type = post -->

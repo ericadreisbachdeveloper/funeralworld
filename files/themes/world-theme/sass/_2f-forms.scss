@@ -295,9 +295,19 @@ input {
     }
   }
 
+  &.-show [href]:after {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12' overflow='visible' xml:space='preserve'%3E%3Cpath fill='%23FFF' d='M0 11.924 9.479 0l10.2 11.924H0z'/%3E%3C/svg%3E");
+  }
+
   @include hover {
     background: $land;
   }
+}
+
+
+#advanced-search-trigger {
+  padding-top: .64rem;
+  padding-bottom: .64rem;
 }
 
 

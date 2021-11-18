@@ -173,7 +173,10 @@ $hentry-top: -1px;
 
 
         @include hover {
-          background: $mist;
+          //background: $mist;
+          //background: white;
+          background: $mist2; 
+
           &:before { background-size: calc(100% + 3rem) 100%; background-position: 0 0; }
           .archive-icon { background: $blue2; }
         }
@@ -256,7 +259,7 @@ $hentry-top: -1px;
 
 // Advanced Search Results
 // Our Work
-.page #search-results {
+#search-results {
 
   .hentry > [href]:before { width: 100%; background-position: 1.5rem 0; background-size: calc(100% - 3rem) 100%; }
 
@@ -272,6 +275,8 @@ $hentry-top: -1px;
 
   .meta-type { display: none; }
 }
+
+
 
 // Our Work Advanced Search
 // Archive pages
@@ -293,6 +298,7 @@ $hentry-top: -1px;
   }
 
   .picture.-photo { width: 17.5rem; display: block; position: relative; }
+
   .picture.-photo:before {
     width: 100%;
     height: 100%;
@@ -324,7 +330,7 @@ $hentry-top: -1px;
 [data-role="main"] .hentry > [href] {
   @include hover {
     .picture.-photo:before { opacity: .7; mix-blend-mode: multiple; }
-    .picture.-icon { background: $blue2; }
+    .picture.-icon         { background: $blue2; }
   }
 }
 
@@ -367,4 +373,53 @@ $hentry-top: -1px;
   [data-role="main"] .hentry.type-events > [href] .calendar-icon { @extend %calendar-icon; }
 
   .resource-meta { padding-top: 1rem; }
+}
+
+
+// Advanced Search Results
+[data-role="main"] h1.search-results-h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  &.-initial, &.-no-filters {
+    padding-bottom: 1.5rem;
+  }
+}
+
+// padding above titles in Advanced Search Results
+.search-columns .wp-block-column > .core-shortcode {
+  padding-top: 2.44rem;
+}
+
+
+
+.filter-buttons {
+  padding-bottom: 1.5rem;
+
+  &> [href] {
+    background: $land3;
+    color: white;
+    padding: .3rem .5rem .3rem 1.5rem;
+    position: relative;
+    text-transform: uppercase;
+
+    &:before {
+      width: 1.1rem;
+      height: 100%;
+      content: '';
+
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' overflow='visible' xml:space='preserve'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' fill='%23FFF' d='M9.047 7.983 7.985 9.047 4.533 5.596l-3.47 3.47L0 8.003l3.471-3.471L0 1.062 1.063 0l3.47 3.47L7.985.019l1.062 1.063-3.451 3.45 3.451 3.451z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: .5rem calc(50% - .05rem);
+      background-size: .5em;
+      position: absolute;
+       top: 0;
+       left: 0;
+    }
+
+    @include hover {
+      color: white;
+      background: $land;
+    }
+  }
 }

@@ -24,8 +24,6 @@
 [data-role="main"] .has-medium-font-size,
 [data-role="main"] h1.search-results-h1 { @extend %medium; }
 
-[data-role="main"] h1.search-results-h1 { margin-bottom: 1.5rem; }
-
 [data-role="main"] .deck,
 [data-role="main"] h2,
 [data-role="main"] .has-medium-font-size { margin-bottom: .3rem;  }
@@ -90,6 +88,9 @@ input {
 
 // Sharing title
 [data-role="main"] .minimal-share-button[href] + p { @extend %small; }
+
+// filter buttons - Advanced Search results
+.filter-buttons > [href] { @extend %small; }
 
 
 

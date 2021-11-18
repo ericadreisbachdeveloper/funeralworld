@@ -1597,8 +1597,6 @@ function searchsidebar_shortcode() {
 
 		}
 
-
-
 		$searchsidebar .= '</ul></div>';
 
 	} // end foreach $audiences as $audience

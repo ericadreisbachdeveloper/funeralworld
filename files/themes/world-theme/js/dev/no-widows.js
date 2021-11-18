@@ -24,7 +24,7 @@ jQuery(function($){
 
 
 
-  // Advanced Search form
+  // Show Advanced Search form drawer
   $('#advanced-search-trigger [href]').on('click', function(){
     var trigger = $('#advanced-search-trigger');
 
@@ -36,5 +36,44 @@ jQuery(function($){
     }
   });
 
+
+  // Filter buttons click
+  $('.filter-buttons [href]').on('click', function(){
+
+    // get filter/input name
+    var input = $(this).attr('data-input');
+
+    // get filter/input value
+    if (input == 's') {
+      var value = $(this).attr('data-value');
+      value = value.replace(/ /g, '+');
+    }
+    else {
+      var value = $(this).attr('data-value');
+    }
+
+
+    // clear the relevant form input
+    $('[name=' + input + ']').val("");
+
+    // remove filter button
+    $(this).remove();
+
+
+    // get current_url
+    var url = window.location.href;
+
+    // replace url value with nothing
+    var load_url = url.replace(value, '');
+    console.log(load_url)
+
+
+    // load url with Ajax
+
+
+    // update browser history
+
+
+  });
 
 });

@@ -259,6 +259,10 @@
     @include transition(background .2s ease-in-out);
   }
 
+  .filter-buttons > [href] {
+    @include transition(background .2s ease-in-out);
+  }
+
 
 
   // Footer - medium
@@ -276,6 +280,9 @@
 }
 
 
+
+
+// Mobile last
 // up to large
 @media (min-width: 37.5rem) and (max-width: 61.9999rem) {
 
