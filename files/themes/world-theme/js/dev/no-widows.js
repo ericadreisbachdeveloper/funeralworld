@@ -2,7 +2,77 @@
 
 jQuery(function($){
 
-  // No widows in title
+
+  // Tab Accessible Accordions (Explore Resource by Topic)
+  $('.sidebar-h3').keypress(function(event){
+
+    var input = $(this).attr('for');
+    var div = $(this).next('.sidebar-ul-div');
+
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+
+    // if closed and keyboard ENTER...
+    // - open
+    // - make each topic link tab accessible
+    if( keycode == '13' && $('#' + input).attr('aria-expanded') == 'false' ){
+
+      $('#' + input).prop('checked', true).attr('aria-expanded', 'true');
+
+      div.find('[href]').each(function(){
+        $(this).attr('tabindex', 1);
+      });
+    }
+
+    // if open and keyboard ENTER ...
+    // - close
+    // - make each topic link tab inaccessible
+    else if( keycode == '13' && $('#' + input).attr('aria-expanded') == 'true' ){
+
+      $('#' + input).prop('checked', false).attr('aria-expanded', 'false');
+
+      div.find('[href]').each(function(){
+        $(this).attr('tabindex', -1);
+      });
+    }
+
+  }); // END Tab-Accessible Accordions
+
+
+
+  // Mouse-Accessible Accordions
+  $('.sidebar-h3').on('click', function(){
+
+    var input = $(this).attr('for');
+    var div = $(this).next('.sidebar-ul-div');
+
+    if ( $('#' + input).attr('aria-expanded') == 'false' ){
+
+      $('#' + input).attr('aria-expanded', 'true');
+
+      div.find('[href]').each(function(){
+        $(this).attr('tabindex', 1);
+      });
+    }
+
+    else if ( $('#' + input).attr('aria-expanded') == 'true' ) {
+
+      $('#' + input).attr('aria-expanded', 'false');
+
+      div.find('[href]').each(function(){
+        $(this).attr('tabindex', -1);
+      });
+    }
+
+  });
+
+
+
+
+
+
+
+
+  // No widows in titles
   $('.archive-h2').each(function(){
 
     var title = $(this).text();
@@ -37,41 +107,10 @@ jQuery(function($){
   });
 
 
+
   // Filter buttons click
   $('.filter-buttons [href]').on('click', function(){
 
-    // get filter/input name
-    var input = $(this).attr('data-input');
-
-    // get filter/input value
-    if (input == 's') {
-      var value = $(this).attr('data-value');
-      value = value.replace(/ /g, '+');
-    }
-    else {
-      var value = $(this).attr('data-value');
-    }
-
-
-    // clear the relevant form input
-    $('[name=' + input + ']').val("");
-
-    // remove filter button
-    $(this).remove();
-
-
-    // get current_url
-    var url = window.location.href;
-
-    // replace url value with nothing
-    var load_url = url.replace(value, '');
-    console.log(load_url)
-
-
-    // load url with Ajax
-
-
-    // update browser history
 
 
   });

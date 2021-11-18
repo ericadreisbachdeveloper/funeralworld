@@ -168,21 +168,12 @@ input {
 .sidebar-h3 {
   text-transform: uppercase;
   position: relative;
+  color: $night;
+  @include hover { color: $blue2; }
 
   [href] {
     display: inline-block;
     padding-left: 1rem;
-
-    /*
-    &:before {
-      display: block;
-      content: '+ \00a0';
-      line-height: 1.2;
-      position: absolute;
-       top: 0;
-       left: 0;
-    }
-    */
 
     @include hover {
       &:before {
@@ -207,13 +198,27 @@ input {
 
 
 
-[id*="-toggle"] {
-        &:checked + .sidebar-h3 + .sidebar-ul-div { max-height: unset; }
-  &:not(:checked) + .sidebar-h3 + .sidebar-ul-div { overflow: hidden; max-height: 0;}
+.core-shortcode [id*="-toggle"] {
 
-        &:checked + .sidebar-h3:before { content: '\2012'; }
+  // clicks
+  &:not(:checked) + .sidebar-h3 + .sidebar-ul-div { overflow: hidden; max-height: 0; }
   &:not(:checked) + .sidebar-h3:before { content: '+'; }
+
+  /* &[aria-expanded="true"], */
+  &:checked {
+    &+ .sidebar-h3:before { content: '\2012'; }
+  }
+
+  /* &[aria-expanded="true"],*/
+  &:checked {
+     &+ .sidebar-h3 + .sidebar-ul-div { max-height: unset; }
+  }
+
+
+
+
 }
+
 
 
 
@@ -273,6 +278,9 @@ input {
   }
 }
 
+
+// Advanced Search Trigger
+// Advanced Search Drawer
 #advanced-search-trigger {
   width: 100%;
   background: $land3;
@@ -309,7 +317,6 @@ input {
   padding-top: .64rem;
   padding-bottom: .64rem;
 }
-
 
 #advanced-search-trigger:not(.-show) + #advanced-search-container {
   max-height: 0;

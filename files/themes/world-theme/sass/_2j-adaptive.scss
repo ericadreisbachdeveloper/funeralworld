@@ -306,7 +306,7 @@
 
   // Classes - large
   .hide-md-and-smaller { display: block; }
-
+  .lg-br { display: block; }
 
 
   // Header - large
@@ -359,6 +359,8 @@
     }
   }
 
+  .search-columns > .wp-block-column:first-of-type { padding-bottom: 2rem; }
+
 
 
   // Our Work - large
@@ -369,6 +371,7 @@
     max-height: unset;
     overflow: unset;
   }
+
 
   // Advanced Search Compact - small
   #advanced-search-trigger:not(.-show) + #advanced-search-container {
@@ -427,7 +430,7 @@
 
 
   // Classes - wide
-  .wide-br { display: block; }
+  //.wide-br { display: block; }
 
 
   // Nav - wide

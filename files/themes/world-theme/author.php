@@ -16,7 +16,7 @@
 	</div>
 
 
-	<?php get_template_part('loop'); ?>
+	<?php get_template_part('loop-nosidebar'); ?>
 
 
 	<?php get_template_part('pagination'); ?>

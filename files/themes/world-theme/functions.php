@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.15';
+$style_vsn = '1.1.16';
 
 
 
@@ -1493,14 +1493,14 @@ function searchresults_shortcode() {
 				$date = DateTime::createFromFormat('m/d/Y', $publishdate);
 				$displaydate = $date->format('F j, Y');
 
-				$results .= '<h2 class="meta-h2">PUBLISHED:</h2> <span class="wide-br"></span>' . $displaydate;
+				$results .= '<h2 class="meta-h2">PUBLISHED:</h2> <span class="lg-br"></span>' . $displaydate;
 			}
 			// otherwise, use Wordpress-standard publish date
 			else {
 				$displaydate = get_the_time("F j, Y");
 				$results .= '<h2 class="meta-h2">DATE ADDED:</h2> ';
 				if($firstterm != '' && $firstterm->slug !== 'website') {
-					$results .= '<span class="wide-br"></span>';
+					$results .= '<span class="lg-br"></span>';
 				}
 				$results .= $displaydate;
 			}
@@ -1509,13 +1509,13 @@ function searchresults_shortcode() {
 
 			if($firstterm != '' && $firstterm->slug == 'white-paper') {
 				$results .= '<div class="meta-author">';
-				$results .= '<h2 class="meta-h2">AUTHOR:</h2> <span class="wide-br"></span>';
+				$results .= '<h2 class="meta-h2">AUTHOR:</h2> <span class="lg-br"></span>';
 				$results .=  get_the_author();
 				$results .= '</div><!-- /.meta-author -->';
 			}
 			elseif($firstterm != '' && $firstterm->slug == 'video') {
 				$results .= '<div class="meta-author">';
-				$results .= '<h2 class="meta-h2">POSTED BY:</h2> <span class="wide-br"></span>';
+				$results .= '<h2 class="meta-h2">POSTED BY:</h2> <span class="lg-br"></span>';
 				$results .=  get_the_author();
 				$results .= '</div><!-- /.meta-author -->';
 			}
@@ -1563,9 +1563,9 @@ function searchsidebar_shortcode() {
 	foreach($audiences as $audience) {
 
 		//   <input id="cmn-toggle-7" class="hidden" type="checkbox" >
-
 		$searchsidebar .= '<input id="' . $audience->slug . '-toggle" type="checkbox" aria-expanded="false" />';
 		$searchsidebar .= '<label for="' . $audience->slug . '-toggle" class="sidebar-h3" tabindex="1">For ' . $audience->name . '</label>';
+
 		$searchsidebar .= '<div class="sidebar-ul-div"><ul class="sidebar-ul">';
 
 
