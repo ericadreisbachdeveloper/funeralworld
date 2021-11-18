@@ -20,8 +20,17 @@
       <h2 class="meta-h2">PUBLISHED:</h2> <span class="lg-br"></span><?= $displaydate->format('F j, Y'); ?>
     </div>
 
+
+    <!-- if resource type is a website, no other meta will exist, so publish on one line -->
+    <?php elseif ($firstterm->slug == 'website') : ?>
+    <?php $displaydate = get_the_time("F j, Y"); ?>
+    <div class="meta-time">
+      <h2 class="meta-h2">DATE ADDED:</h2> <?= $displaydate; ?>
+    </div>
+
+
     <!-- otherwise, use default Wordpress publish date -->
-  <?php elseif($post_type !== 'events' && $post_type !== 'page') : ?>
+    <?php elseif($post_type !== 'events' && $post_type !== 'page') : ?>
 
     <?php $displaydate = get_the_time("F j, Y"); ?>
     <div class="meta-time">

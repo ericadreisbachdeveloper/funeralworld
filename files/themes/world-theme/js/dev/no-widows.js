@@ -63,8 +63,27 @@ jQuery(function($){
       });
     }
 
-  });
+  }); // END Mouse-Accessible Accordions
 
+
+
+
+  var url = window.location.href;
+
+  if (~url.indexOf('?a=')) {
+
+    var audiencetoggle = url.substr(url.indexOf("?a=") + 3);
+        audiencetoggle = audiencetoggle + '-toggle';
+
+    var div = $('[for="licenced-professionals"]').next('.sidebar-ul-div');
+
+    $('#' + audiencetoggle).prop('checked', 'true').attr('aria-expanded', 'true');
+
+    div.find('[href]').each(function(){
+     $(this).attr('tabindex', 1);
+   });
+
+  }
 
 
 

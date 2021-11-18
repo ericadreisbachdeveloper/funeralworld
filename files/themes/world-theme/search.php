@@ -218,11 +218,13 @@
 													<!-- 4. Type -->
 													<?php if($search_array[4] != '') : ?>
 
+													<?php $type_term = get_term_by('slug', $search_array[4], 'resource-type'); ?>
+
 													<?php $filteredurl = WP_SITEURL . '?s=';
 
 														if ($search_array[0] != '') {
 															$search_term  = $search_array[0];
-															$search_term  = str_replace(' ', '+', $search_term);															
+															$search_term  = str_replace(' ', '+', $search_term);
 															$filteredurl .= $search_term;
 														}
 
@@ -243,7 +245,7 @@
 
 														$filteredurl .= '&post_type=post'; ?>
 
-													<a href="<?= esc_url($filteredurl); ?>" data-input="topic" data-value="<?= $search_array[4]; ?>">RESOURCE TYPE: <?= $search_array[4]; ?></a>
+													<a href="<?= esc_url($filteredurl); ?>" data-input="topic" data-value="<?= $search_array[4]; ?>">RESOURCE TYPE: <?= $type_term->name; ?></a>
 													<?php endif; ?>
 													<!-- /4. Type -->
 
