@@ -15,7 +15,6 @@
 <main data-role="main" id="main">
 
 
-
 	<section class="section">
 
 		<?php get_template_part('searchform-compact'); ?>

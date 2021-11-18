@@ -509,7 +509,7 @@
     }
   }
 
-  .search-results, .page {
+  .search-results, .page-template {
     #search-results > .container { width: 100%; }
   }
 
@@ -540,12 +540,12 @@
 
   .site-header > .gutenberg-container { width: $container; margin-right: auto; margin-left: auto; }
 
-  .page #search-results > .container { width: unset; }
+  .page-template #search-results > .container { width: unset; }
 
 
   // Advanced Search - wide
   // Our Work - wide
-  .page [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; }
+  .page-template [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; }
 
   .search-results, .archive {
     #search-results .hentry > [href] > .container { width: $container; }

@@ -154,14 +154,14 @@ $hentry-top: -1px;
 .picture-div { display: inline-block; }
 
 
-.search, .archive, .page {
+.search, .archive, .page-template {
   [data-role="main"] .hentry > [href].no-excerpt { padding-bottom: 0; }
 }
 
 
 
 
-.search, .archive, .page {
+.search, .archive, .page-template {
   [data-role="main"] {
     .hentry {
       &> [href] {
@@ -280,7 +280,7 @@ $hentry-top: -1px;
 
 // Our Work Advanced Search
 // Archive pages
-.page,
+.page-template,
 .search-results,
 .archive {
   [data-role="main"] .hentry {
@@ -291,7 +291,7 @@ $hentry-top: -1px;
 
 
 
-.archive, .search-results, .page {
+.archive, .search-results, .page-template {
 
   .archive-a .archive-img {
     padding-top: .9rem;
@@ -335,7 +335,7 @@ $hentry-top: -1px;
 }
 
 // add some padding on Our Work / Advanced Search in-page results
-.page .archive-title-excerpt          { padding-bottom: 1.44rem; }
+.page-template .archive-title-excerpt          { padding-bottom: 1.44rem; }
 //.archive-title-excerpt.-no-meta { padding-bottom: 0; }
 
 

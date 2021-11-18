@@ -1,6 +1,6 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
 <!-- Used on:
-              /?s=           Native Search, Advanced Search
+              /?s=   Native Search, Advanced Search
 -->
 
   <?php global $terms; global $firstterm; global $post_type;
@@ -22,7 +22,7 @@
 
 
     <!-- if resource type is a website, no other meta will exist, so publish on one line -->
-    <?php elseif ($firstterm->slug == 'website') : ?>
+    <?php elseif ($firstterm && $firstterm->slug == 'website') : ?>
     <?php $displaydate = get_the_time("F j, Y"); ?>
     <div class="meta-time">
       <h2 class="meta-h2">DATE ADDED:</h2> <?= $displaydate; ?>
