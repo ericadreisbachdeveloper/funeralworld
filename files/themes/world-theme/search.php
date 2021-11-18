@@ -114,6 +114,8 @@
 													<!-- 1. Audience -->
 													<?php if($search_array[1] != '') : ?>
 
+													<?php $audience_term  = get_term_by('slug', $search_array[1], 'audience'); ?>
+
 													<?php $filteredurl = WP_SITEURL . '?s=';
 
 														if ($search_array[0] != '') {
@@ -139,7 +141,7 @@
 
 														$filteredurl .= '&post_type=post'; ?>
 
-													<a href="<?= esc_url($filteredurl); ?>" data-input="audience" data-value="<?= $search_array[1]; ?>">AUDIENCE: <?= $search_array[1]; ?></a>
+													<a href="<?= esc_url($filteredurl); ?>" data-input="audience" data-value="<?= $search_array[1]; ?>">AUDIENCE: <?= $audience_term->name; ?></a>
 													<?php endif; ?>
 													<!-- /1. Audience -->
 
@@ -260,23 +262,15 @@
 
 											<?php get_template_part('pagination'); ?>
 
-										</div><!-- /#search-results -->
 
-							</div><!-- /.gutenberg-container -->
-						</div><!-- /.gutenberg-section.core-shortcode -->
-					</div><!-- /.wp-block-column -->
+											</div><!-- /#search-results -->
 
 
-<!--
-<section class="section gutenberg-section core-group">
-	<div class="gutenberg-container">
-		<div class="wp-block-group mist-bg">
-			<div class="wp-block-group__inner-container">
-				<div class="gutenberg-section core-columns">
-					<div class="gutenberg-container">
-						<div class="wp-block-columns">
+										</div><!-- /.gutenberg-container -->
+									</div><!-- /.gutenberg-section.core-shortcode -->
+								</div><!-- /.wp-block-column -->
 
-						-->
+
 							</div><!-- /.wp-block-columns -->
 						</div><!-- /.gutenberg-container -->
 					</div><!-- /.gutenberg-section.core-columns -->

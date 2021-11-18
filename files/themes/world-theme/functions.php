@@ -1593,7 +1593,7 @@ function searchsidebar_shortcode() {
 			); // end $args
 
 			$wp_query = new WP_Query( $args );
-			if ( $wp_query->have_posts() )  { $searchsidebar .= '<li class="sidebar-li"><a href="' .  WP_SITEURL . '?s=&topic=' . $topic->slug . '&post_type=post?a=' . $audience->slug . '">' . $topic->name . '</a></li>'; }
+			if ( $wp_query->have_posts() )  { $searchsidebar .= '<li class="sidebar-li"><a href="' .  WP_SITEURL . '?s=&topic=' . $topic->slug . '&audience=' . $audience->slug . '&post_type=post?a=' . $audience->slug . '">' . $topic->name . '</a></li>'; }
 
 		}
 
