@@ -137,6 +137,7 @@ input {
   %select       { font-size: 1.2rem; line-height: 1; }
 
   .resource-pdf,
+  [data-role="main"] .sidebar-h2,
   [data-role="main"] .sidebar-h3,
   [data-role="main"] .meta-h2 { line-height: 1.2; }
 

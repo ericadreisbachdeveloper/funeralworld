@@ -97,7 +97,7 @@
     </div>
     <?php elseif($firstterm != '' && $firstterm->slug == 'video') : ?>
     <div class="meta-author">
-      <h2 class="meta-h2">POSTED BY: </h2>
+      <h2 class="meta-h2">POSTED BY: </h2><span class="wide-br"></span>
       <?php $author = ''; $author = get_the_author(); _e($author); ?>
     </div>
     <?php endif; ?>

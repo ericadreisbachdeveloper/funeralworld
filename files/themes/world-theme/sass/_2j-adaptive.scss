@@ -481,17 +481,6 @@
   // Search Results - wide
   // Search - wide
   // Archive - wide
-  .search-results, .archive {
-    .archive-a .resource-meta {
-      @include flex;
-      @include justify-content(flex-start);
-      @include flex-direction-row;
-
-      [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.4rem; }
-    }
-  }
-
-
   // Advanced Search - wide
   // Our Work - wide
   .search-results, .archive, .page {
@@ -500,7 +489,7 @@
       @include justify-content(flex-start);
       @include flex-direction-row;
 
-      [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 4.4rem; }
+      [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 3.44rem; }
     }
   }
 
