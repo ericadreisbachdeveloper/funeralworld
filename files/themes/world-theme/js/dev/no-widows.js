@@ -1,22 +1,24 @@
 
-
 jQuery(function($){
 
 
-  // Tab Accessible Accordions (Explore Resource by Topic)
+  // 1a. Tab Accessible Accordions (Explore Resource by Topic)
   $('.sidebar-h3').keypress(function(event){
 
-    var input = $(this).attr('for');
-    var div = $(this).next('.sidebar-ul-div');
+    var target  = $(this).attr('for');
+    var input   = $('#' + target);
+    var control = $(this);
+    var div     = $(this).next('.sidebar-ul-div');
 
     var keycode = (event.keyCode ? event.keyCode : event.which);
 
     // if closed and keyboard ENTER...
     // - open
     // - make each topic link tab accessible
-    if( keycode == '13' && $('#' + input).attr('aria-expanded') == 'false' ){
+    if( keycode == '13' && control.attr('aria-expanded') == 'false' ){
 
-      $('#' + input).prop('checked', true).attr('aria-expanded', 'true');
+      input.prop('checked', true);
+      control.attr('aria-expanded', 'true');
 
       div.find('[href]').each(function(){
         $(this).attr('tabindex', 1);
@@ -26,9 +28,10 @@ jQuery(function($){
     // if open and keyboard ENTER ...
     // - close
     // - make each topic link tab inaccessible
-    else if( keycode == '13' && $('#' + input).attr('aria-expanded') == 'true' ){
+    else if( keycode == '13' && control.attr('aria-expanded') == 'true' ){
 
-      $('#' + input).prop('checked', false).attr('aria-expanded', 'false');
+      input.prop('checked', false);
+      control.attr('aria-expanded', 'false');
 
       div.find('[href]').each(function(){
         $(this).attr('tabindex', -1);
@@ -39,7 +42,7 @@ jQuery(function($){
 
 
 
-  // Mouse-Accessible Accordions
+  // 1b. Mouse-Accessible Accordions
   $('.sidebar-h3').on('click', function(){
 
     var input = $(this).attr('for');
@@ -67,7 +70,8 @@ jQuery(function($){
 
 
 
-
+  // 2. Open Audience accordion if URL contains token
+  /*
   var url = window.location.href;
 
   if (~url.indexOf('?a=')) {
@@ -79,19 +83,25 @@ jQuery(function($){
 
     $('#' + audiencetoggle).prop('checked', 'true').attr('aria-expanded', 'true');
 
+    $('input[id*="-toggle"]').css('opacity', '1');
+    $('label[for*="-toggle"]').css('opacity', '1');
+
     div.find('[href]').each(function(){
      $(this).attr('tabindex', 1);
    });
-
   }
 
+  else {
+    $('input[id*="-toggle"]').css('opacity', '1');
+    $('label[for*="-toggle"]').css('opacity', '1');
+
+  }
+  */
 
 
 
 
-
-
-  // No widows in titles
+  // 3. No widows in titles
   $('.archive-h2').each(function(){
 
     var title = $(this).text();
@@ -99,7 +109,7 @@ jQuery(function($){
     var allbutlastword = title.replace(lastword, '');
 
     var icon     = $(this).next('.picture-div');
-    if (icon != '[object Object]') {
+    if (icon !== '[object Object]') {
       var iconhtml = icon.html();
       icon.remove();
     }
@@ -113,7 +123,7 @@ jQuery(function($){
 
 
 
-  // Show Advanced Search form drawer
+  // 4. Show Advanced Search form drawer
   $('#advanced-search-trigger [href]').on('click', function(){
     var trigger = $('#advanced-search-trigger');
 
@@ -127,11 +137,11 @@ jQuery(function($){
 
 
 
-  // Filter buttons click
-  $('.filter-buttons [href]').on('click', function(){
-
-
-
-  });
-
 });
+
+
+
+// 5. Define loadpage()
+function loadpage() {
+  alert('i cahnged');
+}

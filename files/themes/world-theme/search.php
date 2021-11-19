@@ -5,7 +5,7 @@
 <!-- Advanced Search results AND full site search results        -->
 
 <!-- if query includes 	audience   author  topic   resource-type -->
-<!-- include clickable filter remove                             -->
+<!-- include clickable filter to remove                          -->
 
 <!-- if query includes post_type=post                            -->
 <!-- then include searchform at the top of the page              -->
@@ -65,15 +65,27 @@
 											<div id="search-results">
 												<div class="container">
 
+
 												<?php $s = sprintf( __('%s', 'dbllc'), $wp_query->found_posts);
 												if($s == '1') { $sp = ''; } else { $sp = 's'; } ?>
 
 												<?php $str = get_search_query();
 													    $for_query = ''; if($str != '') /* { $for_query = ' for &ldquo;' . $str . '&rdquo;'; }*/ ?>
 
-												<h1 class="search-results-h1<?php if(!array_filter($search_array)) : ?> -no-filters<?php endif; ?>"><?php _e(sprintf( __( '%s Search Result' . $sp . $for_query, 'dbllc' ), $wp_query->found_posts ));  ?></h1>
+												<h1 style="float: left;" class="search-results-h1<?php if(!array_filter($search_array)) : ?> -no-filters<?php endif; ?>"><?php _e(sprintf( __( '%s Search Result' . $sp . $for_query, 'dbllc' ), $wp_query->found_posts ));  ?></h1>
 
 
+												<div class="search-form search-compact" style="float: right; padding-top: 0;">
+													<label for="sort-by" style="font-size: 1rem;">Sort by &nbsp;</label>
+													<select onchange="loadpage()" id="sort-by" class="select" style="background-color: white; font-size: 1rem; width: 8rem; text-align: left;">
+														<option>Newest Added </option>
+														<option>Oldest Added </option>
+													</select>
+												</div>
+											</div>
+
+
+											<div class="container">
 												<?php if(array_filter($search_array)) : ?>
 												<?php $audience_term = $author_term = $topic_term = $type_term = $filteredurl = '';  ?>
 												<div class="filter-buttons">

@@ -17,7 +17,7 @@
     <?php if (get_field('resource-publish-date')) : ?>
     <?php $publishdate = get_field('resource-publish-date'); $displaydate = DateTime::createFromFormat('m/d/Y', $publishdate); ?>
     <div class="meta-time">
-      <h2 class="meta-h2">PUBLISHED:</h2> <span class="lg-br"></span><?= $displaydate->format('F j, Y'); ?>
+      <h2 class="meta-h2">PUBLISHED:</h2> <span class="wd-br"></span><?= $displaydate->format('F j, Y'); ?>
     </div>
 
 
@@ -34,7 +34,7 @@
 
     <?php $displaydate = get_the_time("F j, Y"); ?>
     <div class="meta-time">
-      <h2 class="meta-h2">DATE ADDED:</h2> <span class="lg-br"></span><?= $displaydate; ?>
+      <h2 class="meta-h2">DATE ADDED:</h2> <span class="wd-br"></span><?= $displaydate; ?>
     </div>
     <?php endif; ?>
 
@@ -94,12 +94,12 @@
 
     <?php if($firstterm != '' && $firstterm->slug == 'white-paper') : ?>
     <div class="meta-author">
-      <h2 class="meta-h2">AUTHOR: </h2><span class="lg-br"></span>
+      <h2 class="meta-h2">AUTHOR: </h2><span class="wd-br"></span>
       <?php $author = ''; $author = get_the_author(); _e($author);  ?>
     </div>
     <?php elseif($firstterm != '' && $firstterm->slug == 'video') : ?>
     <div class="meta-author">
-      <h2 class="meta-h2">POSTED BY: </h2><span class="lg-br"></span>
+      <h2 class="meta-h2">POSTED BY: </h2><span class="wd-br"></span>
       <?php $author = ''; $author = get_the_author(); _e($author); ?>
     </div>
     <?php endif; ?>

@@ -330,7 +330,7 @@
   .default-resource-icon-div .img { position: static; }
 
 
-  // Resource Single - Related Articles
+  // Resource Single - Related Articles - large
   [data-role="main"] .related-articles {
     .li > [href] { padding: 0; }
     .li:first-of-type > [href] { margin-top: .5rem; }
@@ -348,18 +348,25 @@
   .gutenberg-section.core-shortcode #search-results .hentry > [href] > .container { width: 100%; }
 
   .search-form.search-compact {
+
     input[type="search"] {
       border-bottom: unset;
       padding-top: .3rem;
       padding-bottom: .3rem;
     }
+
     [type="submit"] {
       max-width: unset;
       padding: .16rem .2rem .12rem;
     }
+
   }
 
   .search-columns > .wp-block-column:first-of-type { padding-bottom: 2rem; }
+
+  //input[id*="-toggle"],
+  //label[for*="-toggle"] { opacity: 0; }
+
 
 
 
@@ -430,7 +437,7 @@
 
 
   // Classes - wide
-  //.wide-br { display: block; }
+  .wd-br { display: block; }
 
 
   // Nav - wide
