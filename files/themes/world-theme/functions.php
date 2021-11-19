@@ -120,13 +120,13 @@ function dbllc_header_scripts() {
 
 
 	if(is_page('Our Work')) {
-		wp_register_script('searchresults', TDIR . '/js/dev/load-search-results.js', 'jquery-core', '1.0.2', false);
+		wp_register_script('searchresults', TDIR . '/js/dev/load-search-results.js', 'jquery-core', '1.0.3', false);
 		 wp_enqueue_script('searchresults');
 	}
 
 
 	if(is_archive() || is_search()) {
-		wp_register_script('no-widows', TDIR . '/js/dev/no-widows.js', 'jquery-core', '1.0.2', false);
+		wp_register_script('no-widows', TDIR . '/js/dev/no-widows.js', 'jquery-core', '1.0.3', false);
 		 wp_enqueue_script('no-widows');
 	}
 
@@ -1551,10 +1551,11 @@ function searchresults_shortcode() {
 add_shortcode( 'searchsidebar', 'searchsidebar_shortcode');
 function searchsidebar_shortcode() {
 
-	$searchsidebar = '';
+	$searchsidebar = $audience_query = '';
+
+	if (isset($_GET['audience'])) { $audience_query = $_GET['audience']; } else { $audience_query = ' no query'; }
 
 	$searchsidebar = '<h2 class="sidebar-h2">Explore Resources by&nbsp;Topic </h2>';
-
 
 	$audiences = get_terms('audience');
 
@@ -1562,9 +1563,23 @@ function searchsidebar_shortcode() {
 
 	foreach($audiences as $audience) {
 
-		//   <input id="cmn-toggle-7" class="hidden" type="checkbox" >
-		$searchsidebar .= '<input id="' . $audience->slug . '-toggle" type="checkbox" />';
-		$searchsidebar .= '<label for="' . $audience->slug . '-toggle" class="sidebar-h3" tabindex="1" aria-expanded="false">For ' . $audience->name . '</label>';
+		$searchsidebar .= '<input id="' . $audience->slug . '-toggle" type="checkbox"';
+		if ($audience_query != '' && $audience_query == $audience->slug) {
+			$searchsidebar .= ' checked="true"';
+		}
+		$searchsidebar .= ' tabindex="-1" />';
+
+		$searchsidebar .= '<label for="' . $audience->slug . '-toggle" class="sidebar-h3" tabindex="0"';
+
+		if ($audience_query != '' && $audience_query == $audience->slug) {
+			$searchsidebar .= ' aria-expanded="true"';
+		}
+
+		else {
+			$searchsidebar .= ' aria-expanded="false"';
+		}
+
+		$searchsidebar .= '>For ' . $audience->name . '</label>';
 
 		$searchsidebar .= '<div class="sidebar-ul-div"><ul class="sidebar-ul">';
 
@@ -1593,7 +1608,13 @@ function searchsidebar_shortcode() {
 			); // end $args
 
 			$wp_query = new WP_Query( $args );
-			if ( $wp_query->have_posts() )  { $searchsidebar .= '<li class="sidebar-li"><a href="' .  WP_SITEURL . '?s=&topic=' . $topic->slug . '&audience=' . $audience->slug . '&post_type=post?a=' . $audience->slug . '">' . $topic->name . '</a></li>'; }
+			if ( $wp_query->have_posts() )  {
+				$searchsidebar .= '<li class="sidebar-li"><a href="' .  WP_SITEURL . '?s=&topic=' . $topic->slug . '&audience=' . $audience->slug . '&post_type=post"';
+				if ($audience_query != '' && $audience_query == $audience->slug) {
+					$searchsidebar .= ' tabindex="0"';
+				}
+				$searchsidebar .= '>' . $topic->name . '</a></li>';
+			}
 
 		}
 

@@ -21,7 +21,7 @@ jQuery(function($){
       control.attr('aria-expanded', 'true');
 
       div.find('[href]').each(function(){
-        $(this).attr('tabindex', 1);
+        $(this).attr('tabindex', 0);
       });
     }
 
@@ -45,21 +45,23 @@ jQuery(function($){
   // 1b. Mouse-Accessible Accordions
   $('.sidebar-h3').on('click', function(){
 
-    var input = $(this).attr('for');
-    var div = $(this).next('.sidebar-ul-div');
+    var target  = $(this).attr('for');
+    var input   = $('#' + target);
+    var control = $(this);
+    var div     = $(this).next('.sidebar-ul-div');
 
-    if ( $('#' + input).attr('aria-expanded') == 'false' ){
+    if ( control.attr('aria-expanded') == 'false' ){
 
-      $('#' + input).attr('aria-expanded', 'true');
+      control.attr('aria-expanded', 'true');
 
       div.find('[href]').each(function(){
-        $(this).attr('tabindex', 1);
+        $(this).attr('tabindex', 0);
       });
     }
 
-    else if ( $('#' + input).attr('aria-expanded') == 'true' ) {
+    else if ( control.attr('aria-expanded') == 'true' ) {
 
-      $('#' + input).attr('aria-expanded', 'false');
+      control.attr('aria-expanded', 'false');
 
       div.find('[href]').each(function(){
         $(this).attr('tabindex', -1);
@@ -70,38 +72,7 @@ jQuery(function($){
 
 
 
-  // 2. Open Audience accordion if URL contains token
-  /*
-  var url = window.location.href;
-
-  if (~url.indexOf('?a=')) {
-
-    var audiencetoggle = url.substr(url.indexOf("?a=") + 3);
-        audiencetoggle = audiencetoggle + '-toggle';
-
-    var div = $('[for="licenced-professionals"]').next('.sidebar-ul-div');
-
-    $('#' + audiencetoggle).prop('checked', 'true').attr('aria-expanded', 'true');
-
-    $('input[id*="-toggle"]').css('opacity', '1');
-    $('label[for*="-toggle"]').css('opacity', '1');
-
-    div.find('[href]').each(function(){
-     $(this).attr('tabindex', 1);
-   });
-  }
-
-  else {
-    $('input[id*="-toggle"]').css('opacity', '1');
-    $('label[for*="-toggle"]').css('opacity', '1');
-
-  }
-  */
-
-
-
-
-  // 3. No widows in titles
+  // 2. No widows in titles
   $('.archive-h2').each(function(){
 
     var title = $(this).text();
@@ -119,11 +90,11 @@ jQuery(function($){
     $(this).html(allbutlastword);
     $(this).after('<div class="nowrap"><h2 class="archive-h2">' + lastword + '</h2>&nbsp;' + iconhtml + '</div>');
 
-  });
+  }); // END No Widows
 
 
 
-  // 4. Show Advanced Search form drawer
+  // 3. Show Advanced Search form drawer
   $('#advanced-search-trigger [href]').on('click', function(){
     var trigger = $('#advanced-search-trigger');
 
@@ -133,7 +104,7 @@ jQuery(function($){
     else {
       trigger.addClass('-show');
     }
-  });
+  }); // END Advanced Search form drawer
 
 
 
@@ -141,7 +112,7 @@ jQuery(function($){
 
 
 
-// 5. Define loadpage()
+// 4. Define loadpage()
 function loadpage() {
   alert('i cahnged');
 }

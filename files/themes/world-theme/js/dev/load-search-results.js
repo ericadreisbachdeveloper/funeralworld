@@ -20,14 +20,73 @@ jQuery(function($){
   });
 
 
+  // 1a. Tab Accessible Accordions (Explore Resource by Topic)
+  $('.sidebar-h3').keypress(function(event){
 
-  // II. AUDIENCE/TOPIC ACCORDION
-  $('input[id*="-toggle"]').css('opacity', '1');
-  $('label[for*="-toggle"]').css('opacity', '1');
+    var target  = $(this).attr('for');
+    var input   = $('#' + target);
+    var control = $(this);
+    var div     = $(this).next('.sidebar-ul-div');
+
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+
+    // if closed and keyboard ENTER...
+    // - open
+    // - make each topic link tab accessible
+    if( keycode == '13' && control.attr('aria-expanded') == 'false' ){
+
+      input.prop('checked', true);
+      control.attr('aria-expanded', 'true');
+
+      div.find('[href]').each(function(){
+        $(this).attr('tabindex', 1);
+      });
+    }
+
+    // if open and keyboard ENTER ...
+    // - close
+    // - make each topic link tab inaccessible
+    else if( keycode == '13' && control.attr('aria-expanded') == 'true' ){
+
+      input.prop('checked', false);
+      control.attr('aria-expanded', 'false');
+
+      div.find('[href]').each(function(){
+        $(this).attr('tabindex', -1);
+      });
+    }
+
+  }); // END Tab-Accessible Accordions
 
 
 
+  // 1b. Mouse-Accessible Accordions
+  $('.sidebar-h3').on('click', function(){
 
+    var target  = $(this).attr('for');
+    var input   = $('#' + target);
+    var control = $(this);
+    var div     = $(this).next('.sidebar-ul-div');
+
+    if ( control.attr('aria-expanded') == 'false' ){
+
+      control.attr('aria-expanded', 'true');
+
+      div.find('[href]').each(function(){
+        $(this).attr('tabindex', 0).css('background-color', 'yellow');
+      });
+    }
+
+    else if ( control.attr('aria-expanded') == 'true' ) {
+
+      control.attr('aria-expanded', 'false');
+
+      div.find('[href]').each(function(){
+        $(this).attr('tabindex', -1);
+      });
+    }
+
+  }); // END Mouse-Accessible Accordions
 
 
 });
