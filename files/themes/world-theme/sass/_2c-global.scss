@@ -407,7 +407,7 @@ figure.alignright figcaption  { text-align: right; }
         background-repeat: no-repeat;
         background-size: 1.44rem;
         background-position: 50% 50%;
-        @include transition(background-image .2s ease-in-out);
+
       }
 
       @include hover {
@@ -534,7 +534,7 @@ figure.alignright figcaption  { text-align: right; }
   color: white;
 }
 
-.container-fluid.green-bg, 
+.container-fluid.green-bg,
 .wp-block-group.green-bg {
   background: $land3;
   color: white;

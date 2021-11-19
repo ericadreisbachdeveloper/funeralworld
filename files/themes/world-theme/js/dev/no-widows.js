@@ -1,4 +1,3 @@
-
 jQuery(function($){
 
 
@@ -79,8 +78,9 @@ jQuery(function($){
     var lastword = title.split(" ").slice(-1);
     var allbutlastword = title.replace(lastword, '');
 
+
     var icon     = $(this).next('.picture-div');
-    if (icon !== '[object Object]') {
+    if (icon !== '[object Object]' && icon.length !== 0) {
       var iconhtml = icon.html();
       icon.remove();
     }

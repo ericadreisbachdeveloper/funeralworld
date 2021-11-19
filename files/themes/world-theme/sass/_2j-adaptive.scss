@@ -277,6 +277,8 @@
 
    .site-footer .footer-copyright-row .core-paragraph > .gutenberg-container { margin-right: auto; margin-left: auto; }
 
+   .menu[id*="social"] > .menu-item > [href]:before { @include transition(background-image .2s ease-in-out); }
+
 }
 
 
@@ -348,7 +350,6 @@
   .gutenberg-section.core-shortcode #search-results .hentry > [href] > .container { width: 100%; }
 
   .search-form.search-compact {
-
     input[type="search"] {
       border-bottom: unset;
       padding-top: .3rem;
@@ -359,14 +360,11 @@
       max-width: unset;
       padding: .16rem .2rem .12rem;
     }
-
   }
 
+  .filter-buttons > [href] { padding: .1rem .5rem .1rem 1.5rem; }
+
   .search-columns > .wp-block-column:first-of-type { padding-bottom: 2rem; }
-
-  //input[id*="-toggle"],
-  //label[for*="-toggle"] { opacity: 0; }
-
 
 
 

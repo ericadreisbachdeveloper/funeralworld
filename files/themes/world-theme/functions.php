@@ -120,13 +120,13 @@ function dbllc_header_scripts() {
 
 
 	if(is_page('Our Work')) {
-		wp_register_script('searchresults', TDIR . '/js/dev/load-search-results.js', 'jquery-core', '1.0.3', false);
+		wp_register_script('searchresults', TDIR . '/js/dev/load-search-results.js', 'jquery-core', '1.0.4', false);
 		 wp_enqueue_script('searchresults');
 	}
 
 
 	if(is_archive() || is_search()) {
-		wp_register_script('no-widows', TDIR . '/js/dev/no-widows.js', 'jquery-core', '1.0.3', false);
+		wp_register_script('no-widows', TDIR . '/js/dev/no-widows.js', 'jquery-core', '1.0.5', false);
 		 wp_enqueue_script('no-widows');
 	}
 

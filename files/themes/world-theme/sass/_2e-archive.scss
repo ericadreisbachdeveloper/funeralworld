@@ -393,13 +393,14 @@ $hentry-top: -1px;
 }
 
 
-
 .filter-buttons {
   padding-bottom: 1.5rem;
 
   &> [href] {
     background: $land3;
     color: white;
+    display: inline-block;
+    margin-bottom: .15rem;
     padding: .3rem .5rem .3rem 1.5rem;
     position: relative;
     text-transform: uppercase;
