@@ -85,6 +85,31 @@ input {
 }
 
 
+.sort-div {
+  float: right;
+  padding-top: 0;
+
+  .select {
+    font-family: 'mreaves', sans-serif;
+    background-color: white;
+
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='17' height='10' overflow='visible' xml:space='preserve'%3E%3Cdefs%3E%3Cpath id='a' d='M0 0h16.849v10.425H0z'/%3E%3C/defs%3E%3CclipPath id='b'%3E%3Cuse xlink:href='%23a' overflow='visible'/%3E%3C/clipPath%3E%3Cpath clip-path='url(%23b)' fill='%2335BDB6' d='M8.425 10.425a.996.996 0 0 1-.75-.339L.25 1.662A1.001 1.001 0 0 1 1.751.339l6.674 7.573L15.1.339a1 1 0 0 1 1.5 1.322l-7.425 8.425a.998.998 0 0 1-.75.339z'/%3E%3C/svg%3E");
+    background-position: calc(100% - 1rem) 50%;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+
+    border: none;
+    padding-left: .5rem;
+    padding-right: 2.44rem;
+    text-align: left;
+
+    -webkit-appearance: none;
+  }
+}
+
+
+
+
 .search-form {
 
   .select, .input {

@@ -5,7 +5,7 @@
         {
             "key": "field_6193a89db0a20",
             "label": "Resource Publish Date (actual)",
-            "name": "resource-publish-date",
+            "name": "resource_publish_date",
             "type": "date_picker",
             "instructions": "Enter the actual date that the resource was published (on YouTube, as a white paper, &amp;c.) as opposed to the date the resource is published&nbsp;here.",
             "required": 1,
@@ -43,5 +43,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1637098500
+    "modified": 1637417042
 }

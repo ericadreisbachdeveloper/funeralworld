@@ -1488,8 +1488,8 @@ function searchresults_shortcode() {
 			$results .= '<div class="meta-time">';
 
 			// if a custom publish date exists, use that
-			if(get_field('resource-publish-date') && $firstterm != '' && $firstterm->slug !== 'website') {
-				$publishdate = get_field('resource-publish-date');
+			if(get_field('resource_publish_date') && $firstterm != '' && $firstterm->slug !== 'website') {
+				$publishdate = get_field('resource_publish_date');
 				$date = DateTime::createFromFormat('m/d/Y', $publishdate);
 				$displaydate = $date->format('F j, Y');
 
@@ -1623,7 +1623,37 @@ function searchsidebar_shortcode() {
 	} // end foreach $audiences as $audience
 
 
-
-
 	return $searchsidebar;
+}
+
+
+
+// 42. Posts Sort Order
+//     src: https://wordpress.stackexchange.com/a/41723
+add_filter('posts_orderby','my_sort_custom',10,2);
+
+function my_sort_custom( $orderby, $query ){
+    global $wpdb; global $post;
+
+		if( isset( $_GET['sort'] ) )  { $sort = $_GET['sort']; }
+		else                          { $sort = ''; }
+
+	  if(!is_admin() && is_search() && $sort != '') {
+
+		  	  if ( $sort == 'oldest' )           { $orderby = $wpdb->prefix . "posts.post_date ASC";	}
+			elseif ( $sort == 'newest' )           { $orderby = $wpdb->prefix . "posts.post_date DESC"; }
+			elseif ( $sort == 'oldest-published' ) { $querystr = "
+				SELECT $wpdb->posts.*
+				FROM   $wpdb->posts, $wpdb->postmeta
+				WHERE  $wpdb->posts.post_type = 'post'
+				AND    $wpdb->posts.ID = $wpdb->postmeta.post_id
+				ORDER BY $wpdb->postmeta.meta_key ASC
+				";
+
+				/* order by meta_key resource_publish_date ASC */
+				$pageposts = $wpdb->get_results($querystr, OBJECT);
+			}
+
+    	return $orderby;
+		}
 }

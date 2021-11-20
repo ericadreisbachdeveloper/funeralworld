@@ -83,6 +83,10 @@ input {
 
 #navmenu .search-input { @extend %footer; }
 
+.sort-div [for="sort-by"],
+.sort-div .select { @extend %small; }
+
+
 // figcaption
 [data-role="main"] .wp-block-image > * > * { @extend %small; }
 

@@ -69,17 +69,18 @@
 												<?php $s = sprintf( __('%s', 'dbllc'), $wp_query->found_posts);
 												if($s == '1') { $sp = ''; } else { $sp = 's'; } ?>
 
-												<?php $str = get_search_query();
-													    $for_query = ''; if($str != '') /* { $for_query = ' for &ldquo;' . $str . '&rdquo;'; }*/ ?>
 
-												<h1 style="float: left;" class="search-results-h1<?php if(!array_filter($search_array)) : ?> -no-filters<?php endif; ?>"><?php _e(sprintf( __( '%s Search Result' . $sp . $for_query, 'dbllc' ), $wp_query->found_posts ));  ?></h1>
+												<h1 style="float: left;" class="search-results-h1<?php if(!array_filter($search_array)) : ?> -no-filters<?php endif; ?>"><?php _e(sprintf( __( '%s Search Result' . $sp , 'dbllc' ), $wp_query->found_posts ));  ?></h1>
 
 
-												<div class="search-form search-compact" style="float: right; padding-top: 0;">
-													<label for="sort-by" style="font-size: 1rem;">Sort by &nbsp;</label>
-													<select onchange="loadpage()" id="sort-by" class="select" style="background-color: white; font-size: 1rem; width: 8rem; text-align: left;">
-														<option>Newest Added </option>
-														<option>Oldest Added </option>
+												<?php if(isset($_GET['sort'])) { $sort = $_GET['sort']; } else { $sort = ''; } ?>
+												<div class="sort-div">
+													<label for="sort-by">Sort by &nbsp;</label>
+													<select onchange="loadpage()" id="sort-by" class="select">
+									<option id="newest"<?php           if($sort == 'newest')           { _e(' selected'); } ?>>Newest Added </option>
+									<option id="oldest"<?php           if($sort == 'oldest')           { _e(' selected'); } ?>>Oldest Added </option>
+									<option id="newest-published"<?php if($sort == 'newest-published') { _e(' selected'); } ?>>Newest Published </option>
+									<option id="oldest-published"<?php if($sort == 'oldest-published') { _e(' selected'); } ?>>Oldest Published </option>
 													</select>
 												</div>
 											</div>

@@ -114,5 +114,28 @@ jQuery(function($){
 
 // 4. Define loadpage()
 function loadpage() {
-  alert('i cahnged');
+  var url = window.location.href;
+  var select = document.querySelector('#sort-by');
+  var sort = select.options[select.options.selectedIndex].id;
+
+  // get sort
+  if(url.includes('&sort=')) {
+
+    var existingsort = url.substr(url.indexOf("&sort=") + 6);
+
+    // if a fresh sort was selected
+    // load the fresh sort
+    if (sort !== existingsort) {
+      url = url.replace(existingsort, sort);
+      location.replace(url);
+    }
+  }
+
+  // otherwise load the sort
+  else {
+    url = url + '&sort=' + sort;
+    location.replace(url);
+  }
+
+
 }

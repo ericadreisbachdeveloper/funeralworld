@@ -13,8 +13,8 @@
   <div class="resource-meta">
 
     <!-- if a custom publish date exists -->
-    <?php if (get_field('resource-publish-date')) : ?>
-    <?php $publishdate = get_field('resource-publish-date'); $displaydate = DateTime::createFromFormat('m/d/Y', $publishdate); ?>
+    <?php if (get_field('resource_publish_date')) : ?>
+    <?php $publishdate = get_field('resource_publish_date'); $displaydate = DateTime::createFromFormat('m/d/Y', $publishdate); ?>
     <div class="meta-time">
       <h2 class="meta-h2">PUBLISHED:</h2> <?= $displaydate->format('F j, Y'); ?>
     </div>
