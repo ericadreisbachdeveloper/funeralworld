@@ -75,7 +75,7 @@ jQuery(function($){
       control.attr('aria-expanded', 'true');
 
       div.find('[href]').each(function(){
-        $(this).attr('tabindex', 0).css('background-color', 'yellow');
+        $(this).attr('tabindex', 0);
       });
     }
 

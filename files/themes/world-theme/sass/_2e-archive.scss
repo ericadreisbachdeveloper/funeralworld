@@ -274,6 +274,8 @@ $hentry-top: -1px;
   }
 
   .meta-type { display: none; }
+
+  &> .container { width: unset; }
 }
 
 
@@ -397,31 +399,40 @@ $hentry-top: -1px;
   padding-bottom: 1.5rem;
 
   &> [href] {
-    background: $land3;
-    color: white;
+    @extend %remove-link-line;
+    //background: $land3;
+    //color: white;
+    color: $land3;
     display: inline-block;
     margin-bottom: .15rem;
-    padding: .3rem .5rem .3rem 1.5rem;
+    padding: .3rem .5rem .3rem 1.15rem;
     position: relative;
     text-transform: uppercase;
 
     &:before {
-      width: 1.1rem;
-      height: 100%;
+      width: .9rem;
+      height: .9rem;
       content: '';
+      display: block;
+
+      background-color: $land3;
 
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' overflow='visible' xml:space='preserve'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' fill='%23FFF' d='M9.047 7.983 7.985 9.047 4.533 5.596l-3.47 3.47L0 8.003l3.471-3.471L0 1.062 1.063 0l3.47 3.47L7.985.019l1.062 1.063-3.451 3.45 3.451 3.451z'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: .5rem calc(50% - .05rem);
-      background-size: .5em;
+
+      background-position: calc(50% - .025rem) 50%;
+      background-size: .4rem;
+
+      border-radius: .45rem;
+
       position: absolute;
-       top: 0;
+       top: .5rem;
        left: 0;
     }
 
     @include hover {
-      color: white;
-      background: $land;
+      color: $land;
+      &:before { background-color: $land; }
     }
   }
 }

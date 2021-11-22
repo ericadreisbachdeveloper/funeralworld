@@ -40,7 +40,6 @@ jQuery(function($){
   }); // END Tab-Accessible Accordions
 
 
-
   // 1b. Mouse-Accessible Accordions
   $('.sidebar-h3').on('click', function(){
 
@@ -68,7 +67,6 @@ jQuery(function($){
     }
 
   }); // END Mouse-Accessible Accordions
-
 
 
   // 2. No widows in titles
@@ -108,13 +106,48 @@ jQuery(function($){
 
 
 
+  // 4. Remove filter buttons on click
+  $('.filter-buttons').find('[href]').on('click', function(){
+    $(this).remove();
+
+    $('.post').each(function(){
+      $(this).css('opacity', .4);
+    });
+
+  });
+
+
+
+  // 5. Loading effect on click of form SEARCH button
+  $('#search-submit').on('click', function(){
+    $('.post').each(function(){
+      $(this).css('opacity', .4);
+    });
+  });
+
+
+  // 6. Loading effect on click of Audience Topic
+  $('.sidebar-li [href]').on('click', function(){
+    $('.post').each(function(){
+      $(this).css('opacity', .4);
+    });
+  });
+
+
+
 });
 
 
 
-// 4. Define loadpage()
+
+
+// Define loadpage()
 function loadpage() {
   var url = window.location.href;
+
+  // TO BE DONE!!
+  // if url contains /page/*/
+  // url = url.replace('/page/*/', '');
   var select = document.querySelector('#sort-by');
   var sort = select.options[select.options.selectedIndex].id;
 
@@ -126,6 +159,10 @@ function loadpage() {
     // if a fresh sort was selected
     // load the fresh sort
     if (sort !== existingsort) {
+      link = querySelectorAll('.post');
+
+      for (const link of links) { link.addEventListener("click", clickHandler); }
+
       url = url.replace(existingsort, sort);
       location.replace(url);
     }
@@ -136,6 +173,5 @@ function loadpage() {
     url = url + '&sort=' + sort;
     location.replace(url);
   }
-
 
 }

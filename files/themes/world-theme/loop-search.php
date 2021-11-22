@@ -1,10 +1,35 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
 
 
-<?php if (have_posts()): ?>
+
+<?php
+  global $wp_query;
+
+  $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+
+  $args = array(
+    'post_type' => 'post',
+    'posts_per_page' => 4,
+    'paged' => $paged
+
+		// query
+		// audience
+		// author
+		// topic
+		// type
+		// date added - newest
+		// date added - oldest
+		// date published - newest
+		// date published - oldest
+
+  );
+
+  // use global variable $wp_query
+  // not, like, $loop or $news or whatever
+  $wp_query = new WP_Query( $args ); ?>
 
 
-<?php while (have_posts()) : the_post(); ?>
+<?php if ( $wp_query->have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
 
 <?php

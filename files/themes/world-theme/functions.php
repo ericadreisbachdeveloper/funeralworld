@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.16';
+$style_vsn = '1.1.17';
 
 
 
@@ -126,7 +126,7 @@ function dbllc_header_scripts() {
 
 
 	if(is_archive() || is_search()) {
-		wp_register_script('no-widows', TDIR . '/js/dev/no-widows.js', 'jquery-core', '1.0.5', false);
+		wp_register_script('no-widows', TDIR . '/js/dev/no-widows.js', 'jquery-core', '1.0.7', false);
 		 wp_enqueue_script('no-widows');
 	}
 
@@ -1630,29 +1630,22 @@ function searchsidebar_shortcode() {
 
 // 42. Posts Sort Order
 //     src: https://wordpress.stackexchange.com/a/41723
-add_filter('posts_orderby','my_sort_custom',10,2);
+// add_filter('posts_orderby', 'my_sort_custom',10,2);
 
 function my_sort_custom( $orderby, $query ){
-    global $wpdb; global $post;
+
+
+    global $wpdb; global $post; global $orderby; global $pageposts;
+
 
 		if( isset( $_GET['sort'] ) )  { $sort = $_GET['sort']; }
 		else                          { $sort = ''; }
+
 
 	  if(!is_admin() && is_search() && $sort != '') {
 
 		  	  if ( $sort == 'oldest' )           { $orderby = $wpdb->prefix . "posts.post_date ASC";	}
 			elseif ( $sort == 'newest' )           { $orderby = $wpdb->prefix . "posts.post_date DESC"; }
-			elseif ( $sort == 'oldest-published' ) { $querystr = "
-				SELECT $wpdb->posts.*
-				FROM   $wpdb->posts, $wpdb->postmeta
-				WHERE  $wpdb->posts.post_type = 'post'
-				AND    $wpdb->posts.ID = $wpdb->postmeta.post_id
-				ORDER BY $wpdb->postmeta.meta_key ASC
-				";
-
-				/* order by meta_key resource_publish_date ASC */
-				$pageposts = $wpdb->get_results($querystr, OBJECT);
-			}
 
     	return $orderby;
 		}
