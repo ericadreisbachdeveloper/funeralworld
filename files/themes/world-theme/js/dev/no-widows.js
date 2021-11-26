@@ -69,6 +69,7 @@ jQuery(function($){
   }); // END Mouse-Accessible Accordions
 
 
+
   // 2. No widows in titles
   $('.archive-h2').each(function(){
 
@@ -126,14 +127,13 @@ jQuery(function($){
   });
 
 
+
   // 6. Loading effect on click of Audience Topic
   $('.sidebar-li [href]').on('click', function(){
     $('.post').each(function(){
       $(this).css('opacity', .4);
     });
   });
-
-
 
 });
 
@@ -143,11 +143,9 @@ jQuery(function($){
 
 // Define loadpage()
 function loadpage() {
+
   var url = window.location.href;
 
-  // TO BE DONE!!
-  // if url contains /page/*/
-  // url = url.replace('/page/*/', '');
   var select = document.querySelector('#sort-by');
   var sort = select.options[select.options.selectedIndex].id;
 

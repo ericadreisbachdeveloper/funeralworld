@@ -119,7 +119,7 @@ function dbllc_header_scripts() {
 	}
 
 
-	if(is_page('Our Work')) {
+	if(is_page('Resources')) {
 		wp_register_script('searchresults', TDIR . '/js/dev/load-search-results.js', 'jquery-core', '1.0.4', false);
 		 wp_enqueue_script('searchresults');
 	}
@@ -1410,7 +1410,7 @@ function searchresults_shortcode() {
 	if ( $wp_query->have_posts() ) {
 
 
-		$results .= '<div class="container"><h1 class="search-results-h1 -initial">Browse All ' . $count . ' Resources</h1></div>';
+		$results .= '<div class="container"><h1 class="post search-results-h1 -initial">Browse All ' . $count . ' Resources</h1></div>';
 
 
 		while ( $wp_query->have_posts() ) : $wp_query->the_post();
@@ -1649,4 +1649,17 @@ function my_sort_custom( $orderby, $query ){
 
     	return $orderby;
 		}
+}
+
+
+
+// 42. Add .resource-search-results class to body
+//     on Advanced Search Results pages
+add_filter( 'body_class','dbllc_body_class' );
+
+function dbllc_body_class( $classes ) {
+	if( isset($_GET['post_type']) && ($_GET['post_type'] == 'post') ) {
+    $classes[] .= 'resource-search-results';
+	}
+	return $classes;
 }

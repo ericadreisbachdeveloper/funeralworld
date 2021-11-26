@@ -107,7 +107,6 @@
 
 
 // Search and Archive display
-
 [id*="post-"] { padding: 0; }
 
 [id*="post-"]:after {
@@ -284,6 +283,7 @@ $hentry-top: -1px;
 // Archive pages
 .page-template,
 .search-results,
+
 .archive {
   [data-role="main"] .hentry {
     .nowrap { display: inline; }
@@ -293,7 +293,7 @@ $hentry-top: -1px;
 
 
 
-.archive, .search-results, .page-template {
+.archive, .search-results, .search-no-results, .page-template {
 
   .archive-a .archive-img {
     padding-top: .9rem;
@@ -381,6 +381,7 @@ $hentry-top: -1px;
 // Advanced Search Results
 [data-role="main"] h1.search-results-h1 {
   font-weight: 400;
+  float: left;
   margin-top: 0;
   margin-bottom: 0;
 
@@ -400,8 +401,6 @@ $hentry-top: -1px;
 
   &> [href] {
     @extend %remove-link-line;
-    //background: $land3;
-    //color: white;
     color: $land3;
     display: inline-block;
     margin-bottom: .15rem;
@@ -420,7 +419,7 @@ $hentry-top: -1px;
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' overflow='visible' xml:space='preserve'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' fill='%23FFF' d='M9.047 7.983 7.985 9.047 4.533 5.596l-3.47 3.47L0 8.003l3.471-3.471L0 1.062 1.063 0l3.47 3.47L7.985.019l1.062 1.063-3.451 3.45 3.451 3.451z'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
 
-      background-position: calc(50% - .025rem) 50%;
+      background-position: 50% 50%;
       background-size: .4rem;
 
       border-radius: .45rem;

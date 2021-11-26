@@ -329,6 +329,9 @@ $navborder: .05rem solid #dedede;
 %current-top-level-parent                                               { @extend %current-child; }
 .navbar-nav > .menu-item.current-menu-item.menu-item-has-children       { @extend %current-top-level-parent; }
 
+// 6c. Apply "current" class to Resources on Advanced Search Results pages
+.resource-search-results #menu-item-32 { @extend %current-top-level-childless; }
+
 
 
 // 7. Nav Search Form
