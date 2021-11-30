@@ -66,11 +66,18 @@
 												<div class="container">
 
 
-												<?php $s = sprintf( __('%s', 'dbllc'), $wp_query->found_posts);
-												if($s == '1') { $sp = ''; } else { $sp = 's'; } ?>
+
+													<?php
+														 //global $wp_query; global $args;
+														 get_template_part('loop-search-query');
+														 //print_r($args);
+
+														 $s = $wp_query->found_posts;
+													if($s == '1') { $sp = ''; } else { $sp = 's'; } ?>
+
+													<h1 class="post search-results-h1<?php if(!array_filter($search_array)) : ?> -no-filters<?php endif; ?>"><?= $s . ' Search Result' . $sp; ?></h1>
 
 
-												<h1 class="post search-results-h1<?php if(!array_filter($search_array)) : ?> -no-filters<?php endif; ?>"><?php _e(sprintf( __( '%s Search Result' . $sp , 'dbllc' ), $wp_query->found_posts ));  ?></h1>
 
 
 												<?php if(isset($_GET['sort'])) { $sort = $_GET['sort']; } else { $sort = ''; } ?>
@@ -90,10 +97,6 @@
 												<?php if(array_filter($search_array)) : ?>
 												<?php $audience_term = $author_term = $topic_term = $type_term = $filteredurl = '';  ?>
 												<div class="filter-buttons">
-
-													<?php //$uri = $_SERVER['REQUEST_URI']; ?>
-
-
 
 
 													<!-- 0. Search Query -->
