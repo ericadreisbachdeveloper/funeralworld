@@ -1,6 +1,5 @@
+// Resources landing 
 
-
-// Load search results on Our Work
 jQuery(function($){
 
   // I. NO WIDOWS

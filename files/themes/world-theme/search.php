@@ -77,10 +77,10 @@
 												<div class="sort-div">
 													<label for="sort-by">Sort by &nbsp;</label>
 													<select onchange="loadpage()" id="sort-by" class="select">
-									<option id="newest"<?php           if($sort == 'newest')           { _e(' selected'); } ?>>Newest Added </option>
-									<option id="oldest"<?php           if($sort == 'oldest')           { _e(' selected'); } ?>>Oldest Added </option>
-									<option id="newest-published"<?php if($sort == 'newest-published') { _e(' selected'); } ?>>Newest Published </option>
-									<option id="oldest-published"<?php if($sort == 'oldest-published') { _e(' selected'); } ?>>Oldest Published </option>
+														<option id="newest"<?php           if($sort == 'newest')           { _e(' selected'); } ?>>Newest Added </option>
+														<option id="oldest"<?php           if($sort == 'oldest')           { _e(' selected'); } ?>>Oldest Added </option>
+														<option id="newest-published"<?php if($sort == 'newest-published') { _e(' selected'); } ?>>Newest Published </option>
+														<option id="oldest-published"<?php if($sort == 'oldest-published') { _e(' selected'); } ?>>Oldest Published </option>
 													</select>
 												</div>
 											</div>

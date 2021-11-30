@@ -1,3 +1,5 @@
+// Advanced Search
+
 jQuery(function($){
 
 
@@ -112,7 +114,7 @@ jQuery(function($){
     $(this).remove();
 
     $('.post').each(function(){
-      $(this).css('opacity', .4);
+      $(this).addClass('fade');
     });
 
   });
@@ -122,7 +124,7 @@ jQuery(function($){
   // 5. Loading effect on click of form SEARCH button
   $('#search-submit').on('click', function(){
     $('.post').each(function(){
-      $(this).css('opacity', .4);
+      $(this).addClass('fade');
     });
   });
 
@@ -131,7 +133,7 @@ jQuery(function($){
   // 6. Loading effect on click of Audience Topic
   $('.sidebar-li [href]').on('click', function(){
     $('.post').each(function(){
-      $(this).css('opacity', .4);
+      $(this).addClass('fade');
     });
   });
 
@@ -149,27 +151,61 @@ function loadpage() {
   var select = document.querySelector('#sort-by');
   var sort = select.options[select.options.selectedIndex].id;
 
-  // get sort
+
+
+
+
+
+  // If there is an existing sort query in URL
   if(url.includes('&sort=')) {
 
     var existingsort = url.substr(url.indexOf("&sort=") + 6);
 
-    // if a fresh sort was selected
-    // load the fresh sort
+
+    // ... and if a fresh sort was selected
     if (sort !== existingsort) {
-      link = querySelectorAll('.post');
 
-      for (const link of links) { link.addEventListener("click", clickHandler); }
+      // ... if there is paging in the URL
+      //     remove it
+      if(url.includes('/page/')) {
+        url = url.replace(/\/page\/.+?/, '');
+        alert(url);
+      }
 
+
+      // ... construct new url
       url = url.replace(existingsort, sort);
+
+
+      // ... add load effect
+      links = document.querySelectorAll('.post');
+      for ( const link of links) { link.classList.add('fade');  }
+
+
+      // ... and reload the page with fresh sort query
       location.replace(url);
     }
   }
 
-  // otherwise load the sort
+
+  // If there's no existing sort, just load the sort
   else {
+
+    // ... if there is paging in the URL
+    //     remove it
+    if(url.includes('/page/')) {
+      url = url.replace(/\/page\/.+?/, '');
+      alert(url);
+    }
+
+    // ... add load effect
+    links = document.querySelectorAll('.post');
+    for ( const link of links) { link.classList.add('fade');  }
+
+    // ... and reload the page with sort query
     url = url + '&sort=' + sort;
     location.replace(url);
+
   }
 
 }

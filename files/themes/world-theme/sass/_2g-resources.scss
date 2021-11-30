@@ -302,3 +302,6 @@ $msb-icon-size: 1rem;
 [data-role="main"] .registration[href] {
   @extend %remove-link-line;
 }
+
+
+.fade { opacity: .4; }

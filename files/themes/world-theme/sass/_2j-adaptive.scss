@@ -56,12 +56,9 @@
   // Archive - small
   .archive .resource-meta  {
     @include flex;
+    @include flex-direction-col;
   }
 
-  .archive .resource-meta [class*="meta"]+[class*="meta"] {
-    padding-top: 0;
-    padding-left: 3rem;
-  }
 
   .archive .meta-tags {
     max-width: 45%;
@@ -213,6 +210,9 @@
   $msb-icon-size: 1.8rem;
 
 
+  .post { @include transition(opacity .2s ease-in-out); }
+
+
   // this is the [href]
   .msb-container .minimal-share-button {
     margin-right: 0;
@@ -309,6 +309,7 @@
   // Classes - large
   .hide-md-and-smaller { display: block; }
   .lg-br { display: block; }
+  .lg-br { display: block; }
 
 
   // Header - large
@@ -330,6 +331,7 @@
   // Resources - large
   .default-resource-icon-div { height: 13.9rem; padding: 0; }
   .default-resource-icon-div .img { position: static; }
+
 
 
   // Resource Single - Related Articles - large
@@ -367,6 +369,11 @@
   .search-columns > .wp-block-column:first-of-type { padding-bottom: 2rem; }
 
 
+  .search-results, .search-no-results, .archive, .page-template { }
+
+
+
+
 
   // Our Work - large
   // Advanced Search - large
@@ -382,8 +389,6 @@
   #advanced-search-trigger:not(.-show) + #advanced-search-container {
     max-height: unset;
   }
-
-
 
 
 
@@ -408,7 +413,6 @@
       height: 1.8rem;
     }
   }
-
 
   .site-footer [class*="col"].col-footer {
     float: left;
@@ -500,5 +504,6 @@
       [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 3.44rem; }
     }
   }
+
 
 }
