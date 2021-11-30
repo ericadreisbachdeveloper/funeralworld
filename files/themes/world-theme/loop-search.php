@@ -2,15 +2,9 @@
 
 
 
-<?php
+<?php global $wp_query;
 
-  global $wp_query; 
-
-?>
-
-
-
-<?php if ( $wp_query->have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
+      if ( $wp_query->have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
 
 <?php

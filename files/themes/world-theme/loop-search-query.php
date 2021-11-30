@@ -98,40 +98,35 @@
 
  elseif($sort == 'newest-published') {
 
+             $args['orderby'] = 'meta_value';
+             $args['order'] = 'DESC';
+
              $args['meta_query'] = array(
-               'relation' => 'AND',
-
-               array(
-                 'key' => 'resource_publish_date',
-                 'orderby' => 'meta_value',
-                 'order' => 'DESC'
-               ),
-
                array(
                  'key' => 'resource_publish_date',
                  'compare' => 'EXISTS',
                )
              );
+           }
+
+ elseif($sort == 'oldest-published') {
+
+             $args['orderby'] = 'meta_value';
+             $args['order'] = 'ASC';
+
+             $args['meta_query'] = array(
+               array(
+                 'key' => 'resource_publish_date',
+                 'compare' => 'EXISTS'
+               )
+             );
+           }
   }
 
-  elseif($sort == 'oldest-published') {
-            $args['meta_query'] = array(
-              'relation' => 'AND',
-
-              array(
-                'key' => 'resource_publish_date',
-                'orderby' => 'meta_value',
-                'order' => 'ASC'
-              ),
-
-              array(
-                'key' => 'resource_publish_date',
-                'compare' => 'EXISTS'
-              )
-            );
-          }
-  }
 
 
   $wp_query = new WP_Query( $args );
+
+
+
 ?>
