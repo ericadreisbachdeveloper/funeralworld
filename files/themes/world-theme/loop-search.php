@@ -19,7 +19,6 @@
   if(isset($_GET['resource-type']))   { $type = $_GET['resource-type']; if ($type != '') { $variables[] = array('resource-type', $type); } }
 
 
-
   // construct tax_query from
   // the three custom taxonomy terms
   $count = count($variables);
@@ -35,6 +34,10 @@
 
     $tax_query = array('tax_query' => $tax_query_array);
   }
+
+
+
+
 
 
 
@@ -56,9 +59,15 @@
 
       's' => $query,
 
+      // DESC leads with "So You ..."
+      // ASC leads with "Featured Learning"
+      //'order' => 'ASC',
+
+
       'tax_query' => $tax_query
     );
   }
+
 
   // no author specified
   else {
@@ -75,6 +84,22 @@
     );
 
   }
+
+
+  // Sort!
+  $order = array();
+
+  if(isset($_GET['sort'])) {
+        $sort = $_GET['sort'];
+     if($sort == 'newest') { $sort = 'DESC'; $args['order'] = $sort; }
+ elseif($sort == 'oldest') { $sort = 'ASC'; $args['order'] = $sort; }
+
+  }
+
+
+  //print_r($args);
+
+
 
 
 
