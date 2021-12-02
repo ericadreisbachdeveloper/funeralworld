@@ -1424,7 +1424,7 @@ function searchresults_shortcode() {
 
 		$results .= '</div>';
 
-
+		$j = 0;
 		while ( $wp_query->have_posts() ) : $wp_query->the_post();
 
 
@@ -1456,7 +1456,7 @@ function searchresults_shortcode() {
 
 
 			$results .= '<article ';
-			if ( $i == 0 ) { _e('data-initial '); }
+			if ( $j == 0 ) { $results .= 'data-initial '; }
 			$results .= 'id="post-' . get_the_id() . '"  class="' . $classes . '">';
 
 			$results .= '<a class="archive-a" href="' . get_the_permalink() . '" title="' . get_the_title() . '">';
@@ -1542,6 +1542,7 @@ function searchresults_shortcode() {
 			$results .= '</a>';
 			$results .= '</article>';
 
+		$j++;
 		endwhile;
 
 	}
