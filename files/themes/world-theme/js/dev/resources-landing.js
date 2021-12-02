@@ -1,4 +1,4 @@
-// Resources landing 
+// Resources landing
 
 jQuery(function($){
 
@@ -91,3 +91,27 @@ jQuery(function($){
 
 
 });
+
+
+
+
+// Define loadpage()
+function loadpage() {
+
+  url = window.location.href;
+
+  if(url.includes('/page/')) {
+    url = url.replace(/\/page\/.+?/, '');
+  }
+
+  links = document.querySelectorAll('.post');
+  for ( const link of links) { link.classList.add('fade');  }
+
+  var select = document.querySelector('#sort-by');
+  var sort = select.options[select.options.selectedIndex].id;
+
+  url = url.replace('resources/', '?s=&post_type=post&sort=' + sort );
+
+  location.replace(url);
+
+}

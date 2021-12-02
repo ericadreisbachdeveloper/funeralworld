@@ -18,8 +18,8 @@
 								if ($topics) {
 									foreach ($topics as $topic) {
 
-									// 1. Home
-									echo '<ol class="breadcrumb-ol"><li class="breadcrumb-li"><a href="' . $site_url . '">Home</a> </li>';
+									// 1. Resources
+									echo '<ol class="breadcrumb-ol"><li class="breadcrumb-li"><a href="' . get_permalink(get_page_by_title('Resources')) . '">All Resources</a> </li>';
 
 
 									// 2. ancestor topics, if they exist

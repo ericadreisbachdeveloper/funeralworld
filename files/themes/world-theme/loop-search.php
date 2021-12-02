@@ -4,13 +4,12 @@
 
 <?php global $wp_query;
 
-      if ( $wp_query->have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
+      if ( $wp_query->have_posts() ) : $i = 0; while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
 
 <?php
-		global $terms; global $firstterm; global
+		global $terms; global $firstterm; global $search_array;
 
-		$post_type;
 		$post_type = get_post_type($post->ID);
 
 		$post_types_with_no_meta = array('page', 'asp-products');
@@ -29,9 +28,10 @@
 			$default_png = get_field('resource-icon-png', $firstterm);
 			$default_png_url = $default_png['url'];
 		}
+
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php if($i == 0 && !array_filter($search_array)) : ?> data-no-filters<?php endif; ?>>
 	<a class="archive-a<?php if(dbllc_excerpt() == '' && $post_type !== 'events') { _e(' no-excerpt'); } ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 
 		<div class="container">
@@ -111,7 +111,7 @@
 
 	</a>
 </article>
-<?php endwhile; ?>
+<?php $i++; endwhile; ?>
 
 
 <?php endif; ?>

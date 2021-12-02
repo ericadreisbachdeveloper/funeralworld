@@ -55,8 +55,8 @@
 									<?php
 										if (isset($_GET['s'])) { $s = $_GET['s']; }
 										global $audience_select; global $author_select; global $topic_select; global $type_select;
-
-										$search_array = array($s, $audience_select, $author_select, $topic_select, $type_select);
+										global $search_array;
+										       $search_array = array($s, $audience_select, $author_select, $topic_select, $type_select);
 									?>
 
 
@@ -66,17 +66,12 @@
 												<div class="container">
 
 
-
-													<?php
-														 //global $wp_query; global $args;
-														 get_template_part('loop-search-query');
-														 //print_r($args);
+													<?php get_template_part('loop-search-query');
 
 														 $s = $wp_query->found_posts;
 													if($s == '1') { $sp = ''; } else { $sp = 's'; } ?>
 
-													<h1 class="post search-results-h1<?php if(!array_filter($search_array)) : ?> -no-filters<?php endif; ?>"><?= $s . ' Search Result' . $sp; ?></h1>
-
+													<h1 class="post search-results-h1"><?= $s . ' Search Result' . $sp; ?></h1>
 
 
 
@@ -84,16 +79,24 @@
 												<div class="sort-div">
 													<label for="sort-by">Sort by &nbsp;</label>
 													<select onchange="loadpage()" id="sort-by" class="select">
-														<option id="newest"<?php           if($sort == 'newest')           { _e(' selected'); } ?>>Newest Added </option>
-														<option id="oldest"<?php           if($sort == 'oldest')           { _e(' selected'); } ?>>Oldest Added </option>
-														<option id="newest-published"<?php if($sort == 'newest-published') { _e(' selected'); } ?>>Newest Published </option>
-														<option id="oldest-published"<?php if($sort == 'oldest-published') { _e(' selected'); } ?>>Oldest Published </option>
+														<option id="newest"<?php           if($sort == 'newest' || (isset($_GET['sort']) && $_GET['sort'] == 'newest') ) { _e(' selected'); } ?>>Newest Added </option>
+														<option id="oldest"<?php           if($sort == 'oldest' || (isset($_GET['sort']) && $_GET['sort'] == 'oldest') ) { _e(' selected'); } ?>>Oldest Added </option>
+														<option id="newest-published"<?php if($sort == 'newest-published' || (isset($_GET['sort']) && $_GET['sort'] == 'newest-published') ) { _e(' selected'); } ?>>Newest Published </option>
+														<option id="oldest-published"<?php if($sort == 'oldest-published' || (isset($_GET['sort']) && $_GET['sort'] == 'oldest-published')) { _e(' selected'); } ?>>Oldest Published </option>
 													</select>
 												</div>
+
 											</div>
 
 
-											<div class="container">
+											<div class="container filters-caveat">
+
+
+												<?php if( isset($_GET['sort']) && ( $_GET['sort'] == 'newest-published' || $_GET['sort'] == 'oldest-published') ) : ?>
+												<p class="caveat"><em>Resources with no publish date are excluded from results sorted by date published</em></p>
+												<?php endif; ?>
+
+
 												<?php if(array_filter($search_array)) : ?>
 												<?php $audience_term = $author_term = $topic_term = $type_term = $filteredurl = '';  ?>
 												<div class="filter-buttons">
@@ -124,7 +127,11 @@
 															$filteredurl .= '&resource-type=' . $type_term->slug;
 														}
 
-														$filteredurl .= '&post_type=post'; ?>
+														$filteredurl .= '&post_type=post';
+
+														if(isset($_GET['sort'])) {
+															$filteredurl .= '&sort=' . $_GET['sort'];
+														} ?>
 
 													<a href="<?= esc_url($filteredurl); ?>" data-input="s" data-value="<?= $search_array[0]; ?>">SEARCH: <?= $search_array[0]; ?></a>
 													<?php endif; ?>
@@ -159,7 +166,11 @@
 															$filteredurl .= '&resource-type=' . $type_term->slug;
 														}
 
-														$filteredurl .= '&post_type=post'; ?>
+														$filteredurl .= '&post_type=post';
+
+														if(isset($_GET['sort'])) {
+															$filteredurl .= '&sort=' . $_GET['sort'];
+														} ?>
 
 													<a href="<?= esc_url($filteredurl); ?>" data-input="audience" data-value="<?= $search_array[1]; ?>">AUDIENCE: <?= $audience_term->name; ?></a>
 													<?php endif; ?>
@@ -194,7 +205,11 @@
 															$filteredurl .= '&resource-type=' . $type_term->slug;
 														}
 
-														$filteredurl .= '&post_type=post'; ?>
+														$filteredurl .= '&post_type=post';
+
+														if(isset($_GET['sort'])) {
+															$filteredurl .= '&sort=' . $_GET['sort'];
+														} ?>
 
 													<a href="<?= esc_url($filteredurl); ?>" data-input="author" data-value="<?= $search_array[2]; ?>">AUTHOR: <?= $author_term->display_name; ?></a>
 													<?php endif; ?>
@@ -229,7 +244,11 @@
 															$filteredurl .= '&resource-type=' . $type_term->slug;
 														}
 
-														$filteredurl .= '&post_type=post'; ?>
+														$filteredurl .= '&post_type=post';
+
+														if(isset($_GET['sort'])) {
+															$filteredurl .= '&sort=' . $_GET['sort'];
+														} ?>
 
 													<a href="<?= esc_url($filteredurl); ?>" data-input="topic" data-value="<?= $search_array[3]; ?>">TOPIC: <?= $topic_term->name; ?></a>
 													<?php endif; ?>
@@ -264,7 +283,11 @@
 															$filteredurl .= '&topic=' . $topic_term->slug;
 														}
 
-														$filteredurl .= '&post_type=post'; ?>
+														$filteredurl .= '&post_type=post';
+
+														if(isset($_GET['sort'])) {
+															$filteredurl .= '&sort=' . $_GET['sort'];
+														} ?>
 
 													<a href="<?= esc_url($filteredurl); ?>" data-input="topic" data-value="<?= $search_array[4]; ?>">RESOURCE TYPE: <?= $type_term->name; ?></a>
 													<?php endif; ?>
@@ -274,7 +297,8 @@
 												</div><!-- /.filter-buttons -->
 												<?php endif; ?>
 
-												</div><!-- /.container -->
+
+											</div><!-- /.container -->
 
 
 											<?php get_template_part('loop-search'); ?>

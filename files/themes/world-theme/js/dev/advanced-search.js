@@ -151,9 +151,7 @@ function loadpage() {
   var select = document.querySelector('#sort-by');
   var sort = select.options[select.options.selectedIndex].id;
 
-
-
-
+  document.querySelector('#sort').value = sort;
 
 
   // If there is an existing sort query in URL
@@ -169,12 +167,12 @@ function loadpage() {
       //     remove it
       if(url.includes('/page/')) {
         url = url.replace(/\/page\/.+?/, '');
-        alert(url);
       }
 
 
       // ... construct new url
-      url = url.replace(existingsort, sort);
+      if(existingsort == '') { url = url + sort; }
+      else { url.replace(existingsort, sort); }
 
 
       // ... add load effect
@@ -188,6 +186,7 @@ function loadpage() {
   }
 
 
+
   // If there's no existing sort, just load the sort
   else {
 
@@ -195,7 +194,6 @@ function loadpage() {
     //     remove it
     if(url.includes('/page/')) {
       url = url.replace(/\/page\/.+?/, '');
-      alert(url);
     }
 
     // ... add load effect
@@ -205,7 +203,6 @@ function loadpage() {
     // ... and reload the page with sort query
     url = url + '&sort=' + sort;
     location.replace(url);
-
   }
 
 }

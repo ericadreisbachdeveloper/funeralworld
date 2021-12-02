@@ -98,6 +98,13 @@
 				<!-- END Topics -->
 
 
+				<!-- HIDDEN - sort -->
+				<label class="hidden" for="sort" tabindex="-1" style="display: none; max-height: 0; position: absolute; left: -99999px;">post_type</label>
+				<!-- <input name="sort" id="sort" type="text" tabindex="-1" value="newest" /> -->
+				<input name="sort" id="sort" type="text" tabindex="-1" style="display: none; max-height: 0; position: absolute; left: -99999px;" value="<?php if(isset($_GET['sort'])) { _e($_GET['sort']); } else { _e('newest'); } ?>" />
+				<!-- END Sort -->
+
+
 				<!-- START Button -->
 				<div class="col-lg-2 col-xs-12">
 					<button id="search-submit" class="search-submit" type="submit" aria-label="Search This Query">Search</button>

@@ -126,7 +126,7 @@ function dbllc_header_scripts() {
 
 
 	if(is_archive() || is_search()) {
-		wp_register_script('no-widows', TDIR . '/js/dev/advanced-search.js', 'jquery-core', '1.0.7', false);
+		wp_register_script('no-widows', TDIR . '/js/dev/advanced-search.js', 'jquery-core', '1.0.9', false);
 		 wp_enqueue_script('no-widows');
 	}
 
@@ -1410,7 +1410,19 @@ function searchresults_shortcode() {
 	if ( $wp_query->have_posts() ) {
 
 
-		$results .= '<div class="container"><h1 class="post search-results-h1 -initial">Browse All ' . $count . ' Resources</h1></div>';
+		$results .= '<div class="container"><h1 class="post search-results-h1 -initial">Browse All ' . $count . ' Resources</h1>';
+
+		$results .= '<div class="sort-div">
+			<label for="sort-by">Sort by &nbsp;</label>
+			<select onchange="loadpage()" id="sort-by" class="select">
+				<option id="newest">Newest Added </option>
+				<option id="oldest">Oldest Added </option>
+				<option id="newest-published">Newest Published </option>
+				<option id="oldest-published">Oldest Published </option>
+			</select>
+		</div>';
+
+		$results .= '</div>';
 
 
 		while ( $wp_query->have_posts() ) : $wp_query->the_post();
@@ -1443,7 +1455,7 @@ function searchresults_shortcode() {
 			}
 
 
-			$results .= '<article id="post-' . get_the_id() . '"  class="' . $classes . '">';
+			$results .= '<article data-initial id="post-' . get_the_id() . '"  class="' . $classes . '">';
 
 			$results .= '<a class="archive-a" href="' . get_the_permalink() . '" title="' . get_the_title() . '">';
 			$results .= '<div class="container">';
@@ -1551,9 +1563,10 @@ function searchresults_shortcode() {
 add_shortcode( 'searchsidebar', 'searchsidebar_shortcode');
 function searchsidebar_shortcode() {
 
-	$searchsidebar = $audience_query = '';
+	$searchsidebar = $audience_query = $sort_query = '';
 
-	if (isset($_GET['audience'])) { $audience_query = $_GET['audience']; } else { $audience_query = ' no query'; }
+	if (isset($_GET['audience'])) { $audience_query = $_GET['audience']; }
+	if (isset($_GET['sort']))     { $sort_query = $_GET['sort']; }
 
 	$searchsidebar = '<h2 class="sidebar-h2">Explore Resources by&nbsp;Topic </h2>';
 
@@ -1609,7 +1622,7 @@ function searchsidebar_shortcode() {
 
 			$wp_query = new WP_Query( $args );
 			if ( $wp_query->have_posts() )  {
-				$searchsidebar .= '<li class="sidebar-li"><a href="' .  WP_SITEURL . '?s=&topic=' . $topic->slug . '&audience=' . $audience->slug . '&post_type=post"';
+				$searchsidebar .= '<li class="sidebar-li"><a href="' .  WP_SITEURL . '?s=&topic=' . $topic->slug . '&audience=' . $audience->slug . '&post_type=post&sort=' . $sort_query . '"';
 				if ($audience_query != '' && $audience_query == $audience->slug) {
 					$searchsidebar .= ' tabindex="0"';
 				}
@@ -1628,32 +1641,10 @@ function searchsidebar_shortcode() {
 
 
 
-// 42. Posts Sort Order
-//     src: https://wordpress.stackexchange.com/a/41723
-// add_filter('posts_orderby', 'my_sort_custom',10,2);
-
-function my_sort_custom( $orderby, $query ){
-
-
-    global $wpdb; global $post; global $orderby; global $pageposts;
-
-
-		if( isset( $_GET['sort'] ) )  { $sort = $_GET['sort']; }
-		else                          { $sort = ''; }
-
-
-	  if(!is_admin() && is_search() && $sort != '') {
-
-		  	  if ( $sort == 'oldest' )           { $orderby = $wpdb->prefix . "posts.post_date ASC";	}
-			elseif ( $sort == 'newest' )           { $orderby = $wpdb->prefix . "posts.post_date DESC"; }
-
-    	return $orderby;
-		}
-}
 
 
 
-// 42. Add .resource-search-results class to body
+// 43. Add .resource-search-results class to body
 //     on Advanced Search Results pages
 add_filter( 'body_class','dbllc_body_class' );
 

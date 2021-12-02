@@ -384,11 +384,14 @@ $hentry-top: -1px;
   float: left;
   margin-top: 0;
   margin-bottom: 0;
+}
 
-  &.-initial, &.-no-filters {
-    padding-bottom: 1.5rem;
+[data-role="main"] [id*="post"] {
+  &[data-initial], &[data-no-filters] {
+    margin-top: .75rem;
   }
 }
+
 
 // padding above titles in Advanced Search Results
 .search-columns .wp-block-column > .core-shortcode {
@@ -434,4 +437,17 @@ $hentry-top: -1px;
       &:before { background-color: $land; }
     }
   }
+}
+
+.caveat {
+  @extend %small;
+  width: 16rem;
+  clear: right;
+  display: block;
+  float: right;
+  line-height: 1.2;
+  margin-top: 0;
+  padding-top: .44rem;
+  padding-bottom: .5rem;
+  text-align: right;
 }
