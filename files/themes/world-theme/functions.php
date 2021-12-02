@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.17';
+$style_vsn = '1.1.18';
 
 
 
@@ -1455,7 +1455,9 @@ function searchresults_shortcode() {
 			}
 
 
-			$results .= '<article data-initial id="post-' . get_the_id() . '"  class="' . $classes . '">';
+			$results .= '<article ';
+			if ( $i == 0 ) { _e('data-initial '); }
+			$results .= 'id="post-' . get_the_id() . '"  class="' . $classes . '">';
 
 			$results .= '<a class="archive-a" href="' . get_the_permalink() . '" title="' . get_the_title() . '">';
 			$results .= '<div class="container">';

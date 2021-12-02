@@ -346,3 +346,19 @@ input {
   max-height: unset;
   overflow: visible;
 }
+
+
+
+
+
+// Gravity Forms
+.gfield {
+  border: none;
+  margin: 0;
+  padding-top: 0;
+  padding-right: 0;
+  padding-left: 0;
+
+  legend { float: left; padding-right: 2rem; }
+  .ginput_container_radio > .gfield_radio { @include flex; }
+}
