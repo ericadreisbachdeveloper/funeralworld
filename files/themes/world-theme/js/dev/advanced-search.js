@@ -171,8 +171,7 @@ function loadpage() {
 
 
       // ... construct new url
-      if(existingsort == '') { url = url + sort; }
-      else { url.replace(existingsort, sort); }
+      url = url.replace(existingsort, sort);
 
 
       // ... add load effect

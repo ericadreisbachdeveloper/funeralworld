@@ -126,7 +126,7 @@ function dbllc_header_scripts() {
 
 
 	if(is_archive() || is_search()) {
-		wp_register_script('no-widows', TDIR . '/js/dev/advanced-search.js', 'jquery-core', '1.0.9', false);
+		wp_register_script('no-widows', TDIR . '/js/dev/advanced-search.js', 'jquery-core', '1.0.10', false);
 		 wp_enqueue_script('no-widows');
 	}
 

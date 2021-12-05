@@ -11,10 +11,12 @@
 		<h2 class="form-h2">Filter your search </h2>
 
 		<div class="row advanced-search-row">
+			
 
 			<!-- HIDDEN - post_type = post -->
 			<label class="hidden" for="post_type" tabindex="-1" style="display: none; max-height: 0; position: absolute; left: -99999px;">post_type</label>
 			<input name="post_type" id="post_type" type="text" tabindex="-1" style="display: none; max-height: 0; position: absolute; left: -99999px;" value="post" />
+
 
 			<!-- START Audience -->
 			<div class="col-md-6 col-lg-3">
