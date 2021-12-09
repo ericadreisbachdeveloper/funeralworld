@@ -1,7 +1,39 @@
 // Forms - css/style.css
 
 
+%input {
+  @extend %text;
+
+  max-width: 100%;
+
+  border-top: none;
+  border-right: none;
+  border-bottom: .05rem solid lightgray;
+  border-left: none;
+  border-radius: 1rem;
+
+  font-family: 'mreaves', sans-serif;
+  margin: 0;
+  padding: .5rem;
+
+  -webkit-appearance: none;
+
+  @include placeholder { color: $gray; }
+}
+
+
+textarea { @extend %input; }
+
+
+
 input {
+
+  //button
+  //checkbox
+  //hidden
+  //reset
+  //search
+  //submit
 
   &[type="text"],
   &[type="color"],
@@ -13,35 +45,15 @@ input {
   &[type="month"],
   &[type="number"],
   &[type="password"],
-  &[type="radio"],
+  /* &[type="radio"], */
   &[type="range"],
   &[type="search"],
   &[type="tel"],
   &[type="time"],
   &[type="url"],
-  &[type="week"]
-  //button
-  //checkbox
-  //hidden
-  //reset
-  //search
-  //submit
-   {
-    border-top: none;
-    border-right: none;
-    border-bottom: .05rem solid lightgray;
-    border-left: none;
-    border-radius: 1rem;
-
-    font-family: 'mreaves', sans-serif;
-    margin: 0;
-    padding: .5rem .1rem;
-
-    -webkit-appearance: none;
-
-    @include placeholder { color: $gray; }
+  &[type="week"] {
+    @extend %input;
   }
-
 
 
   // buttons
@@ -52,6 +64,13 @@ input {
   }
 }
 
+
+input[type="submit"] {
+  background: $land;
+  color: white;
+
+  @include hover { background: $land2; color: white; }
+}
 
 
 
@@ -358,7 +377,62 @@ input {
   padding-top: 0;
   padding-right: 0;
   padding-left: 0;
-
-  legend { float: left; padding-right: 2rem; }
-  .ginput_container_radio > .gfield_radio { @include flex; }
 }
+
+
+#gform_wrapper_1 {
+  .gform_heading { padding-top: 2rem; }
+  .gfield_label { display: none; }
+
+
+  #field_1_10 { @include flex; @include flex-direction-col; }
+  #field_1_10 .gfield_label { float: left; }
+
+  #field_1_10 .gfield_label { display: inline-block; }
+  #field_1_10 .gfield_label:after { content: '*'; display: inline-block;}
+  #field_1_10 .gfield_required.gfield_required_text { display: none; }
+  #field_1_10 .gfield_radio { @include flex; @include flex-direction-col; }
+
+  [for*="input_"] { display: none; }
+
+  [class*="name_"],
+  [class*="name_"] > [type="text"],
+  .ginput_container_email > [type="text"] { width: 100%; }
+}
+
+
+.ginput_container_textarea { padding-top: 1rem; }
+.ginput_container_textarea > .textarea { width: 100%; }
+
+
+
+[type="radio"] {
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: .5rem;
+  background: white;
+
+  &:checked { position: relative; }
+
+  &:checked:before {
+    width: .4rem;
+    height: .4rem;
+    background: $night;
+    border-radius: .2rem;
+    content: '';
+    display: block;
+    position: absolute;
+     top: .3rem;
+     left: .29rem;
+  }
+}
+
+
+.ginput_container_name > [class*="name"] + [class*="name"] {
+  display: inline-block;
+  padding-top: .78125rem;
+}
+
+
+.gform_footer { padding-top: 2rem; }

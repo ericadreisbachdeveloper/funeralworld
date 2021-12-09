@@ -52,27 +52,6 @@
 [data-role="main"] .small-h2 { text-transform: none; }
 
 
-input {
-  &[type="text"],
-  &[type="color"],
-  &[type="date"],
-  &[type="datetime-local"],
-  &[type="email"],
-  &[type="file"],
-  &[type="image"],
-  &[type="month"],
-  &[type="number"],
-  &[type="password"],
-  &[type="radio"],
-  &[type="range"],
-  &[type="search"],
-  &[type="tel"],
-  &[type="time"],
-  &[type="url"],
-  &[type="week"] {
-    @extend %text;
-  }
-}
 
 .search-form:not(.search-compact) .select { @extend %select; }
 
@@ -136,7 +115,7 @@ input {
   %main-menu-li    { font-size: 1.3rem; }
   %text            { font-size: 1.4rem; line-height: 1.44; }
   %deck            { font-size: 1.7rem; }
-  %medium          { font-size: 2.3rem; }
+  %medium          { font-size: 2.4rem; }
   %large           { font-size: 3rem; }
   %huge            { font-size: 4.3rem; }
 

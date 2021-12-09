@@ -76,7 +76,13 @@
   }
 
 
-
+  // Forms - small
+  // Connect - small
+  /*#gform_wrapper_1 #field_1_10, */
+  #gform_wrapper_1 #field_1_10 .ginput_container_radio { padding-top: .5rem; padding-bottom: .5rem; }
+  #gform_wrapper_1 #field_1_10 .gfield_radio { @include flex-direction-row; }
+  #gform_wrapper_1 #field_1_10 .gfield_label { padding-right: 1rem; }
+  #gform_wrapper_1 #field_1_10 .gchoice + .gchoice { padding-left: 1rem; }
 
   // Events - small
   .date-register-div { @include flex; @include flex-direction-row; @include justify-content(space-between); }
@@ -99,7 +105,10 @@
 
 
 // Small to medium
+// Columns edge case
 @media (min-width: 37.5rem) and (max-width: 47.9999rem) {
+
+  .wp-block-column:nth-child(2n).full-width-sm { margin-left: 0; }
 
   .wp-block-column:not(:only-child).full-width-sm {
     -ms-flex-preferred-size: 100% !important;
@@ -209,7 +218,6 @@
   .h2-share { margin-right: .4rem; }
   $msb-icon-size: 1.8rem;
 
-
   .post { @include transition(opacity .2s ease-in-out); }
 
 
@@ -262,6 +270,17 @@
   .filter-buttons > [href] {
     @include transition(background .2s ease-in-out);
   }
+
+
+
+  // Forms - medium
+  // Connect - medium
+  // Contact - medium
+  #gform_wrapper_1 .ginput_container_name > [class*="name_"] { width: 48.5%; display: block; float: left; }
+
+  #gform_wrapper_1 .ginput_container_name > [class*="name"] + [class*="name"] { padding-top: 0; margin-left: 2%; }
+
+
 
 
 
@@ -505,5 +524,15 @@
     }
   }
 
+
+  // Forms - wide
+  // Connect - wide
+  #gform_wrapper_1 #field_1_10 {
+    @include flex-direction-row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  #gform_wrapper_1 #field_1_10 .ginput_container_radio { padding: 0; }
+  #gform_wrapper_1 #field_1_10 .gchoice + .gchoice { padding-left: 1.5rem; }
 
 }
