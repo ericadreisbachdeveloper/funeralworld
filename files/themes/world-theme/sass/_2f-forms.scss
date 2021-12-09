@@ -66,11 +66,13 @@ input {
 
 
 input[type="submit"] {
+  @extend %button_against_dark_bg;
+
   background: $land;
   border: 0.15rem solid $land;
   color: white;
 
-  @include hover { background: $land2; border: 0.15rem solid $land2; color: white; }
+  @include hover { background: $land3; border: 0.15rem solid $land3; color: white; }
 }
 
 
@@ -463,4 +465,14 @@ body .gform_wrapper .gform_validation_container {
   .gform-body { padding-top: 2rem;}
 
   .ginput_container_email > [type="text"] { width: 100%; }
+}
+
+
+// Support
+.-support-v2 .core-media-text .wp-block-media-text__media { height: 100%; }
+.-support-v2 .core-media-text .wp-block-media-text__media img[class*="wp-image"] {
+  max-width: unset;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
 }

@@ -50,3 +50,7 @@ html #skip-link[href] { color: $nearblack; }
   position: absolute;
   @include translatex( calc(50vw - 50%) );
 }
+
+.gutenberg-section.core-cover .gutenberg-section.core-heading h1 {
+  margin-bottom: .5rem;
+}

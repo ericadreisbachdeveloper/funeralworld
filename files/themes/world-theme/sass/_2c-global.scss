@@ -105,6 +105,17 @@ html * {
 }
 
 
+[data-role="main"] .wp-block-cover.has-background-dim [href] {
+  color: white;
+  @include linkgradient(white);
+
+  @include hover {
+    color: $teal;
+    @include linkgradient($teal); 
+  }
+}
+
+
 
 
 
