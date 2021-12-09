@@ -312,6 +312,12 @@
 
 										</div><!-- /.gutenberg-container -->
 									</div><!-- /.gutenberg-section.core-shortcode -->
+
+
+									<!--
+									[gravityform id="1" title="false" description="false" ajax="true" tabindex="49" field_values="check=First Choice,Second Choice"]
+									-->
+									<?= do_shortcode('[gravityform id="2" title="true" description="true" ajax="true"]'); ?>
 								</div><!-- /.wp-block-column -->
 
 

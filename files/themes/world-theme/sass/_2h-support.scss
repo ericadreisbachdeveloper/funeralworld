@@ -13,9 +13,13 @@
 }
 
 [data-role="main"] > .-support { padding-top: 2rem; }
+[data-role="main"] > .-support.-support-v2 { padding-top: 0; }
 [data-role="main"] > .-support + .-support { padding-top: 0; padding-bottom: 1rem;  }
 
 
+.-support.-support-v2 > .container { width: 100%; padding: 0; }
+
+.-support.-support-v2 > .container .wp-block-media-text__content { max-width: 40rem; }
 
 
 

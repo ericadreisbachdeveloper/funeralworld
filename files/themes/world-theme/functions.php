@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.18';
+$style_vsn = '1.1.19';
 
 
 
@@ -120,13 +120,13 @@ function dbllc_header_scripts() {
 
 
 	if(is_page('Resources')) {
-		wp_register_script('searchresults', TDIR . '/js/dev/resources-landing.js', 'jquery-core', '1.0.4', false);
+		wp_register_script('searchresults', TDIR . '/js/dev/resources-landing.js', 'jquery-core', '1.0.5', false);
 		 wp_enqueue_script('searchresults');
 	}
 
 
 	if(is_archive() || is_search()) {
-		wp_register_script('no-widows', TDIR . '/js/dev/advanced-search.js', 'jquery-core', '1.0.10', false);
+		wp_register_script('no-widows', TDIR . '/js/dev/advanced-search.js', 'jquery-core', '1.0.11', false);
 		 wp_enqueue_script('no-widows');
 	}
 
@@ -602,6 +602,16 @@ if (function_exists('register_sidebar')) {
 			'description' => __('Content that appears below Resource posts and on the homepage.'),
 			'id' => 'support-the-future',
 			'before_widget' => '<div class="container-fluid -support"><div class="container">',
+			'after_widget' => '</div><!-- /.container --></div><!-- /.-support -->',
+			'before_title' => '<h2>',
+			'after_title' => '</h2>'
+		));
+
+		register_sidebar(array(
+			'name' => __('Support the Future of Funerals - buttons', 'dbllc'),
+			'description' => __('Used on CONNECT page.'),
+			'id' => 'support-the-future-v2',
+			'before_widget' => '<div class="container-fluid -support -support-v2"><div class="container">',
 			'after_widget' => '</div><!-- /.container --></div><!-- /.-support -->',
 			'before_title' => '<h2>',
 			'after_title' => '</h2>'
@@ -1328,6 +1338,8 @@ function show_events( $events = null ) {
 		$events .= '</div><!-- /.row -->';
 	}
 
+	else { $events = '<div class="row"><div class="event-col col-md-12 -no-events"><em>No upcoming scheduled events. Check back soon!</em> </div></div>'; }
+
 	wp_reset_postdata();
 
 	return $events;
@@ -1344,10 +1356,16 @@ function hide_columns_in_admin($columns){
 }
 
 
-// 37. Shortcode for Support the Future
+// 37a. Shortcode for Support the Future
 add_shortcode( 'supportthefuture', 'supportthefuture', 99);
 function supportthefuture(){
     dynamic_sidebar('support-the-future');
+}
+
+// 37b. Shortcode for Support the Future v2
+add_shortcode( 'supportthefuture-v2', 'supportthefuture_v2', 99);
+function supportthefuture_v2(){
+    dynamic_sidebar('support-the-future-v2');
 }
 
 
