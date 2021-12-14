@@ -444,6 +444,9 @@
     .gform_heading, #gform_2 { padding-right: 1.5rem; }
   }
 
+  .wp-block-media-text:not(.has-media-on-the-right) .wp-block-media-text__content { padding-left: 3rem;  }
+  .wp-block-media-text.has-media-on-the-right       .wp-block-media-text__content { padding-right: 3rem; }
+
 
   // Full-Width - large
   // Full Width - large
