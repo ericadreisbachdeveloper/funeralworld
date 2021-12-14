@@ -1,21 +1,28 @@
 // Powers the accordion on About
 
 
-// Find a href="#open"
+// Find each: a[href="#open"]
+var open = document.querySelectorAll("[href='#open']");
 
 
-const open = document.querySelectorAll("[href='#open']").forEach(trigger => {
+// for each ...
+open.forEach(function(trigger, i) {
 
-  // Get id of parent h2
+  // ... get id of parent h2
   var h2 = trigger.parentElement;
   var h2_id = h2.id;
 
-  // Add class -hide to all elements with class = [id of parent h2]
+  // ... add class -hide to all elements with class = [id of parent h2]
   document.querySelectorAll("." + h2_id).forEach(section=> {
     section.classList.add("-hide");
   });
 
 
+
+
+  // ... on click of a href="#open"
+  //     add or remove class -hide to all elements with class = [id of parent h2]
+  //     add or remove class -showing to "trigger" = a[href="#open"]
   trigger.addEventListener("click", event => {
 
     if(trigger.classList.contains("-showing")) {
@@ -36,8 +43,3 @@ const open = document.querySelectorAll("[href='#open']").forEach(trigger => {
 
 
 });
-
-
-
-// On click of a href="#open"
-// Remove class -hide to all elements with class = [id of parent h2]

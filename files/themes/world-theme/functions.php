@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.21';
+$style_vsn = '1.1.22';
 
 
 
@@ -127,7 +127,7 @@ function dbllc_header_scripts() {
 
 
 	if(is_page('About')) {
-		wp_register_script('accordionjs', TDIR . '/js/dev/accordion.js', '', '1.0.3', false);
+		wp_register_script('accordionjs', TDIR . '/js/dev/accordion.js', '', '1.0.4', false);
 		 wp_enqueue_script('accordionjs');
 	}
 

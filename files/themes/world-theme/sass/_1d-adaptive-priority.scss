@@ -1,10 +1,16 @@
 // Priority Adaptive styles - priority.css
 
+
+@media (min-width: 23.438rem) {
+  .logo-a { @include justify-content(center); }
+}
+
+
+
 // Small devices (landscape phones, 37.5rem and up)
 @media (min-width: 37.5rem) {
 
   .mobile-hide { display: block; }
-
 
 }
 

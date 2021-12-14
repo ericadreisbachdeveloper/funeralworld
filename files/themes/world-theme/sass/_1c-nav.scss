@@ -23,7 +23,8 @@ $headerh: 6rem;
   width: 100%;
   @include flex;
   @include align-items(center);
-  @include justify-content(center);
+  //@include justify-content(center);
+  @include justify-content(flex-start);
 }
 
 
