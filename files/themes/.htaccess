@@ -33,12 +33,22 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Escape hatch #1: Adding ?original to an url can be used to bypass redirection
+  # Escape hatch #1: Adding ?dontreplace to an url can be used to bypass redirection
+  RewriteCond %{QUERY_STRING} dontreplace$
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule . - [L]
+
+  # Escape hatch #2: Placing an empty file in the same folder as the jpeg/png which has same file name, but ".dontreplace" appended will bypass redirection
+  RewriteCond %{REQUEST_FILENAME} (?i)(.*)(\.jpe?g|\.png)$
+  RewriteCond %1%2\.dontreplace -f
+  RewriteRule . - [L]
+
+  # Deprecated escape hatch: Adding ?original to an url can be used to bypass redirection
   RewriteCond %{QUERY_STRING} original$
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule . - [L]
 
-  # Escape hatch #2: Placing an empty file in the same folder as the jpeg/png which has same file name, but ".do-not-convert" appended will bypass redirection
+  # Deprecated escape hatch: Placing an empty file in the same folder as the jpeg/png which has same file name, but ".do-not-convert" appended will bypass redirection
   RewriteCond %{REQUEST_FILENAME} (?i)(.*)(\.jpe?g|\.png)$
   RewriteCond %1%2\.do-not-convert -f
   RewriteRule . - [L]

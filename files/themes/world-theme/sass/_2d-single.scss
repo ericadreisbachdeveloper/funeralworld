@@ -4,7 +4,7 @@
 .error404 [data-role="main"]              { padding-bottom: 2rem; }
 .single   [data-role="main"] > .container { padding-bottom: 2rem; }
 
-.single, .page-template-page-events  {
+.single, .page-template-page-events, .page-template-page-pastevents  {
   [data-role="main"] {
     background: $mist;
   }
@@ -12,7 +12,7 @@
 
 
 // Resources (More on this/these topics)
-// Events (More Events) 
+// Events (More Events)
 %single-footer {
   background: $night;
   color: white;
