@@ -1583,6 +1583,10 @@ function searchresults_shortcode() {
 
 
 	$results .= '</div><!-- /#search-results -->';
+
+	$askaquestion = do_shortcode('[gravityform id="2" title="true" description="true" ajax="true"]');
+	$results .= $askaquestion;
+
 	return $results;
 }
 
@@ -1667,9 +1671,6 @@ function searchsidebar_shortcode() {
 
 	return $searchsidebar;
 }
-
-
-
 
 
 
