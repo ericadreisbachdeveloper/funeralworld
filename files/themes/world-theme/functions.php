@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.19';
+$style_vsn = '1.1.20';
 
 
 
@@ -113,6 +113,7 @@ function dbllc_header_scripts() {
 	wp_register_script('jquery-core', '', 'jquery-core', '', false);
 	wp_enqueue_script('jquery-core');
 
+
 	if(is_single()) {
 		wp_register_script('resources', TDIR . '/js/dev/resources.js', 'jquery-core', '1.0.1', false);
 		 wp_enqueue_script('resources');
@@ -125,12 +126,19 @@ function dbllc_header_scripts() {
 	}
 
 
+	if(is_page('About')) {
+		wp_register_script('accordionjs', TDIR . '/js/dev/accordion.js', '', '1.0.3', false);
+		 wp_enqueue_script('accordionjs');
+	}
+
+
 	if(is_archive() || is_search()) {
 		wp_register_script('no-widows', TDIR . '/js/dev/advanced-search.js', 'jquery-core', '1.0.11', false);
 		 wp_enqueue_script('no-widows');
 	}
 
 }
+
 add_action('wp_enqueue_scripts', 'dbllc_header_scripts', 10, 0);
 
 

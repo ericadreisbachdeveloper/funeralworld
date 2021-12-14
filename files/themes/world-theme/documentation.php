@@ -92,7 +92,28 @@
   When applied to a <strong>Group</strong> block, adds a dark blue full-width background.
 </p>
 
+<p><span class="-code">green-bg</span> <br />
+  When applied to a <strong>Group</strong> block, adds a dark green full-width background.
+</p>
 
+<p><span class="-code">full-width</span>  <br />
+  When applied to a <strong>Media &amp; Text</strong> block, images will fill the available vertical and horizontal space while text will remain in the designated &ldquo;content&nbsp;silo.&rdquo;
+</p>
+
+
+<h2>Custom Content Blocks </h2>
+<p><strong>Footer </strong> <br />
+  Edit under <strong>Appearance > Widgets > Footer </strong><br />
+  Edit individual menus under <strong>Appearance > Menus > Select a Menu to Edit </strong>
+</p>
+
+<p><strong>Support the Future of Funerals </strong> <br />
+  Edit under <strong>Appearance > Widgets > Support the Future of Funerals </strong>
+</p>
+
+<p><strong>Support the Future of Funerals</strong> (with buttons) <br />
+  Edit under <strong>Appearance > Widgets > Support the Future of Funerals - buttons </strong>
+</p>
 
 
 <h2>Plugins </h2>
@@ -123,14 +144,6 @@
     <em>Excellent tool for dynamically-generated sitemaps to improve search appearance </em> <br />
     <a class="-small" href="https://wpscan.com/search?text=%22Google%20XML%20Sitemaps%22" target="_blank" rel="noopener">Check Google XML Sitemaps in the Wordpress Vulnerability Database&nbsp;></a> <br />
     <strong class="-small">Change settings in: Settings > XML Sitemap </strong>
-  </li>
-
-  <li><a class="-large -strong" href="" target="_blank"></a></li>
-
-  <li><a class="-large -strong" href="https://wordpress.org/plugins/hide-my-site/" target="_blank" rel="noopener">Hide My Site</a><br />
-    <em>Hides and secures page during <span class="white-space: nowrap;">non-public</span> phase of&nbsp;development. </em><br />
-    <a class="-small" href="https://wpscan.com/search?text=%22hide%20my%20site%22" target="_blank" rel="noopener">Check Hide My Site in the Wordpress Vulnerability Database&nbsp;></a> <br />
-    <strong class="-small">Change settings in: Settings > Hide My Site </strong>
   </li>
 
   <li><a class="-large -strong" href="https://wordpress.org/plugins/lazysizes/" target="_blank" rel="noopener">Lazysizes</a> <br />

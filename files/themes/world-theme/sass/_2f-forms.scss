@@ -91,11 +91,18 @@ input[type="submit"] {
     min-width: 18rem;
     display: block;
     border-radius: 0;
+    padding-right: 0;
+    padding-left: 0;
     margin-bottom: 1rem;
   }
 
   input[type="submit"] { margin-top: 2rem; }
 }
+
+
+
+// Native Search
+input#nav-search[type="search"] { max-width: unset; border-radius: unset; }
 
 
 
@@ -131,7 +138,7 @@ input[type="submit"] {
 
 
 
-
+// Advanced Search Form
 .search-form {
 
   .select, .input {
@@ -297,6 +304,7 @@ input[type="submit"] {
 
 
 
+
 // Compact Search
 .search-form.search-compact {
   padding-bottom: .35rem;
@@ -318,6 +326,8 @@ input[type="submit"] {
     padding: .7rem .2rem;
   }
 }
+
+
 
 
 // Advanced Search Trigger
