@@ -247,7 +247,7 @@ if(!is_admin()) {
 
 // 15d. Hide default login screen
 //      src: https://wordpress.stackexchange.com/a/331091
-add_action( 'init', 'dbllc_login_redirect');
+//add_action( 'init', 'dbllc_login_redirect');
 
 function dbllc_login_redirect(){
 	global $pagenow;
@@ -285,15 +285,22 @@ add_filter( 'authenticate', 'darkblank_blank_username_password', 1, 3);
 
 function darkblank_blank_username_password( $user, $username, $password ) {
 	global $page_id;
-	$login_page = home_url();
-	$referrer = $_SERVER['HTTP_REFERER'];  // where did the post submission come from?
+	$home = home_url();
 
-	// if there's a valid referrer, and it's not the default log-in screen
-	if ( !empty($referrer) && !strstr($referrer,'wp-login') /* && !strstr($referrer,'wp-admin') */ ) {
+	if(isset ($_SERVER['HTTP_REFERER'])) {
+		$referrer = $_SERVER['HTTP_REFERER'];  // where did the post submission come from?
+	}
+
+		// if there's a valid referrer, and it's not the default log-in screen
+	if (isset($referrer) && !empty($referrer) && !strstr($referrer,'wp-login') /* && !strstr($referrer,'wp-admin') */ ) {
 		if( $username == "" || $password == "" ) {
-			wp_redirect( $login_page . "/admin-login/" );
+			wp_redirect( $home );
 			exit;
 		}
+	}
+	else {
+		wp_redirect( $home );
+		exit;
 	}
 }
 
@@ -314,7 +321,7 @@ add_action( 'login_enqueue_scripts', 'my_login_logo' );
 function my_login_logo_url() {
   return home_url();
 }
-// add_filter( 'login_headerurl', 'my_login_logo_url' );
+add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 
 // 15j. Exclude login page template from native search results
