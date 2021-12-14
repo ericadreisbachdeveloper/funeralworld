@@ -127,7 +127,7 @@ function dbllc_header_scripts() {
 
 
 	if(is_page('About')) {
-		wp_register_script('accordionjs', TDIR . '/js/dev/accordion.js', '', '1.0.4', false);
+		wp_register_script('accordionjs', TDIR . '/js/dev/accordion.js', '', '1.0.5', false);
 		 wp_enqueue_script('accordionjs');
 	}
 
