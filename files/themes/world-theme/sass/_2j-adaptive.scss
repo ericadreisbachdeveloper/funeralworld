@@ -314,7 +314,11 @@
 
    #menu-footer li { display: inline-block; padding: .8em 1.5em;  }
 
-   .site-footer .col-footer { width: 33%; }
+   //.site-footer .col-footer { width: 33%; }
+   .site-footer .col-footer { width: 50%; }
+   .footer-h3 { text-align: center; }
+   .col-footer .menu { @include flex; @include flex-direction-col; @include align-items(center); }
+
    .site-footer .col-footer:nth-of-type(2n),
    .site-footer .col-footer:nth-of-type(2n+1) { clear: unset; }
    .site-footer .col-footer:nth-of-type(3n+1) { clear: left; }
@@ -478,6 +482,9 @@
       height: 1.8rem;
     }
   }
+
+  .footer-h3 { text-align: left; }
+  .col-footer .menu { @include align-items(flex-start); }
 
   .site-footer [class*="col"].col-footer {
     float: left;
