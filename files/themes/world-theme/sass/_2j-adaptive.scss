@@ -161,6 +161,9 @@
   .-desktop { display: block; }
 
 
+  .corset { max-width: 47rem; margin-right: auto; margin-left: auto; }
+
+
 
   // Classes - medium
   %link-line { @include transition(background-image .2s ease-in-out, background-size .2s ease-in-out, color .2s ease-in-out); }
