@@ -52,13 +52,13 @@
 [data-role="main"],
 [data-role="main"] .small-h2,
 [data-role="main"] .article-h2,
-// [data-role="main"] h3,
 [data-role="main"] .has-default-font-size { @extend %text; }
 
 [data-role="main"] .small-h2 { text-transform: none; }
 
 
 
+[data-role="main"] [id*="post-"] .registration-closed  p { @extend %select; }
 .search-form:not(.search-compact) .select { @extend %select; }
 
 .search-form.search-compact input[type="search"],
@@ -127,6 +127,9 @@
 
 
   %select       { font-size: 1.2rem; line-height: 1; }
+
+
+
 
   .resource-pdf,
   [data-role="main"] .sidebar-h2,

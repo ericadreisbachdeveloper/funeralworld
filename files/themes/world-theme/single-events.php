@@ -114,11 +114,42 @@
 					<?php endif; echo $display_time; ?>
 					</div><!-- /.date-time-div -->
 
-					<?php if(get_field('registration-link')) : ?>
+
+					<?php $tdy_dt = new DateTime('today', new DateTimeZone('UTC + 5'));
+						    $tdy    = $tdy_dt->format('Ymd');
+								$tdy    = intval($tdy);
+
+								// if end date exists
+								if(get_field('event-end-date')) { $compare_day = get_field('event-end-date'); }
+								else { $compare_day = get_field('event-start-date'); }
+
+
+								?>
+
+
+
+					<!-- if a registration link exists -->
+					<!-- AND -->
+					<!-- if there is no end date and start date > today -->
+					<!-- OR if end date exists and end date > today -->
+					<!-- message: Registration for this event has ended -->
+					<!-- ELSE -->
+
+					<?php if(get_field('registration-link') && $tdy <= $compare_day ) : ?>
 					<div class="register-div">
 						<a class="register-a wp-block-button__link" href="<?= esc_url(get_field('registration-link')); ?>" target="_blank" rel="noopener">Register</a>
 					</div><!-- /.register-div -->
+
+					<?php elseif(get_field('registration-link') && $tdy > $compare_day ) : ?>
+					<div class="gutenberg-section core-paragraph">
+						<div class="register-div registration-closed">
+							<p><em>Registration for this event is closed.</em></p>
+						</div>
+					</div>
+
 					<?php endif; ?>
+
+
 
 				</div><!-- /.date-register-div -->
 
