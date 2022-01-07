@@ -149,11 +149,8 @@ add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
 function add_async_attribute($tag, $handle) {
 
 	if ( ! is_admin() ) {
-		if ( 'jquery-core' !== $handle ) {
-			return str_replace( ' src', ' defer src', $tag );
-		}
-		elseif( 'jquery-core' == $handle ) {
-			return str_replace( ' src', ' src', $tag );
+		if ( 'jquery-core' !== $handle && 'wp-i18n' !== $handle && 'wp-hooks' !== $handle) {
+			return str_replace('src', 'defer src', $tag );
 		}
 	}
 	return $tag;

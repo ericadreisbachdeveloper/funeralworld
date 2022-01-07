@@ -7,7 +7,7 @@
 
 <main data-role="main" id="main">
 	<div class="container">
-		<div class="corset">
+		<!-- <div class="corset"> -->
 			<section class="section">
 
 
@@ -103,7 +103,7 @@
 
 
 			</section>
-		</div><!-- /.corset -->
+		<!-- </div><!-- /.corset -->
 	</div><!-- /.container -->
 
 
