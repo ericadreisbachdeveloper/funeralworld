@@ -58,7 +58,7 @@
 <h2>Duplicate Pages </h2>
 <p>To clone an existing page, hover over the page name in the list under <strong>Pages&nbsp;&gt;&nbsp;All&nbsp;Pages</strong> and click <strong>Duplicate</strong> </p>
 
-<h2>Backing Up the Database</h2>
+<h2>Back Up the Database</h2>
 
 <p>Export and save a .sql file of the database via <strong>Tools > Migrate DB Pro > BACK UP</strong></p>
 
@@ -81,7 +81,7 @@
 
 
 <h2>Featured Image Sizes </h2>
-<p>Rescommened upload size for Featured Images is <strong>1120 pixels wide x 600 pixels high</strong>. 
+<p>Rescommened upload size for Featured Images is <strong>1120 pixels wide x 600 pixels high</strong>.
 
 
 <h2>Custom Classes </h2>

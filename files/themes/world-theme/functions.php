@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.27';
+$style_vsn = '1.1.28';
 
 
 
@@ -247,18 +247,20 @@ if(!is_admin()) {
 
 // 15d. Hide default login screen
 //      src: https://wordpress.stackexchange.com/a/331091
-//add_action( 'init', 'dbllc_login_redirect');
+add_action( 'init', 'dbllc_login_redirect');
 
 function dbllc_login_redirect(){
 	global $pagenow;
 	if( 'wp-login.php' == $pagenow && $_GET['action']!="logout" && $_GET['action']!="lostpassword" && $_GET['action']!="rp") {
-		wp_redirect( home_url( '/' ) );
+		//wp_redirect( home_url( '/' ) );
+		wp_redirect( home_url( '/404' ) );
 	}
 }
 
 
 // 15e. Redirect home on logout
-// add_action('wp_logout','auto_redirect_after_logout');
+add_action('wp_logout','auto_redirect_after_logout');
+
 function auto_redirect_after_logout(){
 	wp_redirect( home_url( '/' ) );
 	exit();
@@ -266,7 +268,7 @@ function auto_redirect_after_logout(){
 
 
 // 15f. Redirect to login page on failed login
-//add_action( 'wp_login_failed', 'darkblack_login_fail' );
+add_action( 'wp_login_failed', 'darkblack_login_fail' );
 function darkblack_login_fail( $username ) {
 	$referrer = $_SERVER['HTTP_REFERER'];  // where did the post submission come from?
 
@@ -280,7 +282,8 @@ function darkblack_login_fail( $username ) {
 }
 
 
-// 15g. Redirect to login page with blank username or password
+// 15g. Upon bad login credentials
+//      redirect to custom login page with blank username or password
 //add_filter( 'authenticate', 'darkblank_blank_username_password', 1, 3);
 
 function darkblank_blank_username_password( $user, $username, $password ) {
@@ -362,6 +365,7 @@ function exclude_page_templates_from_search($query) {
     }
 }
 add_filter('pre_get_posts','exclude_page_templates_from_search');
+
 
 
 
