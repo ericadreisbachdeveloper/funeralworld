@@ -49,7 +49,7 @@
     $author = $_GET['author'];
 
     $args = array(
-      'post_type' => 'post',
+      //'post_type' => 'post',
       'post_status' => 'publish',
 
       'posts_per_page' => $posts_per_page,
@@ -67,7 +67,7 @@
   // no author specified
   else {
     $args = array(
-      'post_type' => 'post',
+      //'post_type' => 'post',
       'post_status' => 'publish',
 
       'posts_per_page' => $posts_per_page,

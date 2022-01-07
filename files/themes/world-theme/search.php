@@ -9,7 +9,6 @@
 
 <!-- if query includes post_type=post                            -->
 <!-- then include searchform at the top of the page              -->
-<!-- ... or ADVANCED SEARCH for everything ???                   -->
 
 
 <main data-role="main" id="main">
@@ -54,7 +53,9 @@
 
 									<?php
 										if (isset($_GET['s'])) { $s = $_GET['s']; }
+
 										global $audience_select; global $author_select; global $topic_select; global $type_select;
+
 										global $search_array;
 										       $search_array = array($s, $audience_select, $author_select, $topic_select, $type_select);
 									?>
@@ -299,6 +300,7 @@
 
 
 											</div><!-- /.container -->
+
 
 
 											<?php get_template_part('loop-search'); ?>

@@ -11,21 +11,16 @@
 			<?php
 			  global $wp_query;
 
-				$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-
 				$tmw_dt = new DateTime('tomorrow', new DateTimeZone('UTC + 5'));
 				$tmw    = $tmw_dt->format('Ymd');
 				$tmw    = intval($tmw);
 
 				$args = array(
-				  'post_type' => array('page','events'),
-				  'posts_per_page' => 10,
-				  'paged' => $paged,
+				  'post_type' => array('page', 'events'),
+				  'posts_per_page' => 999999,
 
 					's' => $_GET['q'],
 
-					'meta_key' => 'event-start-date',
-					'order_by' => 'meta_value',
 					'order' => 'ASC'
 				);
 
@@ -56,7 +51,7 @@
 
 
 
-		<?php get_template_part('pagination'); endif; wp_reset_query(); endwhile; ?><!-- /endwhile have_posts() for the page query -->
+		<?php endif; wp_reset_query(); endwhile; ?><!-- /endwhile have_posts() for the page query -->
 
 
 
