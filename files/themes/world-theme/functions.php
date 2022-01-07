@@ -266,7 +266,7 @@ function auto_redirect_after_logout(){
 
 
 // 15f. Redirect to login page on failed login
-add_action( 'wp_login_failed', 'darkblack_login_fail' );
+//add_action( 'wp_login_failed', 'darkblack_login_fail' );
 function darkblack_login_fail( $username ) {
 	$referrer = $_SERVER['HTTP_REFERER'];  // where did the post submission come from?
 
@@ -281,7 +281,7 @@ function darkblack_login_fail( $username ) {
 
 
 // 15g. Redirect to login page with blank username or password
-add_filter( 'authenticate', 'darkblank_blank_username_password', 1, 3);
+//add_filter( 'authenticate', 'darkblank_blank_username_password', 1, 3);
 
 function darkblank_blank_username_password( $user, $username, $password ) {
 	global $page_id;

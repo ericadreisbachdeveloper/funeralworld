@@ -80,6 +80,9 @@
 <p>The nonbreaking space will be invisible from the <strong>Visual</strong> tab and on the front end. </p>
 
 
+<h2>Featured Image Sizes </h2>
+<p>Rescommened upload size for Featured Images is <strong>1120 pixels wide x 600 pixels high</strong>. 
+
 
 <h2>Custom Classes </h2>
 <p>Custom CSS classes for use in the <strong>Advanced > Additional CSS Class(es)</strong> panel of a given Post or Page edit screen include: </p>
