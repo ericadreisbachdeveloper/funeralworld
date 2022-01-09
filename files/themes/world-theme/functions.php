@@ -133,7 +133,7 @@ function dbllc_header_scripts() {
 
 
 	if(is_archive() || is_search()) {
-		wp_register_script('no-widows', TDIR . '/js/dev/advanced-search.js', 'jquery-core', '1.0.11', false);
+		wp_register_script('no-widows', TDIR . '/js/dev/advanced-search.js', 'jquery-core', '1.0.12', false);
 		 wp_enqueue_script('no-widows');
 	}
 
@@ -343,7 +343,7 @@ function exclude_page_templates_from_search($query) {
 		);
 
 
-    if ( ($wp_the_query === $query) && (is_search()) && ( ! is_admin()) ) {
+    if ( ($wp_the_query === $query) && is_search() && !is_admin() ) {
 
         $meta_query =
             array(

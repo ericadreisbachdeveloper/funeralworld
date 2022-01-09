@@ -151,7 +151,8 @@ function loadpage() {
   var select = document.querySelector('#sort-by');
   var sort = select.options[select.options.selectedIndex].id;
 
-  document.querySelector('#sort').value = sort;
+  //document.querySelector('#sort-by').value = sort;
+  select.value = sort;
 
 
   // If there is an existing sort query in URL

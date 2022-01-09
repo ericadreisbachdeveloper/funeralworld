@@ -40,8 +40,6 @@
 
 
 
-
-
   // author doesn't run in tax_query
   // thus author has a separate conditional
   if(isset($_GET['author']) && $_GET['author'] !== '')  {
@@ -49,7 +47,7 @@
     $author = $_GET['author'];
 
     $args = array(
-      //'post_type' => 'post',
+      'post_type' => 'post',
       'post_status' => 'publish',
 
       'posts_per_page' => $posts_per_page,
@@ -64,10 +62,30 @@
   }
 
 
-  // no author specified
+  // if this is a pages and events search (not Resources / posts)
+  elseif(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page' ) {
+    $args = array(
+      'post_type' => array('page', 'events'),
+      'post_status' => 'publish',
+
+      'posts_per_page' => $posts_per_page,
+      'paged' => $paged,
+
+      'meta_query' => array(
+        array(
+          'key'   => '_wp_page_template',
+          'value' => 'page-login.php',
+          'compare' => '!='
+        )
+      )
+    );
+  }
+
+
+  // else if no author is specified
   else {
     $args = array(
-      //'post_type' => 'post',
+      'post_type' => 'post',
       'post_status' => 'publish',
 
       'posts_per_page' => $posts_per_page,
@@ -75,15 +93,12 @@
 
       's' => $query,
 
-
       'tax_query' => $tax_query
     );
 
   }
 
 
-
-  // TO DO ... .... ...... if $sort then remove resources w/ no sort from number of results
 
   // Sort!
   $order = array();

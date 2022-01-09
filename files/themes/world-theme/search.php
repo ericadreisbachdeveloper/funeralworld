@@ -10,15 +10,28 @@
 <!-- if query includes post_type=post                            -->
 <!-- then include searchform at the top of the page              -->
 
+<!-- if query includes post_type=pages                           -->
+<!-- then show separate results that look like archive.php       -->
+
+
 
 <main data-role="main" id="main">
 
+	<!-- if url includes post_type=pages          -->
+	<!-- .... then don't load compact search form -->
+	<?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0) == 'pages') : ?>
 
+
+	<!-- but otherwise, load it -->
+	<?php else : ?>
 	<section class="section">
 
 		<?php get_template_part('searchform-compact'); ?>
 
 	</section>
+	<?php endif; ?>
+
+
 
 
 

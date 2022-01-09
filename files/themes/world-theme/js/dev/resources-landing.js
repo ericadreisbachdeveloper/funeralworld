@@ -2,6 +2,7 @@
 
 jQuery(function($){
 
+
   // I. NO WIDOWS
   $('.archive-h2').each(function(){
 
