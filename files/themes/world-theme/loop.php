@@ -1,5 +1,8 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
 
+<!-- Template file to display Wordpress-generated archive templates -->
+<!-- Author, Topic, Category, Tag                                   -->
+
 
 <?php if (have_posts()): ?>
 

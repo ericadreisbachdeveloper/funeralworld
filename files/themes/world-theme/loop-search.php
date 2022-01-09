@@ -1,6 +1,9 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
 
 
+<!-- Template file for displaying individual search results -->
+<!-- i.e. <article>                                         -->
+
 
 <?php global $wp_query;
 

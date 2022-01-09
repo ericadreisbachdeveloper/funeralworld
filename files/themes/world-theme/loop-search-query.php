@@ -1,6 +1,10 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
 
 
+<!-- Determines variables in query                     -->
+<!-- for Resources and Wordpress native search results -->
+
+
 <?php
   global $wp_query; global $posts_per_page; global $args;
 
@@ -34,8 +38,6 @@
 
     $tax_query = array('tax_query' => $tax_query_array);
   }
-
-
 
 
 
