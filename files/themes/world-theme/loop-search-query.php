@@ -61,26 +61,28 @@
 
       'tax_query' => $tax_query
     );
+
   }
 
 
   // if this is a pages and events search (not Resources / posts)
   elseif(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page' ) {
+
     $args = array(
       'post_type' => array('page', 'events'),
+
       'post_status' => 'publish',
 
       'posts_per_page' => $posts_per_page,
       'paged' => $paged,
 
-      'meta_query' => array(
-        array(
-          'key'   => '_wp_page_template',
-          'value' => 'page-login.php',
-          'compare' => '!='
-        )
-      )
+      's' => $query,
+
+      // exclude login from native search results
+
+
     );
+
   }
 
 

@@ -1,15 +1,18 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {  exit; } ?>
 <!-- Used on:
-              /?s=   Native Search, Advanced Search
--->
+<!-- /?s=                                             -->
+<!-- i.e. Native Search, Advanced Search              -->
+
+<!-- Wordpress-generated Category, Tag, Author pages  -->
+<!-- funeralworld.org/topic/covid/                    -->
+<!-- funerworld.org/tagged/mortuary-science           -->
+<!-- funeralworld.org/author/funeral-director/        -->
 
   <?php global $terms; global $firstterm; global $post_type;
         $tags = get_the_tags();
   ?>
 
-  <!-- used on Wordpress-generated Category, Tag, Author pages -->
-  <!-- funeralworld.org/topic/covid/ -->
-  <!-- funeralworld.org/topic/covid/ -->
+
   <div class="resource-meta">
 
 
@@ -30,7 +33,7 @@
 
 
     <!-- otherwise, use default Wordpress publish date -->
-    <?php elseif($post_type !== 'events' && $post_type !== 'page') : ?>
+    <?php elseif($post_type !== 'events' && $post_type !== 'any' && $post_type !== 'page') : ?>
 
     <?php $displaydate = get_the_time("F j, Y"); ?>
     <div class="meta-time">
@@ -40,7 +43,7 @@
 
 
 
-    <?php if($post_type == 'events') : ?>
+    <?php if($post_type == 'events' || $post_type == 'any') : ?>
 
     <?php $display_date = $start = $end = '';
 
@@ -87,7 +90,7 @@
           }
     ?>
     <div class="meta-event">
-      <h2 class="meta-h2">EVENT: <?= $display_date; ?></h2>
+      <h2 class="meta-h2">EVENT DATE<?php if(isset($end_d)) { _e('s'); } ?>:  <?= $display_date; ?></h2>
     </div>
     <?php endif; ?>
 

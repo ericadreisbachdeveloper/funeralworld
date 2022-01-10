@@ -18,8 +18,8 @@
 <main data-role="main" id="main">
 
 	<!-- if url includes post_type=pages          -->
-	<!-- .... then don't load compact search form -->
-	<?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0) == 'pages') : ?>
+	<!-- then DON'T load compact search form -->
+	<?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') : ?>
 
 
 	<!-- but otherwise, load it -->
@@ -45,6 +45,13 @@
 							<div class="wp-block-columns search-columns">
 
 
+
+
+								<!-- if url includes post_type=pages          -->
+								<!-- then DON'T load sidebar                  -->
+								<?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) !== 'page') : ?>
+
+
 								<!-- sidebar -->
 								<div class="wp-block-column hide-md-and-smaller" style="flex-basis: 25%;">
 									<div class="gutenberg-section core-shortcode">
@@ -60,8 +67,11 @@
 								<div class="wp-block-column hide-md-and-smaller" style="flex-basis:0px"></div>
 
 
+								<?php endif; ?>
 
-								<div class="wp-block-column full-width-md-and-smaller" style="flex-basis:75%">
+
+
+								<div class="wp-block-column full-width-md-and-smaller" <?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') : ?> <?php else : ?>style="flex-basis:75%"<?php endif; ?>>
 
 
 									<?php
@@ -85,10 +95,10 @@
 														 $s = $wp_query->found_posts;
 													if($s == '1') { $sp = ''; } else { $sp = 's'; } ?>
 
-													<h1 class="post search-results-h1"><?= $s . ' Search Result' . $sp; ?></h1>
+													<h1 class="post search-results-h1<?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') : ?> pages-events<?php endif; ?>"><?= $s . ' Search Result' . $sp; ?></h1>
 
 
-
+												<?php if(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) !== 'page') : ?>
 												<?php if(isset($_GET['sort'])) { $sort = $_GET['sort']; } else { $sort = ''; } ?>
 												<div class="sort-div">
 													<label for="sort-by">Sort by &nbsp;</label>
@@ -99,6 +109,7 @@
 														<option id="oldest-published"<?php if($sort == 'oldest-published' || (isset($_GET['sort']) && $_GET['sort'] == 'oldest-published')) { _e(' selected'); } ?>>Oldest Published </option>
 													</select>
 												</div>
+												<?php endif; ?>
 
 											</div>
 
@@ -111,6 +122,7 @@
 												<?php endif; ?>
 
 
+												<?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) !== 'page') : ?>
 												<?php if(array_filter($search_array)) : ?>
 												<?php $audience_term = $author_term = $topic_term = $type_term = $filteredurl = '';  ?>
 												<div class="filter-buttons">
@@ -148,7 +160,7 @@
 														} ?>
 
 													<a href="<?= esc_url($filteredurl); ?>" data-input="s" data-value="<?= $search_array[0]; ?>">SEARCH: <?= $search_array[0]; ?></a>
-													<?php endif; ?>
+												 <?php endif; endif; ?>
 													<!-- /0. Search -->
 
 
@@ -329,10 +341,10 @@
 									</div><!-- /.gutenberg-section.core-shortcode -->
 
 
-									<?= do_shortcode('[gravityform id="2" title="true" description="true" ajax="true"]'); ?>
 
 
 								</div><!-- /.wp-block-column -->
+
 
 
 							</div><!-- /.wp-block-columns -->

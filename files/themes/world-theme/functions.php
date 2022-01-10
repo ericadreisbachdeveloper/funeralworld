@@ -343,7 +343,7 @@ function exclude_page_templates_from_search($query) {
 		);
 
 
-    if ( ($wp_the_query === $query) && is_search() && !is_admin() ) {
+    if ( is_search() && !is_admin() ) {
 
         $meta_query =
             array(
@@ -360,6 +360,8 @@ function exclude_page_templates_from_search($query) {
 
         $query->set('meta_query', $meta_query);
     }
+
+
 }
 add_filter('pre_get_posts','exclude_page_templates_from_search');
 
