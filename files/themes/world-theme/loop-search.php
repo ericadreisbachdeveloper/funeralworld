@@ -93,6 +93,34 @@
 
 					<?php else : ?>
 					<h2 class="archive-h2" id="archive-h2"><?php the_title(); ?></h2>
+
+
+          <?php $display_date = $start = $end = '';
+
+                $tmw_dt = new DateTime('tomorrow', new DateTimeZone('UTC + 5'));
+                $tmw    = $tmw_dt->format('Ymd');
+                $tmw    = intval($tmw);
+
+                if(get_field('event-start-date')) {
+                  // get start
+                  $start = get_field('event-start-date');
+                  $start = strtotime($start);
+                  $start = intval($start);
+                }
+
+                // multi-day event
+                if(get_field('event-end-date')) {
+                  $end = get_field('event-end-date');
+                  $end = strtotime($end);
+                  $end = intval($end);
+                }
+
+                if(isset($end) && $end > $tmw) { _e('<p class="event-passed"><em>This event has passed.</em> </p>'); }
+                elseif (isset($start) && $start > $tmw) { _e('<p class="event-passed"><em>This event has passed.</em> </p>'); }
+          ?>
+
+
+          <!-- <p class="event-passed"><em>This event has passed. </em></p> -->
 					<?php endif; ?>
 
 					<p class="archive-p"><?php _e(dbllc_excerpt()); ?></p>
