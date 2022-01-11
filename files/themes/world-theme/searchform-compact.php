@@ -29,10 +29,11 @@
 
 
 				<!-- START Query -->
-				<div class="col-xs-12">
+				<div class="col-xs-12 query">
 					<?php if (isset($_GET['s'])) { $s = $_GET['s']; } ?>
-					<label class="hidden" for "search-input" tabindex="-1">
+					<label class="hidden" for "search-input" tabindex="-1"> </label>
 					<input id="search-input" class="search-input input" value="<?= $s; ?>" type="search" name="s" placeholder="<?php _e( 'What are you looking for?', 'dbllc' ); ?>">
+					<button class="search-submit-input" type="submit" aria-label="Search This Query"></button>
 				</div>
 				<!-- END Query -->
 

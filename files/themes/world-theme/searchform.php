@@ -6,9 +6,17 @@
 
 	<form class="search-form" method="get" role="search" action="<?php _e(home_url()); ?>">
 
-		<input id="search-input" class="search-input input" type="search" name="s" placeholder="<?php _e( 'What are you looking for?', 'dbllc' ); ?>">
+		<div class="row">
+			<div class="col-xs-12 query">
+				<label class="hidden" for "search-input" tabindex="-1"> </label>
+				<input id="search-input" class="search-input input" type="search" name="s" placeholder="<?php _e( 'What are you looking for?', 'dbllc' ); ?>">
+				<button class="search-submit-input" type="submit" aria-label="Search This Query"></button>
+			</div>
+		</div>
+
 
 		<h2 class="form-h2">Filter your search </h2>
+
 
 		<div class="row advanced-search-row">
 

@@ -208,6 +208,14 @@
     }
   }
 
+  .search-form [type="submit"].search-submit-input {
+    @include hover {
+      &:after {
+        @include transition(background-image .2s ease-in-out);
+      }
+    }
+  }
+
 
 
   // Blog - medium
@@ -403,18 +411,22 @@
   // Search - large
   .gutenberg-section.core-shortcode #search-results .hentry > [href] > .container { width: 100%; }
 
+
   .search-form.search-compact {
     input[type="search"] {
       border-bottom: unset;
       padding-top: .3rem;
       padding-bottom: .3rem;
     }
-
-    [type="submit"] {
-      max-width: unset;
-      padding: .16rem .2rem .12rem;
-    }
   }
+
+  .search-form.search-compact [type="submit"]:not(.search-submit-input) {
+    max-width: unset;
+    padding: .16rem .2rem .12rem;
+  }
+
+  .search-form.search-compact [type="submit"].search-submit-input { padding: .8rem;  }
+
 
   .filter-buttons > [href] { padding: .1rem .5rem .1rem 1.25rem; }
 
@@ -451,6 +463,15 @@
   // Advanced Search Compact - large
   #advanced-search-trigger:not(.-show) + #advanced-search-container {
     max-height: unset;
+  }
+
+  .search-form [type="submit"].search-submit-input {
+    right: 1.2rem;
+  }
+
+  .search-form.search-compact [type="submit"].search-submit-input {
+    top: .05rem;
+    right: .7rem;
   }
 
 
