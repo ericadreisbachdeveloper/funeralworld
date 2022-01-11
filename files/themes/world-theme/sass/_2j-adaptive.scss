@@ -491,7 +491,7 @@
 
 
   // Sticky Footer - large
-  $footerh: 34.1rem;
+  $footerh: 34.5rem;
   .wrapper { min-height: 100vh; margin-bottom: -$footerh; }
   .wrapper:after { content: ''; display: block; clear: both; }
   .wrapper:after, .site-footer { height:$footerh; }

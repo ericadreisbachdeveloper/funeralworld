@@ -329,8 +329,17 @@ figure.alignright figcaption  { text-align: right; }
   background-size: cover;
   background-position: 50% 50%;
 
-  padding-top: 3rem;
   padding-bottom: 3rem;
+}
+
+
+
+.footer-social-media {
+  background-color: $navy;
+}
+
+.footer-menus {
+  padding-top: 2rem;
 }
 
 
@@ -395,7 +404,7 @@ figure.alignright figcaption  { text-align: right; }
 .menu[id*="social"] {
   list-style-type: none;
   margin: 0;
-  padding: 2rem 0;
+  padding: 2rem 0 1rem;
 
   @include flex;
   @include justify-content(center);

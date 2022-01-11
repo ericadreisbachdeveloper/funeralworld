@@ -3,10 +3,10 @@
 
 
 
-<footer class="site-footer">
+<footer class="site-footer footer-logomark">
 
 
-	<div class="container-fluid">
+	<div class="container-fluid footer-social-media">
 		<div class="container">
 			<div class="row footer-social-row">
 				<?php if(has_nav_menu('social-menu')) : ?>
@@ -21,7 +21,7 @@
 	</div>
 
 
-	<div class="container-fluid footer-logomark">
+	<div class="container-fluid footer-menus">
 		<div class="container">
 
 			<!-- if is single, show navigation -->
