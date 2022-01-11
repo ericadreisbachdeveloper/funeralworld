@@ -109,7 +109,6 @@ $style_vsn = '1.1.29';
 //    - unminified in js/dev/scripts.js
 function dbllc_header_scripts() {
 
-
 	wp_register_script('jquery-core', '', 'jquery-core', '', false);
 	wp_enqueue_script('jquery-core');
 

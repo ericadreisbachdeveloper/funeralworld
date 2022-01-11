@@ -13,6 +13,7 @@
   ?>
 
 
+
   <div class="resource-meta">
 
 
@@ -48,7 +49,8 @@
 
 
 
-    <?php if($post_type == 'events') : ?>
+
+    <?php if($post_type == 'events' || $post_type == 'any') : ?>
 
     <?php $display_date = $start = $end = '';
 

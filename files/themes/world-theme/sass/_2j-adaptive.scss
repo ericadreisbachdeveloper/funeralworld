@@ -420,8 +420,19 @@
 
   .search-columns > .wp-block-column:first-of-type { padding-bottom: 2rem; }
 
-
   .caveat { padding-top: 0; }
+
+
+
+  #navmenu.show .search-submit,
+  #navmenu:not(.show) .search-submit {
+    display: block;
+  }
+
+  #navmenu .search-submit {
+    top: 11rem;
+    right: -27rem;
+  }
 
 
 

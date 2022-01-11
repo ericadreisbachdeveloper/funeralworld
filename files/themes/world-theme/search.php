@@ -17,7 +17,8 @@
 
 <main data-role="main" id="main">
 
-	<!-- if url includes post_type=pages          -->
+
+	<!-- if url begins with post_type=pages  -->
 	<!-- then DON'T load compact search form -->
 	<?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') : ?>
 

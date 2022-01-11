@@ -367,7 +367,7 @@ $navborder: .05rem solid #dedede;
    right: 2.5rem;
   -webkit-appearance: none;
 
-  @include hover { cursor: pointer; }
+  @include hover { &:after { cursor: pointer; } }
 
   &:after {
     width: 1rem;
