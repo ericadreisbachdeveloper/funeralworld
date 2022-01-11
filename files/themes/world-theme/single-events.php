@@ -143,7 +143,7 @@
 					<?php elseif(get_field('registration-link') && $tdy > $compare_day ) : ?>
 					<div class="gutenberg-section core-paragraph">
 						<div class="register-div registration-closed">
-							<p><em>Registration for this event is closed.</em></p>
+							<p><em>This event has passed.</em> </p>
 						</div>
 					</div>
 

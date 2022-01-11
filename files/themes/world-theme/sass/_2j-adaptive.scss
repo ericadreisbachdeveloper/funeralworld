@@ -60,12 +60,13 @@
   }
 
 
+
   .archive .meta-tags {
     max-width: 45%;
   }
 
   .search-results, .search-no-results, .page-template {
-    .archive-a > .container { @include flex; }
+    .archive-a > .container { @include flex; max-width: 100%; }
     .archive-img { padding-right: 1.5rem; }
   }
 
@@ -571,13 +572,22 @@
   // Archive - wide
   // Advanced Search - wide
   // Our Work - wide
-  .search-results, .search-no-results, .archive, .page-template {
+  .search-results, .search-no-results, .archive, .page-template  {
     .archive-a .resource-meta {
       @include flex;
       @include justify-content(flex-start);
       @include flex-direction-row;
 
       [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 3.44rem; }
+    }
+  }
+
+
+  .search-results, .search-no-results {
+    .archive-a .archive-meta > .resource-meta {
+      @include flex-direction-col;
+      [class*="meta"] + [class*="meta"] { padding-top: .5rem; padding-left: 0; }
+
     }
   }
 

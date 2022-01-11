@@ -324,9 +324,9 @@ function my_login_logo_url() {
 add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 
-// 15j. Exclude login page template from native search results
-//      also exclude Kitchen Sink
-//      src: https://stackoverflow.com/a/28983318
+// XXXX 15j. Exclude login page template from native search results
+//           also exclude Kitchen Sink
+//           src: https://stackoverflow.com/a/28983318
 function exclude_page_templates_from_search($query) {
 
     global $wp_the_query;
@@ -343,7 +343,11 @@ function exclude_page_templates_from_search($query) {
 		);
 
 
-    if ( is_search() && !is_admin() ) {
+
+		//print_r($wp_the_query);
+
+
+    if ( !is_admin() ) {
 
         $meta_query =
             array(
@@ -351,19 +355,20 @@ function exclude_page_templates_from_search($query) {
                 // set OR
                 'relation' => 'OR',
 
-                // remove pages with excluded templates from results
+                // exclude pages with excluded templates from results
                 $excluded,
 
                 // show entries without a '_wp_page_template' key (posts)
                 $no_template,
             );
 
-        $query->set('meta_query', $meta_query);
+        //$query->set('meta_query', $meta_query);
     }
 
 
+
 }
-add_filter('pre_get_posts','exclude_page_templates_from_search');
+//add_filter('pre_get_posts','exclude_page_templates_from_search', 99);
 
 
 

@@ -95,7 +95,11 @@
 														 $s = $wp_query->found_posts;
 													if($s == '1') { $sp = ''; } else { $sp = 's'; } ?>
 
-													<h1 class="post search-results-h1<?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') : ?> pages-events<?php endif; ?>"><?= $s . ' Search Result' . $sp; ?></h1>
+													<h1 class="post search-results-h1<?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') : ?> pages-events<?php endif; ?>"><?= $s . ' '; ?><?php if(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') { echo 'Site'; } ?><?= ' Search Result' . $sp; ?><?php if(isset($_GET['s']) && $_GET['s'] !== '') { _e(' for &ldquo;' . $_GET['s'] . '&rdquo;'); } ?></h1>
+
+													<?php if(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') : ?>
+													<p class="looking-for"><em>Looking for white papers, videos, and more? Try our <a href="<?= esc_url(WP_SITEURL) . 'resources/'; ?>">Resources</a> page!</em></p>
+													<?php endif; ?>
 
 
 												<?php if(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) !== 'page') : ?>

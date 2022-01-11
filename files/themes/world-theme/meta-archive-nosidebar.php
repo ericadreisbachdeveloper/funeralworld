@@ -27,12 +27,13 @@
     </div>
 
     <!-- otherwise, use default Wordpress publish date -->
-  <?php elseif($post_type !== 'events' && $post_type !== 'page') : ?>
+    <?php /* elseif($post_type !== 'events' && $post_type !== 'page') :  */ ?>
 
-    <?php $displaydate = get_the_time("F j, Y"); ?>
-    <div class="meta-time">
-      <h2 class="meta-h2">DATE ADDED:</h2> <?= $displaydate; ?>
+    <?php /* $displaydate = get_the_time("F j, Y");  */ ?>
+    <!-- <div class="meta-time">
+      <h2 class="meta-h2">DATE ADDED:</h2> <? /* = $displaydate; */ ?>
     </div>
+    -->
     <?php endif; ?>
 
 

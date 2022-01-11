@@ -38,7 +38,7 @@
 
 
 									// 4. this page
-									echo '<li class="breadcrumb-li" data-li-current><a data-a="current-article" href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+									echo '<li class="breadcrumb-li" data-li-current><a aria-current="page" data-a="current-article" href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
 
 									echo '</ol>';
 								} // END foreach $topics as $topic

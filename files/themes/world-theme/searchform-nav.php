@@ -11,7 +11,7 @@
 
 
 	<label class="hidden" for="post_type" tabindex="-1" style="display: none; max-height: 0; position: absolute; left: -99999px;">post_type</label>
-	<input name="post_type" id="post_type" type="text" tabindex="-1" style="display: none; max-height: 0; position: absolute; left: -99999px;" value="pages%2Cevents" />
+	<input name="post_type" id="post_type" type="text" tabindex="-1" style="display: none; max-height: 0; position: absolute; left: -99999px;" value="page%2Cevents" />
 
 
 	<button class="search-submit" type="submit" aria-label="Search This Query"></button>

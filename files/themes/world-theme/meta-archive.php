@@ -20,25 +20,30 @@
     <?php if (get_field('resource_publish_date')) : ?>
     <?php $publishdate = get_field('resource_publish_date'); $displaydate = DateTime::createFromFormat('m/d/Y', $publishdate); ?>
     <div class="meta-time">
-      <h2 class="meta-h2">PUBLISHED:</h2> <span class="wd-br"></span><?= $displaydate->format('F j, Y'); ?>
+      <h2 class="meta-h2">PUBLISHED:</h2> <?= $displaydate->format('F j, Y'); ?>
     </div>
 
 
     <!-- if resource type is a website, no other meta will exist, so publish on one line -->
-    <?php elseif ($firstterm && $firstterm->slug == 'website') : ?>
-    <?php $displaydate = get_the_time("F j, Y"); ?>
-    <div class="meta-time">
-      <h2 class="meta-h2">DATE ADDED:</h2> <?= $displaydate; ?>
+    <?php //elseif ($firstterm && $firstterm->slug == 'website') : ?>
+    <?php // $displaydate = get_the_time("F j, Y"); ?>
+    <!-- <div class="meta-time">
+      <h2 class="meta-h2">DATE ADDED:</h2> <? // = $displaydate; */ ?>
     </div>
+    -->
+
 
 
     <!-- otherwise, use default Wordpress publish date -->
-    <?php elseif($post_type !== 'events' && $post_type !== 'any' && $post_type !== 'page') : ?>
+    <?php /* elseif($post_type !== 'events' && $post_type !== 'any' && $post_type !== 'page') :  */ ?>
 
-    <?php $displaydate = get_the_time("F j, Y"); ?>
+    <?php /* $displaydate = get_the_time("F j, Y"); */  ?>
+    <!--
     <div class="meta-time">
-      <h2 class="meta-h2">DATE ADDED:</h2> <span class="wd-br"></span><?= $displaydate; ?>
+      <h2 class="meta-h2">DATE ADDED:</h2> <? /* = $displaydate; */ ?>
     </div>
+  -->
+
     <?php endif; ?>
 
 
@@ -97,22 +102,26 @@
 
     <?php if($firstterm != '' && $firstterm->slug == 'white-paper') : ?>
     <div class="meta-author">
-      <h2 class="meta-h2">AUTHOR: </h2><span class="wd-br"></span>
+      <h2 class="meta-h2">AUTHOR: </h2>
       <?php $author = ''; $author = get_the_author(); _e($author);  ?>
     </div>
     <?php elseif($firstterm != '' && $firstterm->slug == 'video') : ?>
     <div class="meta-author">
-      <h2 class="meta-h2">POSTED BY: </h2><span class="wd-br"></span>
+      <h2 class="meta-h2">POSTED BY: </h2>
       <?php $author = ''; $author = get_the_author(); _e($author); ?>
     </div>
     <?php endif; ?>
 
 
-    <?php if( $firstterm != '') : ?>
+    <!-- If results already restricted to one type of resource -->
+    <!-- no need to show RESOURCE TYPE                         -->
+    <!--
+    <?php //if( $firstterm != '') : ?>
     <div class="meta-type">
       <h2 class="meta-h2">RESOURCE TYPE: </h2> <?= $firstterm->name; ?>
     </div>
-    <?php endif; ?>
+    <?php // endif; ?>
+    -->
 
 
     <!--

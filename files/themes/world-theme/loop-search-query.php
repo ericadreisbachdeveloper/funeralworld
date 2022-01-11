@@ -65,8 +65,8 @@
   }
 
 
-  // if this is a pages and events search (not Resources / posts)
-  elseif(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page' ) {
+  // if this is a pages and events search (not Resources aka posts)
+  elseif(isset($_GET['post_type']) && (substr($_GET['post_type'], 0, 4) == 'page') ) {
 
     $args = array(
       'post_type' => array('page', 'events'),
@@ -78,8 +78,14 @@
 
       's' => $query,
 
-      // exclude login from native search results
-
+      // exclude login and kitchen sink templates from results
+      'meta_query' => array(
+        array(
+          'key' => '_wp_page_template',
+          'value' => array('page-kitchensink.php', 'page-login.php'),
+          'compare' => 'NOT IN',
+        )
+      ),
 
     );
 
@@ -88,6 +94,7 @@
 
   // else if no author is specified
   else {
+
     $args = array(
       'post_type' => 'post',
       'post_status' => 'publish',
@@ -136,16 +143,14 @@
              $args['meta_query'] = array(
                array(
                  'key' => 'resource_publish_date',
-                 'compare' => 'EXISTS'
+                 'compare' => 'EXISTS',
                )
              );
            }
   }
 
 
-
   $wp_query = new WP_Query( $args );
-
 
 
 ?>
