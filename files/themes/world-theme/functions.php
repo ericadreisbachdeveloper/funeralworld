@@ -250,7 +250,7 @@ function dbllc_login_redirect(){
 	global $pagenow;
 	if( 'wp-login.php' == $pagenow && $_GET['action']!="logout" && $_GET['action']!="lostpassword" && $_GET['action']!="rp") {
 		//wp_redirect( home_url( '/' ) );
-		wp_redirect( home_url( '/404' ) );
+		wp_redirect( home_url( '/404/' ) );
 	}
 }
 
