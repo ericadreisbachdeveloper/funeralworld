@@ -501,10 +501,12 @@
 
   // Structure - large
   %container-corset {
+    //width: 60rem;
+    max-width: 47rem;
     margin-right: auto;
     margin-left: auto;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
 
