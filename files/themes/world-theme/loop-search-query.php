@@ -49,7 +49,7 @@
     $author = $_GET['author'];
 
     $args = array(
-      'post_type' => 'post',
+      'post_type' => $_GET['post_type'],
       'post_status' => 'publish',
 
       'posts_per_page' => $posts_per_page,
@@ -68,9 +68,11 @@
   // if this is a pages and events search (not Resources aka posts)
   elseif(isset($_GET['post_type']) && (substr($_GET['post_type'], 0, 4) == 'page') ) {
 
-    $args = array(
-      'post_type' => array('page', 'events'),
+    $post_type_str = str_replace('%2C', ',', $_GET['post_type'] );
+    $post_type_arr = explode(',', $post_type_str);
 
+    $args = array(
+      'post_type' => $post_type_arr,
       'post_status' => 'publish',
 
       'posts_per_page' => $posts_per_page,
@@ -78,14 +80,8 @@
 
       's' => $query,
 
-      // exclude login and kitchen sink templates from results
-      'meta_query' => array(
-        array(
-          'key' => '_wp_page_template',
-          'value' => array('page-kitchensink.php', 'page-login.php'),
-          'compare' => 'NOT IN',
-        )
-      ),
+
+
 
     );
 
@@ -95,8 +91,9 @@
   // else if no author is specified
   else {
 
+
     $args = array(
-      'post_type' => 'post',
+      'post_type' => $_GET['post_type'],
       'post_status' => 'publish',
 
       'posts_per_page' => $posts_per_page,

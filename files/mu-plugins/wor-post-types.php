@@ -6,8 +6,11 @@ add_action( 'init', 'wor_post_object' );
 
 // Change dashboard Posts to Resources
 function wor_post_object() {
+
     $get_post_type = get_post_type_object('post');
+
     $labels = $get_post_type->labels;
+
     $labels->name = 'Resources';
     $labels->singular_name = 'Resources';
     $labels->add_new = 'Add Resource';
@@ -21,6 +24,7 @@ function wor_post_object() {
     $labels->all_items = 'All Resources';
     $labels->menu_name = 'Resources';
     $labels->name_admin_bar = 'Resources';
+    
 }
 
 

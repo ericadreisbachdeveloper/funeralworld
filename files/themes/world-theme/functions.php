@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.1.28';
+$style_vsn = '1.1.29';
 
 
 
@@ -1548,9 +1548,11 @@ function searchresults_shortcode() {
 				$date = DateTime::createFromFormat('m/d/Y', $publishdate);
 				$displaydate = $date->format('F j, Y');
 
-				$results .= '<h2 class="meta-h2">PUBLISHED:</h2> <span class="wd-br"></span>' . $displaydate;
+				//$results .= '<h2 class="meta-h2">PUBLISHED:</h2> <span class="wd-br"></span>' . $displaydate;
+				$results .= '<h2 class="meta-h2">PUBLISHED:</h2> ' . $displaydate;
 			}
 			// otherwise, use Wordpress-standard publish date
+			/*
 			else {
 				$displaydate = get_the_time("F j, Y");
 				$results .= '<h2 class="meta-h2">DATE ADDED:</h2> ';
@@ -1559,18 +1561,21 @@ function searchresults_shortcode() {
 				}
 				$results .= $displaydate;
 			}
+			*/
 
 			$results .= '</div><!-- /.meta-time -->';
 
 			if($firstterm != '' && $firstterm->slug == 'white-paper') {
 				$results .= '<div class="meta-author">';
-				$results .= '<h2 class="meta-h2">AUTHOR:</h2> <span class="wd-br"></span>';
+				//$results .= '<h2 class="meta-h2">AUTHOR:</h2> <span class="wd-br"></span>';
+				$results .= '<h2 class="meta-h2">AUTHOR:</h2> ';
 				$results .=  get_the_author();
 				$results .= '</div><!-- /.meta-author -->';
 			}
 			elseif($firstterm != '' && $firstterm->slug == 'video') {
 				$results .= '<div class="meta-author">';
-				$results .= '<h2 class="meta-h2">POSTED BY:</h2> <span class="wd-br"></span>';
+				//$results .= '<h2 class="meta-h2">POSTED BY:</h2> <span class="wd-br"></span>';
+				$results .= '<h2 class="meta-h2">POSTED BY:</h2> ';
 				$results .=  get_the_author();
 				$results .= '</div><!-- /.meta-author -->';
 			}
@@ -1599,8 +1604,8 @@ function searchresults_shortcode() {
 
 	$results .= '</div><!-- /#search-results -->';
 
-	$askaquestion = do_shortcode('[gravityform id="2" title="true" description="true" ajax="true"]');
-	$results .= $askaquestion;
+	//$askaquestion = do_shortcode('[gravityform id="2" title="true" description="true" ajax="true"]');
+	//$results .= $askaquestion;
 
 	return $results;
 }

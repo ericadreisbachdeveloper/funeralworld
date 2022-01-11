@@ -572,7 +572,7 @@
   // Archive - wide
   // Advanced Search - wide
   // Our Work - wide
-  .search-results, .search-no-results, .archive, .page-template  {
+  .search-results, .search-no-results, .archive/*, .page-template */  {
     .archive-a .resource-meta {
       @include flex;
       @include justify-content(flex-start);

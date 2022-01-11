@@ -48,7 +48,7 @@
 
 
 
-    <?php if($post_type == 'events' || $post_type == 'any') : ?>
+    <?php if($post_type == 'events') : ?>
 
     <?php $display_date = $start = $end = '';
 
