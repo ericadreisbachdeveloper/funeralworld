@@ -2,7 +2,7 @@
 
 <!-- Advanced Search -->
 
-<div class="corset">
+<div class="search-corset corset">
 
 	<form class="search-form" method="get" role="search" action="<?php _e(home_url()); ?>">
 

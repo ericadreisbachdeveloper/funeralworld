@@ -512,6 +512,20 @@
 
   %container-gutter { margin-right: auto; margin-left: auto; }
 
+
+  .deck,
+  .wp-block-pullquote,
+  .core-paragraph > .gutenberg-container {
+    max-width: 47rem;
+  }
+
+
+  .gutenberg-container > .corset.search-corset {
+    max-width: 100%;
+  }
+
+
+
   // Archive - large
   // Search - large
   .search-results, .archive {
