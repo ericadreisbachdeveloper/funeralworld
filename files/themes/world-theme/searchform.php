@@ -49,7 +49,12 @@
 				<select name="author" class="select">
 					<option value="">Any Author </option>
 					<?php foreach($authors as $author) : ?>
-					<option value="<?= $author->ID; ?>"><?= $author->display_name; ?> </option>
+
+						<!-- only show authors who've contributed at least 1 post -->
+						<?php if(count_user_posts($author->ID) > 0) : ?>
+							<option value="<?= $author->ID; ?>"><?= $author->display_name; ?> </option>
+						<?php endif; ?>
+
 					<?php endforeach; ?>
 				</select>
 
