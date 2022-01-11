@@ -766,6 +766,9 @@ function dbllc_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'dbllc_excerpt_length', 999);
 
 
+// 27c. Page excerpts
+add_post_type_support( 'page', 'excerpt' );
+
 
 
 // 28. Current Year
