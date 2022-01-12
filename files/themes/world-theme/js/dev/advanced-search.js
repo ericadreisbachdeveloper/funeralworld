@@ -164,15 +164,24 @@ function loadpage() {
     // ... and if a fresh sort was selected
     if (sort !== existingsort) {
 
+
       // ... if there is paging in the URL
       //     remove it
       if(url.includes('/page/')) {
         url = url.replace(/\/page\/.+?/, '');
       }
 
-
       // ... construct new url
-      url = url.replace(existingsort, sort);
+      //
+      //     if existing sort is not blank then replace with new sort
+      if (existingsort !== '') {
+        url = url.replace(existingsort, sort);
+      }
+
+      //     otherwise, for blank existing sort, append new sort
+      else {
+        url = url + sort;
+      }
 
 
       // ... add load effect
@@ -183,8 +192,10 @@ function loadpage() {
       // ... and reload the page with fresh sort query
       location.replace(url);
     }
-  }
 
+    // otherwise do nothing
+
+  }
 
 
   // If there's no existing sort, just load the sort

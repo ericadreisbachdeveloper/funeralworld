@@ -80,8 +80,23 @@
 
       's' => $query,
 
+      'meta_query' => array(
+        
+        'relation' => 'OR',
 
+        // Exclude LOG IN
+        array(
+          'key' => '_wp_page_template',
+          'value' => 'page-login.php',
+          'compare' => '!='
+        ),
 
+        // Include EVENTS
+        array(
+          'key' => '_wp_page_template',
+          'compare' => 'NOT EXISTS',
+        )
+      )
 
     );
 
