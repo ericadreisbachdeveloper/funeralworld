@@ -1231,7 +1231,7 @@ function show_resources($attr, $content = null) {
 					$content .= '<div class="icon-wrapper-div">';
 					$content .= '<picture>';
 					$content .= '<source type="image/svg+xml" srcset="' . $default_svg_url . '">';
-					$content .= '<img src="' . $default_png_url . '" alt="' . $icon_alt . ' width="100" height="100" />';
+					$content .= '<img src="' . $default_png_url . '" alt="' . $icon_alt . '" width="100" height="100" />';
 					$content .= '</picture>';
 					$content .= '</div>';
 				}
