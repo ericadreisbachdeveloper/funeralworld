@@ -1099,6 +1099,7 @@ function show_resources($attr, $content = null) {
 			$default_png_url = $default_png['url'];
 
 
+
 			// get feat img id
 			// wp_prepare_attachment_for_js($img_id);
 
@@ -1116,11 +1117,14 @@ function show_resources($attr, $content = null) {
 				$content .= ' -icon';
 			}
 			$content .= '" href="' . get_the_permalink() . '">';
+
+			// echo $standard_arr[1] / $standard_arr[2];
+
 			// image
 			if ( has_post_thumbnail()) {
 			$content .= '<picture class="picture">';
 			$content .= '<source type="image/jpg" srcset="' . $retina_arr[0] . ' 2x" media="(min-width: 992px)">';
-			$content .= '<img class="img" src="' . $standard_arr[0] . '" alt="' . $img_alt . '" />';
+			$content .= '<img width="' . $standard_arr[1] . '" height="' . $standard_arr[2] . '" style="aspect-ratio: ' . $standard_arr[1] / $standard_arr[2] . ';" class="img" src="' . $standard_arr[0] . '" alt="' . $img_alt . '" />';
 			$content .= '</picture>';
 			}
 			// icon
