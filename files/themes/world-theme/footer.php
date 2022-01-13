@@ -47,8 +47,9 @@
 
 
 							<?php if(get_field('footer-logomark-svg', 'options')) : ?>
-							<?php $footer_logomark_png = get_field('footer-logomark-png', 'options'); $footer_logomark_png = $footer_logomark_png['url']; ?>
-							<img src="<?= esc_url($footer_logomark_png); ?>" title="<?= get_bloginfo('name'); ?>" alt="Logo for <?= get_bloginfo('name'); ?>" />
+							<?php $footer_logomark_png_arr = get_field('footer-logomark-png', 'options'); $footer_logomark_png = $footer_logomark_png_arr['url']; ?>
+
+							<img width="<?= $footer_logomark_png_arr['width']; ?>" height="<?= $footer_logomark_png_arr['height']; ?>" style="aspect-ratio: <?= $footer_logomark_png_arr['width'] / $footer_logomark_png_arr['height']; ?>;" src="<?= esc_url($footer_logomark_png); ?>" title="<?= get_bloginfo('name'); ?>" alt="Logo for <?= get_bloginfo('name'); ?>" />
 
 							<?php else : ?>
 							<img src="<?= esc_url(TDIR . '/img/logo-mark-circle.png'); ?>" />
