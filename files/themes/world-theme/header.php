@@ -159,7 +159,7 @@ ob_start('sanitize_output');
 			$custom_logo_png_mobile = get_theme_mod( 'logo_png_fallback_mobile' ); ?>
 
 <?php if($custom_logo_svg) : ?>
-<link rel="preload" as="image" href="<?= esc_url($custom_logo_svg); ?>">
+<link rel="preload" as="image" href="<?= esc_url($custom_logo_svg); ?>?v=1">
 <?php else : ?>
 <link rel="preload" as="image" href="<?= esc_url(TDIR); ?>/img/logo.svg">
 <?php endif; ?>
