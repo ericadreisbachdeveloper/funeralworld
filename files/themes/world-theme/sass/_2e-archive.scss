@@ -17,10 +17,13 @@
 
   .icon-wrapper-div {
     width: 100%;
-    padding: 16.995% 0;
+    padding: 26.9% 0;
+
     @include flex;
     @include justify-content(center);
     @include align-items(center);
+
+    &> picture { position: absolute; }
   }
 
 

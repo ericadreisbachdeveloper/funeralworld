@@ -43,7 +43,8 @@
   // %grid-display defined in _2e-archive.scss
   @extend %grid-display;
   background: $night;
-  .calendar-icon { @extend %calendar-icon; }
+  
+  .calendar-icon { @extend %calendar-icon; position: absolute; }
 }
 
 

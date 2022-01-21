@@ -77,6 +77,7 @@
   }
 
 
+
   // Forms - small
   // Connect - small
   /*#gform_wrapper_1 #field_1_10, */
@@ -176,8 +177,6 @@
   %grid-display {
     &.-icon { @include transition(background .2s ease-in-out); }
     &.-photo:before { @include transition(background .2s ease-in-out); }
-
-    .icon-wrapper-div { padding: 17.858% 0; }
   }
 
 
@@ -185,6 +184,7 @@
   // Archive - medium
   // Grid - medium
   %grid-title { @include transition(background-size .2s ease-in-out, color .2s ease-in-out); }
+
   .title-icon { @include transition(background-color .2s ease-in-out); }
 
 
