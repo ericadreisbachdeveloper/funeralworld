@@ -569,9 +569,16 @@ figure.alignright figcaption  { text-align: right; }
 }
 
 .container-fluid.green-bg,
-.wp-block-group.green-bg {
+.wp-block-group.green-bg,
+.wp-block-group.land-bg {
   background: $land3;
   color: white;
+
+  [href]:not([href="#"]) {
+    @include linkgradient(white);
+    color: white;
+    @include hover { color: $teal; @include linkgradient($teal); }
+  }
 }
 
 .wp-block-group {

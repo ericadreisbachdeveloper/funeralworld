@@ -182,12 +182,14 @@ window.addEventListener("scroll", () => {
 
 
 // Aspect ratios
+/*
 var img = document.querySelectorAll(".resource-img-a");
 console.log(img)
 
   img.forEach((e) => {
 
     var ratio = e.offsetWidth / e.offsetHeight;
-    console.log(e.offsetHeight); 
+    console.log(e.offsetHeight);
 
   });
+*/ 

@@ -307,9 +307,12 @@
 
   // Full Width Text / Media - medium
   .wp-block-media-text.full-width.has-media-on-the-right .wp-block-media-text__content {
-    padding-left: 1.5rem;
+    padding-right: 3rem;
   }
 
+  .wp-block-media-text.full-width:not(.has-media-on-the-right) .wp-block-media-text__content {
+    padding-left: 3rem;
+  }
 
 
 
@@ -482,11 +485,16 @@
 
   // Full-Width - large
   // Full Width - large
+  // Text Media - large
+  // Text/Media - large
   .wp-block-media-text.full-width .wp-block-media-text__media {
     width: 50vw;
   }
 
-  .wp-block-media-text.full-width .wp-block-media-text__content { padding-left: 1rem; }
+  .wp-block-media-text.full-width:not(.has-media-on-the-right) > .wp-block-media-text__media {
+    margin-left: -3rem;
+  }
+
 
 
   .mc4wp-form-fields > .p  {
@@ -643,6 +651,13 @@
     width: calc( (70rem * .75 - 1em) + ( 50vw - 35.05rem) );
 
     .gform_heading, #gform_2 { width: calc((70rem * .75) - 4em); }
+  }
+
+
+  // Text/Media - wide
+  // Text / Media - wide
+  .wp-block-media-text.full-width:not(.has-media-on-the-right) > .wp-block-media-text__media {
+    margin-left: calc((100vw - 73rem) / -2);
   }
 
 
