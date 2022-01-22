@@ -489,6 +489,16 @@
   .wp-block-media-text.full-width .wp-block-media-text__content { padding-left: 1rem; }
 
 
+  .mc4wp-form-fields > .p  {
+    width: 48.5%;
+    display: block;
+    float: left;
+    padding-bottom: .44rem;
+
+    &+ .p { margin-left: 3%; }
+  }
+
+
 
   // Sticky Footer - large
   $footerh: 34.5rem;

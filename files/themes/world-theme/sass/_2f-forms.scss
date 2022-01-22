@@ -554,3 +554,21 @@ body .gform_wrapper .gform_validation_container {
   -o-object-fit: cover;
   object-fit: cover;
 }
+
+
+
+// MailChimp
+.mc4wp-form {
+
+  // hide labels
+  [for] { display: none; }
+
+  [type="text"], [type="email"] { width: 100%; }
+
+  [type="submit"] {
+    background: red;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
