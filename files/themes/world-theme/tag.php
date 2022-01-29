@@ -7,7 +7,7 @@
 
 
 	<div class="container">
-		<h1>Tagged: <?php single_tag_title(); ?></h1>
+		<h1 class="archive-h1">Tagged: <?php single_tag_title(); ?></h1>
 	</div>
 
 

@@ -255,7 +255,7 @@
   #copy-link .icon {
     width: calc( #{$msb-icon-size} - .8rem);
     height: calc( #{$msb-icon-size} - .8rem);
-    background-size: calc( #{$msb-icon-size} - 1  rem);
+    background-size: calc( #{$msb-icon-size} - 1rem);
   }
 
 
@@ -468,6 +468,8 @@
     right: .7rem;
   }
 
+  .search-results .archive-a > .container { padding-right: 0; padding-left: 0; }
+
 
 
   // Ask a Question - large
@@ -623,6 +625,11 @@
     }
   }
 
+
+  .search [data-role="main"] .hentry>[href] {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
 
   .search-results, .search-no-results {
     .archive-a .archive-meta > .resource-meta {

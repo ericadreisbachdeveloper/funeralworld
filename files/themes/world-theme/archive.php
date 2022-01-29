@@ -7,7 +7,7 @@
 
 
 	<div class="container">
-		<h1>Archives </h1>
+		<h1 class="archive-h1">Archives </h1>
 	</div>
 
 

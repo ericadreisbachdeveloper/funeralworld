@@ -530,7 +530,7 @@
   // Search - large
   .search-results, .archive {
     [data-role="main"] .hentry > [href]:before {
-      background-size: calc( #{$container} - 3rem) 100%; background-position: 50% 0;
+      background-size: $container 100%; background-position: 50% 0;
     }
   }
 
@@ -574,10 +574,14 @@
 
   .search-results, .archive {
     #search-results .hentry > [href] > .container { width: $container; }
+  }
 
-    [data-role="main"] .hentry > [href]:before {
-      background-size: calc( #{$container} - 3rem) 100%;
-    }
+  .archive [data-role="main"] .hentry > [href]:before {
+    background-size: calc(#{$container} - 3rem) 100%;
+  }
+
+  .search-results [data-role="main"] .hentry > [href]:before {
+    background-size: calc(100% - 3rem) 100%;
   }
 
 

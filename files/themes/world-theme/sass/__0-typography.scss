@@ -25,7 +25,11 @@
 [data-role="main"] .deck,
 [data-role="main"] h2,
 [data-role="main"] .has-medium-font-size,
-[data-role="main"] h1.search-results-h1 { @extend %medium; }
+[data-role="main"] h1.search-results-h1,
+[data-role="main"] h1.archive-h1 { @extend %medium; }
+
+[data-role="main"] h1.search-results-h1,
+[data-role="main"] h1.archive-h1 { font-weight: 400; }
 
 //[data-role="main"] h1.search-results-h1.pages-events { padding-bottom: 1rem; }
 

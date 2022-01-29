@@ -172,7 +172,7 @@ $hentry-top: -1px;
 
 
 
-.search, .archive, .page-template {
+.search, .archive, .page-template  {
   [data-role="main"] {
     .hentry {
       &> [href] {
@@ -184,8 +184,6 @@ $hentry-top: -1px;
 
 
         @include hover {
-          //background: $mist;
-          //background: white;
           background: $mist2;
 
           &:before { background-size: calc(100% + 3rem) 100%; background-position: 0 0; }

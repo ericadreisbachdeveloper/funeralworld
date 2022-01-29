@@ -91,7 +91,7 @@
 												<div class="container">
 
 
-													<?php get_template_part('loop-search-query');
+													<?php //get_template_part('loop-search-query');
 
 														 $s = $wp_query->found_posts;
 													if($s == '1') { $sp = ''; } else { $sp = 's'; } ?>
@@ -103,27 +103,27 @@
 													<?php endif; ?>
 
 
-												<?php if(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) !== 'page') : ?>
-												<?php if(isset($_GET['sort'])) { $sort = $_GET['sort']; } else { $sort = ''; } ?>
-												<div class="sort-div">
-													<label for="sort-by">Sort by &nbsp;</label>
-													<select onchange="loadpage()" id="sort-by" class="select">
-														<option id="newest"<?php           if($sort == 'newest' || (isset($_GET['sort']) && $_GET['sort'] == 'newest') ) { _e(' selected'); } ?>>Newest Added </option>
-														<option id="oldest"<?php           if($sort == 'oldest' || (isset($_GET['sort']) && $_GET['sort'] == 'oldest') ) { _e(' selected'); } ?>>Oldest Added </option>
-														<option id="newest-published"<?php if($sort == 'newest-published' || (isset($_GET['sort']) && $_GET['sort'] == 'newest-published') ) { _e(' selected'); } ?>>Newest Published </option>
-														<option id="oldest-published"<?php if($sort == 'oldest-published' || (isset($_GET['sort']) && $_GET['sort'] == 'oldest-published')) { _e(' selected'); } ?>>Oldest Published </option>
-													</select>
+													<?php if(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) !== 'page') : ?>
+													<?php if(isset($_GET['sort'])) { $sort = $_GET['sort']; } else { $sort = ''; } ?>
+													<div class="sort-div">
+														<label for="sort-by">Sort by &nbsp;</label>
+														<select onchange="loadpage()" id="sort-by" class="select">
+															<option id="newest"<?php           if($sort == 'newest' || (isset($_GET['sort']) && $_GET['sort'] == 'newest') ) { _e(' selected'); } ?>>Newest Added </option>
+															<option id="oldest"<?php           if($sort == 'oldest' || (isset($_GET['sort']) && $_GET['sort'] == 'oldest') ) { _e(' selected'); } ?>>Oldest Added </option>
+															<option id="newest-published"<?php if($sort == 'newest-published' || (isset($_GET['sort']) && $_GET['sort'] == 'newest-published') ) { _e(' selected'); } ?>>Newest Published </option>
+															<option id="oldest-published"<?php if($sort == 'oldest-published' || (isset($_GET['sort']) && $_GET['sort'] == 'oldest-published')) { _e(' selected'); } ?>>Oldest Published </option>
+														</select>
+													</div>
+													<?php endif; ?>
+
 												</div>
-												<?php endif; ?>
 
-											</div>
-
-
-											<div class="container filters-caveat">
 
 
 												<?php if( isset($_GET['sort']) && ( $_GET['sort'] == 'newest-published' || $_GET['sort'] == 'oldest-published') ) : ?>
-												<p class="caveat"><em>Resources with no publish date are excluded from results sorted by date published</em></p>
+												<div class="container filters-caveat">
+													<p class="caveat"><em>Resources with no publish date are excluded from results sorted by date published</em></p>
+												</div>
 												<?php endif; ?>
 
 

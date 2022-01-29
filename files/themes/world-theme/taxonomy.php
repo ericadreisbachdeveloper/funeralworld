@@ -11,11 +11,9 @@
 
       <?php $term = get_queried_object(); ?>
 
-
 			<?php $tax = get_taxonomy( $term->taxonomy ); ?>
 
-
-			<h1><?= $tax->labels->singular_name; ?>: <?= $term->name; ?> </h1>
+			<h1 class="archive-h1"><?= $tax->labels->singular_name; ?>: <?= $term->name; ?> </h1>
 
 		</div>
 
