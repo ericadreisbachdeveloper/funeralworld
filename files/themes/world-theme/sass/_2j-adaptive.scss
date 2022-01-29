@@ -7,6 +7,10 @@
 // Wordpress overrides
 @media (min-width: 782px) {
   .wp-block-column:not(:first-child).full-width-md-and-smaller { margin-left: 0; }
+
+  .wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column:not(:first-child).full-width-md-and-smaller {
+    margin-left: 0;
+  }
 }
 
 

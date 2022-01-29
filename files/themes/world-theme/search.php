@@ -91,7 +91,7 @@
 												<div class="container">
 
 
-													<?php //get_template_part('loop-search-query');
+													<?php get_template_part('loop-search-query');
 
 														 $s = $wp_query->found_posts;
 													if($s == '1') { $sp = ''; } else { $sp = 's'; } ?>
@@ -337,6 +337,7 @@
 
 
 											<?php get_template_part('pagination'); ?>
+
 
 
 											</div><!-- /#search-results -->
