@@ -29,7 +29,12 @@
 [data-role="main"] h1.archive-h1 { @extend %medium; }
 
 [data-role="main"] h1.search-results-h1,
-[data-role="main"] h1.archive-h1 { font-weight: 400; margin-top: 0; padding-top: 2.44rem; }
+[data-role="main"] h1.archive-h1 { font-weight: 400; margin-top: 0; }
+
+:not(.page-template) [data-role="main"] h1.archive-h1,
+[data-role="main"] h1.search-results-h1  {
+  padding-top: 2.44rem;
+}
 
 //[data-role="main"] h1.search-results-h1.pages-events { padding-bottom: 1rem; }
 

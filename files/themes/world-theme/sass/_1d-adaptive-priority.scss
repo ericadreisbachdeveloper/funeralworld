@@ -525,24 +525,49 @@
 
 
 
-  // Archive - large
-  // Search - large
-  .search-results, .archive {
+
+  //        body.search-results  = 1. site search
+  //  &.resource-search-results  = 2. Resources advanced search   (has sidebar)
+  //        body.archive         = 3. Wordpress-generated archives
+  //        body.page-template   = 4. Resources                   (has sidebar)
+
+  // site search, archives
+  .search-results:not(.resource-search-results), .archive {
     [data-role="main"] .hentry > [href]:before {
-      background-size: $container 100%; background-position: 50% 0;
+      background-size: calc(100% - 6rem) 100%;
+      background-position: 50% 0;
     }
   }
+
+
+  // default Resources - large
+  .page-template [data-role="main"] .hentry > [href] {
+    @include hover {
+      &:before {
+        background-size: 100% 100%;
+      }
+    }
+  }
+
 
   .search-results .hentry { width: calc(100% + 3rem); position: relative; left: -1.5rem; }
 
 
-  .search-results, .page-template {
+  .search-results.page-template {
     #search-results > .container { width: 100%; }
+  }
+
+  .search-results.resource-search-results {
+    [data-role="main"] .hentry > [href] { width: 100%; position: relative; left: 0; }
+    [data-role="main"] .hentry .container { margin: 0; }
   }
 
   .archive {
     #search-results .hentry > [href] > .container { width: $container; }
   }
+
+
+
 }
 
 
@@ -574,27 +599,25 @@
   // Our Work - wide
   .page-template [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; }
 
-  .search-results, .archive {
-    #search-results .hentry > [href] > .container { width: $container; }
+  .search-results:not(.resource-search-results), .archive {
+    [data-role="main"] #search-results .hentry > [href] > .container { width: $container; }
   }
 
   .archive [data-role="main"] .hentry > [href]:before {
     background-size: calc(#{$container} - 3rem) 100%;
   }
 
-  .search-results [data-role="main"] .hentry > [href]:before {
+  .search-results:not(.resource-search-results) [data-role="main"] .hentry > [href]:before {
     background-size: calc(100% - 3rem) 100%;
   }
 
 
   // Archive - wide
   // Search - wide
-  .search-results .hentry {
+  .search-results.page-template .hentry {
     width: 100vw;
      left: calc(calc(50vw - (#{$container} / 2) + 1.5rem) * -1);
   }
-
-
 
 
 

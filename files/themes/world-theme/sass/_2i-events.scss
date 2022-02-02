@@ -43,7 +43,7 @@
   // %grid-display defined in _2e-archive.scss
   @extend %grid-display;
   background: $night;
-  
+
   .calendar-icon { @extend %calendar-icon; position: absolute; }
 }
 
@@ -159,4 +159,4 @@
 
 
 // Search results
-.event-passed { margin-top: 0; }
+.event-passed { margin-top: 0; padding-top: .2rem; }

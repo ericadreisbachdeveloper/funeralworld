@@ -23,6 +23,10 @@
   .wp-block-column.hide-md-and-smaller + .wp-block-column:nth-child(2n) {
     margin-left: 0;
   }
+
+  .wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column.full-width-md-and-smaller:not(:only-child) {
+    flex-basis: 100% !important;
+  }
 }
 
 
@@ -430,7 +434,7 @@
 
   .search-columns > .wp-block-column:first-of-type { padding-bottom: 2rem; }
 
-  .caveat { padding-top: 0; }
+  .caveat { padding-top: .44rem; }
 
 
 
@@ -473,17 +477,7 @@
   }
 
 
-  .search.search-results [data-role="main"] .hentry>[href]:before {
-    background-size: calc(100% - 6rem) 100%;
-  }
 
-  .search.search-results [data-role="main"] .hentry>[href] {
-    @include hover {
-      &:before {
-        background-size: 100% 100%;
-      }
-    }
-  }
 
 
 

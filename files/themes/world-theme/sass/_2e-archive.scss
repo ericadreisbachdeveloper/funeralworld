@@ -86,8 +86,7 @@
 
       &.-icon { background: $blue2; }
 
-      &.-icon { @include hover { background: $sea; } }
-
+      &.-icon  { @include hover { background: $sea; } }
 
       &.-photo { @include hover { &:before { background: $sea; } } }
     }
@@ -98,13 +97,6 @@
 
 
 // Blog nav shows current when viewing archive / single / etc. pages
-
-// change menu id as needed
-.single, .archive {
-  li#menu-item-96 {
-    //@extend %current-top-nav;
-  }
-}
 
 
 
@@ -131,17 +123,6 @@
 
 
 
-/*
-[data-role="main"] .resource-article-a[href] {
-
-
-  @include hover {
-    .title-icon {
-      background-color: $sea;
-    }
-  }
-}
-*/
 
 
 
@@ -171,8 +152,11 @@ $hentry-top: -1px;
 
 
 
-
-.search, .archive, .page-template  {
+//        body.search-results  = 1. site search
+//  &.resource-search-results  = 2. Resources advanced search   (has sidebar)
+//        body.archive         = 3. Wordpress-generated archives
+//        body.page-template   = 4. Resources                   (has sidebar)
+.search-results, .archive, .page-template  {
   [data-role="main"] {
     .hentry {
       &> [href] {
@@ -284,7 +268,7 @@ $hentry-top: -1px;
 
   .meta-type { display: none; }
 
-  /* &> .container { width: unset; } */
+  &> .container { width: 100%; padding-right: 0; padding-left: 0; }
 
 
 
@@ -311,6 +295,7 @@ $hentry-top: -1px;
 }
 
 
+.page-template .archive-a,
 .search-results .archive-a {
   width: calc(100% + 3rem);
   left: -1.5rem;
@@ -362,7 +347,7 @@ $hentry-top: -1px;
 
 // add some padding on Our Work / Advanced Search in-page results
 .page-template .archive-title-excerpt          { padding-bottom: 1.44rem; }
-//.archive-title-excerpt.-no-meta { padding-bottom: 0; }
+
 
 
 
@@ -378,7 +363,6 @@ $hentry-top: -1px;
 
 
 .search, .archive {
-
   [data-role="main"] .hentry.type-events > [href] .icon-wrapper-div {
     width: 17.5rem;
     height: 9.375rem;
@@ -458,6 +442,8 @@ $hentry-top: -1px;
   }
 }
 
+.container.filters-caveat { padding: 0; max-width: 100%; }
+
 .caveat {
   @extend %small;
   width: 16rem;
@@ -469,4 +455,15 @@ $hentry-top: -1px;
   padding-top: .44rem;
   padding-bottom: .5rem;
   text-align: right;
+}
+
+
+
+
+
+// search results col on main Resources page
+.page-template .wp-block-column.hide-md-and-smaller,
+// advanced search results
+.resource-search-results .wp-block-column.hide-md-and-smaller {
+  padding-top: 2.44rem;
 }
