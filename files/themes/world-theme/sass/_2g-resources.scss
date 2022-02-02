@@ -271,7 +271,12 @@ $msb-icon-size: 1rem;
 
 [data-role="main"] [id*="post-"] .core-heading h2 { @extend %medium; text-transform: none;  }
 
-[data-role="main"] [id*="post-"] p { font-family: 'Open Sans', serif; @extend %resource-text;}
+[data-role="main"] [id*="post-"] .archive-p {
+  font-family: 'Open Sans', serif;
+  margin-top: 0;
+  padding-top: 1rem;
+  @extend %resource-text;
+}
 
 
 

@@ -501,7 +501,6 @@
 
   // Structure - large
   %container-corset {
-    //width: 60rem;
     max-width: 47rem;
     margin-right: auto;
     margin-left: auto;
@@ -533,6 +532,9 @@
       background-size: $container 100%; background-position: 50% 0;
     }
   }
+
+  .search-results .hentry { width: calc(100% + 3rem); position: relative; left: -1.5rem; }
+
 
   .search-results, .page-template {
     #search-results > .container { width: 100%; }
@@ -583,6 +585,16 @@
   .search-results [data-role="main"] .hentry > [href]:before {
     background-size: calc(100% - 3rem) 100%;
   }
+
+
+  // Archive - wide
+  // Search - wide
+  .search-results .hentry {
+    width: 100vw;
+     left: calc(calc(50vw - (#{$container} / 2) + 1.5rem) * -1);
+  }
+
+
 
 
 

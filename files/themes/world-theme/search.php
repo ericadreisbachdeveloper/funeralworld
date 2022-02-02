@@ -88,7 +88,7 @@
 									<div class="gutenberg-section core-shortcode">
 										<div class="gutenberg-container">
 											<div id="search-results">
-												<div class="container">
+												<!-- <div class="container"> -->
 
 
 													<?php get_template_part('loop-search-query');
@@ -329,7 +329,7 @@
 												<?php endif; ?>
 
 
-											</div><!-- /.container -->
+											<!-- </div> --><!-- /.container -->
 
 
 

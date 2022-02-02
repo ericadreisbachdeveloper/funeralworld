@@ -284,7 +284,16 @@ $hentry-top: -1px;
 
   .meta-type { display: none; }
 
-  &> .container { width: unset; }
+  /* &> .container { width: unset; } */
+
+
+
+  &:after {
+    width: 100%;
+    display: block;
+    content: '';
+    clear: both;
+  }
 }
 
 
@@ -301,6 +310,11 @@ $hentry-top: -1px;
   }
 }
 
+
+.search-results .archive-a {
+  width: calc(100% + 3rem);
+  left: -1.5rem;
+}
 
 
 .archive, .search-results, .search-no-results, .page-template {
@@ -402,11 +416,6 @@ $hentry-top: -1px;
   }
 }
 
-
-// padding above titles in Advanced Search Results
-.search-columns .wp-block-column > .core-shortcode {
-  padding-top: 2.44rem;
-}
 
 
 .filter-buttons {

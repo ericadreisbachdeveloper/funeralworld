@@ -472,7 +472,18 @@
     right: .7rem;
   }
 
-  .search-results .archive-a > .container { padding-right: 0; padding-left: 0; }
+
+  .search.search-results [data-role="main"] .hentry>[href]:before {
+    background-size: calc(100% - 6rem) 100%;
+  }
+
+  .search.search-results [data-role="main"] .hentry>[href] {
+    @include hover {
+      &:before {
+        background-size: 100% 100%;
+      }
+    }
+  }
 
 
 
@@ -564,6 +575,7 @@
 
   // Classes - wide
   .wd-br { display: block; }
+  $container: 73rem;
 
 
   // Nav - wide
@@ -641,6 +653,11 @@
       [class*="meta"] + [class*="meta"] { padding-top: .5rem; padding-left: 0; }
 
     }
+  }
+
+
+  .search.search-results [data-role="main"] .hentry > [href]:before {
+    background-size: calc(#{$container} - 3rem) 100%;
   }
 
 

@@ -7,16 +7,19 @@
 
 
 	<div class="container">
-		
-		<h1 class="archive-h1">Author: <?php $obj = get_queried_object(); print_r($obj->display_name); ?></h1>
+		<div class="archive-container">
 
-		<?php $author_id = $obj->ID; $author_meta = get_user_meta($author_id); if($author_meta['description'][0] !== '') : ?>
-		<p class="deck"><?= $author_meta['description'][0]; ?> </p>
-		<?php endif; ?>
+			<h1 class="archive-h1">Author: <?php $obj = get_queried_object(); print_r($obj->display_name); ?></h1>
 
-	</div>
+			<?php $author_id = $obj->ID; $author_meta = get_user_meta($author_id); if($author_meta['description'][0] !== '') : ?>
+			<p class="deck"><?= $author_meta['description'][0]; ?> </p>
+			<?php endif; ?>
+
+		</div><!-- /.archive-container -->
+	</div><!-- /.container -->
 
 
+	
 	<?php get_template_part('loop-nosidebar'); ?>
 
 
