@@ -16,18 +16,13 @@
 
   <div class="resource-meta">
 
-
     <!-- if a custom publish date exists -->
     <?php if (get_field('resource_publish_date')) : ?>
     <?php $publishdate = get_field('resource_publish_date'); $displaydate = DateTime::createFromFormat('m/d/Y', $publishdate); ?>
     <div class="meta-time">
       <h2 class="meta-h2">PUBLISHED: <span class="meta-txt"><?= $displaydate->format('F j, Y'); ?></span></h2>
     </div>
-
-
     <?php endif; ?>
-
-
 
 
     <?php if($post_type == 'events' || $post_type == 'any') : ?>
@@ -82,16 +77,25 @@
     <?php endif; ?>
 
 
-    <?php if($firstterm != '' && $firstterm->slug == 'white-paper') : ?>
+
+
+    <!-- https://docs.wpvip.com/technical-references/plugins/incorporate-co-authors-plus-template-tags-into-your-theme/ -->
+    <!-- between, betweenLast, before, after, null, echo -->
+    <!-- null, null, null, null, false  -->
+
+    <?php $authors = ''; $authors = array(); if(function_exists('coauthors')) { $authors[] = get_coauthors(); }
+          $author_count = count($authors[0]); ?>
+
+    <?php if($firstterm != '' && ($firstterm->slug == 'white-paper' || $firstterm->slug == 'article') ): ?>
     <div class="meta-author">
-      <h2 class="meta-h2">AUTHOR: <span class="meta-txt"><?php $author = ''; $author = get_the_author(); _e($author); ?></span></h2>
+      <h2 class="meta-h2">AUTHOR<?php if($author_count > 1) { _e('S'); } ?>: <?php if(function_exists('coauthors')) { coauthors('</span>, <span class="meta-txt">', '</span>, <span class="meta-txt">', '<span class="meta-txt">', '</span>'); } else { the_author(); } ?> </h2>
     </div>
-    <?php elseif($firstterm != '' && $firstterm->slug == 'video') : ?>
+    <?php elseif($firstterm != '' && ($firstterm->slug == 'video' || $firstterm->slug == 'website')) : ?>
     <div class="meta-author">
-      <h2 class="meta-h2">POSTED BY: <span class="meta-txt"><?php $author = ''; $author = get_the_author(); _e($author); ?></span></h2>
+      <h2 class="meta-h2">POSTED BY: <?php if(function_exists('coauthors')) { coauthors('</span>, <span class="meta-txt">', '</span>, <span class="meta-txt">', '<span class="meta-txt">', '</span>'); } else { the_author(); } ?>
+      </h2>
     </div>
     <?php endif; ?>
-
 
 
   </div><!-- /.resource-meta -->

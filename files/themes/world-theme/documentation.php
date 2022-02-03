@@ -138,10 +138,16 @@
 <p>Additional plugin(s) installed for security and ease of development: </p>
 <ul>
 
-  <li><a class="-large -strong" href="https://wordpress.org/plugins/acf-better-search/" target="_blank" rel="noopener">ACF Better Search</a><br />
+  <li><a class="-large -strong" href="https://wordpress.org/plugins/acf-better-search/" target="_blank" rel="noopener">ACF Better Search</a> <br />
     <em>Allows custom field content to appear in native Wordpress search&nbsp;results </em><br />
     <a class="-small" href="https://wpscan.com/search?text=%22acf%20better%20search%22" target="_blank" rel="noopener">Check ACF Better Search in the Wordpress Vulnerability Database&nbsp;></a> <br />
     <strong class="-small">Change settings in: Settings > ACF Better Search</strong></li>
+
+  <li><a class="-large -strong" href="https://wordpress.org/plugins/co-authors-plus/" target="_blank" rel="noopener">Co-Authors Plus</a> <br />
+    <em>Allows multiple Users to be assigned as authors to a post </em> <br />
+    <a class="-small" href="https://wpscan.com/search?text=co-authors%20plus" target="_blank" rel="noopener">Check Co-Authors Plus in the Wordpress Vulnerability Database&nbsp;></a> <br />
+    <!-- <strong class="-small">Change settings in: Settings > XML Sitemap </strong> -->
+  </li>
 
   <li><a class="-large -strong" href="https://wordpress.org/plugins/google-sitemap-generator/" target="_blank" rel="noopener">Google XML Sitemaps</a><br />
     <em>Excellent tool for dynamically-generated sitemaps to improve search appearance </em> <br />

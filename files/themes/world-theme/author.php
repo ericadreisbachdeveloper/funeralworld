@@ -3,7 +3,7 @@
 
 
 
-<main data-role="main">
+<main data-role="main" id="main">
 
 
 	<div class="container archive-container">
@@ -17,7 +17,6 @@
 
 
 	</div><!-- /.container -->
-
 
 
 	<?php get_template_part('loop-nosidebar'); ?>

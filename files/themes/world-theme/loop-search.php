@@ -136,13 +136,14 @@
 				<?php if (!in_array($post_type, $post_types_with_no_meta)) : ?>
 				<?php _e(get_template_part('meta-archive')); ?>
 				<?php endif; ?>
-			</div><!-- /.archive-meta -->
+			  </div><!-- /.archive-meta -->
 
 
 			</div><!-- /.archive-txt -->
 			<!-- END: archive text -->
 
 		</div><!-- /.container -->
+
 
 	</a>
 </article>

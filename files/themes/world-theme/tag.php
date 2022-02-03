@@ -3,10 +3,10 @@
 
 
 
-<main data-role="main">
+<main data-role="main" id="main">
 
 
-	<div class="container">
+	<div class="container archive-container">
 		<h1 class="archive-h1">Tagged: <?php single_tag_title(); ?></h1>
 	</div>
 

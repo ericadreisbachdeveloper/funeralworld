@@ -6,7 +6,7 @@
 <main data-role="main">
 
 
-	<div class="container">
+	<div class="container archive-container">
 		<h1 class="archive-h1">Archives </h1>
 	</div>
 

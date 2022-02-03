@@ -90,15 +90,22 @@
     <?php endif; ?>
 
 
-    <?php if($firstterm != '' && $firstterm->slug == 'white-paper') : ?>
+    <!-- https://docs.wpvip.com/technical-references/plugins/incorporate-co-authors-plus-template-tags-into-your-theme/ -->
+    <!-- between, betweenLast, before, after, null, echo -->
+    <!-- null, null, null, null, false  -->
+
+
+    <?php $authors = ''; $authors = array(); if(function_exists('coauthors')) { $authors[] = get_coauthors(); }
+          $author_count = count($authors[0]); ?>
+
+    <?php if($firstterm != '' && ($firstterm->slug == 'white-paper' || $firstterm->slug == 'article') ): ?>
     <div class="meta-author">
-      <h2 class="meta-h2">AUTHOR: </h2>
-      <?php $author = ''; $author = get_the_author(); _e($author);  ?>
+      <h2 class="meta-h2">AUTHOR<?php if($author_count > 1) { _e('S'); } ?>: <?php if(function_exists('coauthors')) { coauthors('</span>, <span class="meta-txt">', '</span>, <span class="meta-txt">', '<span class="meta-txt">', '</span>'); } else { the_author(); } ?> </h2>
     </div>
-    <?php elseif($firstterm != '' && $firstterm->slug == 'video') : ?>
+    <?php elseif($firstterm != '' && ($firstterm->slug == 'video' || $firstterm->slug == 'website')) : ?>
     <div class="meta-author">
-      <h2 class="meta-h2">POSTED BY: </h2>
-      <?php $author = ''; $author = get_the_author(); _e($author); ?>
+      <h2 class="meta-h2">POSTED BY: <?php if(function_exists('coauthors')) { coauthors('</span>, <span class="meta-txt">', '</span>, <span class="meta-txt">', '<span class="meta-txt">', '</span>'); } else { the_author(); } ?>
+      </h2>
     </div>
     <?php endif; ?>
 

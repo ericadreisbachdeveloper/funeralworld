@@ -4,27 +4,25 @@
 
 
 <main data-role="main" id="main">
-	<section class="section">
 
 
-		<div class="container">
+	<div class="container archive-container">
 
-      <?php $term = get_queried_object(); ?>
+    <?php $term = get_queried_object(); ?>
 
-			<?php $tax = get_taxonomy( $term->taxonomy ); ?>
+		<?php $tax = get_taxonomy( $term->taxonomy ); ?>
 
-			<h1 class="archive-h1"><?= $tax->labels->singular_name; ?>: <?= $term->name; ?> </h1>
+		<h1 class="archive-h1"><?= $tax->labels->singular_name; ?>: <?= $term->name; ?> </h1>
 
-		</div>
-
-
-		<?php get_template_part('loop-nosidebar'); ?>
+	</div>
 
 
-		<?php get_template_part('pagination'); ?>
+	<?php get_template_part('loop-nosidebar'); ?>
 
 
-	</section>
+	<?php get_template_part('pagination'); ?>
+
+
 </main>
 
 
