@@ -714,7 +714,7 @@
   .archive:not(.resource-search-results) .hentry,
   .search-results:not(.resource-search-results) .hentry {
     width: 100vw;
-     left: calc(calc(50vw - (#{$container} / 2) + 1.5rem) * -1);
+     left: 0;
   }
 
   // Archive - wide
@@ -744,7 +744,7 @@
 
   // Ask a Question - wide
   #gform_wrapper_2 {
-    width: calc( (70rem * .75 - 1rem) + ( 50vw - 35.05rem) );
+    width: calc( (70rem * .75 - 1.3rem) + ( 50vw - 35.05rem) );
 
     .gform_heading, #gform_2 { width: calc((70rem * .75) - 4em); }
   }
