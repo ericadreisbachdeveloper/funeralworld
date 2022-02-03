@@ -1572,13 +1572,14 @@ function searchresults_shortcode() {
 				$author_count = count($authors[0]);
 				$author_array = $authors[0];
 
-				$i = 0; $author_display = '';
+				$i = 1; $author_display = '';
 
 				foreach ($author_array as $author_ind ) {
 					$author_display .= '<span class="meta-txt"">' . $author_ind->display_name . '</span>';
 					if ($i < $author_count) {
 						$author_display .= ', ';
 					}
+					$i++;
 				}
 			}
 			else { $author_count = 1; }
@@ -1589,18 +1590,15 @@ function searchresults_shortcode() {
 				$results .= '<h2 class="meta-h2">AUTHOR';
 				if($author_count > 1) { $results .= 'S'; }
 				$results .= ':</h2> ';
-				if(function_exists('coauthors')) {
-					$results .= $author_display;
-				}
-				else {
-					$results .=   get_the_author();
-				}
+				if(function_exists('coauthors')) { $results .= $author_display; }
+				else { $results .= get_the_author(); }
 				$results .= '</div><!-- /.meta-author -->';
 			}
 			elseif($firstterm != '' && ($firstterm->slug == 'video' || $firstterm->slug == 'website')) {
 				$results .= '<div class="meta-author">';
 				$results .= '<h2 class="meta-h2">POSTED BY:</h2> ';
-				$results .=  get_the_author();
+				if(function_exists('coauthors')) { $results .= $author_display; }
+				else { $results .= get_the_author(); }
 				$results .= '</div><!-- /.meta-author -->';
 			}
 
