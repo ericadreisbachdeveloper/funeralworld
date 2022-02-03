@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.2.12';
+$style_vsn = '1.2.13';
 
 
 
@@ -1560,33 +1560,46 @@ function searchresults_shortcode() {
 				$date = DateTime::createFromFormat('m/d/Y', $publishdate);
 				$displaydate = $date->format('F j, Y');
 
-				//$results .= '<h2 class="meta-h2">PUBLISHED:</h2> <span class="wd-br"></span>' . $displaydate;
 				$results .= '<h2 class="meta-h2">PUBLISHED:</h2> ' . $displaydate;
 			}
-			// otherwise, use Wordpress-standard publish date
-			/*
-			else {
-				$displaydate = get_the_time("F j, Y");
-				$results .= '<h2 class="meta-h2">DATE ADDED:</h2> ';
-				if($firstterm != '' && $firstterm->slug !== 'website') {
-					$results .= '<span class="wd-br"></span>';
-				}
-				$results .= $displaydate;
-			}
-			*/
 
 			$results .= '</div><!-- /.meta-time -->';
 
-			if($firstterm != '' && $firstterm->slug == 'white-paper') {
+
+			$authors      = '';
+			$authors      = array(); if(function_exists('coauthors')) { $authors[] = get_coauthors(); }
+	    $author_count = count($authors[0]);
+
+			$author_array = $authors[0];
+
+			$i = 0; $author_display = '';
+
+			foreach ($author_array as $author_ind ) {
+				$author_display .= '<span class="meta-txt"">' . $author_ind->display_name . '</span>';
+				if ($i < $author_count) {
+					$author_display .= ', ';
+				}
+			}
+
+
+
+
+
+			if($firstterm != '' && ($firstterm->slug == 'white-paper' || $firstterm->slug == 'article') ) {
 				$results .= '<div class="meta-author">';
-				//$results .= '<h2 class="meta-h2">AUTHOR:</h2> <span class="wd-br"></span>';
-				$results .= '<h2 class="meta-h2">AUTHOR:</h2> ';
-				$results .=  get_the_author();
+				$results .= '<h2 class="meta-h2">AUTHOR';
+				if($author_count > 1) { $results .= 'S'; }
+				$results .= ':</h2> ';
+				if(function_exists('coauthors')) {
+					$results .= $author_display;
+				}
+				else {
+					$results .=   get_the_author();
+				}
 				$results .= '</div><!-- /.meta-author -->';
 			}
-			elseif($firstterm != '' && $firstterm->slug == 'video') {
+			elseif($firstterm != '' && ($firstterm->slug == 'video' || $firstterm->slug == 'website')) {
 				$results .= '<div class="meta-author">';
-				//$results .= '<h2 class="meta-h2">POSTED BY:</h2> <span class="wd-br"></span>';
 				$results .= '<h2 class="meta-h2">POSTED BY:</h2> ';
 				$results .=  get_the_author();
 				$results .= '</div><!-- /.meta-author -->';

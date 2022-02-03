@@ -444,9 +444,6 @@
   .caveat { padding-top: .44rem; }
 
 
-
-
-
   .archive .archive-a .resource-meta {
     @include flex;
     @include justify-content(flex-start);
@@ -454,6 +451,7 @@
 
     [class*="meta"]:not(.meta-txt) + [class*="meta"]:not(.meta-txt) { padding-top: 0; padding-left: 3.44rem; }
   }
+
 
 
   #navmenu.show .search-submit,
@@ -690,20 +688,6 @@
   .events-content-div > [class*="gutenberg-section"] > .gutenberg-container > * { margin-top: 0; }
 
 
-  // Search Results - wide
-  // Search - wide
-  // Advanced Search - wide
-  // Our Work - wide
-  .search-results, .search-no-results, /* .archive, .page-template */  {
-    .archive-a .resource-meta {
-      @include flex;
-      @include justify-content(flex-start);
-      @include flex-direction-row;
-
-      [class*="meta"]:not(.meta-txt) + [class*="meta"] { padding-top: 0; padding-left: 3.44rem; }
-    }
-  }
-
 
 
   // Advanced Search - wide
@@ -714,13 +698,15 @@
   //        body.archive         = 3. Wordpress-generated archives
   //        body.page-template   = 4. Resources                   (has sidebar)
 
-  // Resources advanced search container tweak
+  // Resources Advanced Search container tweak
   .search-results.resource-search-results .archive-a > .container { width: unset; padding: 0; }
 
 
-  .search-results.resource-search-results [data-role="main"] .archive-a > .container, .page-template [data-role="main"] .archive-a > .container {
+  .search-results.resource-search-results [data-role="main"] .archive-a > .container {
     width: calc(100% - 3rem);
   }
+
+  .page-template [data-role="main"] .archive-a > .container { width: 100%; }
 
 
   // Archive - wide
@@ -758,9 +744,7 @@
 
   // Ask a Question - wide
   #gform_wrapper_2 {
-    // right col 70rem * .75 - 1em
-    // right mar 50vw - 35.05rem    (.05 = border width)
-    width: calc( (70rem * .75 - 1em) + ( 50vw - 35.05rem) );
+    width: calc( (70rem * .75 - 1rem) + ( 50vw - 35.05rem) );
 
     .gform_heading, #gform_2 { width: calc((70rem * .75) - 4em); }
   }
