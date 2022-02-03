@@ -38,7 +38,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<a class="archive-a" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 
-		<div class="container"><div class="archive-container">
+		<div class="container archive-container">
 
 			<?php if($terms != '') : ?>
 			<h2 class="archive-h2" id="archive-h2"><?php the_title(); ?></h2>
@@ -61,7 +61,7 @@
 			<?php _e(get_template_part('meta-archive-nosidebar')); ?>
 			<?php endif; ?>
 
-		</div><!-- /.archive-container --></div><!-- /.container -->
+		</div><!-- /.container.archive-container -->
 
 	</a>
 </article>

@@ -114,6 +114,11 @@ input#nav-search[type="search"] { max-width: unset; border-radius: unset; }
 }
 
 
+.sort-select {
+  @include flex;
+  @include justify-content(flex-end);
+}
+
 .sort-div {
   clear: both;
   float: right;

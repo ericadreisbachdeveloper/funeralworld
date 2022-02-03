@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.2.09';
+$style_vsn = '1.2.11';
 
 
 
@@ -138,7 +138,7 @@ function dbllc_header_scripts() {
 
 
 	if(is_archive() || is_search() ) {
-		wp_register_script('advanced-search', TDIR . '/js/dev/advanced-search.js', 'jquery-core', '1.0.13', false);
+		wp_register_script('advanced-search', TDIR . '/js/dev/advanced-search.js', 'jquery-core', '1.0.15', false);
 		 wp_enqueue_script('advanced-search');
 	}
 
@@ -1463,7 +1463,7 @@ function searchresults_shortcode() {
 	if ( $wp_query->have_posts() ) {
 
 
-		$results .= '<div class="container"><h1 class="post search-results-h1 -initial">Browse All ' . $count . ' Resources</h1>';
+		$results .= '<div class="container container-search-results-header"><h1 class="post search-results-h1 -initial">Browse All ' . $count . ' Resources</h1>';
 
 		$results .= '<div class="sort-div">
 			<label for="sort-by">Sort by &nbsp;</label>
@@ -1690,6 +1690,9 @@ function searchsidebar_shortcode() {
 				$searchsidebar .= '<li class="sidebar-li"><a href="' .  WP_SITEURL . '?s=&topic=' . $topic->slug . '&audience=' . $audience->slug . '&post_type=post&sort=' . $sort_query . '"';
 				if ($audience_query != '' && $audience_query == $audience->slug) {
 					$searchsidebar .= ' tabindex="0"';
+				}
+				else {
+					$searchsidebar .= ' tabindex="-1"';
 				}
 				$searchsidebar .= '>' . $topic->name . '</a></li>';
 			}

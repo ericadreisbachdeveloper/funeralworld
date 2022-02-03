@@ -67,8 +67,6 @@
     @include flex-direction-col;
   }
 
-
-
   .archive .meta-tags {
     max-width: 45%;
   }
@@ -83,6 +81,11 @@
     @include flex-direction-col;
     @include justify-content(space-between);
   }
+
+
+  // Search - small
+  .sort-div { clear: none; padding-top: .5rem; }
+
 
 
 
@@ -370,6 +373,8 @@
 
 
   // Classes - large
+  $container: calc(100% - 3rem);
+
   .hide-md-and-smaller { display: block; }
   .lg-br { display: block; }
 
@@ -411,9 +416,6 @@
 
   // Archive - large
   // Search - large
-  .gutenberg-section.core-shortcode #search-results .hentry > [href] > .container { width: 100%; }
-
-
   .search-form.search-compact {
     input[type="search"] {
       border-bottom: unset;
@@ -436,6 +438,17 @@
 
   .caveat { padding-top: .44rem; }
 
+
+
+
+
+  .archive .archive-a .resource-meta {
+    @include flex;
+    @include justify-content(flex-start);
+    @include flex-direction-row;
+
+    [class*="meta"] + [class*="meta"] { padding-top: 0; padding-left: 3.44rem; }
+  }
 
 
   #navmenu.show .search-submit,
@@ -476,6 +489,57 @@
     right: .7rem;
   }
 
+
+  //  Large
+  //        body.search-results  = 1. Site Search
+  //  &.resource-search-results  = 2. Resources advanced search   (has sidebar)
+  //        body.archive         = 3. Wordpress-generated archives
+  //        body.page-template   = 4. Resources Landing           (has sidebar)
+
+  // Site Search - Large
+  // Archives - Large
+  .search-results:not(.resource-search-results),
+  .archive:not(.resource-search-results) {
+    [data-role="main"] .hentry > [href]:before {
+      background-size: calc(100% - 6rem) 100%;
+      background-position: 50% 0;
+    }
+  }
+
+
+  // Site Search - Large
+  // Resources Landing - Large
+  .search-results:not(.resource-search-results),
+  .archive:not(.resource-search-results),
+  .page-template {
+    [data-role="main"] .hentry > [href] {
+      @include hover {
+        &:before {
+          background-size: 100% 100%;
+        }
+      }
+    }
+  }
+
+  // Resources Advanced Search - Large
+  // Resources Landing - Large
+  .search-results.resource-search-results,
+  .page-template {
+    [data-role="main"] .archive-a > .container {
+      width: unset;
+    }
+  }
+
+
+  // Site Search - Large
+  .search-results:not(.resource-search-results) .hentry {
+    width: calc(100% + 3rem);
+    position: relative;
+     left: -1.5rem;
+  }
+
+  // Archive - large
+  .archive:not(.resource-search-results) #search-results .hentry > [href] > .container { width: $container; }
 
 
 
@@ -569,6 +633,7 @@
 
   // Classes - wide
   .wd-br { display: block; }
+
   $container: 73rem;
 
 
@@ -622,10 +687,9 @@
 
   // Search Results - wide
   // Search - wide
-  // Archive - wide
   // Advanced Search - wide
   // Our Work - wide
-  .search-results, .search-no-results, .archive/*, .page-template */  {
+  .search-results, .search-no-results, /* .archive, .page-template */  {
     .archive-a .resource-meta {
       @include flex;
       @include justify-content(flex-start);
@@ -636,23 +700,44 @@
   }
 
 
-  .search [data-role="main"] .hentry>[href] {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+
+  // Advanced Search - wide
+  // Resources - wide
+  // Wide
+  //        body.search-results  = 1. site search
+  //  &.resource-search-results  = 2. Resources advanced search   (has sidebar)
+  //        body.archive         = 3. Wordpress-generated archives
+  //        body.page-template   = 4. Resources                   (has sidebar)
+
+  // Resources advanced search container tweak
+  .search-results.resource-search-results .archive-a > .container { width: unset; padding: 0; }
+
+
+  .search-results.resource-search-results [data-role="main"] .archive-a > .container, .page-template [data-role="main"] .archive-a > .container {
+    width: calc(100% - 3rem);
   }
 
-  .search-results, .search-no-results {
-    .archive-a .archive-meta > .resource-meta {
-      @include flex-direction-col;
-      [class*="meta"] + [class*="meta"] { padding-top: .5rem; padding-left: 0; }
 
-    }
+  // Archive - wide
+  // Site Search - wide
+  .archive:not(.resource-search-results) .hentry,
+  .search-results:not(.resource-search-results) .hentry {
+    width: 100vw;
+     left: calc(calc(50vw - (#{$container} / 2) + 1.5rem) * -1);
   }
 
-
-  .search.search-results [data-role="main"] .hentry > [href]:before {
+  // Archive - wide
+  .archive:not(.resource-search-results) [data-role="main"] .hentry > [href]:before {
+    background-position: 50% 0;
     background-size: calc(#{$container} - 3rem) 100%;
   }
+
+  // Site Search - wide
+  .search-results:not(.resource-search-results) [data-role="main"] .hentry > [href]:before  {
+    background-size: calc(#{$container} -  3rem) 100%;
+  }
+
+
 
 
   // Forms - wide

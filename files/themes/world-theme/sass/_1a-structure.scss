@@ -232,6 +232,11 @@ $toggle_bottom: 2rem;
   @extend %container;
 }
 
+.container.container-search-results-header {
+  padding-top: 2.44rem; 
+  padding-right: 0;
+  padding-left: 0;
+}
 
 
 

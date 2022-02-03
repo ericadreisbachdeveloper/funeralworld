@@ -23,6 +23,11 @@
   %container-corset { margin-top: 0; margin-bottom: 0; }
   %container { margin-right: auto; margin-left: auto; }
 
+  .container.container-search-results-header {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
 }
 
 
@@ -213,54 +218,18 @@
       }
     }
 
-    /*
-    [href] {
-      background: none;
-
-      @include hover { background: transparent; }
-
-      &:before, &:after { width: 0; bottom: .5rem; @include transition(width 2s ease-in-out, left .2s ease-in-out);  }
-
-      &:before { content: ''; display: block; height: .05rem; position: absolute; left: 50%; }
-
-      &:before { background: yellow; }
-      &:after { background: deeppink; }
-
-      @include hover {
-        &:before, &:after { width: calc(50% - #{$padding-left}); }
-        &:before { left: $padding-left;  }
-        &:after { left: 50%; }
-      }
-    }*/
   }
 
 
   %top-level-no-children-before-after { &:before, &:after {  @extend %navlines-basic; }  }
 
-  //     extension
-  /*
-  %top-level-no-children-before-after {
-    &:before { left: 50%; }
-
-    &:after { left: 50%; }
-
-    &:before, &:after {
-      width: calc( 50% - #{$padding-left} );
-      height: .15rem;
-      background: transparent;
-      content: '';
-      display: block;
-      @include transition(background .2s ease-in-out, width 2s ease-in-out);
-    }
-  }
-  */
 
 
 
   //    application
 
   %top-level-no-children-hover {
-    //@extend %top-level-no-children-before-after;
+
 
     &.show, &.hover {
       &> [href]:not([tabindex]) {
@@ -276,7 +245,6 @@
 
       @include hover {
         background: inherit; // undo mobile
-        //@extend %top-level-no-children-before-after;
       }
     }
   }
@@ -331,7 +299,6 @@
   %current-top-level-childless:before { display: none; }
   // add underlines
   %current-top-level-childless > [href]:not([tabindex]) {
-    //@extend %top-level-no-children-before-after;
 
     &:before, &:after {
       @extend %navlines-basic;
@@ -366,7 +333,6 @@
     background: none;
     height: $headerh;
     line-height: calc( #{$headerh} * 1.45 );
-    //position: relative;
   }
 
   #navmenu [href="#display-search"] {
@@ -512,6 +478,14 @@
   %container-gutter { margin-right: auto; margin-left: auto; }
 
 
+  .container.container-search-results-header,
+  .container.filters-caveat {
+    width: unset;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+
   .deck,
   .wp-block-pullquote,
   .core-paragraph > .gutenberg-container {
@@ -524,51 +498,9 @@
   }
 
 
-
-
-  //        body.search-results  = 1. site search
-  //  &.resource-search-results  = 2. Resources advanced search   (has sidebar)
-  //        body.archive         = 3. Wordpress-generated archives
-  //        body.page-template   = 4. Resources                   (has sidebar)
-
-  // site search, archives
-  .search-results:not(.resource-search-results), .archive {
-    [data-role="main"] .hentry > [href]:before {
-      background-size: calc(100% - 6rem) 100%;
-      background-position: 50% 0;
-    }
-  }
-
-
-  // default Resources - large
-  .page-template [data-role="main"] .hentry > [href] {
-    @include hover {
-      &:before {
-        background-size: 100% 100%;
-      }
-    }
-  }
-
-
-  .search-results .hentry { width: calc(100% + 3rem); position: relative; left: -1.5rem; }
-
-
-  .search-results.page-template {
-    #search-results > .container { width: 100%; }
-  }
-
-  .search-results.resource-search-results {
-    [data-role="main"] .hentry > [href] { width: 100%; position: relative; left: 0; }
-    [data-role="main"] .hentry .container { margin: 0; }
-  }
-
-  .archive {
-    #search-results .hentry > [href] > .container { width: $container; }
-  }
-
-
-
 }
+
+
 
 
 
@@ -595,29 +527,6 @@
   .page-template #search-results > .container { width: unset; }
 
 
-  // Advanced Search - wide
-  // Our Work - wide
-  .page-template [data-role="main"] .hentry > [href]:before { background-size: calc( #{$container} - 3rem) 100%; }
-
-  .search-results:not(.resource-search-results), .archive {
-    [data-role="main"] #search-results .hentry > [href] > .container { width: $container; }
-  }
-
-  .archive [data-role="main"] .hentry > [href]:before {
-    background-size: calc(#{$container} - 3rem) 100%;
-  }
-
-  .search-results:not(.resource-search-results) [data-role="main"] .hentry > [href]:before {
-    background-size: calc(100% - 3rem) 100%;
-  }
-
-
-  // Archive - wide
-  // Search - wide
-  .search-results.page-template .hentry {
-    width: 100vw;
-     left: calc(calc(50vw - (#{$container} / 2) + 1.5rem) * -1);
-  }
 
 
 
@@ -640,7 +549,6 @@
   #navmenu .nav-main-menu, #navmenu .nav-offsite-menu { margin-right: -1.44rem; }
   #navmenu .navbar-nav.nav-offsite-menu:after { right: 1.8rem; }
 
-  //#navmenu .nav-search { left: 3rem; }
   #navmenu .nav-search { right: 26.5rem; }
   #navmenu [href="#display-search"] { right: -29rem; }
 

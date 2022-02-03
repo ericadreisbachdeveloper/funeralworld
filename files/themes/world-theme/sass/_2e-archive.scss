@@ -96,7 +96,10 @@
 
 
 
-// Blog nav shows current when viewing archive / single / etc. pages
+
+.container.container-search-results-header {
+  padding-bottom: 1rem;
+}
 
 
 
@@ -252,9 +255,15 @@ $hentry-top: -1px;
 
 // Advanced Search Results
 // Our Work
-#search-results {
 
-  .hentry > [href]:before { width: 100%; background-position: 1.5rem 0; background-size: calc(100% - 3rem) 100%; }
+.page-template                                [data-role="main"],
+.search-results:not(.resource-search-results) [data-role="main"] {
+
+  .hentry > [href]:before {
+    width: 100%;
+    background-position: 1.5rem 0;
+    background-size: calc(100% - 3rem) 100%;
+  }
 
   .hentry > [href] {
     @include hover {
@@ -270,8 +279,6 @@ $hentry-top: -1px;
 
   &> .container { width: 100%; padding-right: 0; padding-left: 0; }
 
-
-
   &:after {
     width: 100%;
     display: block;
@@ -279,6 +286,9 @@ $hentry-top: -1px;
     clear: both;
   }
 }
+
+.meta-txt { white-space: nowrap; }
+
 
 
 
@@ -401,9 +411,15 @@ $hentry-top: -1px;
 }
 
 
+.results-h1-and-buttons {
+  float: left;
+}
+
 
 .filter-buttons {
-  padding-bottom: 1.5rem;
+  clear: left;
+  float: left;
+  //padding-bottom: 1.5rem;
 
   &> [href] {
     @extend %remove-link-line;
@@ -442,20 +458,20 @@ $hentry-top: -1px;
   }
 }
 
-.container.filters-caveat { padding: 0; max-width: 100%; }
+//.container.filters-caveat { padding: 0; max-width: 100%; }
 
 .caveat {
   @extend %small;
   width: 16rem;
   clear: right;
   display: block;
-  float: right;
   line-height: 1.2;
   margin-top: 0;
   padding-top: .44rem;
   padding-bottom: .5rem;
   text-align: right;
 }
+
 
 
 

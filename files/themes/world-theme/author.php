@@ -6,8 +6,8 @@
 <main data-role="main">
 
 
-	<div class="container">
-		<div class="archive-container">
+	<div class="container archive-container">
+
 
 			<h1 class="archive-h1">Author: <?php $obj = get_queried_object(); print_r($obj->display_name); ?></h1>
 
@@ -15,11 +15,11 @@
 			<p class="deck"><?= $author_meta['description'][0]; ?> </p>
 			<?php endif; ?>
 
-		</div><!-- /.archive-container -->
+
 	</div><!-- /.container -->
 
 
-	
+
 	<?php get_template_part('loop-nosidebar'); ?>
 
 

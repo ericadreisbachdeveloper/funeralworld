@@ -39,7 +39,7 @@
 	<!-- mimicking structure of /our-work/ built with native blocks -->
 	<section class="section gutenberg-section core-group">
 		<div class="gutenberg-container">
-			<div class="wp-block-group mist-bg">
+			<div class="wp-block-group mist-bg search-block-group">
 				<div class="wp-block-group__inner-container">
 					<div class="gutenberg-section core-columns">
 						<div class="gutenberg-container">
@@ -88,248 +88,65 @@
 									<div class="gutenberg-section core-shortcode">
 										<div class="gutenberg-container">
 											<div id="search-results">
-												<!-- <div class="container"> -->
 
 
-													<?php get_template_part('loop-search-query');
 
-														 $s = $wp_query->found_posts;
-													if($s == '1') { $sp = ''; } else { $sp = 's'; } ?>
+												<div class="container container-search-results-header">
 
-													<h1 class="post search-results-h1<?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') : ?> pages-events<?php endif; ?>"><?= $s . ' '; ?><?php if(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') { echo 'Site'; } ?><?= ' Search Result' . $sp; ?><?php if(isset($_GET['s']) && $_GET['s'] !== '') { _e(' for &ldquo;' . $_GET['s'] . '&rdquo;'); } ?></h1>
 
-													<?php if(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') : ?>
-													<p class="looking-for"><em>Looking for white papers, videos, and more? Try our <a href="<?= esc_url(WP_SITEURL) . 'resources/'; ?>">Resources</a> page!</em></p>
-													<?php endif; ?>
+													<div class="results-h1-and-buttons">
+														<?php get_template_part('loop-search-query');
+
+															 $s = $wp_query->found_posts;
+														if($s == '1') { $sp = ''; } else { $sp = 's'; } ?>
+
+														<h1 class="post search-results-h1<?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') : ?> pages-events<?php endif; ?>"><?= $s . ' '; ?><?php if(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') { echo 'Site'; } ?><?= ' Search Result' . $sp; ?><?php if(isset($_GET['s']) && $_GET['s'] !== '') { _e(' for &ldquo;' . $_GET['s'] . '&rdquo;'); } ?></h1>
+
+														<?php if(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) == 'page') : ?>
+														<p class="looking-for"><em>Looking for white papers, videos, and more? Try our <a href="<?= esc_url(WP_SITEURL) . 'resources/'; ?>">Resources</a> page!</em></p>
+														<?php endif; ?>
+
+
+														<?php get_template_part('filter-buttons'); ?>
+
+
+													</div><!-- /.results-h1-and-buttons -->
+
 
 
 													<?php if(isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) !== 'page') : ?>
 													<?php if(isset($_GET['sort'])) { $sort = $_GET['sort']; } else { $sort = ''; } ?>
-													<div class="sort-div">
-														<label for="sort-by">Sort by &nbsp;</label>
-														<select onchange="loadpage()" id="sort-by" class="select">
-															<option id="newest"<?php           if($sort == 'newest' || (isset($_GET['sort']) && $_GET['sort'] == 'newest') ) { _e(' selected'); } ?>>Newest Added </option>
-															<option id="oldest"<?php           if($sort == 'oldest' || (isset($_GET['sort']) && $_GET['sort'] == 'oldest') ) { _e(' selected'); } ?>>Oldest Added </option>
-															<option id="newest-published"<?php if($sort == 'newest-published' || (isset($_GET['sort']) && $_GET['sort'] == 'newest-published') ) { _e(' selected'); } ?>>Newest Published </option>
-															<option id="oldest-published"<?php if($sort == 'oldest-published' || (isset($_GET['sort']) && $_GET['sort'] == 'oldest-published')) { _e(' selected'); } ?>>Oldest Published </option>
-														</select>
-													</div>
+													<div class="sort-div<?php if( isset($_GET['sort']) && ( $_GET['sort'] == 'newest-published' || $_GET['sort'] == 'oldest-published') ) : ?> has-caveat<?php endif; ?>">
+
+
+														<div class="sort-select">
+															<label for="sort-by">Sort by &nbsp;</label>
+															<select onchange="loadpage()" id="sort-by" class="select">
+																<option id="newest"<?php           if($sort == 'newest' || (isset($_GET['sort']) && $_GET['sort'] == 'newest') ) { _e(' selected'); } ?>>Newest Added </option>
+																<option id="oldest"<?php           if($sort == 'oldest' || (isset($_GET['sort']) && $_GET['sort'] == 'oldest') ) { _e(' selected'); } ?>>Oldest Added </option>
+																<option id="newest-published"<?php if($sort == 'newest-published' || (isset($_GET['sort']) && $_GET['sort'] == 'newest-published') ) { _e(' selected'); } ?>>Newest Published </option>
+																<option id="oldest-published"<?php if($sort == 'oldest-published' || (isset($_GET['sort']) && $_GET['sort'] == 'oldest-published')) { _e(' selected'); } ?>>Oldest Published </option>
+															</select>
+														</div><!-- /.sort-select -->
+
+
+														<?php if( isset($_GET['sort']) && ( $_GET['sort'] == 'newest-published' || $_GET['sort'] == 'oldest-published') ) : ?>
+														<p class="caveat"><em>Resources with no publish date are excluded from results sorted by date published</em></p>
+														<?php endif; ?>
+
+
+													</div><!-- /.sort-div -->
 													<?php endif; ?>
 
-												</div>
 
 
 
-												<?php if( isset($_GET['sort']) && ( $_GET['sort'] == 'newest-published' || $_GET['sort'] == 'oldest-published') ) : ?>
-												<div class="container filters-caveat">
-													<p class="caveat"><em>Resources with no publish date are excluded from results sorted by date published</em></p>
-												</div>
-												<?php endif; ?>
 
 
-												<?php if( isset($_GET['post_type']) && substr($_GET['post_type'], 0, 4) !== 'page') : ?>
-												<?php if(array_filter($search_array)) : ?>
-												<?php $audience_term = $author_term = $topic_term = $type_term = $filteredurl = '';  ?>
-												<div class="filter-buttons">
+
+											</div><!-- /.container -->
 
 
-													<!-- 0. Search Query -->
-													<?php if($search_array[0] != '') : ?>
-
-													<?php $filteredurl = WP_SITEURL . '?s=';
-
-														if ($search_array[1] != '') {
-															$audience_term = get_term_by('slug', $search_array[1], 'audience');
-															$filteredurl  .= '&audience=' . $audience_term->slug;
-														}
-
-														if($search_array[2] != '') {
-															$author_term  = get_user_by('id', $search_array[2]);
-															$filteredurl .= '&author=' . $author_term->ID;
-														}
-
-														if($search_array[3] != '') {
-															$topic_term   = get_term_by('slug', $search_array[3], 'topic');
-															$filteredurl .= '&topic=' . $topic_term->slug;
-														}
-
-														if($search_array[4] != '') {
-															$type_term    = get_term_by('slug', $search_array[4], 'resource-type');
-															$filteredurl .= '&resource-type=' . $type_term->slug;
-														}
-
-														$filteredurl .= '&post_type=post';
-
-														if(isset($_GET['sort'])) {
-															$filteredurl .= '&sort=' . $_GET['sort'];
-														} ?>
-
-													<a href="<?= esc_url($filteredurl); ?>" data-input="s" data-value="<?= $search_array[0]; ?>">SEARCH: <?= $search_array[0]; ?></a>
-												 <?php endif; endif; ?>
-													<!-- /0. Search -->
-
-
-													<!-- 1. Audience -->
-													<?php if($search_array[1] != '') : ?>
-
-													<?php $audience_term  = get_term_by('slug', $search_array[1], 'audience'); ?>
-
-													<?php $filteredurl = WP_SITEURL . '?s=';
-
-														if ($search_array[0] != '') {
-															$search_term  = $search_array[0];
-															$search_term  = str_replace(' ', '+', $search_term);
-															$filteredurl .= $search_term;
-														}
-
-														if($search_array[2] != '') {
-															$author_term  = get_user_by('id', $search_array[2]);
-															$filteredurl .= '&author=' . $author_term->ID;
-														}
-
-														if($search_array[3] != '') {
-															$topic_term  = get_term_by('slug', $search_array[3], 'topic');
-															$filteredurl .= '&topic=' . $topic_term->slug;
-														}
-
-														if($search_array[4] != '') {
-															$type_term = get_term_by('slug', $search_array[4], 'resource-type');
-															$filteredurl .= '&resource-type=' . $type_term->slug;
-														}
-
-														$filteredurl .= '&post_type=post';
-
-														if(isset($_GET['sort'])) {
-															$filteredurl .= '&sort=' . $_GET['sort'];
-														} ?>
-
-													<a href="<?= esc_url($filteredurl); ?>" data-input="audience" data-value="<?= $search_array[1]; ?>">AUDIENCE: <?= $audience_term->name; ?></a>
-													<?php endif; ?>
-													<!-- /1. Audience -->
-
-
-													<!-- 2. Author -->
-													<?php if($search_array[2] != '') : ?>
-
-													<?php $author_term  = get_user_by('id', $search_array[2]); ?>
-
-													<?php $filteredurl = WP_SITEURL . '?s=';
-
-														if ($search_array[0] != '') {
-															$search_term  = $search_array[0];
-															$search_term  = str_replace(' ', '+', $search_term);
-															$filteredurl .= $search_term;
-														}
-
-														if ($search_array[1] != '') {
-															$audience_term = get_term_by('slug', $search_array[1], 'audience');
-															$filteredurl  .= '&audience=' . $audience_term->slug;
-														}
-
-														if($search_array[3] != '') {
-															$topic_term  = get_term_by('slug', $search_array[3], 'topic');
-															$filteredurl .= '&topic=' . $topic_term->slug;
-														}
-
-														if($search_array[4] != '') {
-															$type_term = get_term_by('slug', $search_array[4], 'resource-type');
-															$filteredurl .= '&resource-type=' . $type_term->slug;
-														}
-
-														$filteredurl .= '&post_type=post';
-
-														if(isset($_GET['sort'])) {
-															$filteredurl .= '&sort=' . $_GET['sort'];
-														} ?>
-
-													<a href="<?= esc_url($filteredurl); ?>" data-input="author" data-value="<?= $search_array[2]; ?>">AUTHOR: <?= $author_term->display_name; ?></a>
-													<?php endif; ?>
-													<!-- /2. Author -->
-
-
-													<!-- 3. Topic -->
-													<?php if($search_array[3] != '') : ?>
-
-													<?php $topic_term  = get_term_by('slug', $search_array[3], 'topic'); ?>
-
-													<?php $filteredurl = WP_SITEURL . '?s=';
-
-														if ($search_array[0] != '') {
-															$search_term  = $search_array[0];
-															$search_term  = str_replace(' ', '+', $search_term);
-															$filteredurl .= $search_term;
-														}
-
-														if ($search_array[1] != '') {
-															$audience_term = get_term_by('slug', $search_array[1], 'audience');
-															$filteredurl  .= '&audience=' . $audience_term->slug;
-														}
-
-														if($search_array[2] != '') {
-															$author_term  = get_user_by('id', $search_array[2]);
-															$filteredurl .= '&author=' . $author_term->ID;
-														}
-
-														if($search_array[4] != '') {
-															$type_term = get_term_by('slug', $search_array[4], 'resource-type');
-															$filteredurl .= '&resource-type=' . $type_term->slug;
-														}
-
-														$filteredurl .= '&post_type=post';
-
-														if(isset($_GET['sort'])) {
-															$filteredurl .= '&sort=' . $_GET['sort'];
-														} ?>
-
-													<a href="<?= esc_url($filteredurl); ?>" data-input="topic" data-value="<?= $search_array[3]; ?>">TOPIC: <?= $topic_term->name; ?></a>
-													<?php endif; ?>
-													<!-- /3. Topic -->
-
-
-													<!-- 4. Type -->
-													<?php if($search_array[4] != '') : ?>
-
-													<?php $type_term = get_term_by('slug', $search_array[4], 'resource-type'); ?>
-
-													<?php $filteredurl = WP_SITEURL . '?s=';
-
-														if ($search_array[0] != '') {
-															$search_term  = $search_array[0];
-															$search_term  = str_replace(' ', '+', $search_term);
-															$filteredurl .= $search_term;
-														}
-
-														if ($search_array[1] != '') {
-															$audience_term = get_term_by('slug', $search_array[1], 'audience');
-															$filteredurl  .= '&audience=' . $audience_term->slug;
-														}
-
-														if($search_array[2] != '') {
-															$author_term  = get_user_by('id', $search_array[2]);
-															$filteredurl .= '&author=' . $author_term->ID;
-														}
-
-														if($search_array[3] != '') {
-															$topic_term  = get_term_by('slug', $search_array[3], 'topic');
-															$filteredurl .= '&topic=' . $topic_term->slug;
-														}
-
-														$filteredurl .= '&post_type=post';
-
-														if(isset($_GET['sort'])) {
-															$filteredurl .= '&sort=' . $_GET['sort'];
-														} ?>
-
-													<a href="<?= esc_url($filteredurl); ?>" data-input="topic" data-value="<?= $search_array[4]; ?>">RESOURCE TYPE: <?= $type_term->name; ?></a>
-													<?php endif; ?>
-													<!-- /4. Type -->
-
-
-												</div><!-- /.filter-buttons -->
-												<?php endif; ?>
-
-
-											<!-- </div> --><!-- /.container -->
 
 
 
