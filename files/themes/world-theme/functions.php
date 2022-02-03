@@ -1568,21 +1568,20 @@ function searchresults_shortcode() {
 
 			$authors      = '';
 			$authors      = array(); if(function_exists('coauthors')) { $authors[] = get_coauthors(); }
-	    $author_count = count($authors[0]);
+	    if( !empty($authors) ) {
+				$author_count = count($authors[0]);
+				$author_array = $authors[0];
 
-			$author_array = $authors[0];
+				$i = 0; $author_display = '';
 
-			$i = 0; $author_display = '';
-
-			foreach ($author_array as $author_ind ) {
-				$author_display .= '<span class="meta-txt"">' . $author_ind->display_name . '</span>';
-				if ($i < $author_count) {
-					$author_display .= ', ';
+				foreach ($author_array as $author_ind ) {
+					$author_display .= '<span class="meta-txt"">' . $author_ind->display_name . '</span>';
+					if ($i < $author_count) {
+						$author_display .= ', ';
+					}
 				}
 			}
-
-
-
+			else { $author_count = 1; }
 
 
 			if($firstterm != '' && ($firstterm->slug == 'white-paper' || $firstterm->slug == 'article') ) {
