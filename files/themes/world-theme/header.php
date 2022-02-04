@@ -139,10 +139,18 @@ ob_start('sanitize_output');
 
 
 <!-- fonts -->
+<!-- open sans on excerpts (NOT homepage excerpts) and article body copy -->
+<?php if (!is_front_page() && !(is_page())) : ?>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+<?php endif; ?>
 
+<?php if(is_page('Resources')) : ?>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+<?php endif; ?>
 
 
 <!-- if no plugins preload jquery ... -->

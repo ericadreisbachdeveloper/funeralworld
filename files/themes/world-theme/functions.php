@@ -286,9 +286,9 @@ function darkblack_login_fail( $username ) {
 
 // 15g. Upon bad login credentials
 //      redirect to custom login page with blank username or password
-//add_filter( 'authenticate', 'darkblank_blank_username_password', 1, 3);
-
-function darkblank_blank_username_password( $user, $username, $password ) {
+// add_filter( 'authenticate', 'darkblack_blank_username_password', 1, 3);
+/*
+function darkblack_blank_username_password( $user, $username, $password ) {
 	global $page_id;
 	$home = home_url();
 
@@ -297,7 +297,7 @@ function darkblank_blank_username_password( $user, $username, $password ) {
 	}
 
 		// if there's a valid referrer, and it's not the default log-in screen
-	if (isset($referrer) && !empty($referrer) && !strstr($referrer,'wp-login') /* && !strstr($referrer,'wp-admin') */ ) {
+	if (isset($referrer) && !empty($referrer) && !strstr($referrer,'wp-login') /* && !strstr($referrer,'wp-admin')  ) {
 		if( $username == "" || $password == "" ) {
 			wp_redirect( $home );
 			exit;
@@ -307,7 +307,8 @@ function darkblank_blank_username_password( $user, $username, $password ) {
 		wp_redirect( $home );
 		exit;
 	}
-}
+
+} */
 
 
 // 15h. Disable the modal login screen on timeout
@@ -330,6 +331,9 @@ add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 
 // XXXX 15j. Exclude login page template from native search results
+//
+//           FOR THIS SITE - LOGIN.PHP EXCLUDED IN loop-search-query.php
+//
 //           also exclude Kitchen Sink
 //           src: https://stackoverflow.com/a/28983318
 function exclude_page_templates_from_search($query) {
@@ -348,8 +352,6 @@ function exclude_page_templates_from_search($query) {
 		);
 
 
-
-		//print_r($wp_the_query);
 
 
     if ( !is_admin() ) {
@@ -438,7 +440,7 @@ function dbllc_setup() {
 add_action( 'after_setup_theme', 'dbllc_setup', 100 );
 
 
-// 17c. Remove medium_large image size
+// 17c. Remove medium_large image size (HTML5 Blank)
 add_filter( 'intermediate_image_sizes', function( $sizes ) {
 	return array_filter( $sizes, function( $val ) {
 		return 'medium_large' !== $val; // Filter out 'medium_large'
@@ -727,7 +729,7 @@ function dbllc_excerpt() {
 		$output =  get_the_content($post->ID);
 
 		// turn closing tags into spaces
-		$output = str_replace("</h1>", "&nbsp;|&nbsp;", $output);
+		$output = str_replace("</h1>", "&nbsp; | &nbsp;", $output);
 		$output = str_replace("</h2>", "&nbsp;", $output);
 		$output = str_replace("</h3>", "&nbsp;", $output);
 		$output = str_replace("</p>", "&nbsp;", $output);
@@ -916,7 +918,7 @@ function remove_html5blank_cpt() {
 
 
 // 30b. Remove page templates
-//     src: https://wordpress.stackexchange.com/a/141654
+//      src: https://wordpress.stackexchange.com/a/141654
 function dbllc_remove_page_templates( $templates ) {
     unset( $templates['template-demo.php'] );
     return $templates;
@@ -925,7 +927,7 @@ add_filter( 'theme_page_templates', 'dbllc_remove_page_templates' );
 
 
 // 30c. Remove Widget areas
-//     src: https://wordpress.stackexchange.com/a/141654
+//      src: https://wordpress.stackexchange.com/a/141654
 function dbllc_remove_widgets(){
 	unregister_sidebar( 'widget-area-1' );
 	unregister_sidebar( 'widget-area-2' );
