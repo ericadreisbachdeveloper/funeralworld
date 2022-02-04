@@ -99,7 +99,7 @@ add_action('wp_enqueue_scripts', 'deregister_css', 100 );
 
 // 5. Style vsn
 global $style_vsn;
-$style_vsn = '1.2.16';
+$style_vsn = '1.2.17';
 
 
 
@@ -1140,13 +1140,13 @@ function show_resources($attr, $content = null) {
 
 			$content .= '<a class="resource-article-a" href="';
 			$content .= get_the_permalink();
-			$content .= '" title="' . get_the_title() . '">';
+			$content .= '" title="' . get_the_title() . '"><div>';
 			$content .= '<picture class="title-icon">';
 			$content .= '<source type="image/svg+xml" srcset="' . $default_svg_url . '">';
 			$content .= '<img class="icon-img" src="' . $default_png_url . '"  alt="' . $icon_alt . '" width="14" height="14" />';
 			$content .= '</picture>';
 			$content .= '&nbsp;<h2 class="article-h2">' . get_the_title() . '</h2> ';
-			$content .= '</a>';
+			$content .= '</div></a>';
 			$content .= '<p class="p">' . dbllc_excerpt() . '</p>';
 			$content .= '</div><!-- /.col-md-6 -->';
 		}
@@ -1240,13 +1240,13 @@ function show_resources($attr, $content = null) {
 
 				$content .= '<a class="resource-article-a" href="';
 				$content .= get_the_permalink();
-				$content .= '" title="' . get_the_title() . '">';
+				$content .= '" title="' . get_the_title() . '"><div>';
 				$content .= '<picture class="title-icon">';
 				$content .= '<source type="image/svg+xml" srcset="' . $default_svg_url . '">';
 				$content .= '<img class="icon-img" src="' . $default_png_url . '"  alt="' . $icon_alt . '" width="14" height="14" />';
 				$content .= '</picture>';
 				$content .= '&nbsp;<h2 class="article-h2">' . get_the_title() . '</h2> ';
-				$content .= '</a>';
+				$content .= '</div></a>';
 				$content .= '<p class="p">' . dbllc_excerpt() . '</p>';
 				$content .= '</div><!-- /.col-md-6 -->';
 			}

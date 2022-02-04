@@ -42,12 +42,9 @@
 .col-article .p:first-of-type { margin-top: 0; }
 
 
-[data-role="main"] .resource-article-a[href] {
 
-  @include hover { background-size: 0 100%; }
 
-  @include hover { .icon { background-color: $blue2; } }
-}
+
 
 
 

@@ -16,21 +16,99 @@
 	   &:target{ @content; }
 }
 
-//$sea: #35bdb6;  // Home deck bg
+@mixin transition($multi...) {
+  -webkit-transition: $multi;
+   -moz-transition: $multi;
+    -ms-transition: $multi;
+     -o-transition: $multi;
+      transition: $multi;
+}
 
+@mixin linkgradient($color) {
+  background-image: -webkit-gradient(
+   linear,
+   right top,
+   left top,
+   color-stop(.99, transparent),
+   color-stop(1,$color)
+  );
 
-.event-col {
-  padding-bottom: 2rem;
+  background-image: -o-linear-gradient(180deg, transparent calc(100% - .08rem), $color calc(100% - .0799rem));
+  background-image: -moz-linear-gradient(180deg, transparent calc(100% - .08rem), $color calc(100% - .0799rem));
+  background-image: -webkit-linear-gradient(180deg, transparent calc(100% - .08rem), $color calc(100% - .0799rem));
+  background-image: -ms-linear-gradient(180deg, transparent calc(100% - .08rem), $color calc(100% - .0799rem));
+  background-image: linear-gradient(180deg, transparent calc(100% - .08rem), $color calc(100% - .0799rem));
 }
 
 
-// Homepage grid
 
+$blue2: #251aa7;
+$land2: #35bdb6;
+
+
+
+
+
+.event-col { padding-bottom: 2rem; }
+
+
+// Homepage grid
 @media (min-width: 48rem) {
-  //.event-col:nth-of-type(1) { padding-right: 1.5rem; }
-  //.event-col:nth-of-type(2) { padding-left: 1.5rem; }
   .event-col:nth-of-type(1) { padding-right: .5rem; }
   .event-col:nth-of-type(2) { padding-left: .5rem; }
 }
 
+
+
+%link-line {
+  position: relative;
+  text-decoration: none;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  @include linkgradient(white);
+
+  @include hover {
+    color: $land2;
+    background-size: 0 100%;
+    @include linkgradient($land2);
+  }
+}
+
+[data-role="main"] [href].resource-article-a {
+  @extend %link-line;
+  background-position: 1.5rem 0;
+  display: inline-block;
+}
+
+
 .resource-article-a .icon { position: relative; top: .2rem; }
+
+[data-role="main"] .article-h2 {
+  display: inline-block;
+  margin: 0;
+  padding-left: 1.35rem;
+  text-transform: none;
+}
+
+.resource-article-a + .p { padding-top: .5rem; }
+
+
+[data-role="main"] .resource-article-a[href] {
+
+  @include hover { &> div { background-size: 0 100%; } }
+
+  @include hover { .icon { background-color: $blue2; } }
+}
+
+
+
+.title-icon {
+  width: 1.25rem;
+  background-color: transparent;
+  border-radius: .6rem;
+  display: inline-block;
+  padding: .2rem;
+  position: absolute;
+   top: .25rem;
+   left: 0;
+}
