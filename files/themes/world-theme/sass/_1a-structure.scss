@@ -22,7 +22,7 @@ html {
   [href] { color: white; text-decoration: none; }
 }
 
-//body { margin: 0; min-width: 20rem; /* 320px */ }
+// 37.5rem
 body { margin: 0; /*width: 23.438rem;*/ min-width: 23.438rem; /* viewport - 375px */ }
 
 * {
@@ -233,7 +233,7 @@ $toggle_bottom: 2rem;
 }
 
 .container.container-search-results-header {
-  padding-top: 2.44rem; 
+  padding-top: 2.44rem;
   padding-right: 0;
   padding-left: 0;
 }

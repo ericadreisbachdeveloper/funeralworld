@@ -256,7 +256,7 @@ $hentry-top: -1px;
 // Advanced Search Results
 // Our Work
 
-.page-template                                [data-role="main"],
+.page-template                                [data-role="main"] #search-results,
 .search-results:not(.resource-search-results) [data-role="main"] {
 
   .hentry > [href]:before {

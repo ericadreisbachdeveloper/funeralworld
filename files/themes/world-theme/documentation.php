@@ -103,6 +103,10 @@
   When applied to a <strong>Media &amp; Text</strong> block, images will fill the available vertical and horizontal space while text will remain in the designated &ldquo;content&nbsp;silo.&rdquo;
 </p>
 
+<p><span class="-code">hide-on-mobile</span><br />
+  When applied to <strong>any block</strong> this block will be hidden on viewports smaller than 37.5rem (600 pixels) (tho beware that as of this writing there are <strong>three</strong> kinds of pixels, <a href="https://fronteers.nl/congres/2012/sessions/a-pixel-is-not-a-pixel-peter-paul-koch" target="_blank">cf</a>).
+</p>
+
 
 <h2>Custom Content Blocks </h2>
 <p><strong>Footer </strong> <br />
