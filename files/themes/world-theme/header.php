@@ -203,7 +203,7 @@ ob_start('sanitize_output');
 		          <source type="image/png"  srcset="<?= esc_url($custom_logo_png_mobile); ?>" />
 
 							<?php if($custom_logo_svg) : ?>
-							<img class="logo-img" src="<?= esc_url($custom_logo_svg); ?>" srcset="<?= esc_url($custom_logo_svg_mobile); ?> 1x, <?= esc_url($custom_logo_svg); ?> 2x" title="<?= get_bloginfo('name'); ?>" alt="logo for <?= get_bloginfo('name'); ?>"/>
+							<img width="188" height="61" class="logo-img" src="<?= esc_url($custom_logo_svg); ?>" srcset="<?= esc_url($custom_logo_svg_mobile); ?> 1x, <?= esc_url($custom_logo_svg); ?> 2x" title="<?= get_bloginfo('name'); ?>" alt="logo for <?= get_bloginfo('name'); ?>"/>
 
 							<?php else : ?>
 							<img height="80" width="80" class="logo-img" src="<?= esc_url(TDIR); ?>/img/logo.svg" title="<?= get_bloginfo('name'); ?>" alt="Logo for <?= get_bloginfo('name'); ?>" />

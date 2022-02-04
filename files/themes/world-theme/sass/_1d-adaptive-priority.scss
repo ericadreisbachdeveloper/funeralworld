@@ -44,6 +44,8 @@
   .logo-div { float: left; }
   .logo-a   { @include flex; @include align-items(center); }
 
+  .logo-img { aspect-ratio: 535/62; width: unset; height: unset; }
+
   #navmenu { float: right; }
 
   // position two major elements within #navmenu
