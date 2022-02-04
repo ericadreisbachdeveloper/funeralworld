@@ -131,7 +131,7 @@
 
 
 														<?php if( isset($_GET['sort']) && ( $_GET['sort'] == 'newest-published' || $_GET['sort'] == 'oldest-published') ) : ?>
-														<p class="caveat"><em>Resources with no publish date are excluded from results sorted by date published</em></p>
+														<p class="caveat"><em>Resources with no published date are excluded from results sorted by date published</em></p>
 														<?php endif; ?>
 
 
