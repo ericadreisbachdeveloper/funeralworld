@@ -1118,7 +1118,7 @@ function show_resources($attr, $content = null) {
 			else {
 				$content .= ' -icon';
 			}
-			$content .= '" href="' . get_the_permalink() . '">';
+			$content .= '" href="' . get_the_permalink() . '" title="' . get_the_title() . '">';
 
 			// echo $standard_arr[1] / $standard_arr[2];
 
@@ -1217,7 +1217,7 @@ function show_resources($attr, $content = null) {
 				else {
 					$content .= ' -icon';
 				}
-				$content .= '" href="' . get_the_permalink() . '">';
+				$content .= '" href="' . get_the_permalink() . '" title="' . get_the_title() . '">';
 
 				// image
 				if ( has_post_thumbnail()) {

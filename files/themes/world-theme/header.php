@@ -186,7 +186,7 @@ ob_start('sanitize_output');
 <body <?php body_class(); ?> data-svg="inlinesvg" data-clippath="clippath">
 
 
-	<a href="#main" id="skip-link" class="sr-only-focusable">Skip to main content</a>
+	<a href="#main" id="skip-link" class="sr-only-focusable" title="Skip to main content">Skip to main content</a>
 
 
 	<div class="wrapper">
@@ -201,7 +201,7 @@ ob_start('sanitize_output');
 
 				<div class="logo-div">
 
-					<a href="<?php echo esc_url(get_home_url()); ?>" class="pngbg logo-a">
+					<a href="<?php echo esc_url(get_home_url()); ?>" class="pngbg logo-a" title="funeralworld.org - Home">
 
 						<picture class="picture">
 
