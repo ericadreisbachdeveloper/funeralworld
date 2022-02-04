@@ -1368,7 +1368,7 @@ function show_events( $events = null ) {
 			if (get_field('event-location')) {
 				$events .= get_field('event-location') . ' <br />';
 			}
-			$events .= '<a href="' . get_the_permalink() . '">Learn more</a>';
+			$events .= '<a href="' . get_the_permalink() . '" title="' . get_the_title() . '">Learn more</a>';
 			$events .= '</div><!-- /.col-sm-6 -->';
 		}
 
