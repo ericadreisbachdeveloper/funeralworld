@@ -710,20 +710,23 @@
 
 
   // Archive - wide
-  // Site Search - wide
-  .archive:not(.resource-search-results) .hentry,
-  .search-results:not(.resource-search-results) .hentry {
+  .archive:not(.resource-search-results) .hentry {
     width: 100vw;
      left: 0;
   }
-
-  // Archive - wide
   .archive:not(.resource-search-results) [data-role="main"] .hentry > [href]:before {
     background-position: 50% 0;
     background-size: calc(#{$container} - 3rem) 100%;
   }
 
+
+
   // Site Search - wide
+  .search-results:not(.resource-search-results) [data-role="main"] .hentry {
+    width: calc(100vw - 3rem);
+     left: calc(calc(calc(100vw - #{$container}) / 2) * -1);
+  }
+
   .search-results:not(.resource-search-results) [data-role="main"] .hentry > [href]:before  {
     background-size: calc(#{$container} -  3rem) 100%;
   }
@@ -753,7 +756,7 @@
   // Text/Media - wide
   // Text / Media - wide
   .wp-block-media-text.full-width:not(.has-media-on-the-right) > .wp-block-media-text__media {
-    margin-left: calc((100vw - 73rem) / -2);
+    margin-left: calc((100vw - #{$container}) / -2);
   }
 
 
