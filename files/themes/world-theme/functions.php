@@ -229,11 +229,12 @@ add_filter( 'login_errors', 'remove_error_msg' );
 function load_custom_scripts() {
 
 		if ( is_page_template ( 'page-login.php' ) ) {
-			wp_register_script('recaptcha', 'https://www.google.com/recaptcha/api.js', 'jquery-core', '2.0.0', 'all');
-			wp_enqueue_script('recaptcha');
 
-			wp_register_script('recaptcha-sitekey', get_stylesheet_directory_uri() . '/js/recaptcha-sitekey.js', 'jquery-core', '1.0.1', 'all');
-			wp_enqueue_script('recaptcha-sitekey');
+		wp_register_script('recaptcha', 'https://www.google.com/recaptcha/api.js', 'jquery-core', '2.0.0', 'all');
+wp_enqueue_script('recaptcha');
+
+	wp_register_script('recaptcha-sitekey', get_stylesheet_directory_uri() . '/js/recaptcha-sitekey.js', 'jquery-core', '1.0.1', 'all');
+  wp_enqueue_script('recaptcha-sitekey');
 		}
 }
 
@@ -253,7 +254,7 @@ add_action( 'init', 'dbllc_login_redirect');
 
 function dbllc_login_redirect(){
 	global $pagenow;
-	if( 'wp-login.php' == $pagenow && $_GET['action']!="logout" && $_GET['action']!="lostpassword" && $_GET['action']!="rp") {
+	if( 'wp-login.php' == $pagenow && $_GET['action']!="logout" && $_GET['action']!="lostpassword" && $_GET['action']!="rp" && $_GET['action']!="confirm_admin_email") {
 		//wp_redirect( home_url( '/' ) );
 		wp_redirect( home_url( '/404/' ) );
 	}
