@@ -126,7 +126,7 @@
   <!-- 3. Topic -->
   <?php if($search_array[3] != '') : ?>
 
-  <?php $topic_term  = get_term_by('slug', $search_array[3], 'topic'); ?>
+  <?php $topic_term  = get_term_by('slug', $search_array[3], 'topic');  ?>
 
   <?php $filteredurl = WP_SITEURL . '?s=';
 

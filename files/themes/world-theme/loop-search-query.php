@@ -81,7 +81,7 @@
       's' => $query,
 
       'meta_query' => array(
-        
+
         'relation' => 'OR',
 
         // Exclude LOG IN
