@@ -157,7 +157,12 @@
       $filteredurl .= '&sort=' . $_GET['sort'];
     } ?>
 
+
+  <?php if($topic_term !== false) : ?>
   <a href="<?= esc_url($filteredurl); ?>" data-input="topic" data-value="<?= $search_array[3]; ?>">TOPIC: <?= $topic_term->name; ?></a>
+  <?php endif; ?>
+
+
   <?php endif; ?>
   <!-- /3. Topic -->
 
