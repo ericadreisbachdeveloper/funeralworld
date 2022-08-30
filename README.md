@@ -5,10 +5,7 @@
 This theme was built by erica dreisbach - erica@ericadreisbach.com
 
 ## This Theme is a Child of HTML5 Blank
-More a http://html5blank.com/
-
-## Login
-The default Wordpress login form is disabled and hidden from native search to help prevent brute force attacks. Log in at `/admin-login/`
+More at http://html5blank.com/
 
 ## Plugins
 The plugins below have been carefully seleted for optimal page speed and security. All plugins have been vetted in the <a href="https://wpscan.com/" target="_blank" rel="noopener">Wordpress Vulnerability Database</a> for any unaddressed security holes.
